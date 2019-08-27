@@ -60,7 +60,7 @@ gulp.task('webpack', function(done) {
         devtool: 'source-maps',
         entry: {
             ie: './src/ie.js',
-            ingresso: './src/ps.js',
+            ingresso: './src/ingresso.js',
         },
         output: {
             path: path.resolve(__dirname, 'js'),
