@@ -12,3 +12,6 @@
 
 # Build
 /dist/
+
+# Composer
+/vendor/
