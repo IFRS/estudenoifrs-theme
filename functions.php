@@ -8,9 +8,6 @@ require_once('inc/disable-emojis.php');
 // Permissions & Roles
 require_once('inc/permissions.php');
 
-// Custom Header
-require_once('inc/custom-header.php');
-
 // Configurações para o tema
 require_once('inc/theme-config.php');
 
