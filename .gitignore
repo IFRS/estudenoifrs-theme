@@ -1,0 +1,14 @@
+# SASS
+.sass-cache/
+
+# NPM
+/node_modules/
+
+# CSS
+/css/
+
+# JS
+/js/
+
+# Build
+/dist/
