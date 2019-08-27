@@ -41,10 +41,22 @@
     <!-- Cabeçalho -->
     <header>
         <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
+                        <img src="<?php header_image(); ?>" alt="<?php bloginfo('name'); ?> - Ir para P&aacute;gina Inicial" class="img-fluid"/>
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 col-lg-8">
+                    <?php echo get_template_part('partials/menu'); ?>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- Corpo -->
     <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
 
     <main role="main">
-    <?php ingresso_breadcrumb(); ?>
+    <?php //ingresso_breadcrumb(); ?>
