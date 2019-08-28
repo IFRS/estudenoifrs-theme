@@ -44,8 +44,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="header__link">
-                        <img src="<?php header_image(); ?>" alt="<?php bloginfo('name'); ?> - Ir para P&aacute;gina Inicial" class="img-fluid"/>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+                        <img data-src="<?php header_image(); ?>" alt="<?php bloginfo('name'); ?> - Ir para P&aacute;gina Inicial" class="img-fluid"/>
                     </a>
                 </div>
                 <div class="col-12 col-md-6 col-lg-8">
