@@ -1,6 +1,15 @@
 <?php if (is_active_sidebar('area-carousel')) : ?>
     <?php $carousel_id = 'carousel-' . uniqid(); ?>
     <div id="<?php echo $carousel_id; ?>" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <?php
+                $total_widgets = wp_get_sidebars_widgets();
+                $sidebar_widgets = count($total_widgets['area-carousel']);
+            ?>
+            <?php for ($i = 0; $i < $sidebar_widgets; $i++) : ?>
+                <li data-target="#<?php echo $carousel_id; ?>" data-slide-to="<?php echo $i; ?>" <?php echo ($i == 0) ? 'class="active"' : ''; ?>></li>
+            <?php endfor; ?>
+        </ol>
         <div class="carousel-inner">
             <?php dynamic_sidebar('area-carousel'); ?>
         </div>
