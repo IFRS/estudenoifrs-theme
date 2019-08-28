@@ -42,6 +42,9 @@
     <header>
         <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
         <div class="container">
+            <?php echo get_template_part('partials/barra-acessibilidade'); ?>
+        </div>
+        <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>">
