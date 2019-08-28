@@ -1,16 +1,20 @@
-$cor-diplomado:          #5e539f;
-$cor-ead:                #b5cf48;
-$cor-eja:                #d2552a;
-$cor-extensao:           #f2cc30;
-$cor-internacional:      #a93990;
-$cor-pos:                #62b0b3;
-$cor-transfer:           #eb5951;
+$cor-diplomado:             #5e539f;
+$cor-ead:                   #b5cf48;
+$cor-eja:                   #d2552a;
+$cor-extensao:              #f2cc30;
+$cor-internacional:         #a93990;
+$cor-pos:                   #62b0b3;
+$cor-transfer:              #eb5951;
 
-$cor-destaque:           #2c8c35;
-$cor-detalhe:            #32a041;
-$cor-apoio:              #f8f7f7;
+$cor-destaque:              #2c8c35;
+$cor-detalhe:               #32a041;
+$cor-apoio:                 #f8f7f7;
 
 /* Bootstrap */
-$font-family-sans-serif: "Open Sans", Arial, sans-serif;
+$font-family-sans-serif:    "Open Sans", Arial, sans-serif;
 
-$link-color:             $cor-destaque;
+$link-color:                $cor-destaque;
+
+// Navbar
+$navbar-light-hover-color:  $cor-destaque;
+$navbar-light-active-color: $cor-destaque;
