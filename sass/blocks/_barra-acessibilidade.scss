@@ -3,9 +3,11 @@
     display: flex;
     justify-content: flex-end;
     font-size: 0.7rem;
+    padding: 10px 0;
 
     &__menu {
         list-style: none;
+        margin-bottom: 0;
         margin-right: 50px;
         padding: 0;
 
