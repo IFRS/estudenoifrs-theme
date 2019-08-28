@@ -11,6 +11,9 @@ require_once('inc/permissions.php');
 // Configurações para o tema
 require_once('inc/theme-config.php');
 
+// Registro de Sidebars
+require_once('inc/widgets.php');
+
 // Tamanho do resumo e resumo em páginas
 require_once('inc/page-excerpt.php');
 require_once('inc/excerpt.php');
