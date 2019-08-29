@@ -1,14 +1,14 @@
 .site-map {
-    margin-bottom: 10px;
-
     &__menu {
-        display: block;
+        align-items: flex-start;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         list-style: none;
         padding: 0;
 
         >.menu-item {
             display: block;
-            float: left;
             margin-right: 50px;
             margin-bottom: 15px;
             font-size: 1.5rem;
