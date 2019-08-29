@@ -5,6 +5,25 @@
 <!-- Rodapé -->
 <a href="#inicio-rodape" id="inicio-rodape" class="sr-only">In&iacute;cio do rodap&eacute;</a>
 
+<section class="duvidas">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12 col-md-9 col-lg-8">
+                <a href="" class="duvidas__link"><strong>Ficou com d&uacute;vidas?</strong> Entre em contato!</a>
+            </div>
+            <div class="col-12 col-md-3 col-lg-4">
+                <ul class="menu-social">
+                    <li class="menu-social__item"><a href="https://www.facebook.com/IFRSOficial" class="menu-social__link menu-social__link--facebook"><span class="sr-only">P&aacute;gina do IFRS no Facebook</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.twitter.com/IFRSOficial" class="menu-social__link menu-social__link--twitter"><span class="sr-only">Perfil do IFRS no Twitter</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.instagram.com/IFRSOficial" class="menu-social__link menu-social__link--instagram"><span class="sr-only">Perfil do IFRS no Instagram</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.youtube.com/IFRSOficial" class="menu-social__link menu-social__link--youtube"><span class="sr-only">Canal do IFRS no Youtube</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.linkedin.com/school/ifrs" class="menu-social__link menu-social__link--linkedin"><span class="sr-only">P&aacute;gina do IFRS no Linkedin</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
 <footer>
     <div class="container">
         <div class="row footer">
