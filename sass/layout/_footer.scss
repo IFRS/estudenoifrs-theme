@@ -1,0 +1,14 @@
+footer {
+    background-color: $cor-destaque;
+    color: #ffffff;
+    padding: 50px 0;
+
+    a {
+        color: #ffffff;
+
+        &:hover,
+        &:active {
+            color: #ffffff;
+        }
+    }
+}

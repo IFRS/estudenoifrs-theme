@@ -1,0 +1,10 @@
+.endereco {
+    flex: 0 0 25%;
+    font-size: 0.9rem;
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+}
