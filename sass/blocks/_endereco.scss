@@ -1,6 +1,10 @@
 .endereco {
     font-size: 0.9rem;
 
+    a {
+        font-weight: bold;
+    }
+
     &__title {
         font-size: 1.5rem;
         font-weight: bold;
