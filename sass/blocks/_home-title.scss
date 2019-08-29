@@ -1,0 +1,25 @@
+.home-title {
+    color: #666666;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+
+    &::after {
+        $comprimento: 12%;
+
+        background: $cor-destaque;
+        content: '';
+        position: absolute;
+        height: 3px;
+        width: $comprimento;
+        bottom: 0;
+        right: (50% - ($comprimento / 2));
+    }
+
+    &__destaque {
+        color: $cor-destaque;
+    }
+}
