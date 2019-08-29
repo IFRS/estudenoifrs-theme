@@ -1,5 +1,5 @@
 <nav class="barra-acessibilidade">
-    <ul class="barra-acessibilidade__menu">
+    <ul class="barra-acessibilidade__menu d-none d-md-block">
         <li><a href="#inicio-conteudo" accesskey="1">Ir para o conte&uacute;do [1]</a></li>
         <li><a href="#inicio-menu" accesskey="2">Ir para o menu [2]</a></li>
         <li><a href="#search-field" accesskey="3">Ir para a busca [3]</a></li>
