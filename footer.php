@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-12 col-md-9 col-lg-8">
-                <a href="" class="duvidas__link"><strong>Ficou com d&uacute;vidas?</strong> Entre em contato!</a>
+                <a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" class="duvidas__link"><strong>Ficou com d&uacute;vidas?</strong> Entre em contato!</a>
             </div>
             <div class="col-12 col-md-3 col-lg-4">
                 <ul class="menu-social">
@@ -59,7 +59,7 @@
                         <br>
                         Bento Gon&ccedil;alves/RS | CEP: 95700-086
                     </p>
-                    <p>Telefone: (54) 3449-3300</p>
+                    <p>Telefone: <a href="tel:+555434493300">(54) 3449-3300</a></p>
                 </address>
             </div>
         </div>
