@@ -65,13 +65,11 @@
         </div>
         <div class="creditos">
             <!-- Wordpress -->
-            <a href="http://br.wordpress.org/" target="_blank" rel="noopener noreferrer">Desenvolvido com Wordpress<span class="sr-only"> (abre uma nova p&aacute;gina)</span></a>
-            &mdash;
+            <a href="http://br.wordpress.org/" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Desenvolvido com Wordpress"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-wordpress.png" alt="Desenvolvido com Wordpress (abre uma nova p&aacute;gina)"></a>
             <!-- Código-fonte -->
-            <a href="https://github.com/IFRS/ps-theme/" target="_blank" rel="noopener noreferrer">C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3<span class="sr-only"> (abre uma nova p&aacute;gina)</span></a>
-            &mdash;
+            <a href="https://github.com/IFRS/ingresso-theme/" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-git.png" alt="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3 (abre uma nova p&aacute;gina)"></a>
             <!-- Creative Commons -->
-            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="license noopener noreferrer"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/cc-by-nc-nd.png" alt="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional (abre uma nova p&aacute;gina)" /></a>
+            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="license noopener noreferrer" data-toggle="tooltip" data-placement="top" title="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-cc-by-nc-nd.png" alt="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional (abre uma nova p&aacute;gina)" /></a>
         </div>
     </div>
 </footer>
