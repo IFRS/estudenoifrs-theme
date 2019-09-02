@@ -1,12 +1,12 @@
 <?php get_header(); ?>
 
-<div class="container-fluid">
+<section class="container-fluid">
     <div class="row">
         <?php echo get_template_part('partials/carousel'); ?>
     </div>
-</div>
+</section>
 
-<div class="container">
+<section class="container">
     <div class="row">
         <div class="col-12">
             <h2 class="home-title">Estude no <span class="home-title__destaque">#mundo<strong>IFRS</strong></span></h2>
@@ -20,6 +20,6 @@
             <?php endif; ?>
         </div>
     </div>
-</div>
+</section>
 
 <?php get_footer(); ?>
