@@ -5,6 +5,20 @@
 <!-- Rodapé -->
 <a href="#inicio-rodape" id="inicio-rodape" class="sr-only">In&iacute;cio do rodap&eacute;</a>
 
+<section class="contato">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h2 class="contato__title">Quer saber mais sobre o ingresso no <span class="contato__title-destaque">IFRS</span>?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod sem non lectus semper varius. Sed ut ornare turpis. Suspendisse porta velit augue, vel gravida ex cursus at. Etiam odio sem, ullamcorper ac nisi eget, laoreet hendrerit libero. Proin lacinia mauris eget scelerisque imperdiet. Morbi vel sapien ex. Integer pharetra neque massa, nec tempus mauris tincidunt ut. Phasellus facilisis quam id risus facilisis consequat.</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <?php if ( ! dynamic_sidebar('area-contato') ); ?>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="duvidas">
     <div class="container">
         <div class="row align-items-center">

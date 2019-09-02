@@ -1,0 +1,66 @@
+.contato {
+    padding: 50px 0;
+    position: relative;
+
+    &:after {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: '';
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(136, 183, 213, 0);
+        border-bottom-color: #ffffff;
+        border-width: 15px;
+        margin-left: -15px;
+    }
+
+    &__title {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    &__title-destaque {
+        color: $cor-destaque;
+        font-weight: bolder;
+    }
+
+    &__widget {
+        .screen-reader-response {
+            @extend .sr-only;
+        }
+
+        .wpcf7-not-valid {
+            @extend .is-invalid;
+        }
+
+        .wpcf7-not-valid-tip {
+            @extend small;
+            @extend .form-text;
+            @extend .text-danger;
+        }
+
+        .wpcf7-response-output {
+            @extend .alert;
+
+            margin-top: 10px;
+        }
+
+        .wpcf7-validation-errors {
+            @extend .alert-warning;
+        }
+
+        .wpcf7-mail-sent-ok {
+            @extend .alert-success;
+        }
+    }
+
+    &__btn {
+        @include button-variant(#ffffff, $cor-destaque, $cor-destaque);
+
+        color: $cor-destaque;
+        text-transform: uppercase;
+    }
+}
