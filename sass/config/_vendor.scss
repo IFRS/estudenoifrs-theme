@@ -8,6 +8,7 @@ $font-family-base:          "Open Sans", $font-family-sans-serif;
 $body-color:                $gray-700;
 $headings-color:            $gray-600;
 $link-color:                $cor-destaque;
+$link-hover-color:          darken($cor-destaque, 10%);
 
 // Navbar
 $navbar-light-color:        $gray-600;
