@@ -9,9 +9,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-6">
-                <h2 class="contato__title">Quer saber mais sobre o ingresso no <span class="contato__title-destaque">IFRS</span>?</h2>
-                <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/faq.svg" alt="" aria-hidden="true" class="contato__faq-img">Consulte as <strong>Perguntas Frequentes!</strong></a>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod sem non lectus semper varius. Sed ut ornare turpis. Suspendisse porta velit augue, vel gravida ex cursus at. Etiam odio sem, ullamcorper ac nisi eget, laoreet hendrerit libero. Proin lacinia mauris eget scelerisque imperdiet. Morbi vel sapien ex. Integer pharetra neque massa, nec tempus mauris tincidunt ut. Phasellus facilisis quam id risus facilisis consequat.</p>
+                <h2 class="contato__title">Tem d&uacute;vidas sobre o ingresso discente no <span class="contato__title-destaque">IFRS</span>?</h2>
+                <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/faq.svg" alt="" aria-hidden="true" class="contato__faq-img">Consulte nossas <strong>Perguntas Frequentes</strong>!</a>
+                <p>Se ainda restarem d&uacute;vidas, contate-nos preenchendo o formul&aacute;rio ao lado.</p>
             </div>
             <div class="col-12 col-md-6">
                 <?php if ( ! dynamic_sidebar('area-contato') ); ?>
@@ -23,8 +23,8 @@
 <section class="social">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-12 col-md-8 col-xl-6">
-                <p class="social__text">Confira tamb&eacute;m nossas <strong>Redes Sociais</strong></p>
+            <div class="col-12 col-md-9 col-xl-7">
+                <p class="social__text">Acompanhe nossas novidades pelas <strong>Redes Sociais</strong></p>
             </div>
             <div class="col">
                 <ul class="menu-social">
