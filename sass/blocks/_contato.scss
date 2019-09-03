@@ -27,6 +27,23 @@
         font-weight: bolder;
     }
 
+    &__faq-link {
+        color: $cor-detalhe;
+        display: inline-block;
+        margin-bottom: 10px;
+
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__faq-img {
+        margin-right: 5px;
+        width: 30px;
+        height: auto;
+        vertical-align: middle;
+    }
+
     &__widget {
         .screen-reader-response {
             @extend .sr-only;

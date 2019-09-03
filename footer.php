@@ -10,6 +10,7 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <h2 class="contato__title">Quer saber mais sobre o ingresso no <span class="contato__title-destaque">IFRS</span>?</h2>
+                <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/faq.svg" alt="" aria-hidden="true" class="contato__faq-img">Consulte as <strong>Perguntas Frequentes!</strong></a>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod sem non lectus semper varius. Sed ut ornare turpis. Suspendisse porta velit augue, vel gravida ex cursus at. Etiam odio sem, ullamcorper ac nisi eget, laoreet hendrerit libero. Proin lacinia mauris eget scelerisque imperdiet. Morbi vel sapien ex. Integer pharetra neque massa, nec tempus mauris tincidunt ut. Phasellus facilisis quam id risus facilisis consequat.</p>
             </div>
             <div class="col-12 col-md-6">
@@ -19,13 +20,13 @@
     </div>
 </section>
 
-<section class="duvidas">
+<section class="social">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-12 col-md-9 col-lg-8">
-                <a href="<?php echo get_permalink(get_page_by_path('contato')); ?>" class="duvidas__link"><strong>Ficou com d&uacute;vidas?</strong> Entre em contato!</a>
+            <div class="col-12 col-md-8 col-xl-6">
+                <p class="social__text">Confira tamb&eacute;m nossas <strong>Redes Sociais</strong></p>
             </div>
-            <div class="col-12 col-md-3 col-lg-4">
+            <div class="col">
                 <ul class="menu-social">
                     <li class="menu-social__item"><a href="https://www.facebook.com/IFRSOficial" class="menu-social__link menu-social__link--facebook"><span class="sr-only">P&aacute;gina do IFRS no Facebook</span></a></li>
                     <li class="menu-social__item"><a href="https://www.twitter.com/IFRSOficial" class="menu-social__link menu-social__link--twitter"><span class="sr-only">Perfil do IFRS no Twitter</span></a></li>

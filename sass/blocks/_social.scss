@@ -1,0 +1,31 @@
+.social {
+    background-color: $cor-detalhe;
+    color: #ffffff;
+    padding: 20px 0;
+    position: relative;
+
+    &:after {
+        bottom: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: '';
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(136, 183, 213, 0);
+        border-bottom-color: $cor-detalhe;
+        border-width: 15px;
+        margin-left: -15px;
+    }
+
+    &__text {
+        font-size: 1.5rem;
+        margin: 0;
+
+        @include media-breakpoint-down(sm) {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+    }
+}
