@@ -19,4 +19,8 @@ $navbar-light-active-color: $cor-destaque;
 $carousel-indicator-width:  50px;
 $carousel-indicator-height: 10px;
 
+// Breadcrumb
+$breadcrumb-bg:             #ffffff;
+$breadcrumb-border-radius:  none;
+
 @import 'node_modules/bootstrap/scss/bootstrap';
