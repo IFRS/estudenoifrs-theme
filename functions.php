@@ -41,3 +41,6 @@ if ( ! file_exists( get_stylesheet_directory() . '/vendor/wp-bootstrap/wp-bootst
 	// file exists... require it.
 	require_once get_stylesheet_directory() . '/vendor/wp-bootstrap/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php';
 }
+
+// Custom Post Type
+require('inc/ctp/pergunta.php');
