@@ -1,17 +1,5 @@
 .post {
     &__title {
-        margin-bottom: 15px;
-        padding-bottom: 15px;
-        position: relative;
-
-        &::after {
-            background: $cor-destaque;
-            content: '';
-            position: absolute;
-            height: 3px;
-            width: 12%;
-            bottom: 0;
-            left: 0;
-        }
+        @include title();
     }
 }
