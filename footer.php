@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <h2 class="contato__title">Tem d&uacute;vidas sobre o ingresso discente no <span class="contato__title-destaque">IFRS</span>?</h2>
-                <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/faq.svg" alt="" aria-hidden="true" class="contato__faq-img">Consulte nossas <strong>Perguntas Frequentes</strong>!</a>
+                <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/faq.svg" alt="" aria-hidden="true" class="contato__faq-img">Consulte nossas <strong>Perguntas Frequentes</strong>!</a>
                 <p>Se ainda restarem d&uacute;vidas, contate-nos preenchendo o formul&aacute;rio ao lado.</p>
             </div>
             <div class="col-12 col-md-6">
