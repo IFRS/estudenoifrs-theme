@@ -31,6 +31,8 @@
         color: $cor-detalhe;
         display: inline-block;
         margin-bottom: 15px;
+        padding-left: 37px;
+        position: relative;
 
         &:hover {
             text-decoration: none;
@@ -41,7 +43,9 @@
         margin-right: 7px;
         width: 30px;
         height: auto;
-        vertical-align: middle;
+        position: absolute;
+        left: 0;
+        top: calc(50% - 14px);
     }
 
     &__widget {
