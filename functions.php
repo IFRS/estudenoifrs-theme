@@ -44,3 +44,7 @@ if ( ! file_exists( get_stylesheet_directory() . '/vendor/wp-bootstrap/wp-bootst
 
 // Custom Post Type
 require('inc/ctp/pergunta.php');
+
+require('inc/ctp/oportunidade.php');
+require('inc/tax/forma-ingresso.php');
+require('inc/tax/unidade.php');
