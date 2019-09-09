@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<section class="container-fluid">
+<section class="container">
     <div class="row">
         <?php echo get_template_part('partials/carousel'); ?>
     </div>
