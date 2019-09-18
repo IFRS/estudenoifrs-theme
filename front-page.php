@@ -97,12 +97,14 @@
 
                                             <hr class="oportunidade__separador">
 
+                                            <?php $requisitos = get_post_meta( get_the_ID(), '_oportunidade_requisitos', true ); ?>
+                                            <?php if (!empty($requisitos)) : ?>
                                                 <div class="oportunidade__requisitos">
                                                     <h4 class="oportunidade__subtitle">Requisitos m&iacute;nimos para o ingresso</h4>
-                                                <?php echo wpautop(get_post_meta( get_the_ID(), '_oportunidade_requisitos', true )); ?>
+                                                    <?php echo wpautop($requisitos); ?>
                                                 </div>
-
                                                 <hr class="oportunidade__separador">
+                                            <?php endif; ?>
 
                                             <div class="oportunidade__unidades">
                                                 <h4 class="oportunidade__subtitle">Campi de Oferta</h4>
