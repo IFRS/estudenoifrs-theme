@@ -1,0 +1,293 @@
+.oportunidade {
+    $root: &;
+
+    border-bottom: 1px solid #dddddd;
+    border-top: 5px solid #dddddd;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    font-size: 0.9rem;
+    margin: 0 10px 30px 10px;
+    padding: 5px 10px 15px 10px;
+    width: 100%;
+
+    @supports (display: grid) {
+        margin: 0;
+    }
+
+    &__header {
+        align-items: center;
+        border-bottom: 1px solid #dddddd;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        margin: 0 -10px;
+        padding: 0 0 5px 10px;
+    }
+
+    &__forma {
+        flex: 1 1 auto;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    &__btn-toggle {
+        flex: 0 0 auto;
+        line-height: 1;
+        padding: 5px 7px;
+
+        svg {
+            width: 15px;
+        }
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        margin: 10px 0;
+    }
+
+    &__meta {
+        margin: 0;
+
+        &:last-of-type {
+            margin-bottom: 10px;
+        }
+    }
+
+    &__separador {
+        border-top-style: dashed;
+        display: none;
+        width: 100%;
+    }
+
+    &__requisitos {
+        display: none;
+    }
+
+    &__unidades {
+        display: none;
+    }
+
+    &__info-link {
+        color: $body-color;
+        display: block;
+        font-size: 0.9rem;
+        margin-top: auto;
+    }
+
+    &--diplomado {
+        border-top-color: $cor-diplomado;
+        #{$root}__btn-toggle {
+            color: $cor-diplomado;
+        }
+    }
+
+    &--ead {
+        border-top-color: $cor-ead;
+        #{$root}__btn-toggle {
+            color: $cor-ead;
+        }
+    }
+
+    &--eja {
+        border-top-color: $cor-eja;
+        #{$root}__btn-toggle {
+            color: $cor-eja;
+        }
+    }
+
+    &--extensao {
+        border-top-color: $cor-extensao;
+        #{$root}__btn-toggle {
+            color: $cor-extensao;
+        }
+    }
+
+    &--internacional {
+        border-top-color: $cor-internacional;
+        #{$root}__btn-toggle {
+            color: $cor-internacional;
+        }
+    }
+
+    &--pos {
+        border-top-color: $cor-pos;
+        #{$root}__btn-toggle {
+            color: $cor-pos;
+        }
+    }
+
+    &--ps {
+        border-top-color: $cor-detalhe;
+        #{$root}__btn-toggle {
+            color: $cor-detalhe;
+        }
+    }
+
+    &--transfer {
+        border-top-color: $cor-transfer;
+        #{$root}__btn-toggle {
+            color: $cor-transfer;
+        }
+    }
+
+    &--open {
+        background: #f3f3f3;
+        border: none;
+        font-size: 1rem;
+        grid-row-end: span 3;
+        grid-column-end: span 2;
+        padding: 20px;
+        transition: width 0.5s;
+
+        #{$root}__header {
+            border: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #{$root}__btn-toggle {
+            svg {
+                transform: rotate(45deg);
+                width: 30px;
+            }
+        }
+
+        #{$root}__title {
+            font-size: 2rem;
+            margin-top: 0;
+            padding-bottom: 10px;
+            position: relative;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 5px;
+                width: 40%;
+            }
+        }
+
+        #{$root}__separador {
+            display: block;
+        }
+
+        #{$root}__subtitle {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        #{$root}__requisitos {
+            display: block;
+        }
+
+        #{$root}__unidades {
+            display: block;
+        }
+
+        #{$root}__info-link {
+            background: $cor-destaque;
+            color: #ffffff;
+            display: block;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+
+            &:hover,
+            &:active {
+                text-decoration: none;
+            }
+        }
+
+        &#{$root}--diplomado {
+            #{$root}__title {
+                &::after {
+                    background-color: $cor-diplomado;
+                }
+            }
+            #{$root}__info-link {
+                background-color: $cor-diplomado;
+            }
+        }
+
+        &#{$root}--ead {
+            #{$root}__title {
+                &::after {
+                    background-color: $cor-ead;
+                }
+            }
+            #{$root}__info-link {
+                background-color: $cor-ead;
+            }
+        }
+
+        &#{$root}--eja {
+            #{$root}__title {
+                &::after {
+                    background-color: $cor-eja;
+                }
+            }
+            #{$root}__info-link {
+                background-color: $cor-eja;
+            }
+        }
+
+        &#{$root}--extensao {
+            #{$root}__title {
+                &::after {
+                    background-color: $cor-extensao;
+                }
+            }
+            #{$root}__info-link {
+                background-color: $cor-extensao;
+            }
+        }
+
+        &#{$root}--internacional {
+            #{$root}__title {
+                &::after {
+                    background-color: $cor-internacional;
+                }
+            }
+            #{$root}__info-link {
+                background-color: $cor-internacional;
+            }
+        }
+
+        &#{$root}--pos {
+            #{$root}__title {
+                &::after {
+                    background-color: $cor-pos;
+                }
+            }
+            #{$root}__info-link {
+                background-color: $cor-pos;
+            }
+        }
+
+        &#{$root}--ps {
+            #{$root}__title {
+                &::after {
+                    background-color: $cor-destaque;
+                }
+            }
+            #{$root}__info-link {
+                background-color: $cor-destaque;
+            }
+        }
+
+        &#{$root}--transfer {
+            #{$root}__title {
+                &::after {
+                    background-color: $cor-transfer;
+                }
+            }
+            #{$root}__info-link {
+                background-color: $cor-transfer;
+            }
+        }
+    }
+}
