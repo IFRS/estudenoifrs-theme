@@ -69,6 +69,12 @@
     }
 
     &__info-link {
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAUElEQVQ4je3RsQ3AIBBDUUa4EX9jr5VsBBuRJpEiSqCIovuS29e4lOwJCEkHELuwartLqssoELab7Z7oR9H36/faNJjYXMOra9iAnluwf3cBCWmFF8lvJBwAAAAASUVORK5CYII=') no-repeat left center;
+        background-size: 15px;
+        padding-left: 15px;
+    }
+
+    &__info-link {
         color: $body-color;
         display: block;
         font-size: 0.9rem;
@@ -166,6 +172,23 @@
                 left: 0;
                 height: 5px;
                 width: 40%;
+            }
+        }
+
+        #{$root}__meta {
+            &--isencao {
+                background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAQlBMVEUAAABgYGBoaGhlZWVlZWVlZWVmZmZmZmZmZmZmZmZlZWVlZWVmZmZmZmZlZWVlZWVlZWVlZWVmZmZmZmZlZWVmZmZfIqhmAAAAFXRSTlMAECAwYG9wf4CPkJ+gr7C/wM/Q3+BTajzOAAAAlklEQVQYlV2R3RrDEBBED1IVbYTEvP+r9gKJZm6W883+WDBkDA/57ZTO7TUhV6QcY5aKG2yRQjsFaek+HQ4IAXCHmrfHnJujAPie2yBBHkhihigBNf/DfIJRHBcLQJS5YZA+tsMrHfuVLOQ6NQKsH43GSIwqfhr+el6P9xpcGY5Fej8XAu6Q9nXd1VYz5FOVavI8NH3HD5C5B98l1LmDAAAAAElFTkSuQmCC') no-repeat left center;
+                padding-left: 25px;
+            }
+
+            &--gratis {
+                background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAANlBMVEUAAABgYGBoaGhlZWVmZmZmZmZmZmZlZWVlZWVmZmZlZWVlZWVlZWVmZmZlZWVlZWVmZmZmZmb5QnP/AAAAEXRSTlMAECBvcH+PkJ+gsL/A0O/w8A5YjJ0AAABrSURBVBjTnZBLDoAgDERpRREZC3P/y5oQFZO6MM7yJe18Qri0bcEL+AJlWotZKWV+MOOpfcDEpO4cFP8T9mKUOXmopHX3VZ80A7WikerDR+aXRg0eCj3UhWmsdrVkkxtGoLvnKL/27F1HxANJiwVMQLBahwAAAABJRU5ErkJggg==') no-repeat left center;
+                padding-left: 25px;
+            }
+
+            &--inscricao {
+                background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAP1BMVEUAAABgYGBoaGhlZWVkZGRhYWFmZmZlZWViYmJmZmZmZmZlZWVlZWVkZGRmZmZlZWVlZWVlZWVmZmZlZWVmZmbC6T/YAAAAE3RSTlMAECAwQExQb3Bwf5CfoKC/wM/fkehoXgAAAHxJREFUGFe9j0sOgzAMBcfwgJCGb979z9oFbRUqddvZWB7JlgYAiNu46DwDzO7eJqZcvOWc8+aSpwCI065+Ue0zAPmh5EWSFietFiCL2AUw7oE+suFaB5fcUDwAyV8kQDWpIdWfP/8ox1aOFtD7aIsO9wDrPWi9LqItCuAJIWIJsBB8ABoAAAAASUVORK5CYII=') no-repeat left center;
+                padding-left: 25px;
             }
         }
 
