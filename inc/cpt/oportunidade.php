@@ -32,13 +32,28 @@ if ( ! function_exists('ingresso_oportunidade_post_type') ) {
         );
 
         $capabilities = array(
-            'edit_post'             => 'edit_oportunidade',
-            'read_post'             => 'read_oportunidade',
-            'delete_post'           => 'delete_oportunidade',
-            'edit_posts'            => 'edit_oportunidades',
-            'edit_others_posts'     => 'edit_others_oportunidades',
-            'publish_posts'         => 'publish_oportunidades',
-            'read_private_posts'    => 'read_private_oportunidades',
+            // meta caps (don't assign these to roles)
+            'edit_post'              => 'edit_oportunidade',
+            'read_post'              => 'read',
+            'delete_post'            => 'delete_oportunidade',
+
+            // primitive/meta caps
+            'create_posts'           => 'create_oportunidades',
+
+            // primitive caps used outside of map_meta_cap()
+            'edit_posts'             => 'edit_oportunidades',
+            'edit_others_posts'      => 'manage_oportunidades',
+            'publish_posts'          => 'create_oportunidades',
+            'read_private_posts'     => 'read',
+
+            // primitive caps used inside of map_meta_cap()
+            'read'                   => 'read',
+            'delete_posts'           => 'manage_oportunidades',
+            'delete_private_posts'   => 'manage_oportunidades',
+            'delete_published_posts' => 'manage_oportunidades',
+            'delete_others_posts'    => 'manage_oportunidades',
+            'edit_private_posts'     => 'edit_oportunidades',
+            'edit_published_posts'   => 'edit_oportunidades',
         );
 
         $args = array(
@@ -59,8 +74,7 @@ if ( ! function_exists('ingresso_oportunidade_post_type') ) {
             'has_archive'           => true,
             'exclude_from_search'   => false,
             'publicly_queryable'    => true,
-            'capabilities'          => $capabilities,
-            'show_in_rest'          => true,
+            //'capabilities'          => $capabilities,
             'rewrite'               => array('slug' => 'oportunidades'),
         );
 
@@ -121,6 +135,9 @@ function ingresso_oportunidade_metaboxes() {
         'id'      => $prefix . 'inscricao_inicio',
         'type'    => 'text_date_timestamp',
         'date_format' => 'd/m/Y',
+        'attributes' => array(
+            'required' => 'required',
+        ),
     ) );
 
     $datas->add_field( array(
@@ -128,6 +145,9 @@ function ingresso_oportunidade_metaboxes() {
         'id'      => $prefix . 'inscricao_termino',
         'type'    => 'text_date_timestamp',
         'date_format' => 'd/m/Y',
+        'attributes' => array(
+            'required' => 'required',
+        ),
     ) );
 
     /**
@@ -174,6 +194,9 @@ function ingresso_oportunidade_metaboxes() {
             'no_terms_text' => __( 'Ops! Nenhuma Forma de Ingresso encontrada. Por favor, crie alguma Forma de Ingresso antes de cadastrar essa Oportunidade.', 'ifrs-ingresso-theme')
         ),
         'remove_default'    => 'true',
+        'attributes' => array(
+            'required' => 'required',
+        ),
     ) );
 
     /**
@@ -198,6 +221,30 @@ function ingresso_oportunidade_metaboxes() {
         ),
         'remove_default'    => 'true',
         'select_all_button' => false,
+    ) );
+
+    /**
+     * URL Metabox
+     */
+    $url = new_cmb2_box( array(
+        'id'            => $prefix . 'url_metabox',
+        'title'         => __( 'Link', 'ifrs-ingresso-theme' ),
+        'object_types'  => array( 'oportunidade' ),
+        'context'       => 'side',
+        'priority'      => 'low',
+        'show_names'    => true,
+    ) );
+
+    $url->add_field( array(
+        'name'      => __( 'Endereço (URL)', 'ifrs-ingresso-theme' ),
+        'desc'      => __( 'Insira o endereço para acesso a mais informações.', 'ifrs-ingresso-theme' ),
+        'id'        => $prefix . 'url',
+        'type'      => 'text_url',
+        'protocols' => array( 'http', 'https' ),
+        'attributes' => array(
+            'type'     => 'url',
+            'required' => 'required',
+        ),
     ) );
 }
 
