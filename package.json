@@ -37,7 +37,7 @@
     "html5shiv": "^3.7.3",
     "jquery": "^3.4.1",
     "lazysizes": "^5.1.1",
-    "minimist": "^1.2.0",
+    "minimist": "^1.2.2",
     "pixrem": "^5.0.0",
     "plugin-error": "^1.0.1",
     "postcss-flexibility": "^2.0.0",
