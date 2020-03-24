@@ -1,11 +1,7 @@
 .oportunidades {
-    align-content: flex-start;
-    align-items: stretch;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    justify-items: stretch;
-    align-items: stretch;
+    flex-direction: row;
 
     @supports (display: grid) {
         display: grid;

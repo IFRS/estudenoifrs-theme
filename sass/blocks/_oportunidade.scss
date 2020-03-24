@@ -9,7 +9,7 @@
     font-size: 0.9rem;
     margin: 0 10px 30px 10px;
     padding: 5px 10px 15px 10px;
-    width: 100%;
+    flex-basis: calc(1/4 * 100% - (1 - 1/4) * 30px);
 
     @supports (display: grid) {
         margin: 0;
@@ -144,7 +144,7 @@
         grid-row-end: span 3;
         grid-column-end: span 2;
         padding: 20px;
-        transition: width 0.5s;
+        flex-basis: calc(1/2 * 100% - (1 - 1/2) * 30px);
 
         #{$root}__header {
             border: none;
