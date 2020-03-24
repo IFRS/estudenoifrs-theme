@@ -1,5 +1,6 @@
 {
     "name": "ifrs/ingresso-theme",
+    "description": "",
     "require": {
         "wp-bootstrap/wp-bootstrap-navwalker": "^4.2"
     }
