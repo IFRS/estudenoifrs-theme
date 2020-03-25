@@ -7,6 +7,9 @@ $(function() {
         } else {
             $(this).closest('.oportunidades').children('.oportunidade--open').removeClass('oportunidade--open');
             $(this).closest('.oportunidade').addClass('oportunidade--open').hide().fadeIn(750);
+            $('html, body').animate({
+                scrollTop: $(this).offset().top - 30
+            }, 250);
         }
     });
 });
