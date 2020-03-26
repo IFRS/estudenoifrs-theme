@@ -1,5 +1,5 @@
 <?php
-function ingresso_widgets_init() {
+add_action('widgets_init', function() {
     register_sidebar(array(
         'name'          => 'Carousel',
         'id'            => 'area-carousel',
@@ -18,5 +18,4 @@ function ingresso_widgets_init() {
         'before_title'  => '<span class="sr-only">',
         'after_title'   => '</span>',
     ));
-}
-add_action('widgets_init', 'ingresso_widgets_init');
+});
