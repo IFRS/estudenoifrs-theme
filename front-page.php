@@ -68,6 +68,9 @@
                                 'nopaging' => true,
                                 'posts_per_page' => -1,
                                 'tax_query' => $tax_query,
+                                'meta_key' => '_oportunidade_inscricao_termino',
+                                'orderby' => 'meta_value_num',
+                                'order' => 'ASC',
                             );
 
                             $oportunidades = new WP_Query($args);
@@ -76,6 +79,12 @@
                             <?php if ($oportunidades->have_posts()) : ?>
                                 <div class="oportunidades">
                                     <?php while ($oportunidades->have_posts()) : $oportunidades->the_post(); ?>
+                                        <?php
+                                            $today = new Datetime("now - 1 day");
+                                            if (get_post_meta( get_the_ID(), '_oportunidade_inscricao_termino', true ) < $today->format('U')) {
+                                                continue;
+                                            }
+                                        ?>
                                         <?php $forma_ingresso = get_the_terms(get_the_ID(), 'forma'); ?>
                                         <div class="oportunidade oportunidade--<?php echo $forma_ingresso[0]->slug; ?>">
                                             <div class="oportunidade__header">
@@ -96,13 +105,15 @@
 
                                                 $inscricao_inicio = gmdate('d/m/y', get_post_meta( get_the_ID(), '_oportunidade_inscricao_inicio', true ));
                                                 $inscricao_termino = gmdate('d/m/y', get_post_meta( get_the_ID(), '_oportunidade_inscricao_termino', true ));
+
+                                                $hoje = gmdate('d/m/y', time());
                                             ?>
                                             <?php if ($isencao_inicio && $isencao_termino) : ?>
                                                 <p class="oportunidade__meta oportunidade__meta--isencao">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong><?php echo $isencao_termino; ?></strong></p>
                                             <?php else : ?>
                                                 <p class="oportunidade__meta oportunidade__meta--gratis">Inscri&ccedil;&atilde;o <strong>gratuita</strong></p>
                                             <?php endif; ?>
-                                            <p class="oportunidade__meta oportunidade__meta--inscricao">Inscri&ccedil;&otilde;es de <strong><?php echo $inscricao_inicio; ?></strong> at&eacute; <strong><?php echo $inscricao_termino; ?></strong></p>
+                                            <p class="oportunidade__meta oportunidade__meta--inscricao">Inscri&ccedil;&otilde;es de <strong><?php echo $inscricao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($inscricao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $inscricao_termino; ?></strong></p>
 
                                             <hr class="oportunidade__separador">
 
