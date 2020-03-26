@@ -9,10 +9,10 @@ register_nav_menus(
 // Habilita a personalização de cabeçalho
 add_theme_support('custom-header', array(
     'default-image'          => get_stylesheet_directory_uri() . '/img/header.png',
-	'width'                  => 350,
-	'height'                 => 80,
+	'width'                  => 540,
+	'height'                 => 142,
 	'flex-height'            => false,
-	'flex-width'             => false,
+	'flex-width'             => true,
 	'uploads'                => true,
 	'random-default'         => false,
 	'header-text'            => false,
