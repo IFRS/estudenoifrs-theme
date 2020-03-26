@@ -13,7 +13,7 @@
                 'container'       => false,
                 'container_class' => false,
                 'container_id'    => false,
-                'menu_class'      => 'navbar-nav mr-auto',
+                'menu_class'      => 'navbar-nav ml-auto mr-2',
                 'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
                 'walker'          => new WP_Bootstrap_Navwalker(),
             ) );
