@@ -1,6 +1,6 @@
 <?php
-if ( ! function_exists('ingresso_ctp_pergunta') ) {
-    function ingresso_ctp_pergunta() {
+if ( ! function_exists('ingresso_cpt_pergunta') ) {
+    function ingresso_cpt_pergunta() {
         $labels = array(
             'name'                => _x( 'Perguntas', 'Post Type General Name', 'ifrs-ingresso-theme' ),
             'singular_name'       => _x( 'Pergunta', 'Post Type Singular Name', 'ifrs-ingresso-theme' ),
@@ -40,5 +40,5 @@ if ( ! function_exists('ingresso_ctp_pergunta') ) {
         );
         register_post_type( 'pergunta', $args );
     }
-    add_action( 'init', 'ingresso_ctp_pergunta', 1 );
+    add_action( 'init', 'ingresso_cpt_pergunta', 1 );
 }
