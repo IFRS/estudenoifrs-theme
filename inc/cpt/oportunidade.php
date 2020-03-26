@@ -48,9 +48,9 @@ if ( ! function_exists('ingresso_oportunidade_post_type') ) {
 
             // primitive caps used inside of map_meta_cap()
             'read'                   => 'read',
-            'delete_posts'           => 'manage_oportunidades',
+            'delete_posts'           => 'delete_oportunidades',
             'delete_private_posts'   => 'manage_oportunidades',
-            'delete_published_posts' => 'manage_oportunidades',
+            'delete_published_posts' => 'delete_oportunidades',
             'delete_others_posts'    => 'manage_oportunidades',
             'edit_private_posts'     => 'edit_oportunidades',
             'edit_published_posts'   => 'edit_oportunidades',

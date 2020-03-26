@@ -28,7 +28,7 @@ if ( ! function_exists( 'ingresso_forma_taxonomy' ) ) {
             'manage_terms'               => 'manage_formas',
             'edit_terms'                 => 'manage_formas',
             'delete_terms'               => 'manage_formas',
-            'assign_terms'               => 'edit_oportunidades',
+            'assign_terms'               => 'assign_oportunidades',
         );
 
         $args = array(

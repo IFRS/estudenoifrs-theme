@@ -28,7 +28,7 @@ if ( ! function_exists( 'ingresso_unidade_taxonomy' ) ) {
             'manage_terms'               => 'manage_unidades',
             'edit_terms'                 => 'manage_unidades',
             'delete_terms'               => 'manage_unidades',
-            'assign_terms'               => 'edit_oportunidades',
+            'assign_terms'               => 'assign_oportunidades',
         );
 
         $args = array(
