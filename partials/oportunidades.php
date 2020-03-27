@@ -29,16 +29,53 @@
     <section class="container">
         <div class="row">
             <div class="col-12">
+                <div class="filter-unidade">
+                    <form action="<?php echo esc_url(home_url('/')); ?>" method="GET" class="form-inline filter-unidade__form">
+                        <?php $select_id = uniqid(); ?>
+                        <label class="sr-only" for="select-<?php echo $select_id; ?>">Unidade</label>
+                        <select name="unidade[]" id="select-<?php echo $select_id; ?>">
+                            <?php
+                                $unidades = get_terms(array(
+                                    'taxonomy' => 'unidade',
+                                    'hide_empty' => false,
+                                ));
+                            ?>
+                            <option hidden selected disabled>Campus</option>
+                            <?php foreach ($unidades as $unidade) : ?>
+                                <?php $unidade_check = (is_tax('unidade') && get_queried_object()->term_id == $unidade->term_id); ?>
+                                <option value="<?php echo $unidade->slug; ?>"<?php echo $unidade_check ? ' selected' : ''; ?>>Campus <?php echo $unidade->name; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <button type="submit" class="btn btn-sm">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
                 <div class="tab-content">
                     <?php foreach ($formas as $forma) : ?>
                         <?php
                             $tax_query = array();
+
                             if ($forma) {
                                 $tax_query[] = array(
                                     'taxonomy' => 'forma',
                                     'terms' => $forma->term_id,
                                 );
                             }
+
+                            if (is_tax('unidade')) {
+                                $tax_query[] = array(
+                                    'taxonomy' => 'unidade',
+                                    'terms' => get_queried_object()->term_id,
+                                );
+                            }
+
                             $args = array(
                                 'post_type' => 'oportunidade',
                                 'nopaging' => true,
