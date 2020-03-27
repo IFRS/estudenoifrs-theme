@@ -140,11 +140,17 @@
     &--open {
         background: #f3f3f3;
         border: none;
-        font-size: 1rem;
-        grid-row-end: span 3;
-        grid-column-end: span 2;
-        padding: 20px;
         flex-basis: calc(1/2 * 100% - (1 - 1/2) * 30px);
+        font-size: 1rem;
+        grid-column-end: -1;
+        grid-row-end: span 3;
+        padding: 20px;
+
+        @include media-breakpoint-up(md) {
+            grid-column: 1 / span 2;
+            grid-row: 1 / span 3;
+            order: -1;
+        }
 
         #{$root}__header {
             border: none;
