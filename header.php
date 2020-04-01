@@ -36,6 +36,8 @@
 <body <?php body_class() ?>>
     <a href="#inicio-conteudo" class="sr-only">Pular para o conte&uacute;do</a>
 
+    <?php wp_body_open(); ?>
+
     <?php echo get_template_part('partials/barrabrasil'); ?>
 
     <!-- Cabeçalho -->
