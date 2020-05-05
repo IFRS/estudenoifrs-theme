@@ -7,12 +7,21 @@
         list-style: none;
         padding: 0;
 
+        @include media-breakpoint-down(xs) {
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
         >.menu-item {
             display: block;
-            margin-right: 50px;
             margin-bottom: 15px;
             font-size: 1.5rem;
             font-weight: bold;
+
+            @include media-breakpoint-up(sm) {
+                margin-right: 50px;
+            }
         }
 
         .sub-menu {
