@@ -46,3 +46,6 @@ add_action('widgets_init', function() {
         'after_title'   => '</span>',
     ));
 });
+
+// Impede a adição da tag <p> pelo plugin ContactForm7
+add_filter('wpcf7_autop_or_not', '__return_false');
