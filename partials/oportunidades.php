@@ -15,7 +15,7 @@
                             <button class="nav-link btn btn-forma" type="button" data-toggle="pill" data-target="#tab-forma-<?php echo $forma->term_id; ?>" role="tab" aria-controls="collapse-forma-<?php echo $forma->term_id; ?>" aria-selected="false"><?php echo $forma->name; ?></button>
                         </li>
                     <?php else : ?>
-                        <li class="nav-item mx-3">
+                        <li class="nav-item mx-3 mb-3">
                             <button class="nav-link btn btn-forma active" type="button" data-toggle="pill" data-target="#tab-forma-todas" role="tab" aria-controls="collapse-forma-todas" aria-selected="true">Tudo</button>
                         </li>
                     <?php endif; ?>
