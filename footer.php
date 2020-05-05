@@ -57,7 +57,7 @@
                             'depth'             => 2,
                             'container'         => 'nav',
                             'container_class'   => 'site-map',
-                            'container_id'      => false,
+                            'container_id'      => 'mapa-site',
                             'menu_id'           => false,
                             'menu_class'        => 'site-map__menu',
                             'fallback_cb'       => false

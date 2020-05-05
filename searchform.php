@@ -1,7 +1,9 @@
 <form role="search" method="get" class="searchform form-inline" action="<?php echo esc_url(home_url('/')); ?>">
-    <label class="sr-only" for="search-field">Buscar por:</label>
+    <?php $idBusca = uniqid(); ?>
+    <label class="sr-only" for="<?php echo $idBusca; ?>">Buscar por:</label>
     <div class="input-group">
-        <input type="search" value="<?php echo get_search_query(); ?>" name="s" id="search-field" class="form-control form-control-sm searchform__input" placeholder="Termo da Busca" required>
+        <a href="#inicio-busca" id="inicio-busca" class="sr-only">In&iacute;cio da busca</a>
+        <input type="search" value="<?php echo get_search_query(); ?>" name="s" id="<?php echo $idBusca; ?>" class="form-control form-control-sm searchform__input" placeholder="Termo da Busca" required>
         <span class="input-group-append">
             <button type="submit" class="btn btn-sm searchform__submit">
                 <span class="sr-only">Buscar no Site</span>
