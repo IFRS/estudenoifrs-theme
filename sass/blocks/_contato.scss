@@ -53,6 +53,16 @@
             @extend .sr-only;
         }
 
+        .wpcf7-form {
+            margin-bottom: 10px;
+        }
+
+        .wpcf7-form-control {
+            @extend .form-control;
+
+            margin-bottom: 5px;
+        }
+
         .wpcf7-not-valid {
             @extend .is-invalid;
         }
@@ -61,12 +71,25 @@
             @extend small;
             @extend .form-text;
             @extend .text-danger;
+
+            margin-bottom: 10px;
+        }
+
+        .wpcf7-submit {
+            @include button-outline-variant($cor-destaque);
+
+            float: right;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            width: auto;
+
         }
 
         .wpcf7-response-output {
             @extend .alert;
 
-            margin-top: 10px;
+            clear: both;
+            margin: 0;
         }
 
         .wpcf7-validation-errors {
