@@ -2,7 +2,7 @@
 
 <?php $navbar_id = 'navbar-collapse-' . uniqid(); ?>
 <nav class="navbar navbar-expand-md navbar-light" role="navigation">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#<?php echo $navbar_id; ?>" aria-controls="<?php echo $navbar_id; ?>" aria-expanded="false" aria-label="<?php _e('Alternar menu'); ?>">
+    <button class="mx-auto navbar-toggler" type="button" data-toggle="collapse" data-target="#<?php echo $navbar_id; ?>" aria-controls="<?php echo $navbar_id; ?>" aria-expanded="false" aria-label="<?php _e('Alternar menu'); ?>">
         <span class="navbar-toggler-icon"></span>&nbsp;Menu
     </button>
     <div class="collapse navbar-collapse" id="<?php echo $navbar_id; ?>">
