@@ -54,6 +54,7 @@ gulp.task('webpack', function(done) {
         entry: {
             ie: './src/ie.js',
             ingresso: './src/ingresso.js',
+            oportunidades: './src/oportunidades.js',
         },
         output: {
             path: path.resolve(__dirname, 'js'),

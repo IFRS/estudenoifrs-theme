@@ -1,7 +1,4 @@
-require('bootstrap');
+require('lazysizes');
 
-require('./modules/lazysizes-config');
-require('./modules/fancybox-config');
-require('./modules/tooltips');
-require('./modules/carousel');
-require('./modules/oportunidades');
+require('./_lightgallery');
+require('./_tooltips');
