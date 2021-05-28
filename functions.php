@@ -11,6 +11,9 @@ require_once('inc/permissions.php');
 // Configurações para o tema
 require_once('inc/theme-config.php');
 
+// Menu
+require_once('inc/menus.php');
+
 // Tamanho do resumo e resumo em páginas
 require_once('inc/excerpt.php');
 

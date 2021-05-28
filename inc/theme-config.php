@@ -1,11 +1,4 @@
 <?php
-// Registra os menus
-register_nav_menus(
-    array(
-        'main' => 'Menu Principal',
-    )
-);
-
 // Habilita a personalização de cabeçalho
 add_theme_support('custom-header', array(
     'default-image'          => get_stylesheet_directory_uri() . '/img/header.png',
