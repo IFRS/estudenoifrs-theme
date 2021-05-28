@@ -26,15 +26,6 @@ require_once('inc/empty-search.php');
 // Scripts & Styles
 require_once('inc/assets.php');
 
-// Bootstrap 4 navwalker
-if ( ! file_exists( get_stylesheet_directory() . '/vendor/wp-bootstrap/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php' ) ) {
-	// file does not exist... return an error.
-	return new WP_Error( 'class-wp-bootstrap-navwalker-missing', __( 'It appears the class-wp-bootstrap-navwalker.php file may be missing.', 'wp-bootstrap-navwalker' ) );
-} else {
-	// file exists... require it.
-	require_once get_stylesheet_directory() . '/vendor/wp-bootstrap/wp-bootstrap-navwalker/class-wp-bootstrap-navwalker.php';
-}
-
 // Custom Post Type
 require('inc/cpt/pergunta.php');
 
