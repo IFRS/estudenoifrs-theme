@@ -12,11 +12,11 @@
                 <?php foreach ($formas as $forma) : ?>
                     <?php if ($forma) : ?>
                         <li class="nav-item mx-3 mb-3">
-                            <button class="nav-link btn btn-forma" type="button" data-toggle="pill" data-target="#tab-forma-<?php echo $forma->term_id; ?>" role="tab" aria-controls="collapse-forma-<?php echo $forma->term_id; ?>" aria-selected="false"><?php echo $forma->name; ?></button>
+                            <button class="nav-link btn btn-forma" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-<?php echo $forma->term_id; ?>" role="tab" aria-controls="collapse-forma-<?php echo $forma->term_id; ?>" aria-selected="false"><?php echo $forma->name; ?></button>
                         </li>
                     <?php else : ?>
                         <li class="nav-item mx-3 mb-3">
-                            <button class="nav-link btn btn-forma active" type="button" data-toggle="pill" data-target="#tab-forma-todas" role="tab" aria-controls="collapse-forma-todas" aria-selected="true">Tudo</button>
+                            <button class="nav-link btn btn-forma active" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-todas" role="tab" aria-controls="collapse-forma-todas" aria-selected="true">Tudo</button>
                         </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -32,7 +32,7 @@
                 <div class="filter-unidade">
                     <form action="<?php echo esc_url(home_url('/')); ?>" method="GET" class="form-inline filter-unidade__form">
                         <?php $select_id = uniqid(); ?>
-                        <label class="sr-only" for="select-<?php echo $select_id; ?>">Unidade</label>
+                        <label class="visually-hidden" for="select-<?php echo $select_id; ?>">Unidade</label>
                         <select name="unidade[]" id="select-<?php echo $select_id; ?>">
                             <?php
                                 $unidades = get_terms(array(

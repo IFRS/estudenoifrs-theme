@@ -1,5 +1,5 @@
 .alignnone {
-    @extend .clearfix;
+    @include clearfix;
 }
 
 .aligncenter {
@@ -7,11 +7,11 @@
 }
 
 .alignleft {
-    @extend .float-left;
+    float: left;
     margin-right: 10px;
 }
 
 .alignright {
-    @extend .float-right;
+    float: right;
     margin-left: 10px;
 }

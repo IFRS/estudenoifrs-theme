@@ -34,7 +34,7 @@
 </head>
 
 <body <?php body_class() ?>>
-    <a href="#inicio-conteudo" class="sr-only">Pular para o conte&uacute;do</a>
+    <a href="#inicio-conteudo" class="visually-hidden">Pular para o conte&uacute;do</a>
 
     <?php wp_body_open(); ?>
 
@@ -45,7 +45,7 @@
         <?php echo get_template_part('partials/barra-acessibilidade'); ?>
     </div>
     <header>
-        <h1 class="sr-only"><?php bloginfo('name'); ?></h1>
+        <h1 class="visually-hidden"><?php bloginfo('name'); ?></h1>
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
@@ -61,7 +61,7 @@
     </header>
 
     <!-- Corpo -->
-    <a href="#inicio-conteudo" id="inicio-conteudo" class="sr-only">In&iacute;cio do conte&uacute;do</a>
+    <a href="#inicio-conteudo" id="inicio-conteudo" class="visually-hidden">In&iacute;cio do conte&uacute;do</a>
 
     <main role="main">
     <?php ingresso_breadcrumb(); ?>

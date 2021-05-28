@@ -1,9 +1,9 @@
 </main>
 
-<a href="#fim-conteudo" id="fim-conteudo" class="sr-only">Fim do conte&uacute;do</a>
+<a href="#fim-conteudo" id="fim-conteudo" class="visually-hidden">Fim do conte&uacute;do</a>
 
 <!-- Rodapé -->
-<a href="#inicio-rodape" id="inicio-rodape" class="sr-only">In&iacute;cio do rodap&eacute;</a>
+<a href="#inicio-rodape" id="inicio-rodape" class="visually-hidden">In&iacute;cio do rodap&eacute;</a>
 
 <section class="contato">
     <div class="container">
@@ -28,11 +28,11 @@
             </div>
             <div class="col">
                 <ul class="menu-social">
-                    <li class="menu-social__item"><a href="https://www.facebook.com/IFRSOficial" class="menu-social__link menu-social__link--facebook"><span class="sr-only">P&aacute;gina do IFRS no Facebook</span></a></li>
-                    <li class="menu-social__item"><a href="https://www.twitter.com/IFRSOficial" class="menu-social__link menu-social__link--twitter"><span class="sr-only">Perfil do IFRS no Twitter</span></a></li>
-                    <li class="menu-social__item"><a href="https://www.instagram.com/IFRSOficial" class="menu-social__link menu-social__link--instagram"><span class="sr-only">Perfil do IFRS no Instagram</span></a></li>
-                    <li class="menu-social__item"><a href="https://www.youtube.com/IFRSOficial" class="menu-social__link menu-social__link--youtube"><span class="sr-only">Canal do IFRS no Youtube</span></a></li>
-                    <li class="menu-social__item"><a href="https://www.linkedin.com/school/ifrs" class="menu-social__link menu-social__link--linkedin"><span class="sr-only">P&aacute;gina do IFRS no Linkedin</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.facebook.com/IFRSOficial" class="menu-social__link menu-social__link--facebook"><span class="visually-hidden">P&aacute;gina do IFRS no Facebook</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.twitter.com/IFRSOficial" class="menu-social__link menu-social__link--twitter"><span class="visually-hidden">Perfil do IFRS no Twitter</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.instagram.com/IFRSOficial" class="menu-social__link menu-social__link--instagram"><span class="visually-hidden">Perfil do IFRS no Instagram</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.youtube.com/IFRSOficial" class="menu-social__link menu-social__link--youtube"><span class="visually-hidden">Canal do IFRS no Youtube</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.linkedin.com/school/ifrs" class="menu-social__link menu-social__link--linkedin"><span class="visually-hidden">P&aacute;gina do IFRS no Linkedin</span></a></li>
                 </ul>
             </div>
         </div>
@@ -44,7 +44,7 @@
         <div class="row footer">
             <div class="col-12 col-md-5 col-lg-3 order-1">
                 <div class="footer-logo">
-                    <a href="https://ifrs.edu.br/" data-toggle="tooltip" data-placement="top" title="Portal do IFRS" class="footer-logo__link">
+                    <a href="https://ifrs.edu.br/" data-bs-toggle="tooltip" data-bs-placement="top" title="Portal do IFRS" class="footer-logo__link">
                         <img class="m-auto img-fluid" data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/footer-marca.png" alt="Marca do IFRS"/>
                     </a>
                 </div>
@@ -80,16 +80,16 @@
         </div>
         <div class="creditos">
             <!-- Wordpress -->
-            <a href="http://br.wordpress.org/" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Desenvolvido com Wordpress"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-wordpress.png" alt="Desenvolvido com Wordpress (abre uma nova p&aacute;gina)"></a>
+            <a href="http://br.wordpress.org/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="Desenvolvido com Wordpress"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-wordpress.png" alt="Desenvolvido com Wordpress (abre uma nova p&aacute;gina)"></a>
             <!-- Código-fonte -->
-            <a href="https://github.com/IFRS/ingresso-theme/" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-git.png" alt="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3 (abre uma nova p&aacute;gina)"></a>
+            <a href="https://github.com/IFRS/ingresso-theme/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-git.png" alt="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3 (abre uma nova p&aacute;gina)"></a>
             <!-- Creative Commons -->
-            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="license noopener noreferrer" data-toggle="tooltip" data-placement="top" title="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-cc-by-nc-nd.png" alt="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional (abre uma nova p&aacute;gina)" /></a>
+            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="license noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-cc-by-nc-nd.png" alt="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional (abre uma nova p&aacute;gina)" /></a>
         </div>
     </div>
 </footer>
 
-<a href="#fim-rodape" id="fim-rodape" class="sr-only">Fim do rodap&eacute;</a>
+<a href="#fim-rodape" id="fim-rodape" class="visually-hidden">Fim do rodap&eacute;</a>
 
 <?php wp_footer(); ?>
 
