@@ -2,8 +2,7 @@ const argv         = require('minimist')(process.argv.slice(2));
 const autoprefixer = require('autoprefixer');
 const babel        = require('gulp-babel');
 const browserSync  = require('browser-sync').create();
-const cssmin       = require('gulp-cssmin');
-const concat       = require('gulp-concat');
+const csso         = require('gulp-csso');
 const del          = require('del');
 const gulp         = require('gulp');
 const path         = require('path');
@@ -15,48 +14,43 @@ const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
 
-const webpackMode = argv.production ? 'production' : 'development';
-
 gulp.task('clean', function() {
     return del(['css/', 'js/', 'dist/']);
 });
 
-gulp.task('vendor-css', function() {
-    return gulp.src(['./node_modules/animate.css/animate.css', './node_modules/@fancyapps/fancybox/dist/jquery.fancybox.css'])
-    .pipe(concat('vendor.css'))
-    .pipe(gulp.dest('css/'))
-    .pipe(browserSync.stream());
-});
-
+sass.compiler = require('dart-sass');
 gulp.task('sass', function() {
-    let postCSSplugins = [
+    let postCSS_plugins = [
         require('postcss-flexibility'),
         pixrem(),
-        autoprefixer()
+        autoprefixer(),
     ];
+
+    let sass_options = {
+        includePaths: ['sass', 'node_modules'],
+        outputStyle: 'expanded'
+    };
+
     return gulp.src('sass/*.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass({
-        includePaths: 'sass',
-        outputStyle: 'expanded'
-    }).on('error', sass.logError))
-    .pipe(postcss(postCSSplugins))
+    .pipe(sass.sync(sass_options).on('error', sass.logError))
+    .pipe(postcss(postCSS_plugins))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
 });
 
-gulp.task('styles', gulp.series('vendor-css', 'sass', function css() {
+gulp.task('styles', gulp.series('sass', function css() {
     return gulp.src('css/*.css')
-    .pipe(cssmin())
+    .pipe(csso())
     .pipe(gulp.dest('css/'))
     .pipe(browserSync.stream());
 }));
 
 gulp.task('webpack', function(done) {
     webpack({
-        mode: webpackMode,
-        devtool: 'source-maps',
+        mode: argv.production ? 'production' : 'development',
+        devtool: 'source-map',
         entry: {
             ie: './src/ie.js',
             ingresso: './src/ingresso.js',
@@ -68,13 +62,12 @@ gulp.task('webpack', function(done) {
         resolve: {
             alias: {
                 jquery: 'jquery/dist/jquery',
-                bootstrap: 'bootstrap/dist/js/bootstrap.bundle'
+                bootstrap: 'bootstrap/dist/js/bootstrap.bundle',
             }
         },
         plugins: [
             new webpack.ProvidePlugin({
                 $: 'jquery',
-                jQuery: 'jquery'
             })
         ],
         optimization: {
@@ -84,15 +77,20 @@ gulp.task('webpack', function(done) {
                 cacheGroups: {
                     vendors: false,
                     commons: {
-                        name: "common",
-                        chunks: "initial",
-                        minChunks: 2
+                        name: "commons",
+                        chunks: "all",
+                        minChunks: 2,
                     }
                 }
             }
         },
     }, function(err, stats) {
         if (err) throw new PluginError('webpack', {
+            message: err.toString({
+                colors: true
+            })
+        });
+        if (stats.hasErrors()) throw new PluginError('webpack', {
             message: stats.toString({
                 colors: true
             })
@@ -129,7 +127,7 @@ gulp.task('dist', function() {
         '!.**',
         '!gulpfile.js',
         '!package-lock.json',
-        '!package.json'
+        '!package.json',
     ])
     .pipe(gulp.dest('dist/'));
 });
@@ -137,7 +135,7 @@ gulp.task('dist', function() {
 if (argv.production) {
     gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts'), 'dist'));
 } else {
-    gulp.task('build', gulp.series('clean', gulp.parallel('vendor-css', 'sass', 'webpack')));
+    gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'webpack')));
 }
 
 gulp.task('default', gulp.series('build', function watch() {
