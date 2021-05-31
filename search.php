@@ -10,8 +10,8 @@
     <?php endif; ?>
 
     <?php if (!have_posts()) : ?>
-        <div class="alert alert-warning">
-            <p><strong>Ops!</strong> Nenhum resultado encontrado para o termo &quot;<?php the_search_query(); ?>&quot;.</p>
+        <div class="alert alert-warning" role="alert">
+            <strong>Ops!</strong> Nenhum resultado encontrado para o termo &quot;<?php the_search_query(); ?>&quot;.
         </div>
     <?php else: ?>
         <?php while (have_posts()) : the_post(); ?>

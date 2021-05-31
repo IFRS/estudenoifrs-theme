@@ -26,7 +26,7 @@
                         </div>
                     <?php else : ?>
                         <div class="alert alert-warning" role="alert">
-                            <p><strong>Ops!</strong> Ainda n&atilde;o existem perguntas cadastradas.</p>
+                            <strong>Ops!</strong> Ainda n&atilde;o existem perguntas cadastradas.
                         </div>
                     <?php endif; ?>
                 </article>
