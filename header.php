@@ -8,13 +8,9 @@
     <meta name="author" content="Departamento de Comunicação do IFRS">
     <meta name="keywords" content="ifrs, ingresso, estudar, vestibular">
     <meta name="description" content="Site com informações para ingressar como estudante no IFRS">
-    <!-- Title -->
-    <title><?php echo get_template_part('partials/title'); ?></title>
     <!-- Favicons -->
     <?php echo get_template_part('partials/favicons'); ?>
-    <!-- Contexto Barra Brasil -->
-    <meta property="creator.productor" content="http://estruturaorganizacional.dados.gov.br/id/unidade-organizacional/100918">
-    <!-- Facebook -->
+    <!-- OpenGraph -->
     <meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
     <meta property="og:url" content="<?php echo esc_attr( wp_get_canonical_url() ); ?>">
     <meta property="og:locale" content="pt_BR">
@@ -27,13 +23,11 @@
     <meta name="twitter:creator" content="@IF_RS">
     <!-- Canonical URL -->
     <link rel="canonical" href="<?php echo esc_url( wp_get_canonical_url() ); ?>">
-    <!-- Feed -->
-    <link rel="alternate" type="application/rss+xml" title="<?php echo esc_attr( get_bloginfo('name') ); ?> Feed" href="<?php echo esc_url(get_feed_link()); ?>">
     <!-- WP -->
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class() ?>>
+<body <?php body_class(); ?>>
     <a href="#inicio-conteudo" class="visually-hidden">Pular para o conte&uacute;do</a>
 
     <?php wp_body_open(); ?>
