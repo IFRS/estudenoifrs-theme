@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <h2 class="contato__title">Tem d&uacute;vidas sobre o ingresso discente no <span class="contato__title-destaque">IFRS</span>?</h2>
-                <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/faq.svg" alt="" aria-hidden="true" class="contato__faq-img">Consulte nossas <strong>Perguntas Frequentes</strong>!</a>
+                <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/faq.svg" alt="" aria-hidden="true" class="contato__faq-img lazyload">Consulte nossas <strong>Perguntas Frequentes</strong>!</a>
                 <p>Se ainda restarem d&uacute;vidas, contate-nos preenchendo o formul&aacute;rio ao lado.</p>
             </div>
             <div class="col-12 col-md-6">
@@ -45,7 +45,7 @@
             <div class="col-12 col-md-5 col-lg-3 order-1">
                 <div class="footer-logo">
                     <a href="https://ifrs.edu.br/" data-bs-toggle="tooltip" data-bs-placement="top" title="Portal do IFRS" class="footer-logo__link">
-                        <img class="m-auto img-fluid" data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/footer-marca.png" alt="Marca do IFRS"/>
+                        <img class="m-auto img-fluid lazyload" data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/footer-marca.png" alt="Marca do IFRS"/>
                     </a>
                 </div>
             </div>
@@ -80,11 +80,11 @@
         </div>
         <div class="creditos">
             <!-- Wordpress -->
-            <a href="http://br.wordpress.org/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="Desenvolvido com Wordpress"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-wordpress.png" alt="Desenvolvido com Wordpress (abre uma nova p&aacute;gina)"></a>
+            <a href="http://br.wordpress.org/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="Desenvolvido com Wordpress"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-wordpress.png" class="lazyload" alt="Desenvolvido com Wordpress (abre uma nova p&aacute;gina)"></a>
             <!-- Código-fonte -->
-            <a href="https://github.com/IFRS/ingresso-theme/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-git.png" alt="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3 (abre uma nova p&aacute;gina)"></a>
+            <a href="https://github.com/IFRS/ingresso-theme/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-git.png" class="lazyload" alt="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3 (abre uma nova p&aacute;gina)"></a>
             <!-- Creative Commons -->
-            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="license noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-cc-by-nc-nd.png" alt="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional (abre uma nova p&aacute;gina)" /></a>
+            <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" rel="license noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-cc-by-nc-nd.png" class="lazyload" alt="M&iacute;dia licenciada sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-SemDeriva&ccedil;&otilde;es 4.0 Internacional (abre uma nova p&aacute;gina)" /></a>
         </div>
     </div>
 </footer>
