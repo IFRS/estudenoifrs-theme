@@ -38,8 +38,6 @@
 
     <?php wp_body_open(); ?>
 
-    <?php echo get_template_part('partials/barrabrasil'); ?>
-
     <!-- Cabeçalho -->
     <div class="container">
         <?php echo get_template_part('partials/barra-acessibilidade'); ?>

@@ -91,6 +91,8 @@
 
 <a href="#fim-rodape" id="fim-rodape" class="visually-hidden">Fim do rodap&eacute;</a>
 
+<?php get_template_part('partials/vlibras'); ?>
+
 <?php wp_footer(); ?>
 
 </body>
