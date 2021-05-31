@@ -1,4 +1,7 @@
 <?php
+// Content Width
+if ( ! isset( $content_width ) ) $content_width = 1320;
+
 // Remove Gutenberg custom options
 add_theme_support( 'editor-color-palette' );
 add_theme_support( 'editor-gradient-presets' );
