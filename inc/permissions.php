@@ -8,7 +8,7 @@ add_action('init', function() {
 
 add_action('after_switch_theme', function() {
     if (!get_role( 'cadastrador_oportunidades' )) {
-        add_role('cadastrador_oportunidades', __('Cadastrador de Oportunidades'), array(
+        add_role('cadastrador_oportunidades', __('Cadastrador de Oportunidades', 'ifrs-ingresso-theme'), array(
             'read'              => true,
             'upload_files'      => true,
             'manage_files'      => true,

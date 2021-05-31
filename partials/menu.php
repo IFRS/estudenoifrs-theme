@@ -2,7 +2,7 @@
 
 <?php $navbar_id = uniqid('navbar-collapse-'); ?>
 <nav class="navbar navbar-expand-md navbar-light" role="navigation">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $navbar_id; ?>" aria-controls="<?php echo $navbar_id; ?>" aria-expanded="false" aria-label="<?php _e('Alternar Menu'); ?>">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $navbar_id; ?>" aria-controls="<?php echo $navbar_id; ?>" aria-expanded="false" aria-label="<?php _e('Alternar Menu', 'ifrs-ingresso-theme'); ?>">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="<?php echo $navbar_id; ?>">
