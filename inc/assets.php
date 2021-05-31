@@ -16,6 +16,10 @@ add_action( 'wp_enqueue_scripts', function() {
 
     wp_enqueue_script( 'ingresso', get_template_directory_uri().'/js/ingresso.js', array('commons'), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/ingresso.js'), true );
 
+    if (is_post_type_archive( 'oportunidade' ) || is_tax( 'unidade' ) || is_front_page()) {
+        wp_enqueue_script( 'oportunidades', get_template_directory_uri().'/js/oportunidades.js', array('commons'), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/oportunidades.js'), true );
+    }
+
     if (!WP_DEBUG) {
         wp_enqueue_script( 'vlibras', 'https://vlibras.gov.br/app/vlibras-plugin.js', array(), null, true );
         wp_add_inline_script( 'vlibras', "
