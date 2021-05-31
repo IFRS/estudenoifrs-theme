@@ -8,6 +8,9 @@
 
     <ul class="barra-acessibilidade__menu">
         <li><a href="<?php echo get_permalink(get_page_by_path('acessibilidade')); ?>">Acessibilidade</a></li>
+        <?php if (!empty(get_the_privacy_policy_link())) : ?>
+            <li><?php echo get_the_privacy_policy_link(); ?></li>
+        <?php endif; ?>
         <li><a href="#mapa-site">Mapa do Site</a></li>
     </ul>
 </nav>
