@@ -22,6 +22,8 @@ $carousel-indicator-height: 7px;
 
 // Breadcrumb
 $breadcrumb-bg:             #ffffff;
-$breadcrumb-border-radius:  none;
+$breadcrumb-font-size:      0.9rem;
+$breadcrumb-margin-bottom:  0;
+$breadcrumb-padding-y:      0.5rem;
 
 @import 'node_modules/bootstrap/scss/bootstrap';
