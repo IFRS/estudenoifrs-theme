@@ -14,11 +14,14 @@ require_once('inc/fonts.php');
 // Configurações para o tema
 require_once('inc/theme-config.php');
 
-// Menu
+// Menus
 require_once('inc/menus.php');
 
 // Tamanho do resumo e resumo em páginas
 require_once('inc/excerpt.php');
+
+// Lazyload em imagens
+require_once('inc/lazyload.php');
 
 // Breadcrumb
 require_once('inc/breadcrumb.php');
