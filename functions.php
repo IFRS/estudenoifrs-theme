@@ -8,6 +8,9 @@ require_once('inc/disable-emojis.php');
 // Permissions & Roles
 require_once('inc/permissions.php');
 
+// Carregamento das fontes
+require_once('inc/fonts.php');
+
 // Configurações para o tema
 require_once('inc/theme-config.php');
 
