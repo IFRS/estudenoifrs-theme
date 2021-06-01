@@ -12,11 +12,11 @@
                 <?php foreach ($formas as $forma) : ?>
                     <?php if ($forma) : ?>
                         <li class="nav-item mx-3 mb-3">
-                            <button class="nav-link btn btn-forma" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-<?php echo $forma->term_id; ?>" role="tab" aria-controls="collapse-forma-<?php echo $forma->term_id; ?>" aria-selected="false"><?php echo $forma->name; ?></button>
+                            <button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-<?php echo $forma->term_id; ?>" role="tab" aria-controls="collapse-forma-<?php echo $forma->term_id; ?>" aria-selected="false"><?php echo $forma->name; ?></button>
                         </li>
                     <?php else : ?>
                         <li class="nav-item mx-3 mb-3">
-                            <button class="nav-link btn btn-forma active" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-todas" role="tab" aria-controls="collapse-forma-todas" aria-selected="true">Tudo</button>
+                            <button class="nav-link active" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-todas" role="tab" aria-controls="collapse-forma-todas" aria-selected="true">Tudo</button>
                         </li>
                     <?php endif; ?>
                 <?php endforeach; ?>
@@ -92,7 +92,7 @@
 
                             $oportunidades = new WP_Query($args);
                         ?>
-                        <div class="tab-pane fade<?php echo (!$forma ? ' active show' : ''); ?>" id="tab-forma-<?php echo ($forma ? $forma->term_id : 'todas'); ?>">
+                        <div class="tab-pane fade<?php echo (!$forma ? ' active show' : ''); ?>" id="tab-forma-<?php echo ($forma ? $forma->term_id : 'todas'); ?>" role="tabpanel">
                             <?php if ($oportunidades->have_posts()) : ?>
                                 <div class="oportunidades">
                                     <?php while ($oportunidades->have_posts()) : $oportunidades->the_post(); ?>

@@ -1,5 +1,5 @@
 @import 'config/vars';
-@import 'config/vendor';
+@import 'config/bootstrap';
 @import 'config/mixins';
 
 @import 'base/focus-fix';
@@ -13,7 +13,6 @@
 @import 'blocks/carousel';
 @import 'blocks/home-title';
 @import 'blocks/home-intro';
-@import 'blocks/btn-forma';
 @import 'blocks/filter-unidade';
 @import 'blocks/oportunidades';
 @import 'blocks/oportunidade';
