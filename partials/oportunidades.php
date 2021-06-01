@@ -30,27 +30,31 @@
         <div class="row">
             <div class="col-12">
                 <div class="filter-unidade">
-                    <form action="<?php echo esc_url(home_url('/')); ?>" method="GET" class="form-inline filter-unidade__form">
+                    <form action="<?php echo esc_url(home_url('/')); ?>" method="GET" class="filter-unidade__form row row-cols-sm-auto g-3 align-items-center">
                         <?php $select_id = uniqid(); ?>
-                        <label class="visually-hidden" for="select-<?php echo $select_id; ?>">Unidade</label>
-                        <select name="unidade[]" id="select-<?php echo $select_id; ?>">
-                            <?php
-                                $unidades = get_terms(array(
-                                    'taxonomy' => 'unidade',
-                                    'hide_empty' => false,
-                                ));
-                            ?>
-                            <option hidden selected disabled>Campus</option>
-                            <?php foreach ($unidades as $unidade) : ?>
-                                <?php $unidade_check = (is_tax('unidade') && get_queried_object()->term_id == $unidade->term_id); ?>
-                                <option value="<?php echo $unidade->slug; ?>"<?php echo $unidade_check ? ' selected' : ''; ?>>Campus <?php echo $unidade->name; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <button type="submit" class="btn btn-sm">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
-                        </button>
+                        <div class="col-12 m-0">
+                            <div class="input-group">
+                                <label class="visually-hidden" for="select-<?php echo $select_id; ?>">Unidade</label>
+                                <select name="unidade[]" id="select-<?php echo $select_id; ?>" class="form-select">
+                                    <?php
+                                        $unidades = get_terms(array(
+                                            'taxonomy' => 'unidade',
+                                            'hide_empty' => false,
+                                        ));
+                                    ?>
+                                    <option hidden selected disabled>Campus</option>
+                                    <?php foreach ($unidades as $unidade) : ?>
+                                        <?php $unidade_check = (is_tax('unidade') && get_queried_object()->term_id == $unidade->term_id); ?>
+                                        <option value="<?php echo $unidade->slug; ?>"<?php echo $unidade_check ? ' selected' : ''; ?>>Campus <?php echo $unidade->name; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <button type="submit" class="btn btn-sm">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
