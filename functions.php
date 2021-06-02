@@ -13,6 +13,7 @@ require_once('inc/theme-config.php');
 
 // Menus
 require_once('inc/menus.php');
+require_once('inc/site-map-walker.class.php');
 
 // Tamanho do resumo e resumo em páginas
 require_once('inc/excerpt.php');

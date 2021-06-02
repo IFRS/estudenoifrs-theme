@@ -58,9 +58,10 @@
                             'container'         => 'nav',
                             'container_class'   => 'site-map',
                             'container_id'      => 'mapa-site',
-                            'menu_id'           => false,
+                            'menu_id'           => '',
                             'menu_class'        => 'site-map__menu',
-                            'fallback_cb'       => false
+                            'fallback_cb'       => null,
+                            'walker'            => new Site_Map_Walker(),
                         ));
                     }
                 ?>

@@ -7,30 +7,34 @@
         list-style: none;
         padding: 0;
 
-        @include media-breakpoint-down(xs) {
+        @include media-breakpoint-only(xs) {
             align-items: center;
             flex-direction: column;
             justify-content: flex-start;
         }
 
-        >.menu-item {
+        > li {
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 1rem;
             font-size: 1.5rem;
             font-weight: bold;
 
             @include media-breakpoint-up(sm) {
-                margin-right: 50px;
+                margin-right: 2rem;
             }
+        }
+
+        a {
+            color: #ffffff;
         }
 
         .sub-menu {
             list-style: none;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
             padding: 0;
 
-            >.menu-item {
+            > li {
                 font-size: 0.9rem;
                 font-weight: normal;
                 text-transform: none;
