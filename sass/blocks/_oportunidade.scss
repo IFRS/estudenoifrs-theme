@@ -123,9 +123,9 @@
     }
 
     &--ps {
-        border-top-color: $cor-detalhe;
+        border-top-color: $cor-ps;
         #{$root}__btn-toggle {
-            color: $cor-detalhe;
+            color: $cor-ps;
         }
     }
 
