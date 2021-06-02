@@ -1,6 +1,7 @@
 /* Bootstrap Override */
 @import 'node_modules/bootstrap/scss/functions';
 
+$primary:                   $cor-destaque;
 $link-color:                $cor-destaque;
 $link-hover-color:          darken($cor-destaque, 10%);
 $link-decoration:           none;
