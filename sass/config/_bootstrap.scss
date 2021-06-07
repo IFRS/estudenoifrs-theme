@@ -16,12 +16,16 @@ $component-active-bg:       $cor-destaque;
 $font-family-base:          "Open Sans", $font-family-sans-serif;
 
 $body-color:                $gray-700;
-$headings-color:            $gray-600;
+$headings-color:            $gray-700;
 
 // Navbar
 $navbar-light-color:        $gray-600;
 $navbar-light-hover-color:  $cor-destaque;
 $navbar-light-active-color: $cor-destaque;
+
+// Dropdown
+$dropdown-bg:               $cor-apoio;
+$dropdown-font-size:        0.9rem;
 
 // Carousel
 $carousel-indicator-width:  50px;
@@ -32,8 +36,6 @@ $breadcrumb-bg:             #ffffff;
 $breadcrumb-font-size:      0.9rem;
 $breadcrumb-margin-bottom:  0;
 $breadcrumb-padding-y:      0.5rem;
-
-// Components
 
 /* Bootstrap */
 // Layout & components
