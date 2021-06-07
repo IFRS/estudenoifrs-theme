@@ -62,10 +62,20 @@
 
     &__requisitos {
         display: none;
+
+        p:last-child {
+            margin-bottom: 0;
+        }
     }
 
     &__unidades {
         display: none;
+    }
+
+    &__campi-list {
+        column-count: 2;
+        list-style: none;
+        padding: 0;
     }
 
     &__info-link {
@@ -226,6 +236,7 @@
 
             &:hover,
             &:active {
+                background-image: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 100%);
                 text-decoration: none;
             }
         }
