@@ -107,7 +107,7 @@
                                 </div>
                             <?php else : ?>
                                 <div class="alert alert-info" role="alert">
-                                    N&atilde;o existem oportunidades para essa forma de ingresso<?php echo (is_tax('unidade')) ? ' e unidade ' : ' '; ?>no momento. Fique atento para novas publica&ccedil;&otilde;es.
+                                    N&atilde;o existem oportunidades<?php echo (is_tax('unidade')) ? ' nessa <strong>unidade</strong> ' : ' '; ?>para essa <strong>forma de ingresso</strong> no momento. Fique atento para novas publica&ccedil;&otilde;es.
                                 </div>
                             <?php endif; ?>
                             <?php wp_reset_postdata(); ?>
