@@ -1,5 +1,5 @@
 <?php $forma_ingresso = get_the_terms(get_the_ID(), 'forma'); ?>
-<div class="oportunidade oportunidade--<?php echo $forma_ingresso[0]->slug; ?><?php echo (is_singular('oportunidade')) ? ' oportunidade--open' : ''; ?>">
+<div class="oportunidade oportunidade--<?php echo $forma_ingresso[0]->slug; ?><?php echo (is_singular('oportunidade')) ? ' oportunidade--open' : ''; ?>" data-flip-key="oportunidade-<?php the_ID(); ?>">
     <div class="oportunidade__header">
         <p class="oportunidade__forma"><?php echo $forma_ingresso[0]->name; ?></p>
         <?php if (!is_singular('oportunidade')) : ?>

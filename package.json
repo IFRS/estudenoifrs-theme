@@ -11,6 +11,7 @@
     "dart-sass": "^1.25.0",
     "del": "^6.0.0",
     "flexibility": "^2.0.1",
+    "flipping": "^1.1.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
     "gulp-csso": "^4.0.1",
