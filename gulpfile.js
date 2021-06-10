@@ -1,18 +1,17 @@
 const argv         = require('minimist')(process.argv.slice(2));
-const autoprefixer = require('autoprefixer');
 const babel        = require('gulp-babel');
 const browserSync  = require('browser-sync').create();
 const csso         = require('gulp-csso');
 const del          = require('del');
 const gulp         = require('gulp');
 const path         = require('path');
-const pixrem       = require('pixrem');
 const PluginError  = require('plugin-error');
 const postcss      = require('gulp-postcss');
 const sass         = require('gulp-sass');
 const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
+;
 
 gulp.task('clean', function() {
     return del(['css/', 'js/', 'dist/']);
@@ -22,8 +21,8 @@ sass.compiler = require('dart-sass');
 gulp.task('sass', function() {
     let postCSS_plugins = [
         require('postcss-flexibility'),
-        pixrem(),
-        autoprefixer(),
+        require('pixrem'),
+        require('autoprefixer'),
     ];
 
     let sass_options = {
@@ -111,9 +110,7 @@ gulp.task('scripts', gulp.series('webpack', function js() {
             ]
         ]
     }))
-    .pipe(uglify({
-        ie8: true,
-    }))
+    .pipe(uglify())
     .pipe(gulp.dest('js/'))
     .pipe(browserSync.stream());
 }));
