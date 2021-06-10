@@ -1,8 +1,9 @@
 .oportunidade {
     $root: &;
 
-    border-bottom: 1px solid #dddddd;
-    border-top: 5px solid #dddddd;
+    background-color: #ffffff;
+    border-bottom: 1px solid $gray-400;
+    border-top: 5px solid $gray-400;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -17,7 +18,7 @@
 
     &__header {
         align-items: center;
-        border-bottom: 1px solid #dddddd;
+        border-bottom: 1px solid $gray-400;
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
