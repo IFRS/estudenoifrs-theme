@@ -79,15 +79,13 @@
     }
 
     &__info-link {
+        align-self: flex-start;
         background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAUElEQVQ4je3RsQ3AIBBDUUa4EX9jr5VsBBuRJpEiSqCIovuS29e4lOwJCEkHELuwartLqssoELab7Z7oR9H36/faNJjYXMOra9iAnluwf3cBCWmFF8lvJBwAAAAASUVORK5CYII=') no-repeat left center;
         background-size: 15px;
-        padding-left: 15px;
-    }
-
-    &__info-link {
         display: block;
         font-size: 0.9rem;
         margin-top: auto;
+        padding-left: 1rem;
     }
 
     &--diplomado {
