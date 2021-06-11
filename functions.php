@@ -21,6 +21,9 @@ require_once('inc/excerpt.php');
 // Lazyload em imagens
 require_once('inc/lazyload.php');
 
+// Adiciona classe no primeiro item da área carousel
+require_once('inc/carousel-first-item-add-class.php');
+
 // Breadcrumb
 require_once('inc/breadcrumb.php');
 
