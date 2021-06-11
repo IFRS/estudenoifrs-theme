@@ -24,7 +24,7 @@
         $hoje = gmdate('d/m/y', time());
     ?>
     <?php if ($isencao_inicio && $isencao_termino) : ?>
-        <p class="oportunidade__meta oportunidade__meta--isencao">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong><?php echo $isencao_termino; ?></strong></p>
+        <p class="oportunidade__meta oportunidade__meta--isencao<?php echo ($isencao_termino < $hoje) ? ' text-muted text-decoration-line-through' : ''; ?>">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($isencao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $isencao_termino; ?></strong></p>
     <?php else : ?>
         <p class="oportunidade__meta oportunidade__meta--gratis">Inscri&ccedil;&atilde;o <strong>gratuita</strong></p>
     <?php endif; ?>
