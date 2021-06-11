@@ -1,5 +1,20 @@
 .footer {
     border-bottom: 1px solid $cor-detalhe;
     justify-content: space-between;
-    padding-bottom: 30px;
+    padding-bottom: 2rem;
+
+    &__widget {
+        font-size: 0.9rem;
+
+        a {
+            font-weight: bold;
+        }
+    }
+
+    &__widget-title {
+        color: #ffffff;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
 }

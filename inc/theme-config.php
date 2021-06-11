@@ -53,6 +53,15 @@ add_action('widgets_init', function() {
         'before_title'  => '<span class="visually-hidden">',
         'after_title'   => '</span>',
     ));
+    register_sidebar(array(
+        'name'          => 'Rodapé',
+        'id'            => 'area-rodape',
+        'description'   => __('Área para informações de contato no rodapé.', 'ifrs-ingresso-theme'),
+        'before_widget' => '<address id="%1$s" class="footer__widget %2$s">',
+        'after_widget'  => '</address>',
+        'before_title'  => '<h2 class="footer__widget-title">',
+        'after_title'   => '</h2>',
+    ));
 });
 
 // Impede a adição da tag <p> pelo plugin ContactForm7

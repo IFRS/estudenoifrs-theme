@@ -67,16 +67,7 @@
                 ?>
             </div>
             <div class="col-12 col-md-7 col-lg-4 col-xl-3 order-3 order-md-2 order-lg-3">
-                <address class="endereco">
-                    <h2 class="endereco__title">Endere&ccedil;o</h2>
-                    <p>Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Sul</p>
-                    <p>
-                        Rua General Os&oacute;rio, 348 | Bairro Centro
-                        <br>
-                        Bento Gon&ccedil;alves/RS | CEP: 95700-086
-                    </p>
-                    <p>Telefone: <a href="tel:+555434493300">(54) 3449-3300</a></p>
-                </address>
+                <?php if (!dynamic_sidebar( 'area-rodape' )); ?>
             </div>
         </div>
         <div class="creditos">
