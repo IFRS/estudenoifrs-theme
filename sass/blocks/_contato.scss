@@ -50,13 +50,13 @@
         }
 
         .wpcf7-form {
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
         }
 
         .wpcf7-form-control {
             @extend .form-control;
 
-            margin-bottom: 5px;
+            margin-bottom: 0.3rem;
         }
 
         .wpcf7-not-valid {
@@ -68,15 +68,15 @@
             @extend .form-text;
             @extend .text-danger;
 
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
         }
 
         .wpcf7-submit {
             @include button-outline-variant($cor-destaque);
 
             float: right;
-            margin-bottom: 10px;
-            margin-top: 5px;
+            margin-bottom: 0.5rem;
+            margin-top: 0.3rem;
             width: auto;
 
         }
