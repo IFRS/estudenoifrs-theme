@@ -1,9 +1,15 @@
 import Flipping from 'flipping/lib/adapters/web';
 
 const flip = new Flipping();
-console.log(flip);
 
 $(function() {
+    let tabs = document.querySelectorAll('button[data-bs-toggle="pill"]')
+    tabs.forEach(function(tab) {
+        tab.addEventListener('show.bs.tab', function(event) {
+            $(event.target.dataset.bsTarget).find('.oportunidade--open').removeClass('oportunidade--open').removeAttr('style');
+        });
+    });
+
     $('.oportunidade__btn-toggle').on('click', function(e) {
         flip.read();
 
