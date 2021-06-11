@@ -93,6 +93,11 @@
                             $oportunidades = new WP_Query($args);
                         ?>
                         <div class="tab-pane fade<?php echo (!$forma ? ' active show' : ''); ?>" id="tab-forma-<?php echo ($forma ? $forma->term_id : 'todas'); ?>" role="tabpanel">
+                            <?php if (!empty($forma->description)) : ?>
+                                <div class="forma-description">
+                                    <?php echo wpautop($forma->description); ?>
+                                </div>
+                            <?php endif; ?>
                             <?php if ($oportunidades->have_posts()) : ?>
                                 <div class="oportunidades">
                                     <?php while ($oportunidades->have_posts()) : $oportunidades->the_post(); ?>
