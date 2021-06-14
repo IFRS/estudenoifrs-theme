@@ -5,7 +5,7 @@
         <label class="visually-hidden" for="<?php echo $idBusca; ?>">Buscar por:</label>
         <div class="input-group">
             <input type="search" value="<?php echo get_search_query(); ?>" name="s" id="<?php echo $idBusca; ?>" class="form-control form-control-sm searchform__input" placeholder="Termo da Busca" required>
-            <button type="submit" class="btn btn-light btn-sm border searchform__submit">
+            <button type="submit" class="btn btn-outline-light btn-sm border searchform__submit">
                 <span class="visually-hidden">Buscar</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11" width="16" height="16" class="align-text-bottom">
                     <g>
