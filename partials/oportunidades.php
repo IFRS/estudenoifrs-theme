@@ -9,11 +9,11 @@
     <ul class="nav nav-pills justify-content-center my-3" role="tablist">
         <?php foreach ($formas as $forma) : ?>
             <?php if ($forma) : ?>
-                <li class="nav-item mx-1 mb-2">
+                <li class="nav-item mx-1 my-1">
                     <button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-<?php echo $forma->term_id; ?>" role="tab" aria-controls="collapse-forma-<?php echo $forma->term_id; ?>" aria-selected="false"><?php echo $forma->name; ?></button>
                 </li>
             <?php else : ?>
-                <li class="nav-item mx-1 mb-2">
+                <li class="nav-item mx-1 my-1">
                     <button class="nav-link active" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-todas" role="tab" aria-controls="collapse-forma-todas" aria-selected="true">Tudo</button>
                 </li>
             <?php endif; ?>
