@@ -1,6 +1,6 @@
 <?php
-// Content Width
-if ( ! isset( $content_width ) ) $content_width = 1320;
+// Content width
+if ( ! isset( $content_width ) ) $content_width = 1296;
 
 // Remove Gutenberg custom options
 add_theme_support( 'editor-color-palette' );
@@ -9,6 +9,9 @@ add_theme_support( 'disable-custom-colors' );
 add_theme_support( 'disable-custom-gradients' );
 add_theme_support( 'disable-custom-font-sizes' );
 add_theme_support( 'custom-units', array() );
+
+// Gutenberg Default Styles
+add_theme_support( 'wp-block-styles' );
 
 // Add theme support for Automatic Feed Links
 add_theme_support( 'automatic-feed-links' );
@@ -25,7 +28,7 @@ add_theme_support( 'responsive-embeds' );
 // Add theme support for document <title> tag
 add_theme_support( 'title-tag' );
 
-// Habilita a personalização do logo
+// Custom Logo
 add_theme_support( 'custom-logo', array(
     'width'       => 540,
     'height'      => 142,
@@ -33,7 +36,7 @@ add_theme_support( 'custom-logo', array(
     'flex-width'  => true,
 ) );
 
-// Registra as áreas para widgets
+// Sidebars
 add_action('widgets_init', function() {
     register_sidebar(array(
         'name'          => 'Carousel',
