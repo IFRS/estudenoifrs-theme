@@ -28,6 +28,10 @@
 
         button[type=submit] {
             color: $cor-destaque;
+
+            > svg {
+                vertical-align: text-bottom;
+            }
         }
     }
 }
