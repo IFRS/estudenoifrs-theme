@@ -1,41 +1,47 @@
 /* Bootstrap Override */
 @import 'node_modules/bootstrap/scss/functions';
 
-$primary:                   $cor-destaque;
-$link-color:                $cor-destaque;
-$link-hover-color:          darken($cor-destaque, 10%);
-$link-decoration:           none;
-$link-hover-decoration:     underline;
-$component-active-color:    #ffffff;
-$component-active-bg:       $cor-destaque;
+$primary:                      $cor-destaque;
+$link-color:                   $cor-destaque;
+$link-hover-color:             darken($cor-destaque, 10%);
+$link-decoration:              none;
+$link-hover-decoration:        underline;
+$component-active-color:       #ffffff;
+$component-active-bg:          $cor-destaque;
 
 @import 'node_modules/bootstrap/scss/variables';
 @import 'node_modules/bootstrap/scss/mixins';
 @import 'node_modules/bootstrap/scss/utilities';
 
-$font-family-base:          "Open Sans", $font-family-sans-serif;
+$font-family-base:             "Open Sans", $font-family-sans-serif;
 
-$body-color:                $gray-700;
-$headings-color:            $gray-700;
+$body-color:                   $gray-700;
+$headings-color:               $gray-700;
 
 // Navbar
-$navbar-light-color:        $gray-600;
-$navbar-light-hover-color:  $cor-destaque;
-$navbar-light-active-color: $cor-destaque;
+$navbar-light-color:           $gray-600;
+$navbar-light-hover-color:     $cor-destaque;
+$navbar-light-active-color:    $cor-destaque;
 
 // Dropdown
 $dropdown-bg:                  $gray-100;
+$dropdown-border-radius:       0;
 $dropdown-font-size:           0.9rem;
+$dropdown-inner-border-radius: 0;
+$dropdown-item-padding-y:      $spacer / 2;
+$dropdown-link-color:          $gray-700;
+$dropdown-link-hover-color:    $cor-destaque;
+$dropdown-padding-y:           0;
 
 // Carousel
-$carousel-indicator-width:  3rem;
-$carousel-indicator-height: 0.5rem;
+$carousel-indicator-width:     3rem;
+$carousel-indicator-height:    0.5rem;
 
 // Breadcrumb
-$breadcrumb-bg:             #ffffff;
-$breadcrumb-font-size:      0.9rem;
-$breadcrumb-margin-bottom:  0;
-$breadcrumb-padding-y:      0.5rem;
+$breadcrumb-bg:                #ffffff;
+$breadcrumb-font-size:         0.9rem;
+$breadcrumb-margin-bottom:     0;
+$breadcrumb-padding-y:         0.5rem;
 
 /* Bootstrap */
 // Layout & components
