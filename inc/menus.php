@@ -14,9 +14,7 @@ add_filter( 'nav_menu_submenu_css_class', function( $classes ) {
 }, 10, 1 );
 
 add_filter( 'nav_menu_css_class', function( $classes, $item, $args, $depth ) {
-    if ($item->menu_item_parent != 0) {
-        $classes[] = 'dropdown-item';
-    } else {
+    if ($item->menu_item_parent == 0) {
         $classes[] = 'nav-item';
     }
 
@@ -31,10 +29,16 @@ add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ) 
     $atts['class'] = 'nav-link';
 
     if ( array_search('menu-item-has-children', $item->classes ) && $item->menu_item_parent == 0 ) {
-        $atts['class'] = 'nav-link dropdown-toggle';
+        $atts['class'] .= ' dropdown-toggle';
         $atts['role'] = 'button';
         $atts['data-bs-toggle'] = 'dropdown';
         $atts['aria-expanded'] = 'false';
+    } else if ($item->menu_item_parent != 0) {
+        $atts['class'] = 'dropdown-item';
+    }
+
+    if ($item->current) {
+        $atts['class'] .= ' active';
     }
 
     return $atts;
