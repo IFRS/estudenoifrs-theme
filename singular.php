@@ -15,6 +15,15 @@
                             }
                         ?>
                         <?php the_content(); ?>
+                        <nav aria-label="Paginação do Conteúdo">
+                            <?php
+                                wp_link_pages(array(
+                                    'before' => '<ul class="pagination"><li class="page-item">',
+                                    'separator' => '</li><li class="page-item">',
+                                    'after'  => '</li></ul>',
+                                ));
+                            ?>
+                        </nav>
                     </div>
                 </article>
             </div>

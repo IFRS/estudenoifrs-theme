@@ -1,5 +1,5 @@
 <?php
-function ingresso_pagination() {
+function ifrs_ingresso_pagination() {
     global $wp_query;
 
     $big = 999999999; // need an unlikely integer
@@ -38,3 +38,8 @@ function ingresso_pagination() {
         echo '</ul>';
     }
 }
+
+add_filter( 'wp_link_pages_link', function($link) {
+    $link = str_replace('post-page-numbers', 'page-link', $link);
+    return $link;
+}, 11, 1 );
