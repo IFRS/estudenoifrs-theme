@@ -26,4 +26,4 @@ add_action( 'wp_enqueue_scripts', function() {
             new window.VLibras.Widget('https://vlibras.gov.br/app');
         " );
     }
-}, 1 );
+}, 11 );

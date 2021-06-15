@@ -1,0 +1,7 @@
+.wp-block-quote {
+    border-left: 0.25em solid $cor-destaque;
+
+    &.is-style-large {
+        margin-bottom: 3em;
+    }
+}

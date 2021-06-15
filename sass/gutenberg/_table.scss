@@ -1,0 +1,11 @@
+.wp-block-table {
+    table {
+        @extend .table;
+    }
+
+    &.is-style-stripes {
+        table {
+            @extend .table-striped;
+        }
+    }
+}
