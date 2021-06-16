@@ -1,0 +1,19 @@
+.wp-block-button {
+    $block: &;
+
+    &__link {
+        @extend .btn;
+    }
+
+    &:not(.is-style-outline) {
+        #{$block}__link {
+            @include button-variant($primary, darken($primary, 10%));
+        }
+    }
+
+    &.is-style-outline {
+        #{$block}__link {
+            @include button-outline-variant($primary);
+        }
+    }
+}
