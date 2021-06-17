@@ -51,7 +51,7 @@
                 </div>
             </form>
         </div>
-        <div class="tab-content">
+        <div class="tab-content" aria-live="polite">
             <?php foreach ($formas as $forma) : ?>
                 <?php
                     $tax_query = array();
