@@ -1,8 +1,9 @@
 .filter-unidade {
     background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M-1-1h26v26H-1z'/%3E%3Cg%3E%3Cpath fill='%23666666' d='M.75.75h9v9h-9zM14.25.75h9v9h-9zM14.25 14.25h9v9h-9z'/%3E%3C/g%3E%3C/svg%3E") no-repeat right center;
-    background-size: 16px;
+    background-size: 1rem;
     border-bottom: 1px solid #dedede;
     margin-bottom: 2rem;
+    padding-right: 1.2rem;
 
     &__form {
         font-size: 0.9rem;
