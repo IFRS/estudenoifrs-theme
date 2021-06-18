@@ -2,7 +2,7 @@
   "name": "ifrs-ingresso-theme",
   "private": true,
   "devDependencies": {
-    "@babel/core": "^7.9.6",
+    "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.9.6",
     "animate.css": "^4.1.1",
     "autoprefixer": "^10.2.6",
@@ -21,14 +21,14 @@
     "html5shiv": "^3.7.3",
     "jquery": "3.6",
     "lazysizes": "^5.2.1",
-    "lightgallery": "^2.1.0",
+    "lightgallery": "^2.1.5",
     "minimist": "^1.2.5",
     "pixrem": "^5.0.0",
     "plugin-error": "^1.0.1",
-    "postcss": "^8.3.0",
+    "postcss": "^8.3.5",
     "postcss-flexibility": "^2.0.0",
     "respond.js": "^1.4.2",
     "sass": "^1.35.1",
-    "webpack": "^5.38.1"
+    "webpack": "^5.39.1"
   }
 }
