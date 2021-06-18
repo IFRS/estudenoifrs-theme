@@ -6,7 +6,7 @@
         ));
         array_unshift($formas, 0);
     ?>
-    <ul class="nav nav-pills justify-content-center my-3" role="tablist">
+    <ul class="nav nav-pills justify-content-center mt-3 mb-1 mx-auto forma-list" role="tablist">
         <?php foreach ($formas as $forma) : ?>
             <?php if ($forma) : ?>
                 <li class="nav-item mx-1 my-1">
