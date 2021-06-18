@@ -17,7 +17,7 @@ gulp.task('clean', function() {
     return del(['css/', 'js/', 'dist/']);
 });
 
-sass.compiler = require('dart-sass');
+sass.compiler = require('sass');
 gulp.task('sass', function() {
     let postCSS_plugins = [
         require('postcss-flexibility'),
