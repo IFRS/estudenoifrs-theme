@@ -36,10 +36,10 @@
                                     'hide_empty' => false,
                                 ));
                             ?>
-                            <option hidden selected disabled>Campus</option>
+                            <option hidden selected disabled>Unidade</option>
                             <?php foreach ($unidades as $unidade) : ?>
                                 <?php $unidade_check = (is_tax('unidade') && get_queried_object()->term_id == $unidade->term_id); ?>
-                                <option value="<?php echo $unidade->slug; ?>"<?php echo $unidade_check ? ' selected' : ''; ?>>Campus <?php echo $unidade->name; ?></option>
+                                <option value="<?php echo $unidade->slug; ?>"<?php echo $unidade_check ? ' selected' : ''; ?>><?php echo $unidade->name; ?></option>
                             <?php endforeach; ?>
                         </select>
                         <button type="submit" class="btn btn-sm">
