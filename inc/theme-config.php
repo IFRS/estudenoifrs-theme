@@ -67,5 +67,23 @@ add_action('widgets_init', function() {
     ));
 });
 
+// Image sizes
+add_action( 'switch_theme', function() {
+    update_option( 'default_comment_status', 'closed' );
+
+    update_option( 'thumbnail_size_w', 256 );
+    update_option( 'thumbnail_size_h', 192 );
+    update_option( 'thumbnail_crop', 1 );
+
+    update_option( 'medium_size_w', 640 );
+    update_option( 'medium_size_h', 360 );
+
+    update_option( 'medium_large_size_w', 854 );
+    update_option( 'medium_large_size_h', 480 );
+
+    update_option( 'large_size_w', 1280 );
+    update_option( 'large_size_h', 720 );
+} );
+
 // Impede a adição da tag <p> pelo plugin ContactForm7
 add_filter('wpcf7_autop_or_not', '__return_false');
