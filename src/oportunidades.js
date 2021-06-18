@@ -1,44 +1,63 @@
+require('./_polyfill_element-closest');
 import Flipping from 'flipping/lib/adapters/web';
 
 const flip = new Flipping();
 
-$(function() {
+document.addEventListener('DOMContentLoaded', function() {
     let tabs = document.querySelectorAll('button[data-bs-toggle="pill"]')
     tabs.forEach(function(tab) {
-        tab.addEventListener('show.bs.tab', function(event) {
-            $(event.target.dataset.bsTarget).find('.oportunidade--open').removeClass('oportunidade--open').removeAttr('style');
+        tab.addEventListener('show.bs.tab', function() {
+            document.querySelector(this.dataset.bsTarget).querySelectorAll('.oportunidade--open').forEach(function(open) {
+                open.classList.remove('oportunidade--open');
+                open.removeAttribute('style');
+            });
         });
     });
 
-    $('.oportunidade__btn-toggle').on('click', function(e) {
-        flip.read();
+    const classes = ['animate__animated', 'animate__fadeIn', 'animate__fast'];
 
-        const oportunidades = $(this).closest('.oportunidades');
-        const oportunidade = $(this).closest('.oportunidade');
+    document.querySelectorAll('.oportunidade__btn-toggle').forEach(function(btn) {
+        const oportunidades = btn.closest('.oportunidades');
+        const oportunidade = btn.closest('.oportunidade');
 
-        const colCount = oportunidades.css('grid-template-columns').split(' ').length;
-        const rowPosition = Math.floor(oportunidade.index() / colCount);
-        const colPosition = oportunidade.index() % colCount;
+        oportunidade.addEventListener('animationend', function(e) {
+            e.stopPropagation();
+            this.classList.remove(...classes);
+        });
 
-        if (oportunidade.hasClass('oportunidade--open')) {
-            oportunidade.removeAttr('style').removeClass('oportunidade--open').hide().fadeIn(500);
-        } else {
-            oportunidades.children('.oportunidade--open').removeAttr('style').removeClass('oportunidade--open').hide().fadeIn(500);
+        const colCount = window.getComputedStyle(oportunidades).getPropertyValue('grid-template-columns').split(' ').length;
+        const index = [...oportunidades.children].indexOf(oportunidade);
+        const rowPosition = Math.floor(index / colCount);
+        const colPosition = index % colCount;
 
-            if (colPosition < colCount - 1) {
-                oportunidade.css('grid-column', (colPosition + 1) + ' / span 2');
-            } else if (colPosition == colCount - 1) {
-                oportunidade.css('grid-column', (colCount - 1) + ' / span 2');
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            flip.read();
+
+            if (oportunidade.classList.contains('oportunidade--open')) { // Close
+                oportunidade.classList.remove('oportunidade--open');
+                oportunidade.removeAttribute('style');
+                oportunidade.classList.add(...classes);
+            } else { // Open
+                oportunidades.querySelectorAll('.oportunidade--open').forEach(function(open) { // Close others
+                    open.classList.remove('oportunidade--open');
+                    open.removeAttribute('style');
+                    open.classList.add(...classes);
+                });
+
+                if (colPosition < colCount - 1) {
+                    oportunidade.style.gridColumn = (colPosition + 1) + ' / span 2';
+                } else if (colPosition == colCount - 1) {
+                    oportunidade.style.gridColumn = (colCount - 1) + ' / span 2';
+                }
+
+                oportunidade.style.gridRow = (rowPosition + 1) + ' / span 3';
+                oportunidade.classList.add('oportunidade--open');
+                oportunidade.classList.add(...classes);
             }
 
-            oportunidade.css('grid-row', (rowPosition + 1) + '/ span 3')
-
-            oportunidade.addClass('oportunidade--open').hide().fadeIn(500);
-            // $('html, body').animate({
-            //     scrollTop: $(this).offset().top - 32
-            // }, 250);
-        }
-
-        flip.flip();
+            flip.flip();
+        });
     });
 });
