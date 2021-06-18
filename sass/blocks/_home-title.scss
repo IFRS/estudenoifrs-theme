@@ -1,3 +1,5 @@
+@use "sass:math";
+
 .home-title {
     color: #666666;
     font-size: 2.5rem;
@@ -16,7 +18,7 @@
         height: 3px;
         width: $comprimento;
         bottom: 0;
-        right: (50% - ($comprimento / 2));
+        right: (50% - math.div($comprimento, 2));
     }
 
     &__destaque {

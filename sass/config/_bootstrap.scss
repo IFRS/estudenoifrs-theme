@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /* Bootstrap Override */
 @import 'node_modules/bootstrap/scss/functions';
 
@@ -28,7 +30,7 @@ $dropdown-bg:                  $gray-100;
 $dropdown-border-radius:       0;
 $dropdown-font-size:           0.9rem;
 $dropdown-inner-border-radius: 0;
-$dropdown-item-padding-y:      $spacer / 2;
+$dropdown-item-padding-y:      math.div($spacer, 2);
 $dropdown-link-color:          $gray-700;
 $dropdown-link-hover-color:    $cor-destaque;
 $dropdown-padding-y:           0;
