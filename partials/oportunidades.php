@@ -54,6 +54,8 @@
         <div class="tab-content" aria-live="polite">
             <?php foreach ($formas as $forma) : ?>
                 <?php
+                    $today = new Datetime("now - 1 day");
+
                     $tax_query = array();
 
                     if ($forma) {
@@ -76,6 +78,8 @@
                         'posts_per_page' => -1,
                         'tax_query' => $tax_query,
                         'meta_key' => '_oportunidade_inscricao_termino',
+                        'meta_compare' => '>=',
+                        'meta_value' => $today->format('U'),
                         'orderby' => 'meta_value_num',
                         'order' => 'ASC',
                     );
@@ -91,12 +95,6 @@
                     <?php if ($oportunidades->have_posts()) : ?>
                         <div class="oportunidades">
                             <?php while ($oportunidades->have_posts()) : $oportunidades->the_post(); ?>
-                                <?php
-                                    $today = new Datetime("now - 1 day");
-                                    if (get_post_meta( get_the_ID(), '_oportunidade_inscricao_termino', true ) < $today->format('U')) {
-                                        continue;
-                                    }
-                                ?>
                                 <?php echo get_template_part('partials/oportunidade'); ?>
                             <?php endwhile; ?>
                         </div>
