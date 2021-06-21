@@ -11,6 +11,7 @@ const sass         = require('gulp-sass');
 const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 ;
 
 gulp.task('clean', function() {
@@ -46,6 +47,9 @@ gulp.task('styles', gulp.series('sass', function css() {
     .pipe(browserSync.stream());
 }));
 
+let webpack_plugins = [];
+argv.bundleanalyzer ? webpack_plugins.push(new BundleAnalyzerPlugin()) : null;
+
 gulp.task('webpack', function(done) {
     webpack({
         mode: argv.production ? 'production' : 'development',
@@ -61,15 +65,10 @@ gulp.task('webpack', function(done) {
         },
         resolve: {
             alias: {
-                jquery: 'jquery/dist/jquery',
                 bootstrap: 'bootstrap/dist/js/bootstrap.bundle',
             }
         },
-        plugins: [
-            new webpack.ProvidePlugin({
-                $: 'jquery',
-            })
-        ],
+        plugins: [...webpack_plugins],
         optimization: {
             minimize: false,
             splitChunks: {

@@ -19,7 +19,6 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "html5shiv": "^3.7.3",
-    "jquery": "3.6",
     "lazysizes": "^5.2.1",
     "lightgallery": "^2.1.5",
     "minimist": "^1.2.5",
@@ -29,6 +28,7 @@
     "postcss-flexibility": "^2.0.0",
     "respond.js": "^1.4.2",
     "sass": "^1.35.1",
-    "webpack": "^5.39.1"
+    "webpack": "^5.39.1",
+    "webpack-bundle-analyzer": "^4.4.2"
   }
 }
