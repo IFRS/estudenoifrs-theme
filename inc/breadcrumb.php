@@ -31,7 +31,7 @@ function ingresso_breadcrumb() {
             echo $before_active . single_cat_title('', false) . $after;
         } elseif (is_tax('unidade')) {
             echo $before . '<a href="' . get_post_type_archive_link( 'oportunidade' ) . '">Oportunidades</a>' . $after;
-            echo $before_active . single_term_title('Campus&nbsp;', false) . $after;
+            echo $before_active . single_term_title('', false) . $after;
         } elseif (is_day()) {
             echo $before . '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time(
                 'Y'
