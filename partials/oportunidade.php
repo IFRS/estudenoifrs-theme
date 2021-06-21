@@ -41,10 +41,13 @@
         <hr class="oportunidade__separador">
     <?php endif; ?>
 
-    <div class="oportunidade__unidades">
-        <h4 class="oportunidade__subtitle">Campi de Oferta</h4>
-        <?php echo get_the_term_list(get_the_ID(), 'unidade', '<ul class="oportunidade__campi-list"><li class="oportunidade__campus">', '</li><li class="oportunidade__campus">', '</li></ul>'); ?>
-    </div>
+    <?php $unidades = wp_get_post_terms(get_the_ID(), 'unidade', array('fields' => 'ids')); ?>
+    <?php if ($unidades) : ?>
+        <div class="oportunidade__unidades">
+            <h4 class="oportunidade__subtitle"><?php echo _n( 'Unidade', 'Unidades', count($unidades) ); ?> de Oferta</h4>
+            <?php echo get_the_term_list(get_the_ID(), 'unidade', '<ul class="oportunidade__campi-list"><li class="oportunidade__campus">', '</li><li class="oportunidade__campus">', '</li></ul>'); ?>
+        </div>
+    <?php endif; ?>
 
     <a href="<?php echo esc_url(get_post_meta( get_the_ID(), '_oportunidade_url', true )); ?>" class="oportunidade__info-link">Mais informa&ccedil;&otilde;es</a>
 </div>
