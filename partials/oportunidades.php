@@ -1,4 +1,7 @@
 <section class="container">
+    <?php if (is_tax('unidade')) : ?>
+        <h2 class="text-center mb-3"><?php single_term_title( '', true ); ?></h2>
+    <?php endif; ?>
     <?php
         $formas = get_terms(array(
             'taxonomy' => 'forma',
