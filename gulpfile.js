@@ -73,13 +73,12 @@ gulp.task('webpack', function(done) {
         optimization: {
             minimize: false,
             splitChunks: {
-                chunks: 'all',
                 cacheGroups: {
                     vendors: false,
                     commons: {
                         name: "commons",
                         chunks: "all",
-                        minChunks: 1,
+                        minChunks: 2,
                     }
                 }
             }

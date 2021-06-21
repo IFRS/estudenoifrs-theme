@@ -9,15 +9,17 @@ add_action( 'wp_enqueue_scripts', function() {
     /* wp_register_script( $handle, $src, $deps, $ver, $in_footer ); */
     /* wp_enqueue_script( $handle[, $src, $deps, $ver, $in_footer] ); */
 
-    wp_enqueue_script( 'commons', get_template_directory_uri().'/js/commons.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/commons.js'), true );
+    if ( file_exists( get_stylesheet_directory() . '/js/commons.js' ) ) {
+        wp_enqueue_script( 'commons', get_template_directory_uri().'/js/commons.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/commons.js'), true );
+    }
 
     wp_enqueue_script( 'ie', get_template_directory_uri().'/js/ie.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/ie.js'), false );
     wp_script_add_data( 'ie', 'conditional', 'lt IE 9' );
 
-    wp_enqueue_script( 'ingresso', get_template_directory_uri().'/js/ingresso.js', array('commons'), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/ingresso.js'), true );
+    wp_enqueue_script( 'ingresso', get_template_directory_uri().'/js/ingresso.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/ingresso.js'), true );
 
     if (is_post_type_archive( 'oportunidade' ) || is_tax( 'unidade' ) || is_front_page()) {
-        wp_enqueue_script( 'oportunidades', get_template_directory_uri().'/js/oportunidades.js', array('commons'), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/oportunidades.js'), true );
+        wp_enqueue_script( 'oportunidades', get_template_directory_uri().'/js/oportunidades.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/oportunidades.js'), true );
     }
 
     if (!WP_DEBUG) {
