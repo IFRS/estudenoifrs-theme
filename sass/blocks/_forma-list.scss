@@ -2,4 +2,22 @@
     @include media-breakpoint-up(md) {
         width: 80%;
     }
+
+    .badge {
+        line-height: 1.1;
+        vertical-align: text-bottom;
+    }
+
+    .nav-link {
+        &:not(.active) {
+            > .badge {
+                background-color: $gray-600;
+            }
+        }
+        &.active {
+            > .badge {
+                background-color: shade-color($primary, 30%);
+            }
+        }
+    }
 }
