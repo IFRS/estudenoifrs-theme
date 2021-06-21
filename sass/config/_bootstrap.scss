@@ -5,7 +5,7 @@
 
 $primary:                      $cor-destaque;
 $link-color:                   $cor-destaque;
-$link-hover-color:             darken($cor-destaque, 10%);
+$link-hover-color:             shade-color($cor-destaque, 10%);
 $link-decoration:              none;
 $link-hover-decoration:        underline;
 $component-active-color:       #ffffff;
