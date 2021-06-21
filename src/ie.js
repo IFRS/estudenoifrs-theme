@@ -2,6 +2,6 @@ require('html5shiv');
 require('respond.js/dest/respond.src');
 require('flexibility');
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('readystatechange', function() {
     flexibility(document.body);
 });
