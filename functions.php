@@ -37,8 +37,8 @@ require_once('inc/empty-search.php');
 require_once('inc/assets.php');
 
 // Custom Post Type
-require('inc/cpt/pergunta.php');
+require_once('inc/cpt/pergunta.php');
 
-require('inc/cpt/oportunidade.php');
-require('inc/tax/forma-ingresso.php');
-require('inc/tax/unidade.php');
+require_once('inc/cpt/oportunidade.php');
+require_once('inc/tax/forma-ingresso.php');
+require_once('inc/tax/unidade.php');
