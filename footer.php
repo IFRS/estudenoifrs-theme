@@ -28,11 +28,11 @@
             </div>
             <div class="col">
                 <ul class="menu-social">
-                    <li class="menu-social__item"><a href="https://www.facebook.com/IFRSOficial" class="menu-social__link menu-social__link--facebook"><span class="visually-hidden">P&aacute;gina do IFRS no Facebook</span></a></li>
-                    <li class="menu-social__item"><a href="https://www.twitter.com/IFRSOficial" class="menu-social__link menu-social__link--twitter"><span class="visually-hidden">Perfil do IFRS no Twitter</span></a></li>
-                    <li class="menu-social__item"><a href="https://www.instagram.com/IFRSOficial" class="menu-social__link menu-social__link--instagram"><span class="visually-hidden">Perfil do IFRS no Instagram</span></a></li>
-                    <li class="menu-social__item"><a href="https://www.youtube.com/IFRSOficial" class="menu-social__link menu-social__link--youtube"><span class="visually-hidden">Canal do IFRS no Youtube</span></a></li>
-                    <li class="menu-social__item"><a href="https://www.linkedin.com/school/ifrs" class="menu-social__link menu-social__link--linkedin"><span class="visually-hidden">P&aacute;gina do IFRS no Linkedin</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.facebook.com/IFRSOficial" class="menu-social__link menu-social__link--facebook" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook"><span class="visually-hidden">P&aacute;gina do IFRS no Facebook</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.twitter.com/IFRSOficial" class="menu-social__link menu-social__link--twitter" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter"><span class="visually-hidden">Perfil do IFRS no Twitter</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.instagram.com/IFRSOficial" class="menu-social__link menu-social__link--instagram" data-bs-toggle="tooltip" data-bs-placement="top" title="Instagram"><span class="visually-hidden">Perfil do IFRS no Instagram</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.youtube.com/IFRSOficial" class="menu-social__link menu-social__link--youtube" data-bs-toggle="tooltip" data-bs-placement="top" title="Youtube"><span class="visually-hidden">Canal do IFRS no Youtube</span></a></li>
+                    <li class="menu-social__item"><a href="https://www.linkedin.com/school/ifrs" class="menu-social__link menu-social__link--linkedin" data-bs-toggle="tooltip" data-bs-placement="top" title="Linkedin"><span class="visually-hidden">P&aacute;gina do IFRS no Linkedin</span></a></li>
                 </ul>
             </div>
         </div>
