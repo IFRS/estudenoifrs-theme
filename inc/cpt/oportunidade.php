@@ -249,3 +249,27 @@ function ingresso_oportunidade_metaboxes() {
 }
 
 add_action( 'cmb2_admin_init', 'ingresso_oportunidade_metaboxes', 5 );
+
+// Garbage Collector
+add_action( 'ifrs_oportunidades_trash_hook', function() {
+    $limit = new Datetime("now - 7 days");
+
+    $oportunidades = get_posts( array(
+        'post_type'      => 'oportunidade',
+        'nopaging'       => true,
+        'posts_per_page' => -1,
+        'meta_key'       => '_oportunidade_inscricao_termino',
+        'meta_compare'   => '<',
+        'meta_value'     => $limit->format('U'),
+    ) );
+
+    foreach ($oportunidades as $oportunidade) {
+        wp_trash_post( $oportunidade->ID );
+    }
+} );
+
+add_action( 'init', function() {
+    if ( ! wp_next_scheduled( 'ifrs_oportunidades_trash_hook' ) ) {
+        wp_schedule_event( time(), 'daily', 'ifrs_oportunidades_trash_hook' );
+    }
+}, 99 );
