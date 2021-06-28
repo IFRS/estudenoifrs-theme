@@ -66,7 +66,25 @@ gulp.task('webpack', function(done) {
         resolve: {
             alias: {
                 bootstrap: 'bootstrap/dist/js/bootstrap.bundle',
-            }
+            },
+            fallback: {
+                'assert': false,
+                'buffer': false,
+                'child_process': false,
+                'constants': false,
+                'crypto': false,
+                'fs': false,
+                'http': false,
+                'https': false,
+                'os': false,
+                'path': false,
+                'querystring': false,
+                'stream': false,
+                'util': false,
+                'url': false,
+                'vm': false,
+                'worker_threads': false,
+            },
         },
         plugins: [...webpack_plugins],
         optimization: {
