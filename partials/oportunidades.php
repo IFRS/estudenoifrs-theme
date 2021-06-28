@@ -66,7 +66,7 @@
                 <div class="col-12 m-0">
                     <div class="input-group">
                         <label class="visually-hidden" for="select-<?php echo $select_id; ?>">Unidade</label>
-                        <select name="unidade[]" id="select-<?php echo $select_id; ?>" class="form-select">
+                        <select name="unidade[]" id="select-<?php echo $select_id; ?>" class="form-select flex-grow-0 w-auto">
                             <?php
                                 $unidades = get_terms(array(
                                     'taxonomy' => 'unidade',
