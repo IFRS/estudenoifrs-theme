@@ -11,6 +11,7 @@ const sass         = require('gulp-sass');
 const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 ;
 
@@ -48,6 +49,7 @@ gulp.task('styles', gulp.series('sass', function css() {
 }));
 
 let webpack_plugins = [];
+webpack_plugins.push(new NodePolyfillPlugin());
 argv.bundleanalyzer ? webpack_plugins.push(new BundleAnalyzerPlugin()) : null;
 
 gulp.task('webpack', function(done) {
@@ -66,24 +68,6 @@ gulp.task('webpack', function(done) {
         resolve: {
             alias: {
                 bootstrap: 'bootstrap/dist/js/bootstrap.bundle',
-            },
-            fallback: {
-                'assert': false,
-                'buffer': false,
-                'child_process': false,
-                'constants': false,
-                'crypto': false,
-                'fs': false,
-                'http': false,
-                'https': false,
-                'os': false,
-                'path': false,
-                'querystring': false,
-                'stream': false,
-                'util': false,
-                'url': false,
-                'vm': false,
-                'worker_threads': false,
             },
         },
         plugins: [...webpack_plugins],
