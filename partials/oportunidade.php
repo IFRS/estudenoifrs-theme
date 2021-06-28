@@ -3,7 +3,7 @@
     <div class="oportunidade__header">
         <p class="oportunidade__forma"><?php echo $forma_ingresso[0]->name; ?></p>
         <?php if (!is_singular('oportunidade')) : ?>
-            <button class="btn oportunidade__btn-toggle">
+            <button class="btn oportunidade__btn-toggle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Expandir">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="square" stroke-linejoin="arcs" stroke-width="3" viewBox="0 0 24 24">
                     <path d="M12 5v14M5 12h14"/>
                 </svg>
