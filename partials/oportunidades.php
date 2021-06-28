@@ -88,7 +88,7 @@
                 </div>
             </form>
         </div>
-        <div class="tab-content" aria-live="polite">
+        <div class="tab-content mb-3" aria-live="polite">
             <?php foreach ($formas as $forma) : ?>
                 <div class="tab-pane fade<?php echo (empty($forma->term_id) ? ' active show' : ''); ?>" id="tab-forma-<?php echo (!empty($forma->term_id) ? $forma->term_id : 'todas'); ?>" role="tabpanel">
                     <?php if (!empty($forma->description)) : ?>
