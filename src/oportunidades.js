@@ -39,11 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 oportunidade.classList.remove('oportunidade--open');
                 oportunidade.removeAttribute('style');
                 oportunidade.classList.add(...classes);
+                btn.dataset.bsOriginalTitle = 'Expandir';
             } else { // Open
                 oportunidades.querySelectorAll('.oportunidade--open').forEach(function(open) { // Close others
                     open.classList.remove('oportunidade--open');
                     open.removeAttribute('style');
                     open.classList.add(...classes);
+                    open.querySelector('.oportunidade__btn-toggle').dataset.bsOriginalTitle = 'Expandir';
                 });
 
                 if (colPosition < colCount - 1) {
@@ -55,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 oportunidade.style.gridRow = (rowPosition + 1) + ' / span 3';
                 oportunidade.classList.add('oportunidade--open');
                 oportunidade.classList.add(...classes);
+                btn.dataset.bsOriginalTitle = 'Fechar';
             }
 
             flip.flip();
