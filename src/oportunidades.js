@@ -1,12 +1,22 @@
 require('./_polyfill_element-closest');
 import Flipping from 'flipping/lib/adapters/web';
+import bootstrap from 'bootstrap';
 
 const flip = new Flipping();
 
 document.addEventListener('DOMContentLoaded', function() {
-    let tabs = document.querySelectorAll('button[data-bs-toggle="pill"]')
+    if (window.location.hash) {
+        let el = document.querySelector('[data-bs-target="' + window.location.hash + '"]');
+        if (el) {
+            let tab = bootstrap.Tab.getOrCreateInstance(el);
+            tab.show();
+        }
+    }
+
+    let tabs = document.querySelectorAll('button[data-bs-toggle="pill"]');
     tabs.forEach(function(tab) {
         tab.addEventListener('show.bs.tab', function() {
+            history.replaceState(null, '', this.dataset.bsTarget);
             document.querySelector(this.dataset.bsTarget).querySelectorAll('.oportunidade--open').forEach(function(open) {
                 open.classList.remove('oportunidade--open');
                 open.removeAttribute('style');
