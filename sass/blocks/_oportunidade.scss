@@ -240,7 +240,7 @@
 
         #{$root}__info-link {
             background: $cor-destaque;
-            color: #ffffff;
+            color: color-contrast($cor-destaque);
             display: block;
             font-size: 1.2rem;
             font-weight: bold;
@@ -268,6 +268,7 @@
             }
             #{$root}__info-link {
                 background-color: $cor-diplomado;
+                color: color-contrast($cor-diplomado);
             }
         }
 
@@ -279,6 +280,7 @@
             }
             #{$root}__info-link {
                 background-color: $cor-ead;
+                color: color-contrast($cor-ead);
             }
         }
 
@@ -290,6 +292,7 @@
             }
             #{$root}__info-link {
                 background-color: $cor-eja;
+                color: color-contrast($cor-eja);
             }
         }
 
@@ -301,6 +304,7 @@
             }
             #{$root}__info-link {
                 background-color: $cor-extensao;
+                color: color-contrast($cor-extensao);
             }
         }
 
@@ -312,6 +316,7 @@
             }
             #{$root}__info-link {
                 background-color: $cor-internacional;
+                color: color-contrast($cor-internacional);
             }
         }
 
@@ -323,6 +328,7 @@
             }
             #{$root}__info-link {
                 background-color: $cor-pos;
+                color: color-contrast($cor-pos);
             }
         }
 
@@ -334,6 +340,7 @@
             }
             #{$root}__info-link {
                 background-color: $cor-destaque;
+                color: color-contrast($cor-ps);
             }
         }
 
@@ -345,6 +352,7 @@
             }
             #{$root}__info-link {
                 background-color: $cor-transfer;
+                color: color-contrast($cor-transfer);
             }
         }
     }
