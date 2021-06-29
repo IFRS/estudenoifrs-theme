@@ -46,11 +46,11 @@
             ?>
             <?php if (!empty($forma->term_id)) : ?>
                 <li class="nav-item mx-1 my-1">
-                    <button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-<?php echo $forma->term_id; ?>" role="tab" aria-controls="collapse-forma-<?php echo $forma->term_id; ?>" aria-selected="false"><?php echo $forma->name; ?>&nbsp;&nbsp;<span class="badge"><?php echo $forma->oportunidades->post_count; ?></span></button>
+                    <button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#<?php echo $forma->slug; ?>" role="tab" aria-controls="<?php echo $forma->slug; ?>" aria-selected="false"><?php echo $forma->name; ?>&nbsp;&nbsp;<span class="badge"><?php echo $forma->oportunidades->post_count; ?></span></button>
                 </li>
             <?php else : ?>
                 <li class="nav-item mx-1 my-1">
-                    <button class="nav-link active" type="button" data-bs-toggle="pill" data-bs-target="#tab-forma-todas" role="tab" aria-controls="collapse-forma-todas" aria-selected="true">Tudo&nbsp;&nbsp;<span class="badge"><?php echo $forma->oportunidades->post_count; ?></span></button>
+                    <button class="nav-link active" type="button" data-bs-toggle="pill" data-bs-target="#tudo" role="tab" aria-controls="tudo" aria-selected="true">Tudo&nbsp;&nbsp;<span class="badge"><?php echo $forma->oportunidades->post_count; ?></span></button>
                 </li>
             <?php endif; ?>
         <?php endforeach; ?>
@@ -90,7 +90,7 @@
         </div>
         <div class="tab-content mb-3" aria-live="polite">
             <?php foreach ($formas as $forma) : ?>
-                <div class="tab-pane fade<?php echo (empty($forma->term_id) ? ' active show' : ''); ?>" id="tab-forma-<?php echo (!empty($forma->term_id) ? $forma->term_id : 'todas'); ?>" role="tabpanel">
+                <div class="tab-pane fade<?php echo (empty($forma->term_id) ? ' active show' : ''); ?>" id="<?php echo (!empty($forma->term_id) ? $forma->slug : 'tudo'); ?>" role="tabpanel">
                     <?php if (!empty($forma->description)) : ?>
                         <div class="forma-description">
                             <?php echo wpautop($forma->description); ?>
