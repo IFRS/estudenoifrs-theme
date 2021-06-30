@@ -2,7 +2,7 @@
 // Content width
 if ( ! isset( $content_width ) ) $content_width = 1296;
 
-// Remove Gutenberg custom options
+// Remove some Gutenberg custom options
 add_theme_support( 'editor-color-palette' );
 add_theme_support( 'editor-gradient-presets' );
 add_theme_support( 'disable-custom-colors' );
@@ -10,7 +10,7 @@ add_theme_support( 'disable-custom-gradients' );
 add_theme_support( 'disable-custom-font-sizes' );
 add_theme_support( 'custom-units', array() );
 
-// Gutenberg Default Styles
+// Gutenberg Default Theme Styles
 add_theme_support( 'wp-block-styles' );
 
 // Add theme support for Automatic Feed Links
@@ -20,7 +20,13 @@ add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'post-thumbnails' );
 
 // Add theme support for HTML5 Semantic Markup
-add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
+add_theme_support( 'html5', array(
+    'search-form',
+    'comment-form',
+    'comment-list',
+    'gallery',
+    'caption',
+) );
 
 // Add theme support for Responsive Embeds
 add_theme_support( 'responsive-embeds' );
@@ -67,23 +73,5 @@ add_action('widgets_init', function() {
     ));
 });
 
-// Image sizes
-add_action( 'switch_theme', function() {
-    update_option( 'default_comment_status', 'closed' );
-
-    update_option( 'thumbnail_size_w', 256 );
-    update_option( 'thumbnail_size_h', 192 );
-    update_option( 'thumbnail_crop', 1 );
-
-    update_option( 'medium_size_w', 640 );
-    update_option( 'medium_size_h', 360 );
-
-    update_option( 'medium_large_size_w', 854 );
-    update_option( 'medium_large_size_h', 480 );
-
-    update_option( 'large_size_w', 1280 );
-    update_option( 'large_size_h', 720 );
-} );
-
-// Impede a adição da tag <p> pelo plugin ContactForm7
+// Prevents ContactForm7 plugin to add <p> tag
 add_filter('wpcf7_autop_or_not', '__return_false');
