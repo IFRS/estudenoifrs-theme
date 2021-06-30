@@ -1,6 +1,6 @@
 require('./_polyfill_element-closest');
 import Flipping from 'flipping/lib/adapters/web';
-import bootstrap from 'bootstrap';
+import Tab from 'bootstrap/js/dist/tab';
 
 const flip = new Flipping();
 
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.hash) {
         let el = document.querySelector('[data-bs-target="' + window.location.hash + '"]');
         if (el) {
-            let tab = bootstrap.Tab.getOrCreateInstance(el);
+            let tab = Tab.getOrCreateInstance(el);
             tab.show();
         }
     }

@@ -65,11 +65,6 @@ gulp.task('webpack', function(done) {
             path: path.resolve(__dirname, 'js'),
             filename: '[name].js'
         },
-        resolve: {
-            alias: {
-                bootstrap: 'bootstrap/dist/js/bootstrap.bundle',
-            },
-        },
         plugins: [...webpack_plugins],
         optimization: {
             minimize: false,
