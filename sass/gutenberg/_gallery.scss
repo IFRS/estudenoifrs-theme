@@ -1,4 +1,8 @@
 .wp-block-gallery {
+    .blocks-gallery-grid {
+        flex-grow: 1;
+    }
+
     .blocks-gallery-caption {
         flex-basis: 100%;
     }
