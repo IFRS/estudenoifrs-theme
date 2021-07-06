@@ -7,7 +7,7 @@ const gulp         = require('gulp');
 const path         = require('path');
 const PluginError  = require('plugin-error');
 const postcss      = require('gulp-postcss');
-const sass         = require('gulp-sass');
+const sass         = require('gulp-sass')(require('sass'));
 const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
@@ -16,10 +16,9 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 ;
 
 gulp.task('clean', function() {
-    return del(['css/', 'js/', 'dist/']);
+    return del(['css/', 'js/', 'vendor/', 'dist/']);
 });
 
-sass.compiler = require('sass');
 gulp.task('sass', function() {
     let postCSS_plugins = [
         require('postcss-flexibility'),
