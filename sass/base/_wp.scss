@@ -1,3 +1,7 @@
 .screen-reader-text {
     @include visually-hidden();
 }
+
+#wpadminbar {
+    z-index: 999 !important;
+}
