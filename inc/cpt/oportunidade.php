@@ -1,93 +1,89 @@
 <?php
-if ( ! function_exists('ingresso_oportunidade_post_type') ) {
-    function ingresso_oportunidade_post_type() {
-        $labels = array(
-            'name'                  => _x( 'Oportunidades', 'Post Type General Name', 'ifrs-ingresso-theme' ),
-            'singular_name'         => _x( 'Oportunidade', 'Post Type Singular Name', 'ifrs-ingresso-theme' ),
-            'menu_name'             => __( 'Oportunidades', 'ifrs-ingresso-theme' ),
-            'name_admin_bar'        => __( 'Oportunidades', 'ifrs-ingresso-theme' ),
-            'archives'              => __( 'Arquivo de Oportunidades', 'ifrs-ingresso-theme' ),
-            'attributes'            => __( 'Atributos de Oportunidades', 'ifrs-ingresso-theme' ),
-            'parent_item_colon'     => __( 'Oportunidade mãe:', 'ifrs-ingresso-theme' ),
-            'all_items'             => __( 'Todas as Oportunidades', 'ifrs-ingresso-theme' ),
-            'add_new_item'          => __( 'Adicionar Nova Oportunidade', 'ifrs-ingresso-theme' ),
-            'add_new'               => __( 'Adicionar Nova', 'ifrs-ingresso-theme' ),
-            'new_item'              => __( 'Nova Oportunidade', 'ifrs-ingresso-theme' ),
-            'edit_item'             => __( 'Editar Oportunidade', 'ifrs-ingresso-theme' ),
-            'update_item'           => __( 'Atualizar Oportunidade', 'ifrs-ingresso-theme' ),
-            'view_item'             => __( 'Visualizar Oportunidade', 'ifrs-ingresso-theme' ),
-            'view_items'            => __( 'Visualizar Oportunidades', 'ifrs-ingresso-theme' ),
-            'search_items'          => __( 'Buscar Oportunidade', 'ifrs-ingresso-theme' ),
-            'not_found'             => __( 'Não encontrada', 'ifrs-ingresso-theme' ),
-            'not_found_in_trash'    => __( 'Não encontrada na Lixeira', 'ifrs-ingresso-theme' ),
-            'featured_image'        => __( 'Imagem Destaque', 'ifrs-ingresso-theme' ),
-            'set_featured_image'    => __( 'Definir imagem destaque', 'ifrs-ingresso-theme' ),
-            'remove_featured_image' => __( 'Remover imagem destaque', 'ifrs-ingresso-theme' ),
-            'use_featured_image'    => __( 'Usar como imagem destaque', 'ifrs-ingresso-theme' ),
-            'insert_into_item'      => __( 'Inserir na Oportunidade', 'ifrs-ingresso-theme' ),
-            'uploaded_to_this_item' => __( 'Enviado para essa Oportunidade', 'ifrs-ingresso-theme' ),
-            'items_list'            => __( 'Lista de Oportunidades', 'ifrs-ingresso-theme' ),
-            'items_list_navigation' => __( 'Lista de navegação de Oportunidades', 'ifrs-ingresso-theme' ),
-            'filter_items_list'     => __( 'Filtrar lista de Oportunidades', 'ifrs-ingresso-theme' ),
-        );
+add_action( 'init', function() {
+    $labels = array(
+        'name'                  => _x( 'Oportunidades', 'Post Type General Name', 'ifrs-ingresso-theme' ),
+        'singular_name'         => _x( 'Oportunidade', 'Post Type Singular Name', 'ifrs-ingresso-theme' ),
+        'menu_name'             => __( 'Oportunidades', 'ifrs-ingresso-theme' ),
+        'name_admin_bar'        => __( 'Oportunidades', 'ifrs-ingresso-theme' ),
+        'archives'              => __( 'Arquivo de Oportunidades', 'ifrs-ingresso-theme' ),
+        'attributes'            => __( 'Atributos de Oportunidades', 'ifrs-ingresso-theme' ),
+        'parent_item_colon'     => __( 'Oportunidade mãe:', 'ifrs-ingresso-theme' ),
+        'all_items'             => __( 'Todas as Oportunidades', 'ifrs-ingresso-theme' ),
+        'add_new_item'          => __( 'Adicionar Nova Oportunidade', 'ifrs-ingresso-theme' ),
+        'add_new'               => __( 'Adicionar Nova', 'ifrs-ingresso-theme' ),
+        'new_item'              => __( 'Nova Oportunidade', 'ifrs-ingresso-theme' ),
+        'edit_item'             => __( 'Editar Oportunidade', 'ifrs-ingresso-theme' ),
+        'update_item'           => __( 'Atualizar Oportunidade', 'ifrs-ingresso-theme' ),
+        'view_item'             => __( 'Visualizar Oportunidade', 'ifrs-ingresso-theme' ),
+        'view_items'            => __( 'Visualizar Oportunidades', 'ifrs-ingresso-theme' ),
+        'search_items'          => __( 'Buscar Oportunidade', 'ifrs-ingresso-theme' ),
+        'not_found'             => __( 'Não encontrada', 'ifrs-ingresso-theme' ),
+        'not_found_in_trash'    => __( 'Não encontrada na Lixeira', 'ifrs-ingresso-theme' ),
+        'featured_image'        => __( 'Imagem Destaque', 'ifrs-ingresso-theme' ),
+        'set_featured_image'    => __( 'Definir imagem destaque', 'ifrs-ingresso-theme' ),
+        'remove_featured_image' => __( 'Remover imagem destaque', 'ifrs-ingresso-theme' ),
+        'use_featured_image'    => __( 'Usar como imagem destaque', 'ifrs-ingresso-theme' ),
+        'insert_into_item'      => __( 'Inserir na Oportunidade', 'ifrs-ingresso-theme' ),
+        'uploaded_to_this_item' => __( 'Enviado para essa Oportunidade', 'ifrs-ingresso-theme' ),
+        'items_list'            => __( 'Lista de Oportunidades', 'ifrs-ingresso-theme' ),
+        'items_list_navigation' => __( 'Lista de navegação de Oportunidades', 'ifrs-ingresso-theme' ),
+        'filter_items_list'     => __( 'Filtrar lista de Oportunidades', 'ifrs-ingresso-theme' ),
+    );
 
-        $capabilities = array(
-            // meta caps (don't assign these to roles)
-            'edit_post'              => 'edit_oportunidade',
-            'read_post'              => 'read',
-            'delete_post'            => 'delete_oportunidade',
+    $capabilities = array(
+        // meta caps (don't assign these to roles)
+        'edit_post'              => 'edit_oportunidade',
+        'read_post'              => 'read',
+        'delete_post'            => 'delete_oportunidade',
 
-            // primitive/meta caps
-            'create_posts'           => 'create_oportunidades',
+        // primitive/meta caps
+        'create_posts'           => 'create_oportunidades',
 
-            // primitive caps used outside of map_meta_cap()
-            'edit_posts'             => 'edit_oportunidades',
-            'edit_others_posts'      => 'manage_oportunidades',
-            'publish_posts'          => 'create_oportunidades',
-            'read_private_posts'     => 'read',
+        // primitive caps used outside of map_meta_cap()
+        'edit_posts'             => 'edit_oportunidades',
+        'edit_others_posts'      => 'manage_oportunidades',
+        'publish_posts'          => 'create_oportunidades',
+        'read_private_posts'     => 'read',
 
-            // primitive caps used inside of map_meta_cap()
-            'read'                   => 'read',
-            'delete_posts'           => 'delete_oportunidades',
-            'delete_private_posts'   => 'manage_oportunidades',
-            'delete_published_posts' => 'delete_oportunidades',
-            'delete_others_posts'    => 'manage_oportunidades',
-            'edit_private_posts'     => 'edit_oportunidades',
-            'edit_published_posts'   => 'edit_oportunidades',
-        );
+        // primitive caps used inside of map_meta_cap()
+        'read'                   => 'read',
+        'delete_posts'           => 'delete_oportunidades',
+        'delete_private_posts'   => 'manage_oportunidades',
+        'delete_published_posts' => 'delete_oportunidades',
+        'delete_others_posts'    => 'manage_oportunidades',
+        'edit_private_posts'     => 'edit_oportunidades',
+        'edit_published_posts'   => 'edit_oportunidades',
+    );
 
-        $args = array(
-            'label'                 => __( 'Oportunidade', 'ifrs-ingresso-theme' ),
-            'description'           => __( 'Oportunidades de ingresso discente', 'ifrs-ingresso-theme' ),
-            'labels'                => $labels,
-            'supports'              => array( 'title' ),
-            'taxonomies'            => array( 'tipo', 'unidade' ),
-            'hierarchical'          => false,
-            'public'                => true,
-            'show_ui'               => true,
-            'show_in_menu'          => true,
-            'menu_position'         => 25,
-            'menu_icon'             => 'dashicons-book',
-            'show_in_admin_bar'     => false,
-            'show_in_nav_menus'     => true,
-            'can_export'            => true,
-            'has_archive'           => true,
-            'exclude_from_search'   => false,
-            'publicly_queryable'    => true,
-            //'capabilities'          => $capabilities,
-            'show_in_rest'          => true,
-            'rest_base'             => 'oportunidades',
-            'rewrite'               => array( 'slug' => 'oportunidades' ),
-        );
+    $args = array(
+        'label'                 => __( 'Oportunidade', 'ifrs-ingresso-theme' ),
+        'description'           => __( 'Oportunidades de ingresso discente', 'ifrs-ingresso-theme' ),
+        'labels'                => $labels,
+        'supports'              => array( 'title' ),
+        'taxonomies'            => array( 'tipo', 'unidade' ),
+        'hierarchical'          => false,
+        'public'                => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'menu_position'         => 25,
+        'menu_icon'             => 'dashicons-book',
+        'show_in_admin_bar'     => false,
+        'show_in_nav_menus'     => true,
+        'can_export'            => true,
+        'has_archive'           => true,
+        'exclude_from_search'   => false,
+        'publicly_queryable'    => true,
+        //'capabilities'          => $capabilities,
+        'show_in_rest'          => true,
+        'rest_base'             => 'oportunidades',
+        'rewrite'               => array( 'slug' => 'oportunidades' ),
+    );
 
-        register_post_type( 'oportunidade', $args );
-    }
-
-    add_action( 'init', 'ingresso_oportunidade_post_type', 0 );
-}
+    register_post_type( 'oportunidade', $args );
+}, 2 );
 
 /* Metaboxes */
-function ingresso_oportunidade_metaboxes() {
+add_action( 'cmb2_admin_init', function() {
     $prefix = '_oportunidade_';
 
     /**
@@ -248,9 +244,7 @@ function ingresso_oportunidade_metaboxes() {
             'required' => 'required',
         ),
     ) );
-}
-
-add_action( 'cmb2_admin_init', 'ingresso_oportunidade_metaboxes', 5 );
+}, 5 );
 
 /* Disable Gutenberg */
 add_filter('use_block_editor_for_post_type', function($current_status, $post_type) {
