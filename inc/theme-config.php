@@ -45,9 +45,9 @@ add_theme_support( 'custom-logo', array(
 // Sidebars
 add_action('widgets_init', function() {
     register_sidebar(array(
-        'name'          => 'Carousel',
+        'name'          => 'Carrossel',
         'id'            => 'area-carousel',
-        'description'   => __('Área para conteúdo em forma de slider, geralmente imagens.', 'ifrs-ingresso-theme'),
+        'description'   => __('Área para imagens em forma de slider.', 'ifrs-ingresso-theme'),
         'before_widget' => '<div id="%1$s" class="carousel-item %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<span class="visually-hidden">',
