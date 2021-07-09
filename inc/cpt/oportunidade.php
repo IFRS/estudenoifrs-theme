@@ -61,7 +61,7 @@ if ( ! function_exists('ingresso_oportunidade_post_type') ) {
             'description'           => __( 'Oportunidades de ingresso discente', 'ifrs-ingresso-theme' ),
             'labels'                => $labels,
             'supports'              => array( 'title' ),
-            'taxonomies'            => array( 'forma', 'unidade' ),
+            'taxonomies'            => array( 'tipo', 'unidade' ),
             'hierarchical'          => false,
             'public'                => true,
             'show_ui'               => true,
@@ -75,7 +75,9 @@ if ( ! function_exists('ingresso_oportunidade_post_type') ) {
             'exclude_from_search'   => false,
             'publicly_queryable'    => true,
             //'capabilities'          => $capabilities,
-            'rewrite'               => array('slug' => 'oportunidades'),
+            'show_in_rest'          => true,
+            'rest_base'             => 'oportunidades',
+            'rewrite'               => array( 'slug' => 'oportunidades' ),
         );
 
         register_post_type( 'oportunidade', $args );
@@ -174,24 +176,24 @@ function ingresso_oportunidade_metaboxes() {
     ) );
 
     /**
-	 * Taxonomy Forma Metabox
+	 * Taxonomy Tipo Metabox
 	 */
-    $forma_metabox = new_cmb2_box( array(
-		'id'           => $prefix . 'forma_taxonomy_metabox',
-		'title'        => __( 'Forma de Ingresso', 'ifrs-ingresso-theme' ),
+    $tipo_metabox = new_cmb2_box( array(
+		'id'           => $prefix . 'tipo_taxonomy_metabox',
+		'title'        => __( 'Tipo', 'ifrs-ingresso-theme' ),
 		'object_types' => array( 'oportunidade' ),
 		'context'      => 'side',
 		'priority'     => 'low',
 		'show_names'   => false,
     ) );
 
-    $forma_metabox->add_field( array(
-        'id'                => $prefix . 'forma_taxonomy',
-        'taxonomy'          => 'forma',
+    $tipo_metabox->add_field( array(
+        'id'                => $prefix . 'tipo_taxonomy',
+        'taxonomy'          => 'tipo',
         'type'              => 'taxonomy_radio',
         'show_option_none'  => false,
         'text'              => array(
-            'no_terms_text' => __( 'Ops! Nenhuma Forma de Ingresso encontrada. Por favor, crie alguma Forma de Ingresso antes de cadastrar essa Oportunidade.', 'ifrs-ingresso-theme')
+            'no_terms_text' => __( 'Ops! Nenhum Tipo de Seleção encontrado. Por favor, crie algum Tipo antes de cadastrar essa Oportunidade.', 'ifrs-ingresso-theme')
         ),
         'remove_default'    => 'true',
         'attributes' => array(
@@ -250,7 +252,13 @@ function ingresso_oportunidade_metaboxes() {
 
 add_action( 'cmb2_admin_init', 'ingresso_oportunidade_metaboxes', 5 );
 
-// Garbage Collector
+/* Disable Gutenberg */
+add_filter('use_block_editor_for_post_type', function($current_status, $post_type) {
+    if ($post_type === 'oportunidade') return false;
+    return $current_status;
+}, 10, 2);
+
+/* Garbage Collector */
 add_action( 'ifrs_oportunidades_trash_hook', function() {
     $limit = new Datetime("now - 7 days");
 

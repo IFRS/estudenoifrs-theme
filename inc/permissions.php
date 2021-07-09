@@ -18,7 +18,7 @@ add_action('after_switch_theme', function() {
             'delete_oportunidades'     => true,
             'manage_oportunidades'     => false,
 
-            'assign_forma'        => true,
+            'assign_tipo'        => true,
             'assign_unidade'      => true
         ));
     }

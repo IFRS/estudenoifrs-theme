@@ -1,7 +1,7 @@
-<?php $forma_ingresso = get_the_terms(get_the_ID(), 'forma'); ?>
-<div class="oportunidade oportunidade--<?php echo $forma_ingresso[0]->slug; ?><?php echo (is_singular('oportunidade')) ? ' oportunidade--open' : ''; ?>" data-flip-key="oportunidade-<?php the_ID(); ?>">
+<?php $tipo = get_the_terms(get_the_ID(), 'tipo'); ?>
+<div class="oportunidade oportunidade--<?php echo $tipo[0]->slug; ?><?php echo (is_singular('oportunidade')) ? ' oportunidade--open' : ''; ?>" data-flip-key="oportunidade-<?php the_ID(); ?>">
     <div class="oportunidade__header">
-        <p class="oportunidade__forma"><?php echo $forma_ingresso[0]->name; ?></p>
+        <p class="oportunidade__tipo"><?php echo $tipo[0]->name; ?></p>
         <?php if (!is_singular('oportunidade')) : ?>
             <button class="btn oportunidade__btn-toggle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Expandir">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="square" stroke-linejoin="arcs" stroke-width="3" viewBox="0 0 24 24">

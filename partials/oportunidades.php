@@ -3,23 +3,23 @@
         <h2 class="text-center mb-3"><?php single_term_title( '', true ); ?></h2>
     <?php endif; ?>
     <?php
-        $formas = get_terms(array(
-            'taxonomy' => 'forma',
+        $tipos = get_terms(array(
+            'taxonomy' => 'tipo',
             'hide_empty' => false,
         ));
-        array_unshift($formas, new stdClass());
+        array_unshift($tipos, new stdClass());
     ?>
-    <ul class="nav nav-pills justify-content-center mt-3 mb-1 mx-auto forma-list" role="tablist">
-        <?php foreach ($formas as &$forma) : ?>
+    <ul class="nav nav-pills justify-content-center mt-3 mb-1 mx-auto tipo-list" role="tablist">
+        <?php foreach ($tipos as &$tipo) : ?>
             <?php
                 $today = new Datetime("now - 1 day");
 
                 $tax_query = array();
 
-                if (!empty($forma->term_id)) {
+                if (!empty($tipo->term_id)) {
                     $tax_query[] = array(
-                        'taxonomy' => 'forma',
-                        'terms' => $forma->term_id,
+                        'taxonomy' => 'tipo',
+                        'terms' => $tipo->term_id,
                     );
                 }
 
@@ -42,19 +42,19 @@
                     'order' => 'ASC',
                 );
 
-                $forma->oportunidades = new WP_Query($args);
+                $tipo->oportunidades = new WP_Query($args);
             ?>
-            <?php if (!empty($forma->term_id)) : ?>
+            <?php if (!empty($tipo->term_id)) : ?>
                 <li class="nav-item mx-1 my-1">
-                    <button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#<?php echo $forma->slug; ?>" role="tab" aria-controls="<?php echo $forma->slug; ?>" aria-selected="false"><?php echo $forma->name; ?>&nbsp;&nbsp;<span class="badge"><?php echo $forma->oportunidades->post_count; ?></span></button>
+                    <button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#<?php echo $tipo->slug; ?>" role="tab" aria-controls="<?php echo $tipo->slug; ?>" aria-selected="false"><?php echo $tipo->name; ?>&nbsp;&nbsp;<span class="badge"><?php echo $tipo->oportunidades->post_count; ?></span></button>
                 </li>
             <?php else : ?>
                 <li class="nav-item mx-1 my-1">
-                    <button class="nav-link active" type="button" data-bs-toggle="pill" data-bs-target="#tudo" role="tab" aria-controls="tudo" aria-selected="true">Tudo&nbsp;&nbsp;<span class="badge"><?php echo $forma->oportunidades->post_count; ?></span></button>
+                    <button class="nav-link active" type="button" data-bs-toggle="pill" data-bs-target="#tudo" role="tab" aria-controls="tudo" aria-selected="true">Tudo&nbsp;&nbsp;<span class="badge"><?php echo $tipo->oportunidades->post_count; ?></span></button>
                 </li>
             <?php endif; ?>
         <?php endforeach; ?>
-        <?php unset($forma); ?>
+        <?php unset($tipo); ?>
     </ul>
 </section>
 
@@ -89,22 +89,22 @@
             </form>
         </div>
         <div class="tab-content mb-3" aria-live="polite">
-            <?php foreach ($formas as $forma) : ?>
-                <div class="tab-pane fade<?php echo (empty($forma->term_id) ? ' active show' : ''); ?>" id="<?php echo (!empty($forma->term_id) ? $forma->slug : 'tudo'); ?>" role="tabpanel">
-                    <?php if (!empty($forma->description)) : ?>
-                        <div class="forma-description">
-                            <?php echo wpautop($forma->description); ?>
+            <?php foreach ($tipos as $tipo) : ?>
+                <div class="tab-pane fade<?php echo (empty($tipo->term_id) ? ' active show' : ''); ?>" id="<?php echo (!empty($tipo->term_id) ? $tipo->slug : 'tudo'); ?>" role="tabpanel">
+                    <?php if (!empty($tipo->description)) : ?>
+                        <div class="tipo-description">
+                            <?php echo wpautop($tipo->description); ?>
                         </div>
                     <?php endif; ?>
-                    <?php if ($forma->oportunidades->have_posts()) : ?>
+                    <?php if ($tipo->oportunidades->have_posts()) : ?>
                         <div class="oportunidades">
-                            <?php while ($forma->oportunidades->have_posts()) : $forma->oportunidades->the_post(); ?>
+                            <?php while ($tipo->oportunidades->have_posts()) : $tipo->oportunidades->the_post(); ?>
                                 <?php echo get_template_part('partials/oportunidade'); ?>
                             <?php endwhile; ?>
                         </div>
                     <?php else : ?>
                         <div class="alert alert-info" role="alert">
-                            N&atilde;o existem oportunidades<?php echo (is_tax('unidade')) ? ' nessa <strong>unidade</strong> ' : ' '; ?>para essa <strong>forma de ingresso</strong> no momento. Fique atento para novas publica&ccedil;&otilde;es.
+                            N&atilde;o existem oportunidades<?php echo (is_tax('unidade')) ? ' nessa <strong>unidade</strong> ' : ' '; ?>para esse <strong>tipo</strong> no momento. Fique atento para novas publica&ccedil;&otilde;es.
                         </div>
                     <?php endif; ?>
                     <?php wp_reset_postdata(); ?>

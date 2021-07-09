@@ -38,7 +38,11 @@ require_once('inc/assets.php');
 
 // Custom Post Type
 require_once('inc/cpt/pergunta.php');
-
 require_once('inc/cpt/oportunidade.php');
-require_once('inc/tax/forma-ingresso.php');
+require_once('inc/cpt/curso.php');
+
+require_once('inc/tax/tipo.php');
+require_once('inc/tax/modalidade.php');
+require_once('inc/tax/nivel.php');
+require_once('inc/tax/turno.php');
 require_once('inc/tax/unidade.php');
