@@ -1,6 +1,6 @@
 <?php
     $modalidades = get_terms(array(
-        'taxonomy' => 'curso_modalidade',
+        'taxonomy' => 'modalidade',
         'hide_empty' => false,
         'orderby' => 'term_order',
     ));
@@ -8,7 +8,7 @@
 
 <?php
     $unidades = get_terms(array(
-        'taxonomy' => 'curso_unidade',
+        'taxonomy' => 'unidade',
         'hide_empty' => false,
         'orderby' => 'term_order',
     ));
@@ -16,7 +16,7 @@
 
 <?php
     $niveis = get_terms(array(
-        'taxonomy' => 'curso_nivel',
+        'taxonomy' => 'nivel',
         'hide_empty' => false,
         'orderby' => 'term_order',
     ));
@@ -24,7 +24,7 @@
 
 <?php
     $turnos = get_terms(array(
-        'taxonomy' => 'curso_turno',
+        'taxonomy' => 'turno',
         'hide_empty' => false,
         'orderby' => 'term_order',
     ));
@@ -42,9 +42,9 @@
             <legend>Modalidade</legend>
             <?php foreach ($modalidades as $modalidade): ?>
                 <?php $field_id = uniqid(); ?>
-                <?php $modalidade_check = (isset($_POST['curso_modalidade']) && in_array($modalidade->slug, $_POST['curso_modalidade'])) || is_tax('curso_modalidade', $modalidade->slug); ?>
+                <?php $modalidade_check = (isset($_POST['modalidade']) && in_array($modalidade->slug, $_POST['modalidade'])) || is_tax('modalidade', $modalidade->slug); ?>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="curso_modalidade[]" value="<?php echo $modalidade->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $modalidade_check ? 'checked' : ''; ?>>
+                    <input class="form-check-input" type="checkbox" name="modalidade[]" value="<?php echo $modalidade->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $modalidade_check ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $modalidade->name; ?></label>
                 </div>
             <?php endforeach; ?>
@@ -53,9 +53,9 @@
             <legend>Unidade</legend>
             <?php foreach ($unidades as $unidade): ?>
                 <?php $field_id = uniqid(); ?>
-                <?php $unidade_check = (isset($_POST['curso_unidade']) && in_array($unidade->slug, $_POST['curso_unidade'])) || is_tax('curso_unidade', $unidade->slug); ?>
+                <?php $unidade_check = (isset($_POST['unidade']) && in_array($unidade->slug, $_POST['unidade'])) || is_tax('unidade', $unidade->slug); ?>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="curso_unidade[]" value="<?php echo $unidade->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $unidade_check ? 'checked' : ''; ?>>
+                    <input class="form-check-input" type="checkbox" name="unidade[]" value="<?php echo $unidade->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $unidade_check ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $unidade->name; ?></label>
                 </div>
             <?php endforeach; ?>
@@ -64,9 +64,9 @@
             <legend>N&iacute;vel</legend>
             <?php foreach ($niveis as $nivel): ?>
                 <?php $field_id = uniqid(); ?>
-                <?php $nivel_check = (isset($_POST['curso_nivel']) && in_array($nivel->slug, $_POST['curso_nivel'])) || is_tax('curso_nivel', $nivel->slug); ?>
+                <?php $nivel_check = (isset($_POST['nivel']) && in_array($nivel->slug, $_POST['nivel'])) || is_tax('nivel', $nivel->slug); ?>
                 <div class="form-check<?php echo ($nivel->parent !== 0) ? ' ml-3' : '' ?>">
-                    <input class="form-check-input" type="checkbox" name="curso_nivel[]" value="<?php echo $nivel->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $nivel_check ? 'checked' : ''; ?>>
+                    <input class="form-check-input" type="checkbox" name="nivel[]" value="<?php echo $nivel->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $nivel_check ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $nivel->name; ?></label>
                 </div>
             <?php endforeach; ?>
@@ -75,9 +75,9 @@
             <legend>Turno</legend>
             <?php foreach ($turnos as $turno): ?>
                 <?php $field_id = uniqid(); ?>
-                <?php $turno_check = (isset($_POST['curso_turno']) && in_array($turno->slug, $_POST['curso_turno'])) || is_tax('curso_turno', $turno->slug); ?>
+                <?php $turno_check = (isset($_POST['turno']) && in_array($turno->slug, $_POST['turno'])) || is_tax('turno', $turno->slug); ?>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="curso_turno[]" value="<?php echo $turno->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $turno_check ? 'checked' : ''; ?>>
+                    <input class="form-check-input" type="checkbox" name="turno[]" value="<?php echo $turno->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $turno_check ? 'checked' : ''; ?>>
                     <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $turno->name; ?></label>
                 </div>
             <?php endforeach; ?>
