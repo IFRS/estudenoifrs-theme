@@ -95,12 +95,12 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
             array(
                 'id'         => $prefix . 'carga_horaria',
                 'name'       => __( 'Carga Horária', 'ifrs-ingresso-theme' ),
-                'desc'       => __( 'em horas.', 'ifrs-ingresso-theme' ),
+                'desc'       => __( 'em horas (somente números).', 'ifrs-ingresso-theme' ),
                 'type'       => 'text',
                 'size'       => 10,
                 'attributes' => array(
                     'required' => 'required',
-                    'type'     => 'number',
+                    // 'type'     => 'number',
                     'pattern'  => '\d*',
                 ),
             ),
@@ -109,14 +109,22 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'name'       => __( 'Duração', 'ifrs-ingresso-theme' ),
                 'desc'       => __( '2 meses, 4 semestres, 3 anos, etc.', 'ifrs-ingresso-theme' ),
                 'type'       => 'text',
+                'size'       => 50,
                 'attributes' => array(
                     'required' => 'required',
                 ),
             ),
             array(
+                'id'         => $prefix . 'ead',
+                'name'       => __( 'Possui carga horária EaD?', 'ifrs-ingresso-theme' ),
+                'desc'       => __( 'Marque caso o Curso possua parte da carga horária a distância.', 'ifrs-ingresso-theme' ),
+                'type'       => 'switch',
+            ),
+            array(
                 'id'   => $prefix . 'nota',
                 'name' => __( 'Avaliação do Curso', 'ifrs-ingresso-theme' ),
                 'desc' => __( 'Nota recebida pela última avaliação do Curso, se houver.', 'ifrs-ingresso-theme' ),
+                'size' => 5,
                 'type' => 'number',
                 'step' => '1',
                 'min'  => '1',
@@ -202,11 +210,12 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
         'fields'     => array(
             array(
                 'id'                => $prefix . 'unidade_taxonomy',
-                'desc'              => __( 'Escolha a Unidade de oferta do Curso.', 'ifrs-ingresso-theme' ),
+                'desc'              => __( 'Escolha as Unidades de oferta do Curso.', 'ifrs-ingresso-theme' ),
                 'type'              => 'taxonomy',
                 'taxonomy'          => 'unidade',
                 'add_new'           => false,
                 'remove_default'    => true,
+                'field_type'        => 'checkbox_list',
             ),
         ),
     );
@@ -246,6 +255,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'desc'              => __( 'Escolha o Nível do Curso.', 'ifrs-ingresso-theme' ),
                 'type'              => 'taxonomy',
                 'taxonomy'          => 'nivel',
+                'placeholder'       => __( 'Selecione um Nível', 'ifrs-ingresso-theme' ),
                 'add_new'           => false,
                 'remove_default'    => true,
                 'field_type'        => 'select_tree',
@@ -264,7 +274,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
         'fields'     => array(
             array(
                 'id'                => $prefix . 'turno_taxonomy',
-                'desc'              => __( 'Escolha o(s) Turno(s) do Curso.', 'ifrs-ingresso-theme' ),
+                'desc'              => __( 'Escolha os Turnos do Curso.', 'ifrs-ingresso-theme' ),
                 'type'              => 'taxonomy',
                 'taxonomy'          => 'turno',
                 'add_new'           => false,
