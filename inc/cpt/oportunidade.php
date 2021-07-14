@@ -60,7 +60,7 @@ add_action( 'init', function() {
         'description'           => __( 'Oportunidades de ingresso discente', 'ifrs-ingresso-theme' ),
         'labels'                => $labels,
         'supports'              => array( 'title' ),
-        'taxonomies'            => array( 'tipo', 'unidade' ),
+        'taxonomies'            => array( 'tipo' ),
         'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,
@@ -82,7 +82,56 @@ add_action( 'init', function() {
     register_post_type( 'oportunidade', $args );
 }, 2 );
 
+
+add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, $post ) {
+    $label = $post->post_title;
+    $unidades = get_the_terms($post, 'unidade');
+
+    if (!empty($unidades)) {
+        $label .= ' [ ';
+        foreach ($unidades as $unidade) {
+            $label .= $unidade->name;
+
+            if ($unidade !== array_pop($unidades)) {
+                $label .= ', ';
+            }
+        }
+        $label .= ' ]';
+    }
+
+    return $label;
+}, 10, 3);
+
 /* Metaboxes */
+add_action( 'rwmb_meta_boxes', function($metaboxes) {
+	$prefix = '_oportunidade_';
+
+    /**
+	 * Cursos
+	 */
+    $metaboxes[] = array(
+        'title'      => __( 'Cursos Relacionados', 'ifrs-ingresso-theme' ),
+        'post_types' => 'oportunidade',
+        'fields'     => array(
+            array(
+                'id'          => $prefix . 'cursos',
+                'name'        => __( 'Cursos', 'ifrs-ingresso-theme' ),
+                'desc'        => __( 'Escolha os Cursos participantes dessa Oportunidade.', 'ifrs-ingresso-theme' ),
+                'type'        => 'post',
+                'post_type'   => 'curso',
+                'placeholder' => 'Selecione os Cursos',
+                'field_type'  => 'select_advanced',
+                'multiple'    => true,
+                'attributes'  => array(
+                    'required' => 'required',
+                ),
+            ),
+        ),
+    );
+
+    return $metaboxes;
+} );
+
 add_action( 'cmb2_admin_init', function() {
     $prefix = '_oportunidade_';
 
@@ -195,30 +244,6 @@ add_action( 'cmb2_admin_init', function() {
         'attributes' => array(
             'required' => 'required',
         ),
-    ) );
-
-    /**
-	 * Taxonomy Unidade Metabox
-	 */
-    $unidade_metabox = new_cmb2_box( array(
-		'id'           => $prefix . 'unidade_taxonomy_metabox',
-		'title'        => __( 'Unidades', 'ifrs-ingresso-theme' ),
-		'object_types' => array( 'oportunidade' ),
-		'context'      => 'side',
-		'priority'     => 'low',
-		'show_names'   => false,
-    ) );
-
-    $unidade_metabox->add_field( array(
-        'id'                => $prefix . 'unidade_taxonomy',
-        'taxonomy'          => 'unidade',
-        'type'              => 'taxonomy_multicheck',
-        'show_option_none'  => false,
-        'text'              => array(
-            'no_terms_text' => __( 'Ops! Nenhuma Unidade encontrada. Por favor, crie alguma Unidade antes de cadastrar essa Oportunidade.', 'ifrs-ingresso-theme')
-        ),
-        'remove_default'    => 'true',
-        'select_all_button' => false,
     ) );
 
     /**

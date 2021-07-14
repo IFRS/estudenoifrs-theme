@@ -43,5 +43,5 @@ add_action( 'init', function() {
         // 'rewrite'                    => array('slug' => 'cursos/unidades', 'with_front' => false),
     );
 
-    register_taxonomy( 'unidade', array( 'oportunidade', 'curso' ), $args );
+    register_taxonomy( 'unidade', array( 'curso' ), $args );
 }, 0 );

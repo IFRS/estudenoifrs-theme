@@ -41,11 +41,26 @@
         <hr class="oportunidade__separador">
     <?php endif; ?>
 
-    <?php $unidades = wp_get_post_terms(get_the_ID(), 'unidade', array('fields' => 'ids')); ?>
+    <?php
+        $cursos = rwmb_meta( '_oportunidade_cursos' );
+        $unidades = array();
+        foreach ($cursos as $curso) {
+            $campi = get_the_terms( $curso, 'unidade' );
+            foreach ($campi as $campus) {
+                if (!in_array($campus, $unidades)) array_push($unidades, $campus);
+            }
+        }
+    ?>
     <?php if ($unidades) : ?>
         <div class="oportunidade__unidades">
             <h4 class="oportunidade__subtitle"><?php echo _n( 'Unidade', 'Unidades', count($unidades) ); ?> de Oferta</h4>
-            <?php echo get_the_term_list(get_the_ID(), 'unidade', '<ul class="oportunidade__campi-list"><li class="oportunidade__campus">', '</li><li class="oportunidade__campus">', '</li></ul>'); ?>
+            <ul class="oportunidade__campi-list">
+                <?php foreach ($unidades as $unidade) : ?>
+                    <li class="oportunidade__campus">
+                        <a href="<?php echo get_term_link( $unidade->term_id, 'unidade' ); ?>"><?php echo $unidade->name; ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         </div>
     <?php endif; ?>
 
