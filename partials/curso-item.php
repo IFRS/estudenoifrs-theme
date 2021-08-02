@@ -1,28 +1,35 @@
-<div class="card curso-item">
-    <div class="card-header">
-        <?php foreach (get_the_terms(get_the_ID(), 'unidade') as $unidade) : ?>
-            <span class="curso-item__unidade"><?php echo $unidade->name; ?></span>
+<div class="curso">
+    <p class="curso__nivel">
+        <!-- <?php foreach (get_the_terms(get_the_ID(), 'unidade') as $unidade) : ?>
+            <span class="curso__unidade"><?php echo $unidade->name; ?></span>
+        <?php endforeach; ?> -->
+        <?php $niveis = wp_get_post_terms(get_the_ID(), 'nivel', array('orderby' => 'term_id')); // De repnte usar wp_list_categories() para pegar lista hierarquica. ?>
+        <?php foreach ($niveis as $nivel) : ?>
+            <?php echo $nivel->name; ?>
+            <?php echo ($nivel !== end($niveis)) ? ' / ' : ''; ?>
         <?php endforeach; ?>
-    </div>
-    <div class="card-body">
-        <h2 class="card-title curso-item__title"><a href="<?php the_permalink(); ?>" class="curso-item__link"><?php the_title(); ?></a></h2>
-        <p class="card-text">
-            <?php $niveis = wp_get_post_terms(get_the_ID(), 'nivel', array('orderby' => 'term_id')); ?>
-            <?php foreach ($niveis as $nivel) : ?>
-                <span class="curso-item__nivel">
-                    <?php echo $nivel->name; ?>
-                    <?php echo ($nivel !== end($niveis)) ? '<strong> / </strong>' : ''; ?>
-                </span>
+    </p>
+    <hr class="curso__separador">
+    <h4 class="curso__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+    <p class="curso__meta">
+        <span class="curso__cargahoraria">
+            <?php echo esc_html(get_post_meta( get_the_ID(), '_curso_duracao', true )); ?> (<?php echo esc_html(get_post_meta( get_the_ID(), '_curso_carga_horaria', true )); ?>h)
+        </span>
+        <br>
+        <span class="curso__turnos">
+            <?php $turnos = wp_get_post_terms(get_the_ID(), 'turno', array('orderby' => 'term_order')); ?>
+            <?php foreach ($turnos as $turno) : ?>
+                <?php echo $turno->name; echo ($turno !== end($turnos)) ? ', ' : ''; ?>
             <?php endforeach; ?>
+        </span>
+        <br>
+        <span class="curso__modalidades">
             <?php foreach (get_the_terms(get_the_ID(), 'modalidade') as $modalidade) : ?>
-                <span class="curso-item__modalidade"><?php echo $modalidade->name; ?></span>
+                <?php echo $modalidade->name; ?>
             <?php endforeach; ?>
-        </p>
-    </div>
-    <div class="card-footer">
-        <?php $turnos = wp_get_post_terms(get_the_ID(), 'turno', array('orderby' => 'term_order')); ?>
-        <?php foreach ($turnos as $turno) : ?>
-            <span class="curso-item__turnos"><?php echo $turno->name; echo ($turno !== end($turnos)) ? ', ' : ''; ?></span>
-        <?php endforeach; ?>
-    </div>
+        </span>
+    </p>
+    <a href="<?php the_permalink(); ?>" class="curso__link-info">
+        <span>Saiba mais</span>
+    </a>
 </div>
