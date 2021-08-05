@@ -1,4 +1,4 @@
-<div class="curso">
+<article class="curso">
     <p class="curso__nivel">
         <!-- <?php foreach (get_the_terms(get_the_ID(), 'unidade') as $unidade) : ?>
             <span class="curso__unidade"><?php echo $unidade->name; ?></span>
@@ -32,4 +32,4 @@
     <a href="<?php the_permalink(); ?>" class="curso__link-info">
         <span>Saiba mais</span>
     </a>
-</div>
+</article>
