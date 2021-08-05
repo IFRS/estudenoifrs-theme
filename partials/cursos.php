@@ -1,7 +1,8 @@
 <?php
     $unidades = get_terms(array(
-        'taxonomy' => 'unidade',
+        'taxonomy'   => 'unidade',
         'hide_empty' => false,
+        'slug'       => !empty($_POST['unidade']) ? (array) $_POST['unidade'] : array(),
     ));
 
     $unidade_random = array_rand($unidades);
@@ -12,7 +13,7 @@
         $tax_query[] = array(
             'taxonomy' => 'modalidade',
             'field' => 'slug',
-            'terms' => sanitize_text_field($_POST['modalidade']),
+            'terms' => (array) $_POST['modalidade'],
         );
     }
 
@@ -20,7 +21,7 @@
         $tax_query[] = array(
             'taxonomy' => 'nivel',
             'field' => 'slug',
-            'terms' => sanitize_text_field($_POST['nivel']),
+            'terms' => (array) $_POST['nivel'],
         );
     }
 
@@ -28,7 +29,7 @@
         $tax_query[] = array(
             'taxonomy' => 'turno',
             'field' => 'slug',
-            'terms' => sanitize_text_field($_POST['turno']),
+            'terms' => (array) $_POST['turno'],
         );
     }
 
@@ -74,41 +75,32 @@
     <section class="container">
         <?php echo get_template_part('partials/curso-filter'); ?>
 
-        <ul class="nav nav-pills justify-content-center my-3 mx-auto" role="tablist">
-            <?php foreach ($unidades as $key => $unidade) : ?>
-                <li class="nav-item mx-1 my-1">
-                    <button class="nav-link<?php echo ($key === $unidade_random) ? ' active' : ''; ?>" type="button" data-bs-toggle="pill" data-bs-target="#<?php echo $unidade->slug; ?>" role="tab" aria-controls="<?php echo $unidade->slug; ?>" aria-selected="false"><?php echo $unidade->name; ?></button>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+        <?php foreach ($unidades as $key => $unidade) : ?>
+            <?php
+                $tax_query_local = $tax_query;
+                $tax_query_local[] = array(
+                    'taxonomy' => 'unidade',
+                    'terms' => $unidade->term_id,
+                );
+                $main_query['tax_query'] = $tax_query_local;
 
-        <div class="tab-content mb-3" aria-live="polite">
-            <?php foreach ($unidades as $key => $unidade) : ?>
-                <?php
-                    $tax_query_local = $tax_query;
-                    $tax_query_local[] = array(
-                        'taxonomy' => 'unidade',
-                        'terms' => $unidade->term_id,
-                    );
-                    $main_query['tax_query'] = $tax_query_local;
-
-                    $cursos = new WP_Query($main_query);
-                ?>
-                <div class="tab-pane fade<?php echo ($key === $unidade_random) ? ' active show' : ''; ?>" id="<?php echo $unidade->slug; ?>" role="tabpanel">
-                    <?php if ($cursos->have_posts()) : ?>
-                        <div class="cursos__list">
-                            <?php while ($cursos->have_posts()) : $cursos->the_post(); ?>
-                                <?php echo get_template_part('partials/curso-item'); ?>
-                            <?php endwhile; ?>
-                        </div>
-                    <?php else : ?>
-                        <div class="alert alert-info" role="alert">
-                            N&atilde;o existem Cursos cadastrados no momento. Fique atento para novas publica&ccedil;&otilde;es.
-                        </div>
-                    <?php endif; ?>
-                </div>
-                <?php wp_reset_postdata(); ?>
-            <?php endforeach; ?>
-        </div>
+                $cursos = new WP_Query($main_query);
+            ?>
+            <div class="cursos__unidade">
+                <h3 class="cursos__unidade-title"><?php echo $unidade->name; ?></h3>
+                <?php if ($cursos->have_posts()) : ?>
+                    <div class="cursos__list">
+                        <?php while ($cursos->have_posts()) : $cursos->the_post(); ?>
+                            <?php echo get_template_part('partials/curso-item'); ?>
+                        <?php endwhile; ?>
+                    </div>
+                <?php else : ?>
+                    <div class="alert alert-info" role="alert">
+                        N&atilde;o existem Cursos cadastrados em <?php echo $unidade->name; ?> no momento. Fique atento para novas publica&ccedil;&otilde;es.
+                    </div>
+                <?php endif; ?>
+            </div>
+            <?php wp_reset_postdata(); ?>
+        <?php endforeach; ?>
     </section>
 </div>
