@@ -30,9 +30,13 @@
     ));
 ?>
 
+<?php
+    $is_filter = isset($_POST['modalidade']) || isset($_POST['unidade']) || isset($_POST['nivel']) || isset($_POST['turno']) || isset($_POST['q']);
+?>
+
 <aside>
     <?php $form_id = uniqid('form-'); ?>
-    <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter filter--advanced collapse" id="<?php echo $form_id; ?>">
+    <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter filter--advanced collapse<?php echo $is_filter ? ' show' : ''; ?>" id="<?php echo $form_id; ?>">
         <div class="row">
             <fieldset class="col-xl">
                 <legend>Modalidade</legend>
@@ -91,7 +95,7 @@
                 <?php $seachfield_id = uniqid(); ?>
                 <div class="input-group">
                     <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca'); ?></label>
-                    <input class="form-control form-control-sm" type="text" name="s" value="<?php echo (get_search_query() ? get_search_query() : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
+                    <input class="form-control form-control-sm" type="text" name="q" value="<?php echo (get_search_query() ? get_search_query() : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
                 </div>
             </fieldset>
         </div>
@@ -108,15 +112,15 @@
             </div>
         </div>
     </form>
-    <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter filter--simple collapse show">
+    <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter filter--simple collapse<?php echo !$is_filter ? ' show' : ''; ?>">
         <?php $seachfield_id = uniqid(); ?>
         <div class="input-group">
             <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca'); ?></label>
-            <input class="form-control form-control-lg rounded-1 border-0" type="text" name="s" value="<?php echo (get_search_query() ? get_search_query() : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
+            <input class="form-control form-control-lg rounded-1 border-0" type="text" name="q" value="<?php echo (get_search_query() ? get_search_query() : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
             <button type="submit" value="Filtrar" class="btn btn-lg btn-link bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M39.049 39.049L56 56" stroke-linejoin="round" stroke-linecap="round"></path>
-                    <circle data-name="layer1" cx="27" cy="27" r="17" fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></circle>
+                    <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M39.049 39.049L56 56" stroke-linejoin="round" stroke-linecap="round"></path>
+                    <circle data-name="layer1" cx="27" cy="27" r="17" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></circle>
                 </svg>
             </button>
         </div>
