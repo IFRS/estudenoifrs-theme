@@ -1,4 +1,10 @@
 .filter {
+    &--simple {
+        button[data-bs-toggle="collapse"] {
+            @include icon('chevron-down', 'right', 22px, $primary);
+        }
+    }
+
     &--advanced {
         background-color: #ffffff;
         border-radius: $border-radius * 2;
@@ -8,6 +14,10 @@
         legend {
             border-bottom: 2px solid $gray-200;
             margin-bottom: 1rem;
+        }
+
+        button[data-bs-toggle="collapse"] {
+            @include icon('chevron-up', 'right', 22px, $primary);
         }
     }
 

@@ -32,19 +32,19 @@
     }
 
     &__cargahoraria {
-        @include icon-clock();
+        @include icon('clock', $cor: $gray-600);
     }
 
     &__turnos {
-        @include icon-sun();
+        @include icon('sun', $cor: $gray-600);
     }
 
     &__modalidades {
-        @include icon-people();
+        @include icon('people', $cor: $gray-600);
     }
 
     &__link-info {
-        @include icon-chevron-right();
+        @include icon('chevron-right');
 
         align-self: flex-start;
         background-size: 20px;
