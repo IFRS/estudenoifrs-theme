@@ -30,9 +30,7 @@
     ));
 ?>
 
-<?php
-    $is_filter = isset($_POST['modalidade']) || isset($_POST['unidade']) || isset($_POST['nivel']) || isset($_POST['turno']) || isset($_POST['q']);
-?>
+<?php $is_filter = $args['is_filter']; ?>
 
 <aside class="cursos__filter">
     <?php $form_id = uniqid('form-'); ?>
@@ -95,7 +93,7 @@
                 <?php $seachfield_id = uniqid(); ?>
                 <div class="input-group">
                     <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca'); ?></label>
-                    <input class="form-control form-control-sm" type="text" name="q" value="<?php echo (!empty($_POST['q']) ? sanitize_text_field($_POST['q']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
+                    <input class="form-control form-control-sm" type="text" name="s" value="<?php echo (!empty($_POST['s']) ? sanitize_text_field($_POST['s']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
                 </div>
             </fieldset>
         </div>
@@ -116,7 +114,7 @@
         <?php $seachfield_id = uniqid(); ?>
         <div class="input-group">
             <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca'); ?></label>
-            <input class="form-control form-control-lg rounded-1 border-0" type="text" name="q" value="<?php echo (!empty($_POST['q']) ? sanitize_text_field($_POST['q']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
+            <input class="form-control form-control-lg rounded-1 border-0" type="text" name="s" value="<?php echo (!empty($_POST['s']) ? sanitize_text_field($_POST['s']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
             <button type="submit" value="Filtrar" class="btn btn-lg btn-link bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M39.049 39.049L56 56" stroke-linejoin="round" stroke-linecap="round"></path>
@@ -124,7 +122,7 @@
                 </svg>
             </button>
         </div>
-        <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target=".filter" aria-expanded="false" aria-controls="<?php echo $form_id; ?>">
+        <button class="btn btn-link float-end" type="button" data-bs-toggle="collapse" data-bs-target=".filter" aria-expanded="false" aria-controls="<?php echo $form_id; ?>">
             Busca avançada
         </button>
     </form>

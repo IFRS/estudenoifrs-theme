@@ -1,11 +1,13 @@
 <?php
+    $is_filter = !empty($_POST['modalidade']) || !empty($_POST['unidade']) || !empty($_POST['nivel']) || !empty($_POST['turno']) || !empty($_POST['s']);
+
     $unidades = get_terms(array(
         'taxonomy'   => 'unidade',
         'hide_empty' => false,
         'slug'       => !empty($_POST['unidade']) ? (array) $_POST['unidade'] : array(),
+        'orderby'    => ($is_filter) ? 'count' : 'name',
+        'order'      => ($is_filter) ? 'DESC' : 'ASC',
     ));
-
-    $unidade_random = array_rand($unidades);
 
     $tax_query = array();
 
@@ -39,8 +41,8 @@
         'posts_per_page' => -1,
     );
 
-    if (!empty($_POST['q'])) {
-        $main_query['s'] = sanitize_text_field($_POST['q']);
+    if (!empty($_POST['s'])) {
+        $main_query['s'] = sanitize_text_field($_POST['s']);
     }
 ?>
 <section class="container">
@@ -65,7 +67,7 @@
             }
 
             if (is_search() && get_search_query()) {
-                printf(__('<small>(Resultados com o termo &ldquo;%s&rdquo;)</small>', 'ifrs-portal-theme'), get_search_query());
+                printf(__('&nbsp;<small>(resultados com o termo &ldquo;%s&rdquo;)</small>', 'ifrs-portal-theme'), get_search_query());
             }
         ?>
     </h2>
@@ -73,8 +75,9 @@
 
 <div class="content">
     <section class="container">
-        <?php echo get_template_part('partials/curso-filter'); ?>
+        <?php echo get_template_part('partials/curso-filter', null, array('is_filter' => $is_filter)); ?>
 
+        <?php $unidades_shown = 0; ?>
         <?php foreach ($unidades as $key => $unidade) : ?>
             <?php
                 $tax_query_local = $tax_query;
@@ -85,9 +88,15 @@
                 $main_query['tax_query'] = $tax_query_local;
 
                 $cursos = new WP_Query($main_query);
+
+                if ($is_filter && $cursos->found_posts === 0 && empty($_POST['unidade'])) {
+                    continue;
+                }
+
+                $unidades_shown++;
             ?>
             <div class="cursos__unidade">
-                <h3 class="cursos__unidade-title"><?php echo $unidade->name; ?></h3>
+                <h3 class="cursos__unidade-title"><?php echo $unidade->name; ?>&nbsp;<span class="badge bg-primary"><?php echo $cursos->found_posts; ?></span></h3>
                 <?php if ($cursos->have_posts()) : ?>
                     <div class="cursos__list">
                         <?php while ($cursos->have_posts()) : $cursos->the_post(); ?>
@@ -96,11 +105,14 @@
                     </div>
                 <?php else : ?>
                     <div class="alert alert-info" role="alert">
-                        N&atilde;o existem Cursos cadastrados em <?php echo $unidade->name; ?> no momento. Fique atento para novas publica&ccedil;&otilde;es.
+                        N&atilde;o existem Cursos cadastrados em <?php echo $unidade->name; ?> no momento.
                     </div>
                 <?php endif; ?>
             </div>
             <?php wp_reset_postdata(); ?>
         <?php endforeach; ?>
+        <?php if ($unidades_shown === 0) : ?>
+            <div class="alert alert-danger">N&atilde;o foram encontrados Cursos com os crit&eacute;rios utilizados na busca.</div>
+        <?php endif; ?>
     </section>
 </div>
