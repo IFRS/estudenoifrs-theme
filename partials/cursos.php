@@ -5,8 +5,8 @@
         'taxonomy'   => 'unidade',
         'hide_empty' => false,
         'slug'       => !empty($_POST['unidade']) ? (array) $_POST['unidade'] : array(),
-        'orderby'    => ($is_filter) ? 'count' : 'name',
-        'order'      => ($is_filter) ? 'DESC' : 'ASC',
+        'orderby'    => 'name',
+        'order'      => 'ASC',
     ));
 
     $tax_query = array();
@@ -44,6 +44,25 @@
     if (!empty($_POST['s'])) {
         $main_query['s'] = sanitize_text_field($_POST['s']);
     }
+
+    foreach ($unidades as $key => $unidade) {
+        $tax_query_local = $tax_query;
+        $tax_query_local[] = array(
+            'taxonomy' => 'unidade',
+            'terms' => $unidade->term_id,
+        );
+        $main_query['tax_query'] = $tax_query_local;
+
+        $unidade->cursos = new WP_Query($main_query);
+    }
+
+    if ($is_filter) {
+        usort($unidades, function($a, $b) {
+            if ($a->cursos->found_posts === $b->cursos->found_posts) return 0;
+            return ($a->cursos->found_posts > $b->cursos->found_posts) ? -1 : 1;
+        });
+    }
+
 ?>
 <section class="container">
     <h2 class="cursos__title">
@@ -80,26 +99,17 @@
         <?php $unidades_shown = 0; ?>
         <?php foreach ($unidades as $key => $unidade) : ?>
             <?php
-                $tax_query_local = $tax_query;
-                $tax_query_local[] = array(
-                    'taxonomy' => 'unidade',
-                    'terms' => $unidade->term_id,
-                );
-                $main_query['tax_query'] = $tax_query_local;
-
-                $cursos = new WP_Query($main_query);
-
-                if ($is_filter && $cursos->found_posts === 0 && empty($_POST['unidade'])) {
+                if ($is_filter && $unidade->cursos->found_posts === 0) {
                     continue;
                 }
 
                 $unidades_shown++;
             ?>
             <div class="cursos__unidade">
-                <h3 class="cursos__unidade-title"><?php echo $unidade->name; ?>&nbsp;<span class="badge bg-primary"><?php echo $cursos->found_posts; ?></span></h3>
-                <?php if ($cursos->have_posts()) : ?>
+                <h3 class="cursos__unidade-title"><?php echo $unidade->name; ?>&nbsp;<span class="badge bg-primary"><?php echo $unidade->cursos->found_posts; ?></span></h3>
+                <?php if ($unidade->cursos->have_posts()) : ?>
                     <div class="cursos__list">
-                        <?php while ($cursos->have_posts()) : $cursos->the_post(); ?>
+                        <?php while ($unidade->cursos->have_posts()) : $unidade->cursos->the_post(); ?>
                             <?php echo get_template_part('partials/curso-item'); ?>
                         <?php endwhile; ?>
                     </div>
