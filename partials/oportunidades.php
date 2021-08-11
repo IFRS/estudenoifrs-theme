@@ -58,7 +58,7 @@
     </ul>
 </section>
 
-<div class="content">
+<div class="destaque">
     <section class="container">
         <div class="filter-unidade">
             <form action="<?php echo esc_url(home_url('/')); ?>" method="GET" class="filter-unidade__form row row-cols-sm-auto g-3 align-items-center">

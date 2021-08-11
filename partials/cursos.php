@@ -101,7 +101,7 @@
     </h2>
 </section>
 
-<div class="content">
+<div class="destaque">
     <section class="container">
         <?php echo get_template_part('partials/curso-filter', null, array('is_filter' => $is_filter)); ?>
 

@@ -2,7 +2,7 @@
 
 <?php the_post(); ?>
 
-<div class="content">
+<div class="destaque">
     <section class="container">
         <article id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
             <h2 class="post__title"><?php the_title(); ?></h2>

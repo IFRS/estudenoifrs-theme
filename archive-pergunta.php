@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="content">
+<div class="destaque">
     <section class="container">
         <article class="faq">
             <h2 class="faq__title">Perguntas Frequentes</h2>

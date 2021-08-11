@@ -80,7 +80,7 @@
             <?php endif; ?>
         </div>
     </section>
-    <div class="content">
+    <div class="destaque">
         <section class="container">
             <div class="row">
                 <div class="col-12 col-md-6">
