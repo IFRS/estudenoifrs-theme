@@ -1,0 +1,59 @@
+.curso-item {
+    $spacing-y: 0.5rem;
+    $spacing-x: 1rem;
+
+    background-color: #ffffff;
+    border-top: 4px solid $gray-400;
+    border-bottom: 1px solid $gray-200;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: $spacing-y $spacing-x;
+
+    &__nivel {
+        font-size: 0.9rem;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    &__separador {
+        background-color: $gray-500;
+        height: 2px !important;
+        margin: $spacing-y -#{$spacing-x};
+    }
+
+    &__title {
+        font-size: 1.5rem;
+    }
+
+    &__meta {
+        color: $gray-700;
+        font-size: 0.9rem;
+    }
+
+    &__cargahoraria {
+        @include icon('clock', $cor: $gray-600);
+    }
+
+    &__turnos {
+        @include icon('sun', $cor: $gray-600);
+    }
+
+    &__modalidades {
+        @include icon('people', $cor: $gray-600);
+    }
+
+    &__link-info {
+        @include icon('chevron-right');
+
+        align-self: flex-start;
+        background-size: 20px;
+        color: $gray-700;
+        margin-top: auto;
+
+        &:hover,
+        &:active {
+            color: $primary;
+        }
+    }
+}
