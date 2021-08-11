@@ -1,59 +1,151 @@
 .curso {
-    $spacing-y: 0.5rem;
-    $spacing-x: 1rem;
-
-    background-color: #ffffff;
-    border-top: 4px solid $gray-400;
-    border-bottom: 1px solid $gray-200;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    padding: $spacing-y $spacing-x;
-
-    &__nivel {
-        font-size: 0.9rem;
-        font-weight: bold;
-        margin: 0;
-    }
-
-    &__separador {
-        background-color: $gray-500;
-        height: 2px !important;
-        margin: $spacing-y -#{$spacing-x};
-    }
-
     &__title {
-        font-size: 1.5rem;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            display: block;
+            width: 100px; height: 2px;
+            background-color: $cor-destaque;
+        }
     }
 
     &__meta {
-        color: $gray-700;
-        font-size: 0.9rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 2rem 1rem;
+        grid-auto-flow: row;
+        justify-content: stretch;
+        align-content: stretch;
+        justify-items: stretch;
+        align-items: stretch;
+        width: 100%;
+        height: 100%;
     }
 
-    &__cargahoraria {
-        @include icon('clock', $cor: $gray-600);
+    &__separator {
+        background: none;
+        border-top: 2px dotted currentColor;
+        margin: 2rem 0;
+        width: 100%;
     }
 
-    &__turnos {
-        @include icon('sun', $cor: $gray-600);
+    &__content {
+        margin-bottom: 1rem;
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+    }
+}
+
+.curso-info {
+    $icon-position: 'left';
+    $icon-size: 2rem;
+    $icon-color: $gray-600;
+
+    &--modalidade {
+        @include icon('people', $icon-position, $icon-size, $icon-color);
     }
 
-    &__modalidades {
-        @include icon('people', $cor: $gray-600);
+    &--unidade {
+        @include icon('pin', $icon-position, $icon-size, $icon-color);
     }
 
-    &__link-info {
-        @include icon('chevron-right');
+    &--nivel {
+        @include icon('graduation', $icon-position, $icon-size, $icon-color);
+    }
 
-        align-self: flex-start;
-        background-size: 20px;
-        color: $gray-700;
-        margin-top: auto;
+    &--turno {
+        @include icon('sun', $icon-position, $icon-size, $icon-color);
+    }
 
-        &:hover,
-        &:active {
-            color: $primary;
+    &--cargahoraria {
+        @include icon('clock', $icon-position, 1.75rem, $icon-color);
+    }
+
+    &--nota {
+        @include icon('star', $icon-position, $icon-size, $icon-color);
+    }
+
+    &__title {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+
+    &__text {
+        margin-bottom: 0;
+    }
+}
+
+.curso-coordenador {
+    @include icon('mail', 'left', 3rem, $gray-600);
+
+    background-color: $gray-200;
+    background-position: 1rem center;
+    grid-column: 4 / -1;
+    grid-row: 1 / span 2;
+    padding: 1rem 1rem 1rem 5rem;
+
+    &__title {
+        color: $primary;
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+    &__nome {
+        margin-bottom: 0;
+    }
+
+    &__email {
+        margin-bottom: 0;
+    }
+
+    &__nome,
+    &__email {
+        a {
+            color: $body-color;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.curso-arquivos {
+    &__title {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            display: block;
+            width: 100%; height: auto;
+            border-top: 2px dotted $gray-600;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        padding: 0;
+
+        li {
+            @include icon('file', 'left', 1rem, $gray-600);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
         }
     }
 }
