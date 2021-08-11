@@ -49,7 +49,7 @@
                         <?php echo esc_html(get_post_meta( get_the_ID(), '_curso_coordenador_nome', true )); ?>
                     <?php endif; ?>
                 </p>
-                <span class="curso-coordenador__email"><a href="mailto:<?php echo esc_html(get_post_meta( get_the_ID(), '_curso_coordenador_email', true )); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html(get_post_meta( get_the_ID(), '_curso_coordenador_email', true )); ?></a></span>
+                <span class="curso-coordenador__email"><a href="mailto:<?php echo esc_html(get_post_meta( get_the_ID(), '_curso_coordenador_email', true )); ?>" target="_blank" rel="noopener noreferrer"><?php echo str_replace(array('@', '.'), array('@<wbr>', '.<wbr>'), esc_html(get_post_meta( get_the_ID(), '_curso_coordenador_email', true ))); ?></a></span>
             </div>
         </aside>
         <hr class="curso__separator">
@@ -76,7 +76,7 @@
             ?>
             <?php the_content(); ?>
             <?php if ($ead) : ?>
-                <small class="text-secondary"><strong>*</strong> Este curso possui parte de sua carga hor&aacute;ria a dist&acirc;ncia.</small>
+                <small class="text-secondary"><strong>*</strong>&nbsp;Esse curso possui parte de sua carga hor&aacute;ria a dist&acirc;ncia.</small>
             <?php endif; ?>
         </div>
     </section>
