@@ -1,5 +1,14 @@
 <?php
-    $is_filter = !empty($_POST['modalidade']) || !empty($_POST['unidade']) || !empty($_POST['nivel']) || !empty($_POST['turno']) || !empty($_POST['s']);
+    $is_filter = !empty($_POST['modalidade'])
+        || is_tax('modalidade')
+        || !empty($_POST['unidade'])
+        || is_tax('unidade')
+        || !empty($_POST['nivel'])
+        || is_tax('nivel')
+        || !empty($_POST['turno'])
+        || is_tax('turno')
+        || !empty($_POST['s'])
+        || is_search();
 
     $unidades = get_terms(array(
         'taxonomy'   => 'unidade',
