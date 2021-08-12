@@ -181,6 +181,10 @@
             @include icon('file', 'left', 1rem, $gray-600);
             padding-top: 0.5rem;
             padding-bottom: 0.5rem;
+
+            a {
+                font-weight: 600;
+            }
         }
     }
 }
