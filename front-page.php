@@ -7,13 +7,17 @@
 </section>
 
 <section class="container">
-    <h2 class="home-title">Estude no <span class="home-title__destaque">#mundo<strong>IFRS</strong></span></h2>
-    <?php if (get_option( 'page_on_front' )) : ?>
-        <?php
-            the_post();
-            the_content();
-        ?>
-    <?php endif; ?>
+    <article class="hero">
+        <h2 class="hero__title">Estude no <span>#mundo<strong>IFRS</strong></span></h2>
+        <div class="hero__text">
+            <?php if (get_option( 'page_on_front' )) : ?>
+                <?php
+                    the_post();
+                    the_content();
+                ?>
+            <?php endif; ?>
+        </div>
+    </article>
 </section>
 
 <?php echo get_template_part('partials/oportunidades'); ?>

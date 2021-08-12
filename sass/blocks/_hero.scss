@@ -1,0 +1,38 @@
+@use "sass:math";
+
+.hero {
+    &__title {
+        color: $gray-600;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        padding-bottom: 0.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        position: relative;
+
+        &::after {
+            $comprimento: 12%;
+
+            background: $cor-destaque;
+            content: '';
+            position: absolute;
+            height: 3px;
+            width: $comprimento;
+            bottom: 0;
+            right: (50% - math.div($comprimento, 2));
+        }
+
+        span {
+            color: $cor-destaque;
+        }
+
+        small {
+            font-size: 0.75em;
+            text-transform: lowercase;
+        }
+    }
+
+    &__text {
+        text-align: center;
+    }
+}
