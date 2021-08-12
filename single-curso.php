@@ -93,7 +93,7 @@
                             ?>
                             <?php if ($ppc) : ?>
                                 <li>
-                                    <a href="<?php echo esc_url($ppc['url']); ?>" class="list-group-item list-group-item-action" role="listitem"><?php _e('Projeto Pedagógico do Curso (PPC)', 'ifrs-portal-theme'); ?></a>
+                                    <a href="<?php echo esc_url($ppc['url']); ?>"><?php _e('Projeto Pedagógico do Curso (PPC)', 'ifrs-portal-theme'); ?></a>
                                 </li>
                             <?php endif; ?>
 
@@ -103,7 +103,7 @@
                             ?>
                             <?php if ($matriz_curricular) : ?>
                                 <li>
-                                    <a href="<?php echo esc_url($matriz_curricular['url']); ?>" class="list-group-item list-group-item-action" role="listitem"><?php _e('Matriz Curricular', 'ifrs-portal-theme'); ?></a>
+                                    <a href="<?php echo esc_url($matriz_curricular['url']); ?>"><?php _e('Matriz Curricular', 'ifrs-portal-theme'); ?></a>
                                 </li>
                             <?php endif; ?>
 
@@ -113,7 +113,7 @@
                             ?>
                             <?php if ($representacao_grafica) : ?>
                                 <li>
-                                    <a href="<?php echo esc_url($representacao_grafica['url']); ?>" class="list-group-item list-group-item-action" role="listitem"><?php _e('Representação Gráfica', 'ifrs-portal-theme'); ?></a>
+                                    <a href="<?php echo esc_url($representacao_grafica['url']); ?>"><?php _e('Representação Gráfica', 'ifrs-portal-theme'); ?></a>
                                 </li>
                             <?php endif; ?>
 
@@ -123,7 +123,7 @@
                             ?>
                             <?php if ($corpo_docente) : ?>
                                 <li>
-                                    <a href="<?php echo esc_url($corpo_docente['url']); ?>" class="list-group-item list-group-item-action" role="listitem"><?php _e('Corpo Docente', 'ifrs-portal-theme'); ?></a>
+                                    <a href="<?php echo esc_url($corpo_docente['url']); ?>"><?php _e('Corpo Docente', 'ifrs-portal-theme'); ?></a>
                                 </li>
                             <?php endif; ?>
 
@@ -133,7 +133,7 @@
                             ?>
                             <?php if ($corpo_docente_componentes_curriculares) : ?>
                                 <li>
-                                    <a href="<?php echo esc_url($corpo_docente_componentes_curriculares['url']); ?>" class="list-group-item list-group-item-action" role="listitem"><?php _e('Corpo Docente X Componentes Curriculares', 'ifrs-portal-theme'); ?></a>
+                                    <a href="<?php echo esc_url($corpo_docente_componentes_curriculares['url']); ?>"><?php _e('Corpo Docente X Componentes Curriculares', 'ifrs-portal-theme'); ?></a>
                                 </li>
                             <?php endif; ?>
                         </ul>
@@ -147,7 +147,7 @@
                             <ul class="curso-arquivos__list">
                                 <?php foreach ($arquivos as $arquivo) : ?>
                                     <li>
-                                        <a href="<?php echo esc_url($arquivo['url']); ?>" class="list-group-item list-group-item-action" role="listitem"><?php echo $arquivo['title']; ?></a>
+                                        <a href="<?php echo esc_url($arquivo['url']); ?>"><?php echo $arquivo['title']; ?></a>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
