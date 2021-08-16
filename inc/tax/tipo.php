@@ -44,3 +44,30 @@ add_action( 'init', function() {
 
     register_taxonomy( 'tipo', array( 'oportunidade' ), $args );
 }, 0 );
+
+/* Metaboxes */
+add_action( 'cmb2_admin_init', function() {
+    $prefix = '_tipo_';
+
+    /**
+     * Cor Metabox
+     */
+    $cor = new_cmb2_box( array(
+        'id'            => $prefix . 'metabox',
+        'title'         => __( 'Cor', 'ifrs-ingresso-theme' ),
+        'object_types'  => array( 'term' ),
+        'taxonomies'    => array( 'tipo' ),
+        'context'       => 'normal',
+        'priority'      => 'high',
+        'show_names'    => false,
+    ) );
+
+    /* Cor */
+    $cor->add_field( array(
+        'name'    => __( 'Cor', 'ifrs-ingresso-theme' ),
+        'desc'    => __( 'Selecione a cor para representar esse nível.', 'ifrs-ingresso-theme' ),
+        'id'      => $prefix . 'color',
+        'type'    => 'colorpicker',
+        'default' => '#2a8733',
+    ) );
+});

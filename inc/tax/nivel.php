@@ -56,14 +56,14 @@ add_filter( 'taxonomy_parent_dropdown_args', function( $args, $taxonomy ) {
     return $args;
 }, 10, 2 );
 
-/* Colorpicker */
+/* Metaboxes */
 add_action( 'cmb2_admin_init', function() {
     $prefix = '_nivel_';
 
     /**
-     * Datas Metabox
+     * Cor Metabox
      */
-    $datas = new_cmb2_box( array(
+    $cor = new_cmb2_box( array(
         'id'            => $prefix . 'metabox',
         'title'         => __( 'Cor', 'ifrs-ingresso-theme' ),
         'object_types'  => array( 'term' ),
@@ -73,12 +73,12 @@ add_action( 'cmb2_admin_init', function() {
         'show_names'    => false,
     ) );
 
-    /* Isenção */
-    $datas->add_field( array(
+    /* Cor */
+    $cor->add_field( array(
         'name'    => __( 'Cor', 'ifrs-ingresso-theme' ),
         'desc'    => __( 'Selecione a cor para representar esse nível.', 'ifrs-ingresso-theme' ),
         'id'      => $prefix . 'color',
         'type'    => 'colorpicker',
-        'default' => '#000000',
+        'default' => '#2a8733',
     ) );
 });
