@@ -31,6 +31,6 @@
         </span>
     </p>
     <a href="<?php the_permalink(); ?>" class="curso-item__link-info">
-        <span>Saiba mais</span>
+        Saiba mais<span class="visually-hidden">&nbsp;sobre o curso <?php the_title(); ?></span>
     </a>
 </article>
