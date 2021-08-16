@@ -1,9 +1,6 @@
 # SASS
 .sass-cache/
 
-# 3rd party
-/vendor/
-
 # NPM
 /node_modules/
 
@@ -15,3 +12,6 @@
 
 # Build
 /dist/
+
+# lightgallery
+/lightgallery/
