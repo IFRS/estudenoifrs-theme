@@ -83,195 +83,187 @@ add_action( 'init', function() {
 }, 2 );
 
 /* Metaboxes */
-add_action( 'cmb2_admin_init', function() {
+add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, $post ) {
+    $label = $post->post_title;
+    $unidades = get_the_terms($post, 'unidade');
+
+    if (!empty($unidades)) {
+        $label .= ' [ ';
+        foreach ($unidades as $unidade) {
+            $label .= $unidade->name;
+
+            if ($unidade !== array_pop($unidades)) {
+                $label .= ', ';
+            }
+        }
+        $label .= ' ]';
+    }
+
+    return $label;
+}, 10, 3);
+
+/* Metaboxes */
+add_action( 'rwmb_meta_boxes', function($metaboxes) {
     $prefix = '_oportunidade_';
 
     /**
-     * Taxonomy Tipo Metabox
+     * Cursos
      */
-    $tipo_metabox = new_cmb2_box( array(
-        'id'           => $prefix . 'tipo_taxonomy_metabox',
-        'title'        => __( 'Tipo', 'ifrs-ingresso-theme' ),
-        'object_types' => array( 'oportunidade' ),
-        'context'      => 'side',
-        'priority'     => 'low',
-        'show_names'   => false,
-    ) );
-
-    $tipo_metabox->add_field( array(
-        'id'                => $prefix . 'tipo_taxonomy',
-        'taxonomy'          => 'tipo',
-        'type'              => 'taxonomy_radio',
-        'show_option_none'  => false,
-        'text'              => array(
-            'no_terms_text' => __( 'Ops! Nenhum Tipo de Seleção encontrado. Por favor, crie algum Tipo antes de cadastrar essa Oportunidade.', 'ifrs-ingresso-theme')
-        ),
-        'remove_default'    => 'true',
-        'attributes' => array(
-            'required' => 'required',
-        ),
-    ) );
+    // $metaboxes[] = array(
+    //     'title'      => __( 'Cursos Relacionados', 'ifrs-ingresso-theme' ),
+    //     'post_types' => 'oportunidade',
+    //     'fields'     => array(
+    //         array(
+    //             'id'          => $prefix . 'cursos',
+    //             'name'        => __( 'Cursos', 'ifrs-ingresso-theme' ),
+    //             'desc'        => __( 'Escolha os Cursos participantes dessa Oportunidade.', 'ifrs-ingresso-theme' ),
+    //             'type'        => 'post',
+    //             'post_type'   => 'curso',
+    //             'placeholder' => 'Selecione os Cursos',
+    //             'field_type'  => 'select_advanced',
+    //             'multiple'    => true,
+    //         ),
+    //     ),
+    // );
 
     /**
-     * Datas Metabox
+     * Datas
      */
-    $datas = new_cmb2_box( array(
-        'id'            => $prefix . 'datas_metabox',
-        'title'         => __( 'Datas', 'ifrs-ingresso-theme' ),
-        'object_types'  => array( 'oportunidade' ),
-        'context'       => 'normal',
-        'priority'      => 'high',
-        'show_names'    => true,
-    ) );
-
-    /* Isenção */
-    $datas->add_field( array(
-        'name'    => __( 'Isenção da Taxa de Inscrição', 'ifrs-ingresso-theme' ),
-        'desc'    => __( 'Preencha com o período para requerimento da isenção. Em caso de inscrição gratuita, deixe em branco.', 'ifrs-ingresso-theme' ),
-        'id'      => $prefix . 'isencao_title',
-        'type'    => 'title',
-    ) );
-
-    $datas->add_field( array(
-        'name'    => __( 'Início da Isenção', 'ifrs-ingresso-theme' ),
-        'id'      => $prefix . 'isencao_inicio',
-        'type'    => 'text_date_timestamp',
-        'date_format' => 'd/m/Y',
-    ) );
-
-    $datas->add_field( array(
-        'name'    => __( 'Término da Isenção', 'ifrs-ingresso-theme' ),
-        'id'      => $prefix . 'isencao_termino',
-        'type'    => 'text_date_timestamp',
-        'date_format' => 'd/m/Y',
-    ) );
-
-    /* Inscrição */
-    $datas->add_field( array(
-        'name'    => __( 'Inscrições', 'ifrs-ingresso-theme' ),
-        'desc'    => __( 'Preencha com o período para inscrições.', 'ifrs-ingresso-theme' ),
-        'id'      => $prefix . 'inscricao_title',
-        'type'    => 'title',
-    ) );
-
-    $datas->add_field( array(
-        'name'    => __( 'Início das Inscrições', 'ifrs-ingresso-theme' ),
-        'id'      => $prefix . 'inscricao_inicio',
-        'type'    => 'text_date_timestamp',
-        'date_format' => 'd/m/Y',
-        'attributes' => array(
-            'required' => 'required',
+    $metaboxes[] = array(
+        'title'      => __( 'Datas', 'ifrs-ingresso-theme' ),
+        'post_types' => 'oportunidade',
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields'     => array(
+            array(
+                'type'    => 'heading',
+                'name'    => __( 'Isenção da Taxa de Inscrição', 'ifrs-ingresso-theme' ),
+                'desc'    => __( 'Preencha com o período para requerimento da isenção. Em caso de inscrição gratuita, deixe em branco.', 'ifrs-ingresso-theme' ),
+            ),
+            array(
+                'name'       => __( 'Início da Isenção', 'ifrs-ingresso-theme' ),
+                'id'         => $prefix . 'isencao_inicio',
+                'type'       => 'date',
+                'timestamp'  => true,
+                'size'       => 10,
+                'js_options' => array(
+                    'dateFormat'      => 'dd-mm-yy',
+                ),
+            ),
+            array(
+                'name'       => __( 'Término da Isenção', 'ifrs-ingresso-theme' ),
+                'id'         => $prefix . 'isencao_termino',
+                'type'       => 'date',
+                'timestamp'  => true,
+                'size'       => 10,
+                'js_options' => array(
+                    'dateFormat'      => 'dd-mm-yy',
+                ),
+            ),
+            array(
+                'type'    => 'heading',
+                'name'    => __( 'Inscrições', 'ifrs-ingresso-theme' ),
+                'desc'    => __( 'Preencha com o período para inscrições.', 'ifrs-ingresso-theme' ),
+            ),
+            array(
+                'name'       => __( 'Início das Inscrições', 'ifrs-ingresso-theme' ),
+                'id'         => $prefix . 'iscricao_inicio',
+                'type'       => 'date',
+                'timestamp'  => true,
+                'size'       => 10,
+                'js_options' => array(
+                    'dateFormat'      => 'dd-mm-yy',
+                ),
+            ),
+            array(
+                'name'       => __( 'Término das Inscrições', 'ifrs-ingresso-theme' ),
+                'id'         => $prefix . 'iscricao_termino',
+                'type'       => 'date',
+                'timestamp'  => true,
+                'size'       => 10,
+                'js_options' => array(
+                    'dateFormat'      => 'dd-mm-yy',
+                ),
+            ),
         ),
-    ) );
-
-    $datas->add_field( array(
-        'name'    => __( 'Término das Inscrições', 'ifrs-ingresso-theme' ),
-        'id'      => $prefix . 'inscricao_termino',
-        'type'    => 'text_date_timestamp',
-        'date_format' => 'd/m/Y',
-        'attributes' => array(
-            'required' => 'required',
-        ),
-    ) );
+    );
 
     /**
-     * Requisitos Metabox
+     * Requisitos
      */
-    $requisitos = new_cmb2_box( array(
-        'id'            => $prefix . 'requisitos_metabox',
-        'title'         => __( 'Requisitos Mínimos', 'ifrs-ingresso-theme' ),
-        'object_types'  => array( 'oportunidade' ),
-        'context'       => 'normal',
-        'priority'      => 'high',
-        'show_names'    => false,
-    ) );
-
-    $requisitos->add_field( array(
-        'name'    => __( 'Requisitos', 'ifrs-ingresso-theme' ),
-        'desc'    => __( 'Recomenda-se que os requisitos sejam elaborados em forma de lista de itens.', 'ifrs-ingresso-theme' ),
-        'id'      => $prefix . 'requisitos',
-        'type'    => 'wysiwyg',
-        'options' => array(
-            'media_buttons' => false,
-            'teeny'         => true,
+    $metaboxes[] = array(
+        'title'      => __( 'Requisitos Mínimos', 'ifrs-ingresso-theme' ),
+        'post_types' => 'oportunidade',
+        'context'    => 'normal',
+        'priority'   => 'high',
+        'fields'     => array(
+            array(
+                'desc'    => __( 'Recomenda-se que os requisitos sejam elaborados em forma de lista de itens.', 'ifrs-ingresso-theme' ),
+                'id'      => $prefix . 'requisitos',
+                'type'    => 'wysiwyg',
+                'raw'     => false,
+                'options' => array(
+                    'media_buttons' => false,
+                    'teeny'         => true,
+                ),
+            ),
         ),
-    ) );
+    );
 
     /**
-     * Cursos Metabox
+     * Taxonomy Tipo
      */
-    /* function ifrs_ingresso_get_cursos() {
-        $posts = get_posts( array(
-            'post_type'      => 'curso',
-            'posts_per_page' => -1,
-        ) );
-
-        $post_options = array();
-
-        if ( $posts ) {
-            foreach ( $posts as $post ) {
-                $label = $post->post_title;
-                $unidades = wp_get_post_terms($post->ID, 'unidade', array('fields' => 'id=>name'));
-
-                if (!empty($unidades)) {
-                    $label .= ' [ ';
-                    foreach ($unidades as $unidade) {
-                        $label .= $unidade;
-
-                        if ($unidade !== array_pop($unidades)) {
-                            $label .= ', ';
-                        }
-                    }
-                    $label .= ' ]';
-                }
-
-                $post_options[ $post->ID ] = $label;
-            }
-        }
-
-        return $post_options;
-    }
-    $cursos = new_cmb2_box( array(
-        'id'            => $prefix . 'cursos_metabox',
-        'title'         => __( 'Cursos Relacionados', 'ifrs-ingresso-theme' ),
-        'object_types'  => array( 'oportunidade' ),
-        'context'       => 'normal',
-        'priority'      => 'high',
-        'show_names'    => false,
-    ) );
-
-    $cursos->add_field( array(
-        'name'              => __( 'Cursos', 'ifrs-ingresso-theme' ),
-        'id'                => $prefix . 'cursos',
-        'type'              => 'multicheck',
-        'select_all_button' => false,
-        'options_cb'        => 'ifrs_ingresso_get_cursos',
-    ) ); */
+    $metaboxes[] = array(
+        'title'      => __( 'Tipo', 'ifrs-ingresso-theme' ),
+        'post_types' => 'oportunidade',
+        'context'    => 'side',
+        'priority'   => 'low',
+        'fields'     => array(
+            array(
+                'id'             => $prefix . 'tipo_taxonomy',
+                'desc'           => __( 'Escolha o Tipo de Oportunidade.', 'ifrs-ingresso-theme' ),
+                'type'           => 'taxonomy',
+                'taxonomy'       => 'tipo',
+                'add_new'        => false,
+                'remove_default' => true,
+                'field_type'     => 'radio_list',
+                'inline'         => false,
+            ),
+        ),
+    );
 
     /**
-     * URL Metabox
+     * URL
      */
-    $url = new_cmb2_box( array(
-        'id'            => $prefix . 'url_metabox',
-        'title'         => __( 'Link', 'ifrs-ingresso-theme' ),
-        'object_types'  => array( 'oportunidade' ),
-        'context'       => 'side',
-        'priority'      => 'low',
-        'show_names'    => true,
-    ) );
-
-    $url->add_field( array(
-        'name'      => __( 'Endereço (URL)', 'ifrs-ingresso-theme' ),
-        'desc'      => __( 'Insira o endereço para acesso a mais informações.', 'ifrs-ingresso-theme' ),
-        'id'        => $prefix . 'url',
-        'type'      => 'text_url',
-        'protocols' => array( 'http', 'https' ),
-        'attributes' => array(
-            'type'     => 'url',
-            'required' => 'required',
+    $metaboxes[] = array(
+        'title'      => __( 'Link', 'ifrs-ingresso-theme' ),
+        'post_types' => 'oportunidade',
+        'context'    => 'side',
+        'priority'   => 'low',
+        'fields'     => array(
+            array(
+                'name' => __( 'Endereço (URL)', 'ifrs-ingresso-theme' ),
+                'desc' => __( 'Insira o endereço para acesso a mais informações.', 'ifrs-ingresso-theme' ),
+                'id'   => $prefix . 'url',
+                'type' => 'text',
+            ),
         ),
-    ) );
-}, 5 );
+        'validation' => [
+            'rules'  => [
+                $prefix . 'url' => [
+                    'url' => true,
+                ],
+            ],
+            'messages' => [
+                $prefix . 'url' => [
+                    'url'  => 'O endereço precisa ser uma URL válida.',
+                ],
+            ],
+        ],
+    );
+
+    return $metaboxes;
+} );
 
 /* Disable Gutenberg */
 add_filter('use_block_editor_for_post_type', function($current_status, $post_type) {
