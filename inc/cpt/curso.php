@@ -83,11 +83,11 @@ add_action( 'init', function() {
  * Definição das metaboxes
  */
 add_action( 'rwmb_meta_boxes', function($metaboxes) {
-	$prefix = '_curso_';
+    $prefix = '_curso_';
 
-	/**
-	 * Informações do Curso
-	 */
+    /**
+     * Informações do Curso
+     */
     $metaboxes[] = array(
         'title'      => __( 'Informações do Curso', 'ifrs-ingresso-theme' ),
         'post_types' => 'curso',
@@ -100,7 +100,6 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'size'       => 10,
                 'attributes' => array(
                     'required' => 'required',
-                    // 'type'     => 'number',
                     'pattern'  => '\d*',
                 ),
             ),
@@ -134,11 +133,11 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     );
 
     /**
-	 * Arquivos do Curso
-	 */
+     * Arquivos do Curso
+     */
     $metaboxes[] = array(
         'title'      => __( 'Arquivos do Curso', 'ifrs-ingresso-theme' ),
-		'post_types' => 'curso',
+        'post_types' => 'curso',
         'fields'     => array(
             array(
                 'id'               => $prefix . 'ppc',
@@ -200,13 +199,13 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     );
 
     /**
-	 * Taxonomy Unidade
-	 */
+     * Taxonomy Unidade
+     */
     $metaboxes[] = array(
         'title'      => __( 'Unidade', 'ifrs-ingresso-theme' ),
-		'post_types' => 'curso',
-		'context'    => 'side',
-		'priority'   => 'low',
+        'post_types' => 'curso',
+        'context'    => 'side',
+        'priority'   => 'low',
         'fields'     => array(
             array(
                 'id'                => $prefix . 'unidade_taxonomy',
@@ -221,13 +220,13 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     );
 
     /**
-	 * Taxonomy Modalidade
-	 */
+     * Taxonomy Modalidade
+     */
     $metaboxes[] = array(
         'title'      => __( 'Modalidade', 'ifrs-ingresso-theme' ),
-		'post_types' => 'curso',
-		'context'    => 'side',
-		'priority'   => 'low',
+        'post_types' => 'curso',
+        'context'    => 'side',
+        'priority'   => 'low',
         'fields'     => array(
             array(
                 'id'                => $prefix . 'modalidade_taxonomy',
@@ -242,13 +241,13 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     );
 
     /**
-	 * Taxonomy Nível
-	 */
+     * Taxonomy Nível
+     */
     $metaboxes[] = array(
         'title'      => __( 'Nível', 'ifrs-ingresso-theme' ),
-		'post_types' => 'curso',
-		'context'    => 'side',
-		'priority'   => 'low',
+        'post_types' => 'curso',
+        'context'    => 'side',
+        'priority'   => 'low',
         'fields'     => array(
             array(
                 'id'                => $prefix . 'nivel_taxonomy',
@@ -264,13 +263,13 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     );
 
     /**
-	 * Taxonomy Turno
-	 */
+     * Taxonomy Turno
+     */
     $metaboxes[] = array(
         'title'      => __( 'Turnos', 'ifrs-ingresso-theme' ),
-		'post_types' => 'curso',
-		'context'    => 'side',
-		'priority'   => 'low',
+        'post_types' => 'curso',
+        'context'    => 'side',
+        'priority'   => 'low',
         'fields'     => array(
             array(
                 'id'                => $prefix . 'turno_taxonomy',
@@ -285,13 +284,13 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     );
 
     /**
-	 * Coordenador do Curso
-	 */
+     * Coordenador do Curso
+     */
     $metaboxes[] = array(
         'title'      => __( 'Coordenador do Curso', 'ifrs-ingresso-theme' ),
-		'post_types' => 'curso',
-		'context'    => 'side',
-		'priority'   => 'low',
+        'post_types' => 'curso',
+        'context'    => 'side',
+        'priority'   => 'low',
         'fields'     => array(
             array(
                 'id'         => $prefix . 'coordenador_nome',
