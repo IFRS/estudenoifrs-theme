@@ -167,7 +167,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
             ),
             array(
                 'name'       => __( 'Início das Inscrições', 'ifrs-ingresso-theme' ),
-                'id'         => $prefix . 'iscricao_inicio',
+                'id'         => $prefix . 'inscricao_inicio',
                 'type'       => 'date',
                 'timestamp'  => true,
                 'size'       => 10,
@@ -177,7 +177,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
             ),
             array(
                 'name'       => __( 'Término das Inscrições', 'ifrs-ingresso-theme' ),
-                'id'         => $prefix . 'iscricao_termino',
+                'id'         => $prefix . 'inscricao_termino',
                 'type'       => 'date',
                 'timestamp'  => true,
                 'size'       => 10,
@@ -220,14 +220,15 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
         'priority'   => 'low',
         'fields'     => array(
             array(
-                'id'             => $prefix . 'tipo_taxonomy',
-                'desc'           => __( 'Escolha o Tipo de Oportunidade.', 'ifrs-ingresso-theme' ),
-                'type'           => 'taxonomy',
-                'taxonomy'       => 'tipo',
-                'add_new'        => false,
-                'remove_default' => true,
-                'field_type'     => 'radio_list',
-                'inline'         => false,
+                'id'              => $prefix . 'tipo_taxonomy',
+                'desc'            => __( 'Escolha o Tipo de Oportunidade.', 'ifrs-ingresso-theme' ),
+                'type'            => 'taxonomy',
+                'taxonomy'        => 'tipo',
+                'add_new'         => false,
+                'remove_default'  => true,
+                'field_type'      => 'checkbox_list',
+                'inline'          => false,
+                'select_all_none' => false,
             ),
         ),
     );
