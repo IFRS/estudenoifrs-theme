@@ -36,7 +36,7 @@
     <?php if (!empty($requisitos)) : ?>
         <div class="oportunidade__requisitos">
             <h4 class="oportunidade__subtitle">Requisitos m&iacute;nimos para o ingresso</h4>
-            <?php echo wpautop($requisitos); ?>
+            <?php echo apply_filters( 'the_content', $requisitos); ?>
         </div>
         <hr class="oportunidade__separador">
     <?php endif; ?>
