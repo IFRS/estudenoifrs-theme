@@ -44,10 +44,13 @@
     <?php
         $cursos = rwmb_meta( '_oportunidade_cursos' );
         $unidades = array();
-        foreach ($cursos as $curso) {
-            $campi = get_the_terms( $curso, 'unidade' );
-            foreach ($campi as $campus) {
-                if (!in_array($campus, $unidades)) array_push($unidades, $campus);
+
+        if (!empty($cursos)) {
+            foreach ($cursos as $curso) {
+                $campi = get_the_terms( $curso, 'unidade' );
+                foreach ($campi as $campus) {
+                    if (!in_array($campus, $unidades)) array_push($unidades, $campus);
+                }
             }
         }
     ?>
@@ -65,6 +68,6 @@
     <?php endif; ?>
 
     <a href="<?php echo esc_url(get_post_meta( get_the_ID(), '_oportunidade_url', true )); ?>" class="oportunidade__info-link">
-        Mais informa&ccedil;&otilde;es<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g fill="none" fill-rule="evenodd"><path d="M18 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8c0-1.1.9-2 2-2h5M15 3h6v6M10 14L20.2 3.8"/></g></svg>
+        Mais informa&ccedil;&otilde;es
     </a>
 </div>
