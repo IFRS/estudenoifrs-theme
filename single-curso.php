@@ -87,65 +87,24 @@
     <div class="destaque">
         <section class="container">
             <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="curso-arquivos">
-                        <h3 class="curso-arquivos__title"><?php _e('Grade e Corpo Docente', 'ifrs-portal-theme'); ?></h3>
-                        <ul class="curso-arquivos__list">
-                            <?php
-                                $ppc = rwmb_meta( '_curso_ppc', array('limit' => 1) );
-                                $ppc = reset($ppc);
-                            ?>
-                            <?php if ($ppc) : ?>
-                                <li>
-                                    <a href="<?php echo esc_url($ppc['url']); ?>"><?php _e('Projeto Pedagógico do Curso (PPC)', 'ifrs-portal-theme'); ?></a>
-                                </li>
-                            <?php endif; ?>
-
-                            <?php
-                                $matriz_curricular = rwmb_meta( '_curso_matriz_curricular', array('limit' => 1) );
-                                $matriz_curricular = reset($matriz_curricular);
-                            ?>
-                            <?php if ($matriz_curricular) : ?>
-                                <li>
-                                    <a href="<?php echo esc_url($matriz_curricular['url']); ?>"><?php _e('Matriz Curricular', 'ifrs-portal-theme'); ?></a>
-                                </li>
-                            <?php endif; ?>
-
-                            <?php
-                                $representacao_grafica = rwmb_meta( '_curso_representacao_grafica', array('limit' => 1) );
-                                $representacao_grafica = reset($representacao_grafica);
-                            ?>
-                            <?php if ($representacao_grafica) : ?>
-                                <li>
-                                    <a href="<?php echo esc_url($representacao_grafica['url']); ?>"><?php _e('Representação Gráfica', 'ifrs-portal-theme'); ?></a>
-                                </li>
-                            <?php endif; ?>
-
-                            <?php
-                                $corpo_docente = rwmb_meta( '_curso_corpo_docente', array('limit' => 1) );
-                                $corpo_docente = reset($corpo_docente);
-                            ?>
-                            <?php if ($corpo_docente) : ?>
-                                <li>
-                                    <a href="<?php echo esc_url($corpo_docente['url']); ?>"><?php _e('Corpo Docente', 'ifrs-portal-theme'); ?></a>
-                                </li>
-                            <?php endif; ?>
-
-                            <?php
-                                $corpo_docente_componentes_curriculares = rwmb_meta( '_curso_corpo_docente_componentes_curriculares', array('limit' => 1) );
-                                $corpo_docente_componentes_curriculares = reset($corpo_docente_componentes_curriculares);
-                            ?>
-                            <?php if ($corpo_docente_componentes_curriculares) : ?>
-                                <li>
-                                    <a href="<?php echo esc_url($corpo_docente_componentes_curriculares['url']); ?>"><?php _e('Corpo Docente X Componentes Curriculares', 'ifrs-portal-theme'); ?></a>
-                                </li>
-                            <?php endif; ?>
-                        </ul>
+                <?php $arquivos_principais = rwmb_meta( '_curso_arquivos_principais' ); ?>
+                <?php if (!empty($arquivos_principais)) : ?>
+                    <div class="col-12 col-md-6">
+                        <div class="curso-arquivos">
+                            <h3 class="curso-arquivos__title"><?php _e('Grade e Corpo Docente', 'ifrs-portal-theme'); ?></h3>
+                            <ul class="curso-arquivos__list">
+                                <?php foreach ($arquivos_principais as $arquivo) : ?>
+                                    <li>
+                                        <a href="<?php echo esc_url($arquivo['url']); ?>"><?php echo $arquivo['title']; ?></a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                <?php endif; ?>
                 <?php $arquivos = rwmb_meta( '_curso_arquivos' ); ?>
                 <?php if (!empty($arquivos)) : ?>
-                    <div class="col">
+                    <div class="col-12 col-md-6">
                         <div class="curso-arquivos">
                             <h3 class="curso-arquivos__title"><?php _e('Arquivos', 'ifrs-portal-theme'); ?></h3>
                             <ul class="curso-arquivos__list">

@@ -140,59 +140,15 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
         'post_types' => 'curso',
         'fields'     => array(
             array(
-                'id'               => $prefix . 'ppc',
-                'name'             => __( 'PPC (Projeto Pedagógico do Curso)', 'ifrs-ingresso-theme' ),
-                'type'             => 'file_advanced',
-                'max_file_uploads' => 1,
-                'mime_type'        => 'application/pdf',
-                'attributes'       => array(
-                    'required' => 'required',
-                ),
-            ),
-            array(
-                'id'               => $prefix . 'matriz_curricular',
-                'name'             => __( 'Matriz Curricular Vigente', 'ifrs-ingresso-theme' ),
-                'type'             => 'file_advanced',
-                'max_file_uploads' => 1,
-                'mime_type'        => 'application/pdf',
-                'attributes'       => array(
-                    'required' => 'required',
-                ),
-            ),
-            array(
-                'id'               => $prefix . 'representacao_grafica',
-                'name'             => __( 'Representação Gráfica', 'ifrs-ingresso-theme' ),
-                'type'             => 'file_advanced',
-                'max_file_uploads' => 1,
-                'mime_type'        => 'application/pdf',
-                'attributes'       => array(
-                    'required' => 'required',
-                ),
-            ),
-            array(
-                'id'               => $prefix . 'corpo_docente',
-                'name'             => __( 'Corpo Docente', 'ifrs-ingresso-theme' ),
-                'type'             => 'file_advanced',
-                'max_file_uploads' => 1,
-                'mime_type'        => 'application/pdf',
-                'attributes'       => array(
-                    'required' => 'required',
-                ),
-            ),
-            array(
-                'id'               => $prefix . 'corpo_docente_componentes_curriculares',
-                'name'             => __( 'Corpo Docente X Componentes Curriculares', 'ifrs-ingresso-theme' ),
-                'type'             => 'file_advanced',
-                'max_file_uploads' => 1,
-                'mime_type'        => 'application/pdf',
-                'attributes'       => array(
-                    'required' => 'required',
-                ),
+                'id'   => $prefix . 'arquivos_principais',
+                'name' => __( 'Grade e Corpo Docente', 'ifrs-ingresso-theme' ),
+                'desc' => __( 'PPC (Projeto Pedagógico do Curso), Matriz Curricular Vigente, Representação Gráfica, Corpo Docente e Corpo Docente X Componentes Curriculares.', 'ifrs-ingresso-theme' ),
+                'type' => 'file_advanced',
             ),
             array(
                 'id'   => $prefix . 'arquivos',
                 'name' => __( 'Outros Arquivos', 'ifrs-ingresso-theme' ),
-                'desc' => __( 'Demais informações como "Ato autorizativo e/ou de reconhecimento do MEC", "Resolução de Aprovação e/ou alteração do Curso", etc.', 'ifrs-ingresso-theme' ),
+                'desc' => __( 'Demais informações como "Ato autorizativo e/ou de reconhecimento do MEC", "Resolução de aprovação e/ou alteração do Curso", etc.', 'ifrs-ingresso-theme' ),
                 'type' => 'file_advanced',
             ),
         ),
