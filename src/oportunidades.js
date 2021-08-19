@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
             history.replaceState(null, '', this.dataset.bsTarget);
             document.querySelector(this.dataset.bsTarget).querySelectorAll('.oportunidade--open').forEach(function(open) {
                 open.classList.remove('oportunidade--open');
-                open.removeAttribute('style');
+                open.style.gridColumn = '';
+                open.style.gridRow = '';
             });
         });
     });
@@ -47,13 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (oportunidade.classList.contains('oportunidade--open')) { // Close
                 oportunidade.classList.remove('oportunidade--open');
-                oportunidade.removeAttribute('style');
+                oportunidade.style.gridColumn = '';
+                oportunidade.style.gridRow = '';
                 oportunidade.classList.add(...classes);
                 btn.dataset.bsOriginalTitle = 'Expandir';
             } else { // Open
                 oportunidades.querySelectorAll('.oportunidade--open').forEach(function(open) { // Close others
                     open.classList.remove('oportunidade--open');
-                    open.removeAttribute('style');
+                    open.style.gridColumn = '';
+                    open.style.gridRow = '';
                     open.classList.add(...classes);
                     open.querySelector('.oportunidade__btn-toggle').dataset.bsOriginalTitle = 'Expandir';
                 });

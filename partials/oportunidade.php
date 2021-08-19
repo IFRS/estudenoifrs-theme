@@ -1,5 +1,8 @@
-<?php $tipo = get_the_terms(get_the_ID(), 'tipo'); ?>
-<div class="oportunidade oportunidade--<?php echo $tipo[0]->slug; ?><?php echo (is_singular('oportunidade')) ? ' oportunidade--open' : ''; ?>" data-flip-key="oportunidade-<?php the_ID(); ?>">
+<?php
+    $tipo = get_the_terms(get_the_ID(), 'tipo');
+    $cor = (!empty($tipo)) ? get_term_meta($tipo[0]->term_id, '_tipo_color', true) : false;
+?>
+<div class="oportunidade oportunidade--<?php echo $tipo[0]->slug; ?><?php echo (is_singular('oportunidade')) ? ' oportunidade--open' : ''; ?>" data-flip-key="oportunidade-<?php the_ID(); ?>"<?php echo (!empty($cor)) ? "style=\"--oportunidade-color: $cor; \"" : ''; ?>>
     <div class="oportunidade__header">
         <p class="oportunidade__tipo"><?php echo $tipo[0]->name; ?></p>
         <?php if (!is_singular('oportunidade')) : ?>

@@ -1,9 +1,15 @@
 .oportunidade {
     $root: &;
 
+    --oportunidade-color: #{$gray-400};
+
     background-color: #ffffff;
     border-bottom: 1px solid $gray-400;
+
     border-top: 5px solid $gray-400;
+    @supports(--css: variables) {
+        border-top: 5px solid var(--oportunidade-color);
+    }
     border-radius: $border-radius;
     box-shadow: 0 0 3px 0 rgba(0,0,0,0.25);
     display: flex;
@@ -107,62 +113,6 @@
         }
     }
 
-    &--diplomado {
-        border-top-color: $cor-diplomado;
-        #{$root}__btn-toggle {
-            color: $cor-diplomado;
-        }
-    }
-
-    &--ead {
-        border-top-color: $cor-ead;
-        #{$root}__btn-toggle {
-            color: $cor-ead;
-        }
-    }
-
-    &--eja {
-        border-top-color: $cor-eja;
-        #{$root}__btn-toggle {
-            color: $cor-eja;
-        }
-    }
-
-    &--extensao {
-        border-top-color: $cor-extensao;
-        #{$root}__btn-toggle {
-            color: $cor-extensao;
-        }
-    }
-
-    &--internacional {
-        border-top-color: $cor-internacional;
-        #{$root}__btn-toggle {
-            color: $cor-internacional;
-        }
-    }
-
-    &--pos {
-        border-top-color: $cor-pos;
-        #{$root}__btn-toggle {
-            color: $cor-pos;
-        }
-    }
-
-    &--ps {
-        border-top-color: $cor-ps;
-        #{$root}__btn-toggle {
-            color: $cor-ps;
-        }
-    }
-
-    &--transfer {
-        border-top-color: $cor-transfer;
-        #{$root}__btn-toggle {
-            color: $cor-transfer;
-        }
-    }
-
     &--open {
         background: #f3f3f3;
         border: none;
@@ -191,6 +141,10 @@
             position: relative;
 
             &::after {
+                background-color: $gray-400;
+                @supports(--css: variables) {
+                    background-color: var(--oportunidade-color);
+                }
                 content: '';
                 position: absolute;
                 bottom: 0;
@@ -208,18 +162,15 @@
             }
 
             &--isencao {
-                background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAQlBMVEUAAABgYGBoaGhlZWVlZWVlZWVmZmZmZmZmZmZmZmZlZWVlZWVmZmZmZmZlZWVlZWVlZWVlZWVmZmZmZmZlZWVmZmZfIqhmAAAAFXRSTlMAECAwYG9wf4CPkJ+gr7C/wM/Q3+BTajzOAAAAlklEQVQYlV2R3RrDEBBED1IVbYTEvP+r9gKJZm6W883+WDBkDA/57ZTO7TUhV6QcY5aKG2yRQjsFaek+HQ4IAXCHmrfHnJujAPie2yBBHkhihigBNf/DfIJRHBcLQJS5YZA+tsMrHfuVLOQ6NQKsH43GSIwqfhr+el6P9xpcGY5Fej8XAu6Q9nXd1VYz5FOVavI8NH3HD5C5B98l1LmDAAAAAElFTkSuQmCC') no-repeat left center;
-                padding-left: 25px;
+                @include icon('clock', 'left', 1.2em, $gray-600);
             }
 
             &--gratis {
-                background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAANlBMVEUAAABgYGBoaGhlZWVmZmZmZmZmZmZlZWVlZWVmZmZlZWVlZWVlZWVmZmZlZWVlZWVmZmZmZmb5QnP/AAAAEXRSTlMAECBvcH+PkJ+gsL/A0O/w8A5YjJ0AAABrSURBVBjTnZBLDoAgDERpRREZC3P/y5oQFZO6MM7yJe18Qri0bcEL+AJlWotZKWV+MOOpfcDEpO4cFP8T9mKUOXmopHX3VZ80A7WikerDR+aXRg0eCj3UhWmsdrVkkxtGoLvnKL/27F1HxANJiwVMQLBahwAAAABJRU5ErkJggg==') no-repeat left center;
-                padding-left: 25px;
+                @include icon('dollar', 'left', 1.2em, $gray-600);
             }
 
             &--inscricao {
-                background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAP1BMVEUAAABgYGBoaGhlZWVkZGRhYWFmZmZlZWViYmJmZmZmZmZlZWVlZWVkZGRmZmZlZWVlZWVlZWVmZmZlZWVmZmbC6T/YAAAAE3RSTlMAECAwQExQb3Bwf5CfoKC/wM/fkehoXgAAAHxJREFUGFe9j0sOgzAMBcfwgJCGb979z9oFbRUqddvZWB7JlgYAiNu46DwDzO7eJqZcvOWc8+aSpwCI065+Ue0zAPmh5EWSFietFiCL2AUw7oE+suFaB5fcUDwAyV8kQDWpIdWfP/8ox1aOFtD7aIsO9wDrPWi9LqItCuAJIWIJsBB8ABoAAAAASUVORK5CYII=') no-repeat left center;
-                padding-left: 25px;
+                @include icon('calendar', 'left', 1.2em, $gray-600);
             }
         }
 
@@ -241,9 +192,9 @@
         }
 
         #{$root}__info-link {
-            background-color: $cor-destaque;
+            background-color: $primary;
             background-image: none;
-            color: color-contrast($cor-destaque);
+            color: #ffffff;
             display: block;
             font-size: 1.2rem;
             font-weight: bold;
@@ -253,108 +204,12 @@
 
             &:hover,
             &:active {
-                background-color: shade-color($cor-destaque, 10%);
+                background-color: shade-color($primary, 10%);
                 text-decoration: none;
             }
 
             &::after {
                 content: initial;
-            }
-        }
-
-        &#{$root}--diplomado {
-            #{$root}__title {
-                &::after {
-                    background-color: $cor-diplomado;
-                }
-            }
-            #{$root}__info-link {
-                background-color: $cor-diplomado;
-                color: color-contrast($cor-diplomado);
-            }
-        }
-
-        &#{$root}--ead {
-            #{$root}__title {
-                &::after {
-                    background-color: $cor-ead;
-                }
-            }
-            #{$root}__info-link {
-                background-color: $cor-ead;
-                color: color-contrast($cor-ead);
-            }
-        }
-
-        &#{$root}--eja {
-            #{$root}__title {
-                &::after {
-                    background-color: $cor-eja;
-                }
-            }
-            #{$root}__info-link {
-                background-color: $cor-eja;
-                color: color-contrast($cor-eja);
-            }
-        }
-
-        &#{$root}--extensao {
-            #{$root}__title {
-                &::after {
-                    background-color: $cor-extensao;
-                }
-            }
-            #{$root}__info-link {
-                background-color: $cor-extensao;
-                color: color-contrast($cor-extensao);
-            }
-        }
-
-        &#{$root}--internacional {
-            #{$root}__title {
-                &::after {
-                    background-color: $cor-internacional;
-                }
-            }
-            #{$root}__info-link {
-                background-color: $cor-internacional;
-                color: color-contrast($cor-internacional);
-            }
-        }
-
-        &#{$root}--pos {
-            #{$root}__title {
-                &::after {
-                    background-color: $cor-pos;
-                }
-            }
-            #{$root}__info-link {
-                background-color: $cor-pos;
-                color: color-contrast($cor-pos);
-            }
-        }
-
-        &#{$root}--ps {
-            #{$root}__title {
-                &::after {
-                    background-color: $cor-destaque;
-                }
-            }
-            #{$root}__info-link {
-                background-color: $cor-destaque;
-                color: color-contrast($cor-ps);
-            }
-        }
-
-        &#{$root}--transfer {
-            #{$root}__title {
-                &::after {
-                    background-color: $cor-transfer;
-                }
-            }
-            #{$root}__info-link {
-                background-color: $cor-transfer;
-                color: color-contrast($cor-transfer);
             }
         }
     }
