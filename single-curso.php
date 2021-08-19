@@ -39,17 +39,21 @@
                     <p class="curso-info__text"><?php echo esc_html($nota_mec); ?></p>
                 </div>
             <?php endif; ?>
+            <?php
+                $nome = get_post_meta( get_the_ID(), '_curso_coordenador_nome', true );
+                $lattes = get_post_meta( get_the_ID(), '_curso_coordenador_lattes', true );
+                $email = get_post_meta( get_the_ID(), '_curso_coordenador_email', true );
+            ?>
             <div class="curso-coordenador">
                 <h3 class="curso-coordenador__title"><?php _e('Coordena&ccedil;&atilde;o', 'ifrs-portal-theme'); ?></h3>
                 <p class="curso-coordenador__nome">
-                    <?php $lattes = get_post_meta( get_the_ID(), '_curso_coordenador_lattes', true ); ?>
                     <?php if (!empty($lattes)) : ?>
-                        <a href="<?php echo esc_url($lattes); ?>"><?php echo esc_html(get_post_meta( get_the_ID(), '_curso_coordenador_nome', true )); ?></a>
+                        <a href="<?php echo esc_url($lattes); ?>"><?php echo esc_html($nome); ?></a>
                     <?php else : ?>
-                        <?php echo esc_html(get_post_meta( get_the_ID(), '_curso_coordenador_nome', true )); ?>
+                        <?php echo esc_html($nome); ?>
                     <?php endif; ?>
                 </p>
-                <span class="curso-coordenador__email"><a href="mailto:<?php echo esc_html(get_post_meta( get_the_ID(), '_curso_coordenador_email', true )); ?>" target="_blank" rel="noopener noreferrer"><?php echo str_replace(array('@', '.'), array('@<wbr>', '.<wbr>'), esc_html(get_post_meta( get_the_ID(), '_curso_coordenador_email', true ))); ?></a></span>
+                <span class="curso-coordenador__email"><a href="mailto:<?php echo esc_html($email); ?>" target="_blank" rel="noopener noreferrer"><?php echo str_replace(array('@', '.'), array('@<wbr>', '.<wbr>'), esc_html($email)); ?></a></span>
             </div>
         </aside>
         <hr class="curso__separator">
