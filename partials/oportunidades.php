@@ -1,20 +1,18 @@
+<?php
+    $tipos = get_terms(array(
+        'taxonomy' => 'tipo',
+        'hide_empty' => false,
+    ));
+    array_unshift($tipos, new stdClass());
+?>
 <section class="container">
-    <?php if (is_tax('unidade')) : ?>
-        <h2 class="text-center mb-3"><?php single_term_title( '', true ); ?></h2>
-    <?php endif; ?>
-    <?php
-        $tipos = get_terms(array(
-            'taxonomy' => 'tipo',
-            'hide_empty' => false,
-        ));
-        array_unshift($tipos, new stdClass());
-    ?>
     <ul class="nav nav-pills justify-content-center mt-3 mb-1 mx-auto tipo-list" role="tablist">
         <?php foreach ($tipos as &$tipo) : ?>
             <?php
-                $today = new Datetime("now - 1 day");
+                $today = new Datetime('today midnight');
 
                 $tax_query = array();
+                $meta_query = array();
 
                 if (!empty($tipo->term_id)) {
                     $tax_query[] = array(
@@ -23,21 +21,20 @@
                     );
                 }
 
-                if (is_tax('unidade')) {
-                    $tax_query[] = array(
-                        'taxonomy' => 'unidade',
-                        'terms' => get_queried_object()->term_id,
-                    );
-                }
+                $meta_query[] = array(
+                    'key' => '_oportunidade_inscricao_termino',
+                    'value' => $today->format('U'),
+                    'compare' => '>=',
+                    'type' => 'NUMERIC',
+                );
 
                 $args = array(
                     'post_type' => 'oportunidade',
                     'nopaging' => true,
                     'posts_per_page' => -1,
                     'tax_query' => $tax_query,
+                    'meta_query' => $meta_query,
                     'meta_key' => '_oportunidade_inscricao_termino',
-                    'meta_compare' => '>=',
-                    'meta_value' => $today->format('U'),
                     'orderby' => 'meta_value_num',
                     'order' => 'ASC',
                 );
