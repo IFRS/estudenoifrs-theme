@@ -48,6 +48,8 @@
         'post_type' => 'curso',
         'nopaging' => true,
         'posts_per_page' => -1,
+        'orderby' => 'title',
+        'order' => 'ASC',
     );
 
     if (!empty($_POST['s'])) {
