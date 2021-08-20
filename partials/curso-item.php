@@ -1,9 +1,14 @@
 <?php
-    $niveis = wp_get_post_terms(get_the_ID(), 'nivel', array('orderby' => 'term_id')); // De repente usar wp_list_categories() para pegar a lista hierarquica.
-    $nivel = end($niveis);
-    $cor = (!empty($nivel)) ? get_term_meta($nivel->term_id, '_nivel_color', true) : false;
+    $niveis = wp_get_post_terms(get_the_ID(), 'nivel', array('orderby' => 'parent')); // De repente usar wp_list_categories() para pegar a lista hierarquica.
+    $cores = array();
+    foreach ($niveis as $nivel) {
+        $cor = get_term_meta($nivel->term_id, '_nivel_color', true);
+        if (!empty($cor)) $cores[] = $cor;
+    }
+    if (count($cores) === 1) $cores[1] = $cores[0];
+    $cores = implode(', ', $cores);
 ?>
-<article class="curso-item"<?php echo (!empty($cor)) ? "style=\"border-top-color: $cor; \"" : ''; ?>>
+<article class="curso-item"<?php echo (!empty($cores)) ? "style=\"border-image-source: linear-gradient(to right, $cores); \"" : ''; ?>>
     <p class="curso-item__nivel">
         <?php foreach ($niveis as $nivel) : ?>
             <?php echo $nivel->name; ?>
