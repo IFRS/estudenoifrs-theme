@@ -109,22 +109,22 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     /**
      * Cursos
      */
-    // $metaboxes[] = array(
-    //     'title'      => __( 'Cursos Relacionados', 'ifrs-ingresso-theme' ),
-    //     'post_types' => 'oportunidade',
-    //     'fields'     => array(
-    //         array(
-    //             'id'          => $prefix . 'cursos',
-    //             'name'        => __( 'Cursos', 'ifrs-ingresso-theme' ),
-    //             'desc'        => __( 'Escolha os Cursos participantes dessa Oportunidade.', 'ifrs-ingresso-theme' ),
-    //             'type'        => 'post',
-    //             'post_type'   => 'curso',
-    //             'placeholder' => 'Selecione os Cursos',
-    //             'field_type'  => 'select_advanced',
-    //             'multiple'    => true,
-    //         ),
-    //     ),
-    // );
+    $metaboxes[] = array(
+        'title'      => __( 'Cursos Relacionados', 'ifrs-ingresso-theme' ),
+        'post_types' => 'oportunidade',
+        'fields'     => array(
+            array(
+                'id'          => $prefix . 'cursos',
+                'name'        => __( 'Cursos', 'ifrs-ingresso-theme' ),
+                'desc'        => __( 'Escolha os Cursos ofertados nessa Oportunidade.', 'ifrs-ingresso-theme' ),
+                'type'        => 'post',
+                'post_type'   => 'curso',
+                'placeholder' => 'Selecione os Cursos',
+                'field_type'  => 'select_advanced',
+                'multiple'    => true,
+            ),
+        ),
+    );
 
     /**
      * Datas
