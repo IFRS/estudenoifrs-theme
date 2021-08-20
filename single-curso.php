@@ -21,11 +21,13 @@
                 </p>
             </div>
             <div class="curso-info curso-info--unidade">
-                <h4 class="curso-info__title"><?php _e('Unidade', 'ifrs-portal-theme'); ?></h4>
+                <?php $unidades_count = count((array) get_the_terms( get_the_ID(), 'unidade')); ?>
+                <h4 class="curso-info__title"><?php echo _n('Unidade', 'Unidades', $unidades_count, 'ifrs-portal-theme'); ?></h4>
                 <p class="curso-info__text"><?php the_terms( get_the_ID(), 'unidade', '', ', ' ); ?></p>
             </div>
             <div class="curso-info curso-info--turno">
-                <h4 class="curso-info__title"><?php _e('Turnos', 'ifrs-portal-theme'); ?></h4>
+                <?php $turnos_count = count((array) get_the_terms( get_the_ID(), 'turno')); ?>
+                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', $turnos_count, 'ifrs-portal-theme'); ?></h4>
                 <p class="curso-info__text"><?php the_terms( get_the_ID(), 'turno', '', ', ' ); ?></p>
             </div>
             <div class="curso-info curso-info--cargahoraria">
