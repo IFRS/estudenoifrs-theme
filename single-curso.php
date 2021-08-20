@@ -21,12 +21,12 @@
                 </p>
             </div>
             <div class="curso-info curso-info--unidade">
-                <?php $unidades_count = count((array) get_the_terms( get_the_ID(), 'unidade')); ?>
+                <?php $unidades_count = count(wp_get_post_terms(get_the_ID(), 'unidade', array('fields' => 'ids'))); ?>
                 <h4 class="curso-info__title"><?php echo _n('Unidade', 'Unidades', $unidades_count, 'ifrs-portal-theme'); ?></h4>
                 <p class="curso-info__text"><?php the_terms( get_the_ID(), 'unidade', '', ', ' ); ?></p>
             </div>
             <div class="curso-info curso-info--turno">
-                <?php $turnos_count = count((array) get_the_terms( get_the_ID(), 'turno')); ?>
+                <?php $turnos_count =  count(wp_get_post_terms(get_the_ID(), 'turno', array('fields' => 'ids'))); ?>
                 <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', $turnos_count, 'ifrs-portal-theme'); ?></h4>
                 <p class="curso-info__text"><?php the_terms( get_the_ID(), 'turno', '', ', ' ); ?></p>
             </div>
