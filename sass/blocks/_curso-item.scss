@@ -41,18 +41,18 @@
     &__meta {
         color: $gray-700;
         font-size: 0.9rem;
-    }
 
-    &__cargahoraria {
-        @include icon('clock', $cor: $gray-600);
-    }
+        &--cargahoraria {
+            @include icon('clock', $cor: $gray-600);
+        }
 
-    &__turnos {
-        @include icon('sun', $cor: $gray-600);
-    }
+        &--turnos {
+            @include icon('sun', $cor: $gray-600);
+        }
 
-    &__modalidades {
-        @include icon('people', $cor: $gray-600);
+        &--modalidades {
+            @include icon('people', $cor: $gray-600);
+        }
     }
 
     &__link-info {
