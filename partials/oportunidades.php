@@ -21,6 +21,30 @@
                     );
                 }
 
+                if (!empty($_POST['curso_unidade'])) {
+                    $cursos = new WP_Query(array(
+                        'post_type' => 'curso',
+                        'nopaging' => true,
+                        'posts_per_page' => -1,
+                        'fields' => 'ids',
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'unidade',
+                                'field'    => 'slug',
+                                'terms'    => (array) $_POST['curso_unidade'],
+                            )
+                        ),
+                    ));
+                }
+
+                if (isset($cursos)) {
+                    $meta_query[] = array(
+                        'key'     => '_oportunidade_cursos',
+                        'value'   => !empty($cursos->posts) ? $cursos->posts : 0,
+                        'compare' => 'IN',
+                    );
+                }
+
                 $meta_query[] = array(
                     'key' => '_oportunidade_inscricao_termino',
                     'value' => $today->format('U'),
