@@ -30,6 +30,7 @@
         button[type=submit] {
             @include icon('submit', 'center', 1.5rem, $cor-destaque);
 
+            margin-right: 0.25rem;
             width: 1.5rem; height: 1.5rem;
 
             &:hover {
