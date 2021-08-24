@@ -116,7 +116,7 @@
                 $unidades_shown++;
             ?>
             <div class="cursos__unidade">
-                <h3 class="cursos__unidade-title"><?php echo $unidade->name; ?>&nbsp;<span class="badge bg-primary"><?php echo $unidade->cursos->found_posts; ?></span></h3>
+                <h3 class="cursos__unidade-title"><?php echo $unidade->name; ?>&nbsp;<span class="cursos__unidade-numero"><?php echo $unidade->cursos->found_posts; ?></span><span class="visually-hidden">&nbsp;Cursos</span></h3>
                 <?php if ($unidade->cursos->have_posts()) : ?>
                     <div class="cursos__list">
                         <?php while ($unidade->cursos->have_posts()) : $unidade->cursos->the_post(); ?>

@@ -22,11 +22,13 @@
             width: 100px; height: 2px;
             background-color: $cor-destaque;
         }
+    }
 
-        .badge {
-            font-size: 0.5em;
-            vertical-align: middle;
-        }
+    &__unidade-numero {
+        color: $primary;
+        font-size: 0.5em;
+        font-weight: bold;
+        vertical-align: super;
     }
 
     &__list {
