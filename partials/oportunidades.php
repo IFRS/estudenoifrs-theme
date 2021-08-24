@@ -102,10 +102,10 @@
                 </div>
                 <div class="col-12 col-md-1 m-0 text-center">
                     <div class="btn-group" role="group" aria-label="Ações">
-                        <button type="submit" class="btn">
+                        <button type="submit" class="btn" title="Filtrar Oportunidades" data-bs-toggle="tooltip" data-bs-placement="top">
                             <span class="visually-hidden">Filtrar Oportunidades</span>
                         </button>
-                        <a href="<?php echo home_url(); ?>" class="btn oportunidade-filter__reset">
+                        <a href="<?php echo home_url(); ?>" class="btn oportunidade-filter__reset" title="Limpar Filtros" data-bs-toggle="tooltip" data-bs-placement="top">
                             <span class="visually-hidden">Limpar Filtros</span>
                         </a>
                     </div>
