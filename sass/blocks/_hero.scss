@@ -3,7 +3,7 @@
 .hero {
     &__title {
         color: $gray-600;
-        font-size: 2.5rem;
+        margin-top: 2rem;
         margin-bottom: 2rem;
         padding-bottom: 0.5rem;
         text-align: center;
@@ -24,6 +24,7 @@
 
         span {
             color: $cor-destaque;
+            font-weight: bold;
         }
 
         small {

@@ -18,7 +18,15 @@ $component-active-bg:          $cor-destaque;
 $font-family-base:             "Open Sans", $font-family-sans-serif;
 
 $body-color:                   $gray-700;
+
+// Headings
 $headings-color:               $gray-700;
+$h1-font-size:                 $font-size-base * 2.75;
+$h2-font-size:                 $font-size-base * 2.5;
+$h3-font-size:                 $font-size-base * 2;
+$h4-font-size:                 $font-size-base * 1.5;
+$h5-font-size:                 $font-size-base * 1.2;
+$h6-font-size:                 $font-size-base;
 
 // Navbar
 $navbar-light-color:           $gray-600;
