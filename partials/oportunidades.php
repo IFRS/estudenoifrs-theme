@@ -21,19 +21,31 @@
                     );
                 }
 
-                if (!empty($_POST['curso_unidade'])) {
+                if (!empty($_POST['curso_unidade']) || !empty($_POST['curso_nivel'])) {
+                    $curso_tax_query = array();
+
+                    if (!empty($_POST['curso_unidade'])) {
+                        $curso_tax_query[] = array(
+                            'taxonomy' => 'unidade',
+                            'field'    => 'slug',
+                            'terms'    => (array) $_POST['curso_unidade'],
+                        );
+                    }
+
+                    if (!empty($_POST['curso_nivel'])) {
+                        $curso_tax_query[] = array(
+                            'taxonomy' => 'nivel',
+                            'field'    => 'slug',
+                            'terms'    => (array) $_POST['curso_nivel'],
+                        );
+                    }
+
                     $cursos = new WP_Query(array(
                         'post_type' => 'curso',
                         'nopaging' => true,
                         'posts_per_page' => -1,
                         'fields' => 'ids',
-                        'tax_query' => array(
-                            array(
-                                'taxonomy' => 'unidade',
-                                'field'    => 'slug',
-                                'terms'    => (array) $_POST['curso_unidade'],
-                            )
-                        ),
+                        'tax_query' => $curso_tax_query,
                     ));
                 }
 
@@ -82,11 +94,11 @@
 <div class="destaque">
     <section class="container">
         <div class="oportunidade-filter">
-            <form action="<?php echo esc_url(home_url('/')); ?>" method="POST" class="oportunidade-filter__form row row-cols-sm-auto g-3 align-items-center">
-                <?php $select_id = uniqid(); ?>
-                <div class="col-12 col-md-11 m-0">
-                    <label class="visually-hidden" for="select-<?php echo $select_id; ?>">Unidade</label>
-                    <select name="curso_unidade[]" id="select-<?php echo $select_id; ?>" class="form-select flex-grow-0 w-auto">
+            <form action="<?php echo esc_url(home_url('/')); ?>" method="POST" class="oportunidade-filter__form row g-3 align-items-center">
+                <?php $select_unidade_id = uniqid(); ?>
+                <div class="col-auto m-0">
+                    <label class="visually-hidden" for="<?php echo $select_unidade_id; ?>">Unidade</label>
+                    <select name="curso_unidade[]" id="<?php echo $select_unidade_id; ?>" class="form-select flex-grow-0 w-auto">
                         <?php
                             $unidades = get_terms(array(
                                 'taxonomy' => 'unidade',
@@ -100,7 +112,36 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="col-12 col-md-1 m-0 text-center">
+                <?php $select_nivel_id = uniqid(); ?>
+                <div class="col-auto m-0">
+                    <label class="visually-hidden" for="<?php echo $select_nivel_id; ?>">N&iacute;vel</label>
+                    <?php
+                        $niveis = get_terms(array(
+                            'taxonomy' => 'nivel',
+                            'hide_empty' => false,
+                            'parent' => 0,
+                        ));
+                    ?>
+                    <select name="curso_nivel[]" id="<?php echo $select_nivel_id; ?>" class="form-select flex-grow-0 w-auto">
+                        <option hidden selected disabled>N&iacute;vel</option>
+                        <?php foreach ($niveis as $nivel) : ?>
+                            <?php $nivel_check = (!empty($_POST['curso_nivel']) && array_search($nivel->slug, $_POST['curso_nivel']) !== false); ?>
+                            <option value="<?php echo $nivel->slug; ?>"<?php echo $nivel_check ? ' selected' : ''; ?>><?php echo $nivel->name; ?></option>
+                            <?php
+                                $filhos = get_terms(array(
+                                    'taxonomy' => 'nivel',
+                                    'hide_empty' => false,
+                                    'parent' => $nivel->term_id,
+                                ));
+                            ?>
+                            <?php foreach ($filhos as $filho) : ?>
+                                <?php $nivel_check = (!empty($_POST['curso_nivel']) && array_search($filho->slug, $_POST['curso_nivel']) !== false); ?>
+                                <option value="<?php echo $filho->slug; ?>"<?php echo $nivel_check ? ' selected' : ''; ?>><?php echo $filho->name; ?></option>
+                            <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="col m-0 text-end">
                     <div class="btn-group" role="group" aria-label="Ações">
                         <button type="submit" class="btn" title="Filtrar Oportunidades" data-bs-toggle="tooltip" data-bs-placement="top">
                             <span class="visually-hidden">Filtrar Oportunidades</span>
