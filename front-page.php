@@ -8,7 +8,7 @@
 
 <section class="container">
     <article class="hero">
-        <h2 class="hero__title">Estude no <span>#mundo<strong>IFRS</strong></span></h2>
+        <h2 class="hero__title"><?php echo preg_replace('/(\w+)$/', '<span>$0</span>', get_bloginfo( 'name' )); ?></h2>
         <div class="hero__text">
             <?php if (get_option( 'page_on_front' )) : ?>
                 <?php
