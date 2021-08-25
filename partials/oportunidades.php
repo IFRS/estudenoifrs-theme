@@ -6,6 +6,7 @@
     array_unshift($tipos, new stdClass());
 ?>
 <section class="container">
+    <h3 class="hero__title">Inscri&ccedil;&otilde;es Abertas</h3>
     <ul class="nav nav-pills justify-content-center mt-3 mb-1 mx-auto tipo-list" role="tablist">
         <?php foreach ($tipos as &$tipo) : ?>
             <?php
@@ -79,7 +80,7 @@
             ?>
             <?php if (!empty($tipo->term_id)) : ?>
                 <li class="nav-item mx-1 my-1">
-                    <button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#<?php echo $tipo->slug; ?>" role="tab" aria-controls="<?php echo $tipo->slug; ?>" aria-selected="false"><?php echo $tipo->name; ?>&nbsp;&nbsp;<span class="badge"><?php echo $tipo->oportunidades->post_count; ?></span></button>
+                    <button class="nav-link" type="button" data-bs-toggle="pill" data-bs-target="#<?php echo $tipo->slug; ?>" role="tab" aria-controls="<?php echo $tipo->slug; ?>" aria-selected="false"><?php echo $tipo->name; ?>&nbsp;&nbsp;<span class="badge"><?php echo ($tipo->oportunidades->post_count > 0) ? $tipo->oportunidades->post_count : 'em breve'; ?></span></button>
                 </li>
             <?php else : ?>
                 <li class="nav-item mx-1 my-1">
