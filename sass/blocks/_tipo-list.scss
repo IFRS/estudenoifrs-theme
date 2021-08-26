@@ -9,11 +9,15 @@
     }
 
     .nav-link {
+        font-weight: 600;
+
         &:not(.active) {
             > .badge {
-                background-color: $gray-600;
+                background-color: $gray-400;
+                color: $gray-600;
             }
         }
+
         &.active {
             > .badge {
                 background-color: shade-color($primary, 30%);
