@@ -1,7 +1,8 @@
 <?php
     $tipos = get_terms(array(
-        'taxonomy' => 'tipo',
+        'taxonomy'   => 'tipo',
         'hide_empty' => false,
+        'orderby'    => 'term_order',
     ));
     array_unshift($tipos, new stdClass());
 ?>
