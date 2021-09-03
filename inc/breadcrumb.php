@@ -1,21 +1,20 @@
 <?php
 function ingresso_breadcrumb() {
-    $home          = 'Home';
     $before        = '<li class="breadcrumb-item">';
     $before_active = '<li class="breadcrumb-item active" aria-current="page">';
     $after         = '</li>';
 
     if (!is_front_page() || is_paged()) {
-        echo '<section class="container">';
-        echo '<nav aria-label="Você está em:">';
+        echo '<section class="migalhas">';
+        echo '<nav class="container" aria-label="Você está em:">';
 		echo '<ol class="breadcrumb">';
 
         global $post;
-        $homeLink = home_url();
+        $homelink = home_url();
 		$siteprincipal = get_home_url('1','/');
         $nomesite = get_bloginfo('name');
 
-        echo $before . '<a href="' . $homeLink . '">' . $nomesite . '</a>' . $after;
+        echo $before . '<a href="' . $homelink . '">' . $nomesite . '</a>' . $after;
 
         if (is_home()) {
             echo $before_active . get_the_title(get_option( 'page_for_posts' )) . $after;
@@ -51,7 +50,7 @@ function ingresso_breadcrumb() {
             if (get_post_type() != 'post') {
                 $post_type = get_post_type_object(get_post_type());
                 $slug      = $post_type->rewrite;
-                echo $before . '<a href="' . $homeLink . '/' . $slug['slug'] . '/">' . $post_type->labels->name . '</a>' . $after;
+                echo $before . '<a href="' . $homelink . '/' . $slug['slug'] . '/">' . $post_type->labels->name . '</a>' . $after;
                 echo $before_active . get_the_title() . $after;
             } else {
                 $cat = get_the_category();

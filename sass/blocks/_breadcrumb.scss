@@ -1,7 +1,7 @@
-.breadcrumb {
-    @include icon('chevron-right', 'left', 1rem, $primary);
+.migalhas {
+    background-color: $gray-100;
 
-    border-top: 1px solid $gray-200;
-    border-bottom: 1px solid $gray-200;
-    margin-bottom: 1rem;
+    .breadcrumb {
+        @include icon('chevron-right', 'left', 1rem, $primary);
+    }
 }

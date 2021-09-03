@@ -48,10 +48,11 @@ $carousel-indicator-width:     3rem;
 $carousel-indicator-height:    0.5rem;
 
 // Breadcrumb
-$breadcrumb-bg:                #ffffff;
 $breadcrumb-font-size:         0.9rem;
-$breadcrumb-margin-bottom:     0;
-$breadcrumb-padding-y:         0.5rem;
+$breadcrumb-padding-y:         1rem;
+$breadcrumb-margin-bottom:     2rem;
+$breadcrumb-divider-color:     $gray-700;
+$breadcrumb-active-color:      $gray-700;
 
 /* Bootstrap */
 // Layout & components
