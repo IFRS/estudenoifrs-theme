@@ -1,6 +1,6 @@
 <?php if (is_active_sidebar('area-carousel')) : ?>
     <?php $carousel_id = uniqid('carousel-'); ?>
-    <div id="<?php echo $carousel_id; ?>" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div id="<?php echo $carousel_id; ?>" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
             <?php
                 $total_widgets = wp_get_sidebars_widgets();
