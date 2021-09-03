@@ -37,7 +37,9 @@
         <?php echo get_template_part('partials/barra-acessibilidade'); ?>
     </div>
     <header>
-        <h1 class="visually-hidden"><?php bloginfo('name'); ?></h1>
+        <?php if (!is_front_page()) : ?>
+            <h1 class="visually-hidden"><?php bloginfo('name'); ?></h1>
+        <?php endif; ?>
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-4">
