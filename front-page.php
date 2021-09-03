@@ -20,6 +20,14 @@
     </article>
 </section>
 
+<div class="destaque">
+    <section class="container">
+        <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/cursos-banner.png" alt="Guia de Cursos">
+        </a>
+    </section>
+</div>
+
 <?php echo get_template_part('partials/oportunidades'); ?>
 
 <?php get_footer(); ?>
