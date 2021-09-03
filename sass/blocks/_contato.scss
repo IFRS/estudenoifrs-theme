@@ -29,21 +29,12 @@
     }
 
     &__faq-link {
+        @include icon('help', 'left', 2rem, $cor-detalhe);
+
         color: $cor-detalhe;
         display: inline-block;
         font-size: 1.5rem;
         margin-bottom: 1rem;
-        padding-left: 37px;
-        position: relative;
-    }
-
-    &__faq-img {
-        margin-right: 7px;
-        width: 30px;
-        height: auto;
-        position: absolute;
-        left: 0;
-        top: calc(50% - 14px);
     }
 
     &__widget {
