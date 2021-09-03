@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<section class="container">
-    <div class="row">
+<section class="banner">
+    <div class="container">
         <?php echo get_template_part('partials/carousel'); ?>
     </div>
 </section>
@@ -20,13 +20,13 @@
     </article>
 </section>
 
-<div class="destaque">
-    <section class="container">
+<section class="banner">
+    <div class="container">
         <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>">
             <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/cursos-banner.png" alt="Guia de Cursos">
         </a>
-    </section>
-</div>
+    </div>
+</section>
 
 <?php echo get_template_part('partials/oportunidades'); ?>
 

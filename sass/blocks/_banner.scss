@@ -1,0 +1,13 @@
+.banner {
+    position: relative;
+
+    &::after {
+        background-color: $gray-100;
+        content: '';
+        display: block;
+        height: 90%;
+        position: absolute;
+        top: 5%; left: 0; right: 0;
+        z-index: -1;
+    }
+}
