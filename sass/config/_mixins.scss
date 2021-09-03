@@ -1,18 +1,41 @@
 @use "sass:map";
+@use "sass:math";
 
-@mixin title {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
+@mixin title($position: 'left') {
+    $comprimento: 9%;
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.75rem;
     position: relative;
 
     &::after {
         background: $cor-destaque;
         content: '';
         position: absolute;
-        height: 3px;
-        width: 12%;
+        height: 2px;
+        width: $comprimento;
         bottom: 0;
-        left: 0;
+    }
+
+    @if $position == 'left' {
+        text-align: left;
+
+        &::after {
+            left: 0;
+        }
+    } @else if $position == 'center' {
+        text-align: center;
+
+        &::after {
+            right: (50% - math.div($comprimento, 2));
+        }
+    } @else if $position == 'right' {
+        text-align: right;
+
+        &::after {
+            left: (50% - math.div($comprimento, 2));
+        }
     }
 }
 

@@ -1,0 +1,21 @@
+.aside {
+    background-color: $gray-100;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    text-align: center;
+
+    &__title {
+        @include title('center');
+
+        color: $gray-600;
+        font-size: 2rem;
+        text-transform: uppercase;
+    }
+
+    &__btn {
+        @include button-variant(transparent, $gray-400, $gray-600, $primary, $primary);
+
+        margin-right: 0.5rem;
+    }
+}

@@ -1,26 +1,9 @@
-@use "sass:math";
-
 .hero {
     &__title {
+        @include title('center');
+
         color: $gray-600;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        padding-bottom: 0.75rem;
-        text-align: center;
         text-transform: uppercase;
-        position: relative;
-
-        &::after {
-            $comprimento: 9%;
-
-            background: $cor-destaque;
-            content: '';
-            position: absolute;
-            height: 2px;
-            width: $comprimento;
-            bottom: 0;
-            right: (50% - math.div($comprimento, 2));
-        }
 
         span {
             color: $cor-destaque;

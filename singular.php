@@ -25,4 +25,6 @@
     </article>
 </section>
 
+<?php get_template_part( 'partials/aside' ); ?>
+
 <?php get_footer(); ?>
