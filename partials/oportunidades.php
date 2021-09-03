@@ -8,7 +8,7 @@
 ?>
 <section class="container">
     <h2 class="hero__title">Inscri&ccedil;&otilde;es <span>Abertas</span></h2>
-    <ul class="nav nav-pills justify-content-center mt-3 mb-1 mx-auto tipo-list" role="tablist">
+    <ul class="nav nav-pills justify-content-center my-3 mx-auto tipo-list" role="tablist">
         <?php foreach ($tipos as &$tipo) : ?>
             <?php
                 $today = new Datetime('today midnight');
