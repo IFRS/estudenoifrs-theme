@@ -5,18 +5,18 @@
         color: $gray-600;
         margin-top: 2rem;
         margin-bottom: 2rem;
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.75rem;
         text-align: center;
         text-transform: uppercase;
         position: relative;
 
         &::after {
-            $comprimento: 12%;
+            $comprimento: 9%;
 
             background: $cor-destaque;
             content: '';
             position: absolute;
-            height: 3px;
+            height: 2px;
             width: $comprimento;
             bottom: 0;
             right: (50% - math.div($comprimento, 2));
