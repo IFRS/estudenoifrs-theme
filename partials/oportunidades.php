@@ -171,7 +171,9 @@
                         </div>
                     <?php else : ?>
                         <div class="alert alert-info" role="alert">
-                            N&atilde;o existem oportunidades<?php echo (is_tax('unidade')) ? ' nessa <strong>unidade</strong> ' : ' '; ?>para esse <strong>tipo</strong> no momento. Fique atento para novas publica&ccedil;&otilde;es.
+                            N&atilde;o existem inscri&ccedil;&otilde;es abertas desse <strong>tipo</strong> no momento, fique atento para novas publica&ccedil;&otilde;es.
+                            <br>
+                            Enquanto isso, confira o <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="alert-link">Guia de Cursos</a>.
                         </div>
                     <?php endif; ?>
                     <?php wp_reset_postdata(); ?>
