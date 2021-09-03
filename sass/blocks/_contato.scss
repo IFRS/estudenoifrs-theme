@@ -1,5 +1,6 @@
 .contato {
-    padding: 50px 0;
+    border-top: 2rem solid $gray-100;
+    padding: 3rem 0;
     position: relative;
 
     &:after {
@@ -19,7 +20,7 @@
 
     &__title {
         font-size: 2.5rem;
-        margin-bottom: 30px;
+        margin-bottom: 2rem;
     }
 
     &__title-destaque {
@@ -31,7 +32,7 @@
         color: $cor-detalhe;
         display: inline-block;
         font-size: 1.5rem;
-        margin-bottom: 15px;
+        margin-bottom: 1rem;
         padding-left: 37px;
         position: relative;
     }
