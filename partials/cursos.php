@@ -102,8 +102,8 @@
     </h2>
 </section>
 
-<div class="destaque">
-    <section class="container">
+<section class="cursos">
+    <div class="container">
         <?php echo get_template_part('partials/curso-filter', null, array('is_filter' => $is_filter)); ?>
 
         <?php $unidades_shown = 0; ?>
@@ -134,5 +134,5 @@
         <?php if ($unidades_shown === 0) : ?>
             <div class="alert alert-danger">N&atilde;o foram encontrados Cursos com os crit&eacute;rios utilizados na busca.</div>
         <?php endif; ?>
-    </section>
-</div>
+    </div>
+</section>

@@ -86,8 +86,8 @@
             <?php endif; ?>
         </div>
     </section>
-    <div class="destaque">
-        <section class="container">
+    <section class="curso__arquivos">
+        <div class="container">
             <div class="row">
                 <?php $arquivos_principais = rwmb_meta( '_curso_arquivos_principais' ); ?>
                 <?php if (!empty($arquivos_principais)) : ?>
@@ -120,8 +120,8 @@
                     </div>
                 <?php endif; ?>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 </article>
 
 <?php get_footer(); ?>

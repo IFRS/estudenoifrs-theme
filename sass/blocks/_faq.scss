@@ -1,4 +1,6 @@
 .faq {
+    @extend %destaque;
+
     &__title {
         @include title();
     }

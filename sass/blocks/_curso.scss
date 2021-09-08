@@ -58,6 +58,10 @@
             font-weight: bold;
         }
     }
+
+    &__arquivos {
+        @extend %destaque;
+    }
 }
 
 .curso-info {

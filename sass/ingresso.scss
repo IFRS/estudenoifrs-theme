@@ -1,6 +1,7 @@
 @import 'config/vars';
 @import 'config/bootstrap';
 @import 'config/mixins';
+@import 'config/placeholders';
 
 @import 'base/focus-fix';
 @import 'base/lazyload';
@@ -13,12 +14,11 @@
 @import 'blocks/menu';
 @import 'blocks/banner';
 @import 'blocks/hero';
-@import 'blocks/destaque';
 @import 'blocks/tipo-description';
 @import 'blocks/tipo-list';
 @import 'blocks/oportunidades';
+@import 'blocks/oportunidades-filter';
 @import 'blocks/oportunidade';
-@import 'blocks/oportunidade-filter';
 @import 'blocks/cursos';
 @import 'blocks/curso-item';
 @import 'blocks/curso';

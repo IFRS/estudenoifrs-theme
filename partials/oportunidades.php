@@ -93,10 +93,10 @@
     </ul>
 </section>
 
-<div class="destaque">
-    <section class="container">
-        <div class="oportunidade-filter">
-            <form action="<?php echo esc_url(home_url('/')); ?>" method="POST" class="oportunidade-filter__form row g-3 align-items-center">
+<section class="oportunidades">
+    <div class="container">
+        <div class="oportunidades-filter">
+            <form action="<?php echo esc_url(home_url('/')); ?>" method="POST" class="oportunidades-filter__form row g-3 align-items-center">
                 <?php $select_unidade_id = uniqid(); ?>
                 <div class="col-auto m-0">
                     <label class="visually-hidden" for="<?php echo $select_unidade_id; ?>">Unidade</label>
@@ -138,7 +138,7 @@
                             ?>
                             <?php foreach ($filhos as $filho) : ?>
                                 <?php $nivel_check = (!empty($_POST['curso_nivel']) && array_search($filho->slug, $_POST['curso_nivel']) !== false); ?>
-                                <option value="<?php echo $filho->slug; ?>"<?php echo $nivel_check ? ' selected' : ''; ?>><?php echo $filho->name; ?></option>
+                                <option value="<?php echo $filho->slug; ?>"<?php echo $nivel_check ? ' selected' : ''; ?>>&nbsp;&nbsp;&nbsp;<?php echo $filho->name; ?></option>
                             <?php endforeach; ?>
                         <?php endforeach; ?>
                     </select>
@@ -148,7 +148,7 @@
                         <button type="submit" class="btn" title="Filtrar Oportunidades" data-bs-toggle="tooltip" data-bs-placement="top">
                             <span class="visually-hidden">Filtrar Oportunidades</span>
                         </button>
-                        <a href="<?php echo home_url(); ?>" class="btn oportunidade-filter__reset" title="Limpar Filtros" data-bs-toggle="tooltip" data-bs-placement="top">
+                        <a href="<?php echo home_url(); ?>" class="btn oportunidades-filter__reset" title="Limpar Filtros" data-bs-toggle="tooltip" data-bs-placement="top">
                             <span class="visually-hidden">Limpar Filtros</span>
                         </a>
                     </div>
@@ -164,7 +164,7 @@
                         </div>
                     <?php endif; ?>
                     <?php if ($tipo->oportunidades->have_posts()) : ?>
-                        <div class="oportunidades">
+                        <div class="oportunidades__list">
                             <?php while ($tipo->oportunidades->have_posts()) : $tipo->oportunidades->the_post(); ?>
                                 <?php echo get_template_part('partials/oportunidade'); ?>
                             <?php endwhile; ?>
@@ -180,5 +180,5 @@
                 </div>
             <?php endforeach; ?>
         </div>
-    </section>
-</div>
+    </div>
+</section>
