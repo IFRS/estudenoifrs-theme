@@ -7,7 +7,7 @@
     }
 
     &__unidade {
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
     }
 
     &__unidade-title {
@@ -24,13 +24,28 @@
             width: 100px; height: 2px;
             background-color: $cor-destaque;
         }
-    }
 
-    &__unidade-numero {
-        color: $primary;
-        font-size: 0.5em;
-        font-weight: bold;
-        vertical-align: super;
+        a {
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            &::after {
+                content: '';
+                background-image: escape-svg($accordion-button-icon);
+                margin-left: 0.5rem;
+                transition: $accordion-icon-transition;
+                width: 1.25rem; height: 1.25rem;
+            }
+
+            &:not(.collapsed)::after {
+                transform: $accordion-icon-transform;
+            }
+        }
     }
 
     &__list {
@@ -48,5 +63,9 @@
         align-content: stretch;
         justify-items: stretch;
         align-items: stretch;
+
+        .alert {
+            grid-column: 1 / -1;
+        }
     }
 }

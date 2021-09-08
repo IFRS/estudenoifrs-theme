@@ -114,20 +114,26 @@
                 }
 
                 $unidades_shown++;
+
+                $collapse_id = uniqid('collapse-');
             ?>
             <div class="cursos__unidade">
-                <h3 class="cursos__unidade-title"><?php echo $unidade->name; ?>&nbsp;<span class="cursos__unidade-numero"><?php echo $unidade->cursos->found_posts; ?></span><span class="visually-hidden">&nbsp;Cursos</span></h3>
-                <?php if ($unidade->cursos->have_posts()) : ?>
-                    <div class="cursos__list">
+                <h3 class="cursos__unidade-title">
+                    <a href="#<?php echo $collapse_id; ?>" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="<?php echo $collapse_id; ?>">
+                        <span class="visually-hidden">Cursos em&nbsp;</span><?php echo $unidade->name; ?>
+                    </a>
+                </h3>
+                <div class="cursos__list collapse show" id="<?php echo $collapse_id; ?>">
+                    <?php if ($unidade->cursos->have_posts()) : ?>
                         <?php while ($unidade->cursos->have_posts()) : $unidade->cursos->the_post(); ?>
                             <?php echo get_template_part('partials/curso-item'); ?>
                         <?php endwhile; ?>
-                    </div>
-                <?php else : ?>
-                    <div class="alert alert-info" role="alert">
-                        N&atilde;o existem Cursos cadastrados em <?php echo $unidade->name; ?> no momento.
-                    </div>
-                <?php endif; ?>
+                    <?php else : ?>
+                        <div class="alert alert-info w-100" role="alert">
+                            N&atilde;o existem Cursos cadastrados em <?php echo $unidade->name; ?> no momento.
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
             <?php wp_reset_postdata(); ?>
         <?php endforeach; ?>
