@@ -6,9 +6,9 @@
         if (!empty($cor)) $cores[] = $cor;
     }
     if (count($cores) === 1) $cores[1] = $cores[0];
-    $cores = implode(', ', $cores);
+    $gradiente = implode(', ', $cores);
 ?>
-<article class="curso-item"<?php echo (!empty($cores)) ? "style=\"border-image-source: linear-gradient(to right, $cores); \"" : ''; ?>>
+<article class="curso-item"<?php echo (!empty($cores)) ? "style=\"border-image-source: linear-gradient(to right, $gradiente); \"" : ''; ?>>
     <p class="curso-item__nivel">
         <?php foreach ($niveis as $nivel) : ?>
             <?php echo $nivel->name; ?>
@@ -16,7 +16,7 @@
         <?php endforeach; ?>
     </p>
     <hr class="curso-item__separador">
-    <h4 class="curso-item__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+    <h4 class="curso-item__title"><a href="<?php the_permalink(); ?>" style="color: <?php echo end($cores); ?>"><?php the_title(); ?></a></h4>
     <p class="curso-item__meta">
         <span class="curso-item__meta--cargahoraria">
             <?php echo esc_html(get_post_meta( get_the_ID(), '_curso_duracao', true )); ?> (<?php echo esc_html(get_post_meta( get_the_ID(), '_curso_carga_horaria', true )); ?>h)
