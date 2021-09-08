@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const classes = ['animate__animated', 'animate__fadeIn', 'animate__fast'];
 
     document.querySelectorAll('.oportunidade__btn-toggle').forEach(function(btn) {
-        const oportunidades = btn.closest('.oportunidades');
+        const oportunidades = btn.closest('.oportunidades__list');
         const oportunidade = btn.closest('.oportunidade');
 
         oportunidade.addEventListener('animationend', function(e) {
