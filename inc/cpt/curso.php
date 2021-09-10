@@ -276,6 +276,49 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     return $metaboxes;
 } );
 
+// Options
+add_action( 'cmb2_admin_init', function() {
+	$options = new_cmb2_box( array(
+		'id'           => 'ingresso_cursos_option_metabox',
+		'title'        => esc_html__( 'Opções para Cursos', 'ifrs-ingresso-theme' ),
+		'object_types' => array( 'options-page' ),
+		'option_key'      => 'cursos_options',
+		// 'icon_url'        => 'dashicons-palmtree',
+		'menu_title'      => esc_html__( 'Opções', 'ifrs-ingresso-theme' ),
+		'parent_slug'     => 'edit.php?post_type=curso',
+		'capability'      => 'manage_cursos',
+		// 'position'        => 1,
+		// 'admin_menu_hook' => 'network_admin_menu',
+		// 'display_cb'      => false,
+		// 'save_button'     => esc_html__( 'Salvar Opções', 'ifrs-ingresso-theme' ),
+	) );
+
+	$options->add_field( array(
+		'name' => __( 'Descrição', 'ifrs-ingresso-theme' ),
+		'desc' => __( 'Descrição antes da lista de Cursos.', 'ifrs-ingresso-theme' ),
+		'id'   => 'desc',
+		'type' => 'wysiwyg',
+	) );
+
+} );
+function cursos_get_option( $key = '', $default = false ) {
+	if ( function_exists( 'cmb2_get_option' ) ) {
+		return cmb2_get_option( 'cursos_options', $key, $default );
+	}
+
+	$opts = get_option( 'cursos_options', $default );
+
+	$val = $default;
+
+	if ( 'all' == $key ) {
+		$val = $opts;
+	} elseif ( is_array( $opts ) && array_key_exists( $key, $opts ) && false !== $opts[ $key ] ) {
+		$val = $opts[ $key ];
+	}
+
+	return $val;
+}
+
 /* Custom Query */
 add_action( 'pre_get_posts', function( $query ) {
     if (!is_admin() && $query->is_main_query()) {

@@ -115,6 +115,12 @@
             }
         ?>
     </h2>
+    <?php $desc = cursos_get_option('desc'); ?>
+    <?php if (!empty($desc)) : ?>
+        <div class="hero__text">
+            <?php echo apply_filters( 'the_content', cursos_get_option('desc') ); ?>
+        </div>
+    <?php endif; ?>
 </section>
 
 <section class="cursos">
