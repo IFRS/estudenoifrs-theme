@@ -1,8 +1,8 @@
 <?php
-    $is_filter = !empty($_POST['modalidade'])
-        || is_tax('modalidade')
-        || !empty($_POST['unidade'])
+    $is_filter = !empty($_POST['unidade'])
         || is_tax('unidade')
+        || !empty($_POST['modalidade'])
+        || is_tax('modalidade')
         || !empty($_POST['nivel'])
         || is_tax('nivel')
         || !empty($_POST['turno'])
@@ -10,13 +10,21 @@
         || !empty($_POST['s'])
         || is_search();
 
-    $unidades = get_terms(array(
+
+    $unidades_query = array(
         'taxonomy'   => 'unidade',
         'hide_empty' => false,
-        'slug'       => !empty($_POST['unidade']) ? (array) $_POST['unidade'] : array(),
         'orderby'    => 'name',
         'order'      => 'ASC',
-    ));
+    );
+
+    if (!empty($_POST['unidade'])) {
+        $unidades_query['slug'] = (array) $_POST['unidade'];
+    } elseif (is_tax( 'unidade' )) {
+        $unidades_query['include'] = array(get_queried_object()->term_id);
+    }
+
+    $unidades = get_terms($unidades_query);
 
     $tax_query = array();
 
@@ -41,6 +49,13 @@
             'taxonomy' => 'turno',
             'field' => 'slug',
             'terms' => (array) $_POST['turno'],
+        );
+    }
+
+    if (is_tax( 'modalidade' ) || is_tax( 'nivel' ) || is_tax( 'turno' )) {
+        $tax_query[] = array(
+            'taxonomy' => get_queried_object()->taxonomy,
+            'terms' => get_queried_object()->term_id,
         );
     }
 
