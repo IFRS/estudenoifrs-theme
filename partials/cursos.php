@@ -95,19 +95,19 @@
         Conhe&ccedil;a nossos <span><?php _e('Cursos', 'ifrs-portal-theme'); ?></span>
         <?php
             if (is_tax('modalidade') && !isset($_POST['modalidade'])) {
-                printf(__('<br><small>na modalidade %s</small>', 'ifrs-portal-theme'), single_term_title('', false));
+                printf(__('<br><small>%s</small>', 'ifrs-portal-theme'), single_term_title('na modalidade ', false));
             }
 
             if (is_tax('unidade') && !isset($_POST['unidade'])) {
-                printf(__('<br><small>ofertados no %s</small>', 'ifrs-portal-theme'), single_term_title('', false));
+                printf(__('<br><small>%s</small>', 'ifrs-portal-theme'), single_term_title('ofertados no ', false));
             }
 
             if (is_tax('nivel') && !isset($_POST['nivel'])) {
-                printf(__('<br><small>do nível %s</small>', 'ifrs-portal-theme'), single_term_title('', false));
+                printf(__('<br><small>%s</small>', 'ifrs-portal-theme'), single_term_title('do nível ', false));
             }
 
             if (is_tax('turno') && !isset($_POST['turno'])) {
-                printf(__('<br><small>ofertados no turno da %s</small>', 'ifrs-portal-theme'), single_term_title('', false));
+                printf(__('<br><small>%s</small>', 'ifrs-portal-theme'), single_term_title('ofertados no turno da ', false));
             }
 
             if (is_search() && get_search_query()) {
