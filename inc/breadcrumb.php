@@ -28,8 +28,8 @@ function ingresso_breadcrumb() {
                 echo get_category_parents($parentCat, true);
             }
             echo $before_active . single_cat_title('', false) . $after;
-        } elseif (is_tax('unidade')) {
-            echo $before . '<a href="' . get_post_type_archive_link( 'oportunidade' ) . '">Oportunidades</a>' . $after;
+        } elseif (is_tax('unidade') || is_tax('modalidade') || is_tax('nivel') || is_tax('turno')) {
+            echo $before . '<a href="' . get_post_type_archive_link( 'cursos' ) . '">Cursos</a>' . $after;
             echo $before_active . single_term_title('', false) . $after;
         } elseif (is_day()) {
             echo $before . '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time(
