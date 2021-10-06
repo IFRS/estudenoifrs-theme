@@ -23,7 +23,9 @@
 <section class="banner">
     <div class="container">
         <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/cursos-banner.png" alt="Guia de Cursos">
+            <picture>
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/guia-de-cursos-1400.png" class="img-fluid" alt="Guia de Cursos">
+            </picture>
         </a>
     </div>
 </section>
