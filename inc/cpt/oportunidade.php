@@ -147,7 +147,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'timestamp'  => true,
                 'size'       => 10,
                 'js_options' => array(
-                    'dateFormat'      => 'dd-mm-yy',
+                    'dateFormat'      => 'dd/mm/yy',
                 ),
             ),
             array(
@@ -157,7 +157,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'timestamp'  => true,
                 'size'       => 10,
                 'js_options' => array(
-                    'dateFormat'      => 'dd-mm-yy',
+                    'dateFormat'      => 'dd/mm/yy',
                 ),
             ),
             array(
@@ -172,7 +172,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'timestamp'  => true,
                 'size'       => 10,
                 'js_options' => array(
-                    'dateFormat'      => 'dd-mm-yy',
+                    'dateFormat'      => 'dd/mm/yy',
                 ),
             ),
             array(
@@ -182,7 +182,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'timestamp'  => true,
                 'size'       => 10,
                 'js_options' => array(
-                    'dateFormat'      => 'dd-mm-yy',
+                    'dateFormat'      => 'dd/mm/yy',
                 ),
             ),
         ),
