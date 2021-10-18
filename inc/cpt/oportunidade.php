@@ -76,7 +76,7 @@ add_action( 'init', function() {
         //'capabilities'          => $capabilities,
         'show_in_rest'          => true,
         'rest_base'             => 'oportunidades',
-        'rewrite'               => array( 'slug' => 'oportunidades' ),
+        'rewrite'               => array( 'slug' => 'inscricoes-abertas' ),
     );
 
     register_post_type( 'oportunidade', $args );
