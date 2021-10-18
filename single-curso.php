@@ -46,17 +46,21 @@
                 $lattes = get_post_meta( get_the_ID(), '_curso_coordenador_lattes', true );
                 $email = get_post_meta( get_the_ID(), '_curso_coordenador_email', true );
             ?>
-            <div class="curso-coordenador">
-                <h3 class="curso-coordenador__title"><?php _e('Coordena&ccedil;&atilde;o', 'ifrs-portal-theme'); ?></h3>
-                <p class="curso-coordenador__nome">
-                    <?php if (!empty($lattes)) : ?>
-                        <a href="<?php echo esc_url($lattes); ?>"><?php echo esc_html($nome); ?></a>
-                    <?php else : ?>
-                        <?php echo esc_html($nome); ?>
+            <?php if (!empty($nome)) : ?>
+                <div class="curso-coordenador">
+                    <h3 class="curso-coordenador__title"><?php _e('Coordena&ccedil;&atilde;o', 'ifrs-portal-theme'); ?></h3>
+                    <p class="curso-coordenador__nome">
+                        <?php if (!empty($lattes)) : ?>
+                            <a href="<?php echo esc_url($lattes); ?>"><?php echo esc_html($nome); ?></a>
+                        <?php else : ?>
+                            <?php echo esc_html($nome); ?>
+                        <?php endif; ?>
+                    </p>
+                    <?php if (!empty($email)) : ?>
+                        <span class="curso-coordenador__email"><a href="mailto:<?php echo esc_html($email); ?>" target="_blank" rel="noopener noreferrer"><?php echo str_replace(array('@', '.'), array('@<wbr>', '.<wbr>'), esc_html($email)); ?></a></span>
                     <?php endif; ?>
-                </p>
-                <span class="curso-coordenador__email"><a href="mailto:<?php echo esc_html($email); ?>" target="_blank" rel="noopener noreferrer"><?php echo str_replace(array('@', '.'), array('@<wbr>', '.<wbr>'), esc_html($email)); ?></a></span>
-            </div>
+                </div>
+            <?php endif; ?>
         </aside>
         <hr class="curso__separator">
         <div class="curso__content">

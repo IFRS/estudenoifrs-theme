@@ -252,17 +252,11 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'id'         => $prefix . 'coordenador_nome',
                 'name'       => __( 'Nome', 'ifrs-ingresso-theme' ),
                 'type'       => 'text',
-                'attributes' => array(
-                    'required' => 'required',
-                ),
             ),
             array(
                 'id'         => $prefix . 'coordenador_email',
                 'name'       => __( 'E-mail', 'ifrs-ingresso-theme' ),
                 'type'       => 'email',
-                'attributes' => array(
-                    'required' => 'required',
-                ),
             ),
             array(
                 'id'   => $prefix . 'coordenador_lattes',
