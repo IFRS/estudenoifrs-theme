@@ -252,11 +252,13 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
         'validation' => [
             'rules'  => [
                 $prefix . 'url' => [
+                    'required'  => true,
                     'url' => true,
                 ],
             ],
             'messages' => [
                 $prefix . 'url' => [
+                    'required'  => 'O endereço precisa ser preenchido.',
                     'url'  => 'O endereço precisa ser uma URL válida.',
                 ],
             ],
@@ -289,7 +291,6 @@ add_action( 'ifrs_oportunidades_trash_hook', function() {
         wp_trash_post( $oportunidade->ID );
     }
 } );
-
 add_action( 'init', function() {
     if ( ! wp_next_scheduled( 'ifrs_oportunidades_trash_hook' ) ) {
         wp_schedule_event( time(), 'daily', 'ifrs_oportunidades_trash_hook' );
