@@ -60,7 +60,7 @@ add_action( 'init', function() {
         'description'           => __( 'Oportunidades de ingresso discente', 'ifrs-ingresso-theme' ),
         'labels'                => $labels,
         'supports'              => array( 'title' ),
-        'taxonomies'            => array( 'tipo' ),
+        'taxonomies'            => array(),
         'hierarchical'          => false,
         'public'                => true,
         'show_ui'               => true,
@@ -231,29 +231,6 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                     'media_buttons' => false,
                     'teeny'         => true,
                 ),
-            ),
-        ),
-    );
-
-    /**
-     * Taxonomy Tipo
-     */
-    $metaboxes[] = array(
-        'title'      => __( 'Tipo', 'ifrs-ingresso-theme' ),
-        'post_types' => 'oportunidade',
-        'context'    => 'side',
-        'priority'   => 'low',
-        'fields'     => array(
-            array(
-                'id'              => $prefix . 'tipo_taxonomy',
-                'desc'            => __( 'Escolha o Tipo de Oportunidade.', 'ifrs-ingresso-theme' ),
-                'type'            => 'taxonomy',
-                'taxonomy'        => 'tipo',
-                'add_new'         => false,
-                'remove_default'  => true,
-                'field_type'      => 'checkbox_list',
-                'inline'          => false,
-                'select_all_none' => false,
             ),
         ),
     );
