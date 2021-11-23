@@ -4,7 +4,7 @@
 
 <section class="container">
     <article id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
-        <h2 class="post__title"><?php the_title(); ?></h2>
+        <h1 class="post__title"><?php the_title(); ?></h1>
         <div class="post__content">
             <?php
                 if (has_post_thumbnail()) {
