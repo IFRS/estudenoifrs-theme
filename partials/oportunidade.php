@@ -1,3 +1,30 @@
+<?php
+    $isencao_inicio = rwmb_meta( '_oportunidade_isencao_inicio' );
+    $isencao_termino = rwmb_meta( '_oportunidade_isencao_termino' );
+
+    $isencao_inicio = ($isencao_inicio ? gmdate('d/m/y', $isencao_inicio) : false);
+    $isencao_termino = ($isencao_termino ? gmdate('d/m/y', $isencao_termino) : false);
+
+    $inscricao_inicio = gmdate('d/m/y', rwmb_meta( '_oportunidade_inscricao_inicio' ));
+    $inscricao_termino = gmdate('d/m/y', rwmb_meta( '_oportunidade_inscricao_termino' ));
+
+    $hoje = gmdate('d/m/y', time());
+
+    $cursos = rwmb_meta( '_oportunidade_cursos' );
+    $unidades = array();
+
+    if (!empty($cursos)) {
+        foreach ($cursos as $curso) {
+            $campi = get_the_terms( $curso, 'unidade' );
+            foreach ($campi as $campus) {
+                if (!in_array($campus, $unidades)) array_push($unidades, $campus);
+            }
+        }
+    }
+
+    $requisitos = rwmb_meta( '_oportunidade_requisitos' );
+?>
+
 <div class="oportunidade<?php echo (is_singular('oportunidade')) ? ' oportunidade--open' : ''; ?>" data-flip-key="oportunidade-<?php the_ID(); ?>">
     <div class="oportunidade__header">
         <?php if (!is_singular('oportunidade')) : ?>
@@ -9,18 +36,6 @@
         <?php endif; ?>
     </div>
     <h3 class="oportunidade__title"><?php the_title(); ?></h3>
-    <?php
-        $isencao_inicio = get_post_meta( get_the_ID(), '_oportunidade_isencao_inicio', true );
-        $isencao_termino = get_post_meta( get_the_ID(), '_oportunidade_isencao_termino', true );
-
-        $isencao_inicio = ($isencao_inicio ? gmdate('d/m/y', $isencao_inicio) : false);
-        $isencao_termino = ($isencao_termino ? gmdate('d/m/y', $isencao_termino) : false);
-
-        $inscricao_inicio = gmdate('d/m/y', get_post_meta( get_the_ID(), '_oportunidade_inscricao_inicio', true ));
-        $inscricao_termino = gmdate('d/m/y', get_post_meta( get_the_ID(), '_oportunidade_inscricao_termino', true ));
-
-        $hoje = gmdate('d/m/y', time());
-    ?>
     <?php if ($isencao_inicio && $isencao_termino) : ?>
         <p class="oportunidade__meta oportunidade__meta--isencao<?php echo ($isencao_termino < $hoje) ? ' text-muted text-decoration-line-through' : ''; ?>">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($isencao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $isencao_termino; ?></strong></p>
     <?php else : ?>
@@ -30,7 +45,6 @@
 
     <hr class="oportunidade__separador">
 
-    <?php $requisitos = get_post_meta( get_the_ID(), '_oportunidade_requisitos', true ); ?>
     <?php if (!empty($requisitos)) : ?>
         <div class="oportunidade__requisitos">
             <h4 class="oportunidade__subtitle">Requisitos m&iacute;nimos para o ingresso</h4>
@@ -39,19 +53,6 @@
         <hr class="oportunidade__separador">
     <?php endif; ?>
 
-    <?php
-        $cursos = rwmb_meta( '_oportunidade_cursos' );
-        $unidades = array();
-
-        if (!empty($cursos)) {
-            foreach ($cursos as $curso) {
-                $campi = get_the_terms( $curso, 'unidade' );
-                foreach ($campi as $campus) {
-                    if (!in_array($campus, $unidades)) array_push($unidades, $campus);
-                }
-            }
-        }
-    ?>
     <?php if ($unidades) : ?>
         <div class="oportunidade__unidades">
             <h4 class="oportunidade__subtitle"><?php echo _n( 'Unidade', 'Unidades', count($unidades) ); ?> de Oferta</h4>
