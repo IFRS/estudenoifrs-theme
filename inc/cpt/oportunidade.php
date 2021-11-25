@@ -84,12 +84,11 @@ add_action( 'init', function() {
 
 /* Metaboxes */
 add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, $post ) {
-    $label = $post->post_title;
     $unidades = get_the_terms($post, 'unidade');
     $niveis = get_the_terms($post, 'nivel');
     $modalidades = get_the_terms($post, 'modalidade');
 
-    $label .= ' [ ';
+    $label = '[';
 
     if (!empty($unidades)) {
         foreach ($unidades as $unidade) {
@@ -101,8 +100,14 @@ add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, 
         }
     }
 
+    $label .= '] ';
+
+    $label .= '<strong>' . $post->post_title . '</strong>';
+
+    $label .= ' ( ';
+
     if (!empty($niveis)) {
-        $label .= ' / ';
+        // $label .= ' / ';
         foreach ($niveis as $nivel) {
             $label .= $nivel->name;
 
@@ -123,7 +128,7 @@ add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, 
         }
     }
 
-    $label .= ' ]';
+    $label .= ' )';
 
     return $label;
 }, 10, 3);
@@ -131,25 +136,6 @@ add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, 
 /* Metaboxes */
 add_action( 'rwmb_meta_boxes', function($metaboxes) {
     $prefix = '_oportunidade_';
-
-    /**
-     * Cursos
-     */
-    $metaboxes[] = array(
-        'title'      => __( 'Cursos Relacionados', 'ifrs-ingresso-theme' ),
-        'post_types' => 'oportunidade',
-        'fields'     => array(
-            array(
-                'id'          => $prefix . 'cursos',
-                'desc'        => __( 'Escolha os Cursos ofertados nessa Oportunidade.', 'ifrs-ingresso-theme' ),
-                'type'        => 'post',
-                'post_type'   => 'curso',
-                'placeholder' => 'Selecione os Cursos',
-                'field_type'  => 'select_advanced',
-                'multiple'    => true,
-            ),
-        ),
-    );
 
     /**
      * Datas
@@ -231,6 +217,27 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                     'media_buttons' => false,
                     'teeny'         => true,
                 ),
+            ),
+        ),
+    );
+
+    /**
+     * Cursos
+     */
+    $metaboxes[] = array(
+        'title'      => __( 'Cursos Relacionados', 'ifrs-ingresso-theme' ),
+        'post_types' => 'oportunidade',
+        'context'    => 'normal',
+        'priority'   => 'low',
+        'fields'     => array(
+            array(
+                'id'          => $prefix . 'cursos',
+                'desc'        => __( 'Escolha os Cursos ofertados nessa Oportunidade.', 'ifrs-ingresso-theme' ),
+                'type'        => 'post',
+                'post_type'   => 'curso',
+                'placeholder' => 'Selecione os Cursos',
+                'field_type'  => 'checkbox_list',
+                'multiple'    => true,
             ),
         ),
     );
