@@ -27,6 +27,33 @@
 
 <div class="oportunidade<?php echo (is_singular('oportunidade')) ? ' oportunidade--open' : ''; ?>" data-flip-key="oportunidade-<?php the_ID(); ?>">
     <div class="oportunidade__header">
+        <?php if (!empty($cursos)) : ?>
+            <button type="button" class="btn btn-link oportunidade__numero-cursos" data-bs-toggle="modal" data-bs-target="#cursos-<?php echo the_ID(); ?>">
+                <?php printf('%d %s', count($cursos), _n('Curso', 'Cursos', count($cursos))); ?>
+            </button>
+            <?php $oportunidade = get_post(); ?>
+            <?php add_action( 'wp_footer', function() use ($cursos, $oportunidade) { ?>
+                <!-- Modal Cursos -->
+                <div class="modal fade" id="cursos-<?php echo $oportunidade->ID; ?>" tabindex="-1" aria-labelledby="cursos-<?php echo $oportunidade->ID; ?>-label" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="cursos-<?php echo $oportunidade->ID; ?>-label"><?php echo $oportunidade->post_title; ?></h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar lista de Cursos"></button>
+                            </div>
+                            <div class="modal-body">
+                                <ul>
+                                    <?php foreach ($cursos as $curso_id) : ?>
+                                        <?php $curso = get_post($curso_id); ?>
+                                        <li><a href="<?php echo get_permalink($curso->ID); ?>"><?php echo $curso->post_title; ?></a></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php }, 100 ); ?>
+        <?php endif; ?>
         <?php if (!is_singular('oportunidade')) : ?>
             <button class="btn oportunidade__btn-toggle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Expandir">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="square" stroke-linejoin="arcs" stroke-width="3" viewBox="0 0 24 24">

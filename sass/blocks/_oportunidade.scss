@@ -24,15 +24,19 @@
         border-bottom: 1px solid $gray-400;
         display: flex;
         flex-wrap: nowrap;
-        justify-content: flex-end;
+        justify-content: space-between;
         margin: 0 -10px;
-        padding: 0 0 5px 10px;
+        padding: 0 0 5px 0;
     }
 
-    &__tipo {
-        flex: 1 1 auto;
+    &__numero-cursos {
+        color: $body-color;
+        flex: 0 1 auto;
+        font-size: 0.8rem;
         font-weight: bold;
         margin: 0;
+        pointer-events: none;
+        cursor: default;
     }
 
     &__btn-toggle {
@@ -119,6 +123,13 @@
             border: none;
             margin: 0;
             padding: 0;
+        }
+
+        #{$root}__numero-cursos {
+            color: $link-color;
+            font-size: 1rem;
+            padding-left: 0;
+            pointer-events: all;
         }
 
         #{$root}__btn-toggle {
