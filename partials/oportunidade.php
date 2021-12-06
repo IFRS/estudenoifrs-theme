@@ -10,10 +10,18 @@
 
     $hoje = gmdate('d/m/y', time());
 
-    $cursos = rwmb_meta( '_oportunidade_cursos' );
+    $cursos_ids = rwmb_meta( '_oportunidade_cursos' );
+    $cursos = array();
     $unidades = array();
 
-    if (!empty($cursos)) {
+    if (!empty($cursos_ids)) {
+        $cursos = get_posts( array(
+            'post_type'    => 'curso',
+            'numberposts'  => -1,
+            'orderby'      => 'title',
+            'order'        => 'ASC',
+            'include'      => $cursos_ids,
+        ) );
         foreach ($cursos as $curso) {
             $campi = get_the_terms( $curso, 'unidade' );
             foreach ($campi as $campus) {
@@ -31,28 +39,6 @@
             <button type="button" class="btn btn-link oportunidade__numero-cursos" data-bs-toggle="modal" data-bs-target="#cursos-<?php echo the_ID(); ?>">
                 <?php printf('%d %s', count($cursos), _n('Curso', 'Cursos', count($cursos))); ?>
             </button>
-            <?php $oportunidade = get_post(); ?>
-            <?php add_action( 'wp_footer', function() use ($cursos, $oportunidade) { ?>
-                <!-- Modal Cursos -->
-                <div class="modal fade" id="cursos-<?php echo $oportunidade->ID; ?>" tabindex="-1" aria-labelledby="cursos-<?php echo $oportunidade->ID; ?>-label" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="cursos-<?php echo $oportunidade->ID; ?>-label"><?php echo $oportunidade->post_title; ?></h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar lista de Cursos"></button>
-                            </div>
-                            <div class="modal-body">
-                                <ul>
-                                    <?php foreach ($cursos as $curso_id) : ?>
-                                        <?php $curso = get_post($curso_id); ?>
-                                        <li><a href="<?php echo get_permalink($curso->ID); ?>"><?php echo $curso->post_title; ?></a></li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php }, 100 ); ?>
         <?php endif; ?>
         <?php if (!is_singular('oportunidade')) : ?>
             <button class="btn oportunidade__btn-toggle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Expandir">
@@ -90,6 +76,33 @@
                     </li>
                 <?php endforeach; ?>
             </ul>
+        </div>
+    <?php endif; ?>
+
+    <?php if (!empty($cursos)) : ?>
+        <!-- Modal Cursos -->
+        <div class="modal fade" id="cursos-<?php the_ID(); ?>" tabindex="-1" aria-labelledby="cursos-<?php the_ID(); ?>-label" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="cursos-<?php the_ID(); ?>-label"><?php the_title(); ?> - Cursos</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar lista de Cursos"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-unstyled p-0">
+                            <?php foreach ($cursos as $curso) : ?>
+                                <?php $campi = get_the_terms( $curso, 'unidade' ); ?>
+                                <li>
+                                    <a href="<?php echo get_permalink($curso->ID); ?>"><?php echo $curso->post_title; ?></a>
+                                    <?php if ($campi) : ?>
+                                        <small>(<?php foreach ($campi as $campus) echo $campus->name, ($campus !== end($campi)) ? ', ' : ''; ?>)</small>
+                                    <?php endif; ?>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     <?php endif; ?>
 
