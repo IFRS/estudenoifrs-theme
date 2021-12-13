@@ -59,8 +59,22 @@
         }
     }
 
+    &__thumb {
+        @include media-breakpoint-up(sm) {
+            float: left;
+            max-width: 40%;
+        }
+
+        @include media-breakpoint-up(md) {
+            float: left;
+            max-width: 30%;
+        }
+    }
+
     &__arquivos {
         @extend %destaque;
+
+        clear: both;
     }
 }
 

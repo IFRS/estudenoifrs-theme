@@ -66,7 +66,7 @@
         <div class="curso__content">
             <?php
                 if (has_post_thumbnail()) {
-                    the_post_thumbnail('full', array('class' => 'curso__thumb'));
+                    the_post_thumbnail('full', array('class' => 'img-fluid curso__thumb'));
                 }
             ?>
             <?php
