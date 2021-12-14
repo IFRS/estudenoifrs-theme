@@ -13,9 +13,6 @@ add_action( 'wp_enqueue_scripts', function() {
         wp_enqueue_script( 'commons', get_template_directory_uri().'/js/commons.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/commons.js'), true );
     }
 
-    wp_enqueue_script( 'ie', get_template_directory_uri().'/js/ie.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/ie.js'), false );
-    wp_script_add_data( 'ie', 'conditional', 'lt IE 9' );
-
     wp_enqueue_script( 'ingresso', get_template_directory_uri().'/js/ingresso.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/ingresso.js'), true );
 
     if (is_post_type_archive( 'oportunidade' ) || is_tax( 'unidade' ) || is_front_page()) {
@@ -24,8 +21,6 @@ add_action( 'wp_enqueue_scripts', function() {
 
     if (!WP_DEBUG) {
         wp_enqueue_script( 'vlibras', 'https://vlibras.gov.br/app/vlibras-plugin.js', array(), null, true );
-        wp_add_inline_script( 'vlibras', "
-            new window.VLibras.Widget('https://vlibras.gov.br/app');
-        " );
+        wp_add_inline_script( 'vlibras', "new window.VLibras.Widget('https://vlibras.gov.br/app');" );
     }
 }, 11 );

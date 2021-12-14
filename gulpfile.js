@@ -21,14 +21,12 @@ gulp.task('clean', function() {
 
 gulp.task('sass', function() {
     let postCSS_plugins = [
-        require('postcss-flexibility'),
-        require('pixrem'),
         require('autoprefixer'),
     ];
 
     let sass_options = {
         includePaths: ['sass', 'node_modules'],
-        outputStyle: 'expanded'
+        outputStyle: 'expanded',
     };
 
     return gulp.src('sass/*.scss')
@@ -56,7 +54,6 @@ gulp.task('webpack', function(done) {
         mode: argv.production ? 'production' : 'development',
         devtool: 'source-map',
         entry: {
-            ie: './src/ie.js',
             ingresso: './src/ingresso.js',
             oportunidades: './src/oportunidades.js',
         },
