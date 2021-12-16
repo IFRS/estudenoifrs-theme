@@ -64,26 +64,7 @@
         </aside>
         <hr class="curso__separator">
         <div class="curso__content">
-            <?php
-                if (has_post_thumbnail()) {
-                    the_post_thumbnail('full', array('class' => 'img-fluid curso__thumb'));
-                }
-            ?>
-            <?php
-                add_action('the_content', function($content) {
-                    $niveis = get_the_terms(get_the_ID(), 'nivel');
-                    $prerequisitos = '';
-
-                    foreach ($niveis as $nivel) {
-                        $prerequisitos .= term_description($nivel->term_id, 'nivel');
-                    }
-
-                    if (!empty($prerequisitos)) {
-                        return $content . '<h3>' . __('Pré-requisitos', 'ifrs-portal-theme') . '</h3>' . $prerequisitos;
-                    }
-                    return $content;
-                }, 1);
-            ?>
+            <?php if (has_post_thumbnail()) the_post_thumbnail('full', array('class' => 'img-fluid curso__thumb')); ?>
             <?php the_content(); ?>
             <?php if ($ead) : ?>
                 <small class="text-secondary"><strong>*</strong>&nbsp;Esse curso possui parte de sua carga hor&aacute;ria a dist&acirc;ncia.</small>
