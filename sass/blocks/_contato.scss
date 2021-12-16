@@ -29,7 +29,7 @@
     }
 
     &__faq-link {
-        @include icon('help', 'left', 2rem, $cor-detalhe);
+        @include icon('faq', 'left', 2rem, $cor-detalhe);
 
         color: $cor-detalhe;
         display: inline-block;
