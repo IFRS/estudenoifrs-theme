@@ -7,6 +7,7 @@
 <nav class="navbar navbar-expand-md navbar-light">
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#<?php echo $offcanvas_id; ?>" aria-controls="<?php echo $offcanvas_id; ?>">
         <span class="navbar-toggler-icon"></span>
+        Menu
     </button>
     <div class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="<?php echo $offcanvas_label_id; ?>" id="<?php echo $offcanvas_id; ?>">
         <div class="offcanvas-header">
