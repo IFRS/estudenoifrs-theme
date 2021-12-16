@@ -36,7 +36,7 @@
     <?php $form_id = uniqid('form-'); ?>
     <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter filter--advanced collapse<?php echo $is_filter ? ' show' : ''; ?>" id="<?php echo $form_id; ?>">
         <div class="row">
-            <fieldset class="col-xl">
+            <fieldset class="col-lg">
                 <legend>Modalidade</legend>
                 <div class="filter__options">
                     <?php foreach ($modalidades as $modalidade): ?>
@@ -49,7 +49,7 @@
                     <?php endforeach; ?>
                 </div>
             </fieldset>
-            <fieldset class="col-xl">
+            <fieldset class="col-lg">
                 <legend>Unidade</legend>
                 <div class="filter__options">
                     <?php foreach ($unidades as $unidade): ?>
@@ -62,7 +62,7 @@
                     <?php endforeach; ?>
                 </div>
             </fieldset>
-            <fieldset class="col-xl">
+            <fieldset class="col-lg">
                 <legend>N&iacute;vel</legend>
                 <div class="filter__options">
                     <?php foreach ($niveis as $nivel): ?>
@@ -71,11 +71,14 @@
                         <div class="form-check<?php echo ($nivel->parent !== 0) ? ' ms-3' : '' ?>">
                             <input class="form-check-input" type="checkbox" name="nivel[]" value="<?php echo $nivel->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $nivel_check ? 'checked' : ''; ?>>
                             <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $nivel->name; ?></label>
+                            <?php if (!empty($nivel->description)) : ?>
+                                <button type="button" class="btn btn-link btn-sm filter__help" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo $nivel->description; ?>"><span class="visually-hidden">Ajuda</span></button>
+                            <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
             </fieldset>
-            <fieldset class="col-xl">
+            <fieldset class="col-lg">
                 <legend>Turno</legend>
                 <div class="filter__options">
                     <?php foreach ($turnos as $turno): ?>
@@ -88,7 +91,7 @@
                     <?php endforeach; ?>
                 </div>
             </fieldset>
-            <fieldset class="col-xl">
+            <fieldset class="col-lg">
                 <legend>Curso</legend>
                 <?php $seachfield_id = uniqid(); ?>
                 <div class="input-group">

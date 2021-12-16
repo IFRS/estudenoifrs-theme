@@ -22,9 +22,22 @@
     }
 
     &__options {
-        max-height: 25vh;
-        overflow-y: auto;
         font-size: 0.9rem;
+
+        @include media-breakpoint-up(lg) {
+            max-height: 30vh;
+            overflow-y: auto;
+        }
+    }
+
+    &__help {
+        @include icon('help', 'center', 16px, $cor-destaque);
+
+        cursor: help !important;
+        color: $cor-destaque;
+        font-weight: bold;
+        padding: 0;
+        width: 16px; height: 16px;
     }
 
     &__separator {

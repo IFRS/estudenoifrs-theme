@@ -1,30 +1,9 @@
 require('./_polyfill_element-closest');
 import Flipping from 'flipping/lib/adapters/web';
-import Tab from 'bootstrap/js/dist/tab';
 
 const flip = new Flipping();
 
 document.addEventListener('DOMContentLoaded', function() {
-    if (window.location.hash) {
-        let el = document.querySelector('[data-bs-target="' + window.location.hash + '"]');
-        if (el) {
-            let tab = Tab.getOrCreateInstance(el);
-            tab.show();
-        }
-    }
-
-    let tabs = document.querySelectorAll('button[data-bs-toggle="pill"]');
-    tabs.forEach(function(tab) {
-        tab.addEventListener('show.bs.tab', function() {
-            history.replaceState(null, '', this.dataset.bsTarget);
-            document.querySelector(this.dataset.bsTarget).querySelectorAll('.oportunidade--open').forEach(function(open) {
-                open.classList.remove('oportunidade--open');
-                open.style.gridColumn = '';
-                open.style.gridRow = '';
-            });
-        });
-    });
-
     const classes = ['animate__animated', 'animate__fadeIn', 'animate__fast'];
 
     document.querySelectorAll('.oportunidade__btn-toggle').forEach(function(btn) {
@@ -75,5 +54,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
             flip.flip();
         });
+    });
+
+    const niveis = document.querySelector('.oportunidades-filter select[name="curso_nivel[]"]');
+    niveis.addEventListener('change', (event) => {
+        // Esconde os demais
+        document.querySelectorAll('.oportunidades-filter .alert').forEach((alert) => {
+            alert.classList.add('d-none');
+        });
+
+        // Mostra o alert
+        let option = event.target.options[event.target.selectedIndex];
+        let id = option.dataset.ifrsToggle;
+        let alert = document.querySelector(id);
+
+        if (alert) {
+            alert.classList.remove('d-none');
+        }
     });
 });
