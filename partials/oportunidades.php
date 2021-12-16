@@ -1,7 +1,7 @@
 <?php
     $today = new Datetime('today midnight');
 
-    $is_search = !empty($_POST['curso_unidade']) || !empty($_POST['curso_nivel']);
+    $is_search = !empty($_POST['curso_unidade']) || !empty($_POST['curso_nivel']) || !empty($_POST['curso_modalidade']);
 
     $meta_query = array();
 
@@ -21,6 +21,14 @@
                 'taxonomy' => 'nivel',
                 'field'    => 'slug',
                 'terms'    => (array) $_POST['curso_nivel'],
+            );
+        }
+
+        if (!empty($_POST['curso_modalidade'])) {
+            $curso_tax_query[] = array(
+                'taxonomy' => 'modalidade',
+                'field'    => 'slug',
+                'terms'    => (array) $_POST['curso_modalidade'],
             );
         }
 

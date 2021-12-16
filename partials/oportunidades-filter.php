@@ -46,6 +46,22 @@
                 <?php endforeach; ?>
             </select>
         </div>
+        <div class="col-auto m-0">
+            <?php
+                $modalidades = get_terms(array(
+                    'taxonomy' => 'modalidade',
+                    'hide_empty' => false,
+                ));
+            ?>
+            <?php foreach ($modalidades as $modalidade) : ?>
+                <?php $check_modalidade_id = uniqid(); ?>
+                <?php $modalidade_check = (!empty($_POST['curso_modalidade']) && array_search($modalidade->slug, $_POST['curso_modalidade']) !== false); ?>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" name="curso_modalidade[]" value="<?php echo $modalidade->slug; ?>" id="<?php echo $check_modalidade_id; ?>"<?php echo $modalidade_check ? ' checked' : ''; ?>>
+                    <label class="form-check-label" for="<?php echo $check_modalidade_id; ?>"><?php echo $modalidade->name; ?></label>
+                </div>
+            <?php endforeach; ?>
+        </div>
         <div class="col m-0 text-end">
             <div class="btn-group" role="group" aria-label="Ações">
                 <button type="submit" class="btn" title="Filtrar Oportunidades" data-bs-toggle="tooltip" data-bs-placement="top">
