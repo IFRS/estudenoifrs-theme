@@ -11,7 +11,6 @@
             <div class="col-12 col-md-6">
                 <h2 class="contato__title">Tem d&uacute;vidas sobre como estudar no <span>IFRS</span>?</h2>
                 <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link">Consulte nossas <strong>Perguntas Frequentes</strong>!</a>
-                <p>Se ainda tiver d&uacute;vidas, envie sua mensagem pelo formul&aacute;rio ao lado.</p>
             </div>
             <div class="col-12 col-md-6">
                 <?php if ( ! dynamic_sidebar('area-contato') ); ?>
