@@ -6,7 +6,7 @@
     </div>
 </section>
 
-<section class="container">
+<section class="container d-none d-lg-block">
     <article class="hero">
         <h1 class="hero__title"><?php echo preg_replace('/(\w+)$/', '<span>$0</span>', get_bloginfo( 'name' )); ?></h1>
         <div class="hero__text">
@@ -20,7 +20,7 @@
     </article>
 </section>
 
-<section class="banner">
+<section class="banner d-none d-lg-block">
     <div class="container">
         <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>">
             <picture>
