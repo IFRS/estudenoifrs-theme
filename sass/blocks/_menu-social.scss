@@ -26,47 +26,47 @@
         height: 100%;
 
         &--facebook {
-            background: url('../img/social-facebook.png') no-repeat center top;
+            background: url('../img/social-facebook.png') no-repeat center bottom;
 
             &:hover,
             &:focus {
-                background-position: center bottom;
+                background-position: center top;
             }
         }
 
         &--twitter {
-            background: url('../img/social-twitter.png') no-repeat center top;
+            background: url('../img/social-twitter.png') no-repeat center bottom;
 
             &:hover,
             &:focus {
-                background-position: center bottom;
+                background-position: center top;
             }
         }
 
         &--instagram {
-            background: url('../img/social-instagram.png') no-repeat center top;
+            background: url('../img/social-instagram.png') no-repeat center bottom;
 
             &:hover,
             &:focus {
-                background-position: center bottom;
+                background-position: center top;
             }
         }
 
         &--youtube {
-            background: url('../img/social-youtube.png') no-repeat center top;
+            background: url('../img/social-youtube.png') no-repeat center bottom;
 
             &:hover,
             &:focus {
-                background-position: center bottom;
+                background-position: center top;
             }
         }
 
         &--linkedin {
-            background: url('../img/social-linkedin.png') no-repeat center top;
+            background: url('../img/social-linkedin.png') no-repeat center bottom;
 
             &:hover,
             &:focus {
-                background-position: center bottom;
+                background-position: center top;
             }
         }
     }
