@@ -58,18 +58,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const niveis = document.querySelector('.oportunidades-filter select[name="curso_nivel[]"]');
     niveis.addEventListener('change', (event) => {
+        const filter = document.querySelector('.oportunidades-filter');
+        const option = event.target.options[event.target.selectedIndex];
+        const heading = option.textContent;
+        const content = option.dataset.ifrsAlert;
+
         // Esconde os demais
-        document.querySelectorAll('.oportunidades-filter .alert').forEach((alert) => {
-            alert.classList.add('d-none');
+        document.querySelectorAll('.oportunidades-filter .alert-info').forEach((alert) => {
+            filter.removeChild(alert);
         });
 
-        // Mostra o alert
-        let option = event.target.options[event.target.selectedIndex];
-        let id = option.dataset.ifrsToggle;
-        let alert = document.querySelector(id);
+        if (content) {
+            // Cria e mostra o alert
+            let alert = document.createElement('div');
+            alert.classList.add('alert', 'alert-info', 'alert-dismissible', 'fade', 'mt-3');
+            alert.setAttribute('role', 'alert');
+            alert.innerHTML = '<strong>' + heading.trim() + '</strong>' + ': ' + content;
+            alert.innerHTML += '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar Ajuda"></button>';
 
-        if (alert) {
-            alert.classList.remove('d-none');
+            filter.appendChild(alert);
+
+            setTimeout(() => {
+                alert.classList.add('show');
+            }, 100);
         }
     });
 });

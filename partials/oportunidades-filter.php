@@ -31,7 +31,7 @@
                 <option hidden selected disabled>N&iacute;vel</option>
                 <?php foreach ($niveis as $nivel) : ?>
                     <?php $nivel_check = (!empty($_POST['curso_nivel']) && array_search($nivel->slug, $_POST['curso_nivel']) !== false); ?>
-                    <option value="<?php echo $nivel->slug; ?>"<?php echo $nivel_check ? ' selected' : ''; ?> data-ifrs-toggle="#ajuda-<?php echo $nivel->term_id; ?>"><?php echo $nivel->name; ?></option>
+                    <option value="<?php echo $nivel->slug; ?>"<?php echo $nivel_check ? ' selected' : ''; ?> data-ifrs-alert="<?php echo $nivel->description; ?>"><?php echo $nivel->name; ?></option>
                     <?php
                         $filhos = get_terms(array(
                             'taxonomy' => 'nivel',
@@ -41,7 +41,7 @@
                     ?>
                     <?php foreach ($filhos as $filho) : ?>
                         <?php $nivel_check = (!empty($_POST['curso_nivel']) && array_search($filho->slug, $_POST['curso_nivel']) !== false); ?>
-                        <option value="<?php echo $filho->slug; ?>"<?php echo $nivel_check ? ' selected' : ''; ?> data-ifrs-toggle="#ajuda-<?php echo $filho->term_id; ?>">&nbsp;&nbsp;&nbsp;<?php echo $filho->name; ?></option>
+                        <option value="<?php echo $filho->slug; ?>"<?php echo $nivel_check ? ' selected' : ''; ?> data-ifrs-alert="<?php echo $filho->description; ?>">&nbsp;&nbsp;&nbsp;<?php echo $filho->name; ?></option>
                     <?php endforeach; ?>
                 <?php endforeach; ?>
             </select>
@@ -73,15 +73,4 @@
             </div>
         </div>
     </form>
-    <?php
-        $niveis_ajuda = get_terms(array(
-            'taxonomy' => 'nivel',
-            'hide_empty' => false,
-        ));
-    ?>
-    <?php foreach ($niveis_ajuda as $nivel) : if (empty($nivel->description)) continue; ?>
-        <div id="ajuda-<?php echo $nivel->term_id; ?>" class="mt-3 alert alert-info d-none" role="alert">
-            <strong><?php echo $nivel->name; ?></strong>: <?php echo $nivel->description; ?>
-        </div>
-    <?php endforeach; ?>
 </div>
