@@ -84,30 +84,14 @@ add_action( 'init', function() {
 
 /* Metaboxes */
 add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, $post ) {
-    $unidades = get_the_terms($post, 'unidade');
     $niveis = get_the_terms($post, 'nivel');
     $modalidades = get_the_terms($post, 'modalidade');
 
-    $label = '[';
-
-    if (!empty($unidades)) {
-        foreach ($unidades as $unidade) {
-            $label .= $unidade->name;
-
-            if ($unidade !== end($unidades)) {
-                $label .= ', ';
-            }
-        }
-    }
-
-    $label .= '] ';
-
-    $label .= '<strong>' . $post->post_title . '</strong>';
+    $label = '<strong>' . $post->post_title . '</strong>';
 
     $label .= ' ( ';
 
     if (!empty($niveis)) {
-        // $label .= ' / ';
         foreach ($niveis as $nivel) {
             $label .= $nivel->name;
 
@@ -224,22 +208,40 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     /**
      * Cursos
      */
+    $unidades = get_terms( array(
+        'taxonomy' => 'unidade',
+        'hide_empty' => true,
+    ) );
+
+    $fields = array();
+
+    foreach ($unidades as $unidade) {
+        $fields[] = array(
+            'id'          => $prefix . 'cursos',
+            'name'        => $unidade->name,
+            'type'        => 'post',
+            'post_type'   => 'curso',
+            'field_type'  => 'checkbox_list',
+            'multiple'    => true,
+            'query_args'  => array(
+                'order'     => 'ASC',
+                'orderby'   => 'title',
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'unidade',
+                        'terms'    => $unidade->term_id,
+                    ),
+                ),
+            ),
+        );
+    }
+
     $metaboxes[] = array(
         'title'      => __( 'Cursos Relacionados', 'ifrs-ingresso-theme' ),
         'post_types' => 'oportunidade',
         'context'    => 'normal',
         'priority'   => 'low',
-        'fields'     => array(
-            array(
-                'id'          => $prefix . 'cursos',
-                'desc'        => __( 'Escolha os Cursos ofertados nessa Oportunidade.', 'ifrs-ingresso-theme' ),
-                'type'        => 'post',
-                'post_type'   => 'curso',
-                'placeholder' => 'Selecione os Cursos',
-                'field_type'  => 'checkbox_list',
-                'multiple'    => true,
-            ),
-        ),
+        'fields'     => $fields,
     );
 
     /**
