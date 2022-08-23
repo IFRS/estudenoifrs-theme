@@ -7,28 +7,28 @@ register_nav_menus(
 );
 
 /* Customiza os menus para funcionarem com o Bulma */
-add_filter( 'nav_menu_submenu_css_class', function( $classes ) {
+add_filter('nav_menu_submenu_css_class', function( $classes ) {
     $classes[] = 'dropdown-menu';
 
     return $classes;
-}, 10, 1 );
+}, 10, 1);
 
-add_filter( 'nav_menu_css_class', function( $classes, $item, $args, $depth ) {
+add_filter('nav_menu_css_class', function( $classes, $item, $args, $depth ) {
     if ($item->menu_item_parent == 0) {
         $classes[] = 'nav-item';
     }
 
-    if ( array_search( 'menu-item-has-children', $classes ) && $item->menu_item_parent == 0) {
+    if (array_search( 'menu-item-has-children', $classes ) && $item->menu_item_parent == 0) {
         $classes[] = 'dropdown';
     }
 
     return $classes;
 }, 10, 4);
 
-add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ) {
+add_filter('nav_menu_link_attributes', function( $atts, $item, $args, $depth ) {
     $atts['class'] = 'nav-link';
 
-    if ( array_search('menu-item-has-children', $item->classes ) && $item->menu_item_parent == 0 ) {
+    if (array_search('menu-item-has-children', $item->classes ) && $item->menu_item_parent == 0) {
         $atts['class'] .= ' dropdown-toggle';
         $atts['role'] = 'button';
         $atts['data-bs-toggle'] = 'dropdown';
@@ -37,9 +37,9 @@ add_filter( 'nav_menu_link_attributes', function( $atts, $item, $args, $depth ) 
         $atts['class'] = 'dropdown-item';
     }
 
-    if ($item->current) {
+    if ($item->current || $item->current_item_ancestor) {
         $atts['class'] .= ' active';
     }
 
     return $atts;
-}, 10, 4 );
+}, 10, 4);
