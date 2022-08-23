@@ -1,0 +1,15 @@
+.front-page {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    &__text {
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    &__banner {
+        display: block;
+    }
+}
