@@ -28,24 +28,25 @@
         }
 
         button[type=submit] {
-            @include icon('submit', 'center', 1.5rem, $cor-destaque);
+            @include button-variant(transparent, transparent, $primary, $gray-200, $gray-200, $gray-700);
+
+            @include icon('submit', 'left', 1.5rem, $cor-destaque);
 
             margin-right: 0.25rem;
-            width: 1.5rem; height: 1.5rem;
 
             &:hover {
-                @include icon('submit', 'center', 1.5rem, $gray-700);
+                @include icon('submit', 'left', 1.5rem, $gray-700);
             }
         }
     }
 
     &__reset {
-        @include icon('reset', 'center', 1.5rem, $cor-destaque);
+        @include button-variant(transparent, transparent, $primary, $gray-200, $gray-200, $gray-700);
 
-        width: 1.5rem; height: 1.5rem;
+        @include icon('reset', 'left', 1.5rem, $cor-destaque);
 
         &:hover {
-            @include icon('reset', 'center', 1.5rem, $gray-700);
+            @include icon('reset', 'left', 1.5rem, $gray-700);
         }
     }
 }
