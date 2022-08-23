@@ -10,7 +10,7 @@
 
         <?php if (!have_posts()) : ?>
             <div class="alert alert-warning" role="alert">
-                <strong>Ops!</strong> Nenhum resultado encontrado para o termo &quot;<?php the_search_query(); ?>&quot;.
+                <strong>Ah, que pena!</strong> N&atilde;o temos nenhum resultado para a palavra &quot;<?php the_search_query(); ?>&quot;, tente alguma palavra semelhante ou acesse as <a href="<?php echo get_post_type_archive_link( 'pergunta' ); ?>" class="alert-link">Perguntas Frequentes</a>.
             </div>
         <?php else: ?>
             <?php while (have_posts()) : the_post(); ?>
