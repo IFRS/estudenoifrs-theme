@@ -11,9 +11,8 @@ const sass         = require('gulp-sass')(require('sass'));
 const sourcemaps   = require('gulp-sourcemaps');
 const uglify       = require('gulp-uglify');
 const webpack      = require('webpack');
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin")
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-;
 
 gulp.task('clean', function() {
     return del(['css/', 'js/', 'lightgallery/', 'dist/']);
