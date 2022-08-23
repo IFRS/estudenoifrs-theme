@@ -1,9 +1,14 @@
 <?php
     $today = new Datetime('today midnight');
 
-    $curso_unidade = is_array($_POST['curso_unidade']) ? array_filter($_POST['curso_unidade']) : $_POST['curso_unidade'];
-    $curso_nivel = is_array($_POST['curso_nivel']) ? array_filter($_POST['curso_nivel']) : $_POST['curso_nivel'];
-    $curso_modalidade = is_array($_POST['curso_modalidade']) ? array_filter($_POST['curso_modalidade']) : $_POST['curso_modalidade'];
+    $curso_unidade = isset($_POST['curso_unidade']) ? $_POST['curso_unidade'] : null;
+    $curso_unidade = is_array($curso_unidade) ? array_filter($curso_unidade) : $curso_unidade;
+
+    $curso_nivel = isset($_POST['curso_nivel']) ? $_POST['curso_nivel'] : null;
+    $curso_nivel = is_array($curso_nivel) ? array_filter($curso_nivel) : $curso_nivel;
+
+    $curso_modalidade = isset($_POST['curso_modalidade']) ? $_POST['curso_modalidade'] : null;
+    $curso_modalidade = is_array($curso_modalidade) ? array_filter($curso_modalidade) : $curso_modalidade;
 
     $is_search = !empty($curso_unidade) || !empty($curso_nivel) || !empty($curso_modalidade);
 
