@@ -44,7 +44,7 @@
             <div class="col-12 col-md-5 col-lg-3 order-1">
                 <div class="footer-logo">
                     <a href="https://ifrs.edu.br/" data-bs-toggle="tooltip" data-bs-placement="top" title="Portal do IFRS" class="footer-logo__link">
-                        <img class="m-auto img-fluid lazyload" data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/footer-marca.png" alt="Marca do IFRS"/>
+                        <img class="m-auto img-fluid lazyload" data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/ifrs.png" alt="Marca do IFRS"/>
                     </a>
                 </div>
             </div>
