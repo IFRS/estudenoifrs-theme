@@ -36,7 +36,13 @@
     <div class="container">
         <?php echo get_template_part('partials/barra-acessibilidade'); ?>
     </div>
-    <header>
+    <?php
+        $header = '';
+        if ( get_header_image() ) {
+            $header = 'style="background-image: url(\'' . get_header_image(). '\')"';
+        }
+    ?>
+    <header <?php echo $header; ?>>
         <?php if (!is_front_page()) : ?>
             <h1 class="visually-hidden"><?php bloginfo('name'); ?></h1>
         <?php endif; ?>

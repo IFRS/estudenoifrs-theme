@@ -42,6 +42,18 @@ add_theme_support( 'custom-logo', array(
     'flex-width'  => true,
 ) );
 
+// Custom Header Image
+add_theme_support( 'custom-header', array(
+    'default-image'      => get_template_directory_uri() . '/img/header-bg.png',
+    'random-default'     => false,
+    'uploads'            => true,
+    'default-text-color' => 'ffffff',
+    'width'              => 1920,
+    'height'             => 226,
+    'flex-width'         => false,
+    'flex-height'        => true,
+) );
+
 // Sidebars
 add_action('widgets_init', function() {
     register_sidebar(array(
