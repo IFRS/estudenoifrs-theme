@@ -1,34 +1,38 @@
 <?php
     $today = new Datetime('today midnight');
 
-    $is_search = !empty($_POST['curso_unidade']) || !empty($_POST['curso_nivel']) || !empty($_POST['curso_modalidade']);
+    $curso_unidade = is_array($_POST['curso_unidade']) ? array_filter($_POST['curso_unidade']) : $_POST['curso_unidade'];
+    $curso_nivel = is_array($_POST['curso_nivel']) ? array_filter($_POST['curso_nivel']) : $_POST['curso_nivel'];
+    $curso_modalidade = is_array($_POST['curso_modalidade']) ? array_filter($_POST['curso_modalidade']) : $_POST['curso_modalidade'];
+
+    $is_search = !empty($curso_unidade) || !empty($curso_nivel) || !empty($curso_modalidade);
 
     $meta_query = array();
 
     if ($is_search) {
         $curso_tax_query = array();
 
-        if (!empty($_POST['curso_unidade'])) {
+        if (!empty($curso_unidade)) {
             $curso_tax_query[] = array(
                 'taxonomy' => 'unidade',
                 'field'    => 'slug',
-                'terms'    => (array) $_POST['curso_unidade'],
+                'terms'    => (array) $curso_unidade,
             );
         }
 
-        if (!empty($_POST['curso_nivel'])) {
+        if (!empty($curso_nivel)) {
             $curso_tax_query[] = array(
                 'taxonomy' => 'nivel',
                 'field'    => 'slug',
-                'terms'    => (array) $_POST['curso_nivel'],
+                'terms'    => (array) $curso_nivel,
             );
         }
 
-        if (!empty($_POST['curso_modalidade'])) {
+        if (!empty($curso_modalidade)) {
             $curso_tax_query[] = array(
                 'taxonomy' => 'modalidade',
                 'field'    => 'slug',
-                'terms'    => (array) $_POST['curso_modalidade'],
+                'terms'    => (array) $curso_modalidade,
             );
         }
 
@@ -87,9 +91,8 @@
                 <?php if (!$is_search) : ?>
                     N&atilde;o existem inscri&ccedil;&otilde;es abertas no momento, fique atento para novas publica&ccedil;&otilde;es.
                 <?php else : ?>
-                    Sua busca não encontrou inscri&ccedil;&otilde;es abertas no momento, fique atento para novas publica&ccedil;&otilde;es.
+                    No momento sua busca n&atilde;o encontrou inscri&ccedil;&otilde;es abertas, mas n&atilde;o perca a viagem e acesse o nosso <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="alert-link">Guia de Cursos</a>.
                 <?php endif; ?>
-                Enquanto isso, confira o nosso <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="alert-link">Guia de Cursos</a>.
             </div>
         <?php endif; ?>
     </div>
