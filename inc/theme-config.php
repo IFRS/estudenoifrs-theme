@@ -61,7 +61,7 @@ add_action('widgets_init', function() {
     register_sidebar(array(
         'name'          => 'Carrossel',
         'id'            => 'area-carousel',
-        'description'   => __('Área para imagens em forma de slider.', 'ifrs-ingresso-theme'),
+        'description'   => __('Área para imagens em forma de slider.', 'ifrs-estude-theme'),
         'before_widget' => '<div id="%1$s" class="carousel-item %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<span class="visually-hidden">',
@@ -70,7 +70,7 @@ add_action('widgets_init', function() {
     register_sidebar(array(
         'name'          => 'Contato',
         'id'            => 'area-contato',
-        'description'   => __('Área para formulário de contato no rodapé, aparece em todas as páginas.', 'ifrs-ingresso-theme'),
+        'description'   => __('Área para formulário de contato no rodapé, aparece em todas as páginas.', 'ifrs-estude-theme'),
         'before_widget' => '<div id="%1$s" class="contato__widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<span class="visually-hidden">',
@@ -79,7 +79,7 @@ add_action('widgets_init', function() {
     register_sidebar(array(
         'name'          => 'Rodapé',
         'id'            => 'area-rodape',
-        'description'   => __('Área para informações de contato no rodapé.', 'ifrs-ingresso-theme'),
+        'description'   => __('Área para informações de contato no rodapé.', 'ifrs-estude-theme'),
         'before_widget' => '<address id="%1$s" class="footer__widget %2$s">',
         'after_widget'  => '</address>',
         'before_title'  => '<h2 class="footer__widget-title">',

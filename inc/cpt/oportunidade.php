@@ -1,33 +1,33 @@
 <?php
 add_action( 'init', function() {
     $labels = array(
-        'name'                  => _x( 'Oportunidades', 'Post Type General Name', 'ifrs-ingresso-theme' ),
-        'singular_name'         => _x( 'Oportunidade', 'Post Type Singular Name', 'ifrs-ingresso-theme' ),
-        'menu_name'             => __( 'Oportunidades', 'ifrs-ingresso-theme' ),
-        'name_admin_bar'        => __( 'Oportunidades', 'ifrs-ingresso-theme' ),
-        'archives'              => __( 'Arquivo de Oportunidades', 'ifrs-ingresso-theme' ),
-        'attributes'            => __( 'Atributos de Oportunidades', 'ifrs-ingresso-theme' ),
-        'parent_item_colon'     => __( 'Oportunidade mãe:', 'ifrs-ingresso-theme' ),
-        'all_items'             => __( 'Todas as Oportunidades', 'ifrs-ingresso-theme' ),
-        'add_new_item'          => __( 'Adicionar Nova Oportunidade', 'ifrs-ingresso-theme' ),
-        'add_new'               => __( 'Adicionar Nova', 'ifrs-ingresso-theme' ),
-        'new_item'              => __( 'Nova Oportunidade', 'ifrs-ingresso-theme' ),
-        'edit_item'             => __( 'Editar Oportunidade', 'ifrs-ingresso-theme' ),
-        'update_item'           => __( 'Atualizar Oportunidade', 'ifrs-ingresso-theme' ),
-        'view_item'             => __( 'Visualizar Oportunidade', 'ifrs-ingresso-theme' ),
-        'view_items'            => __( 'Visualizar Oportunidades', 'ifrs-ingresso-theme' ),
-        'search_items'          => __( 'Buscar Oportunidade', 'ifrs-ingresso-theme' ),
-        'not_found'             => __( 'Não encontrada', 'ifrs-ingresso-theme' ),
-        'not_found_in_trash'    => __( 'Não encontrada na Lixeira', 'ifrs-ingresso-theme' ),
-        'featured_image'        => __( 'Imagem Destaque', 'ifrs-ingresso-theme' ),
-        'set_featured_image'    => __( 'Definir imagem destaque', 'ifrs-ingresso-theme' ),
-        'remove_featured_image' => __( 'Remover imagem destaque', 'ifrs-ingresso-theme' ),
-        'use_featured_image'    => __( 'Usar como imagem destaque', 'ifrs-ingresso-theme' ),
-        'insert_into_item'      => __( 'Inserir na Oportunidade', 'ifrs-ingresso-theme' ),
-        'uploaded_to_this_item' => __( 'Enviado para essa Oportunidade', 'ifrs-ingresso-theme' ),
-        'items_list'            => __( 'Lista de Oportunidades', 'ifrs-ingresso-theme' ),
-        'items_list_navigation' => __( 'Lista de navegação de Oportunidades', 'ifrs-ingresso-theme' ),
-        'filter_items_list'     => __( 'Filtrar lista de Oportunidades', 'ifrs-ingresso-theme' ),
+        'name'                  => _x( 'Oportunidades', 'Post Type General Name', 'ifrs-estude-theme' ),
+        'singular_name'         => _x( 'Oportunidade', 'Post Type Singular Name', 'ifrs-estude-theme' ),
+        'menu_name'             => __( 'Oportunidades', 'ifrs-estude-theme' ),
+        'name_admin_bar'        => __( 'Oportunidades', 'ifrs-estude-theme' ),
+        'archives'              => __( 'Arquivo de Oportunidades', 'ifrs-estude-theme' ),
+        'attributes'            => __( 'Atributos de Oportunidades', 'ifrs-estude-theme' ),
+        'parent_item_colon'     => __( 'Oportunidade mãe:', 'ifrs-estude-theme' ),
+        'all_items'             => __( 'Todas as Oportunidades', 'ifrs-estude-theme' ),
+        'add_new_item'          => __( 'Adicionar Nova Oportunidade', 'ifrs-estude-theme' ),
+        'add_new'               => __( 'Adicionar Nova', 'ifrs-estude-theme' ),
+        'new_item'              => __( 'Nova Oportunidade', 'ifrs-estude-theme' ),
+        'edit_item'             => __( 'Editar Oportunidade', 'ifrs-estude-theme' ),
+        'update_item'           => __( 'Atualizar Oportunidade', 'ifrs-estude-theme' ),
+        'view_item'             => __( 'Visualizar Oportunidade', 'ifrs-estude-theme' ),
+        'view_items'            => __( 'Visualizar Oportunidades', 'ifrs-estude-theme' ),
+        'search_items'          => __( 'Buscar Oportunidade', 'ifrs-estude-theme' ),
+        'not_found'             => __( 'Não encontrada', 'ifrs-estude-theme' ),
+        'not_found_in_trash'    => __( 'Não encontrada na Lixeira', 'ifrs-estude-theme' ),
+        'featured_image'        => __( 'Imagem Destaque', 'ifrs-estude-theme' ),
+        'set_featured_image'    => __( 'Definir imagem destaque', 'ifrs-estude-theme' ),
+        'remove_featured_image' => __( 'Remover imagem destaque', 'ifrs-estude-theme' ),
+        'use_featured_image'    => __( 'Usar como imagem destaque', 'ifrs-estude-theme' ),
+        'insert_into_item'      => __( 'Inserir na Oportunidade', 'ifrs-estude-theme' ),
+        'uploaded_to_this_item' => __( 'Enviado para essa Oportunidade', 'ifrs-estude-theme' ),
+        'items_list'            => __( 'Lista de Oportunidades', 'ifrs-estude-theme' ),
+        'items_list_navigation' => __( 'Lista de navegação de Oportunidades', 'ifrs-estude-theme' ),
+        'filter_items_list'     => __( 'Filtrar lista de Oportunidades', 'ifrs-estude-theme' ),
     );
 
     $capabilities = array(
@@ -56,8 +56,8 @@ add_action( 'init', function() {
     );
 
     $args = array(
-        'label'                 => __( 'Oportunidade', 'ifrs-ingresso-theme' ),
-        'description'           => __( 'Oportunidades de ingresso discente', 'ifrs-ingresso-theme' ),
+        'label'                 => __( 'Oportunidade', 'ifrs-estude-theme' ),
+        'description'           => __( 'Oportunidades de ingresso discente', 'ifrs-estude-theme' ),
         'labels'                => $labels,
         'supports'              => array( 'title' ),
         'taxonomies'            => array(),
@@ -125,18 +125,18 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
      * Datas
      */
     $metaboxes[] = array(
-        'title'      => __( 'Datas', 'ifrs-ingresso-theme' ),
+        'title'      => __( 'Datas', 'ifrs-estude-theme' ),
         'post_types' => 'oportunidade',
         'context'    => 'normal',
         'priority'   => 'high',
         'fields'     => array(
             array(
                 'type'    => 'heading',
-                'name'    => __( 'Isenção da Taxa de Inscrição', 'ifrs-ingresso-theme' ),
-                'desc'    => __( 'Preencha com o período para requerimento da isenção. Em caso de inscrição gratuita, deixe em branco.', 'ifrs-ingresso-theme' ),
+                'name'    => __( 'Isenção da Taxa de Inscrição', 'ifrs-estude-theme' ),
+                'desc'    => __( 'Preencha com o período para requerimento da isenção. Em caso de inscrição gratuita, deixe em branco.', 'ifrs-estude-theme' ),
             ),
             array(
-                'name'       => __( 'Início da Isenção', 'ifrs-ingresso-theme' ),
+                'name'       => __( 'Início da Isenção', 'ifrs-estude-theme' ),
                 'id'         => $prefix . 'isencao_inicio',
                 'type'       => 'date',
                 'timestamp'  => true,
@@ -146,7 +146,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 ),
             ),
             array(
-                'name'       => __( 'Término da Isenção', 'ifrs-ingresso-theme' ),
+                'name'       => __( 'Término da Isenção', 'ifrs-estude-theme' ),
                 'id'         => $prefix . 'isencao_termino',
                 'type'       => 'date',
                 'timestamp'  => true,
@@ -157,11 +157,11 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
             ),
             array(
                 'type'    => 'heading',
-                'name'    => __( 'Inscrições', 'ifrs-ingresso-theme' ),
-                'desc'    => __( 'Preencha com o período para inscrições.', 'ifrs-ingresso-theme' ),
+                'name'    => __( 'Inscrições', 'ifrs-estude-theme' ),
+                'desc'    => __( 'Preencha com o período para inscrições.', 'ifrs-estude-theme' ),
             ),
             array(
-                'name'       => __( 'Início das Inscrições', 'ifrs-ingresso-theme' ),
+                'name'       => __( 'Início das Inscrições', 'ifrs-estude-theme' ),
                 'id'         => $prefix . 'inscricao_inicio',
                 'type'       => 'date',
                 'timestamp'  => true,
@@ -171,7 +171,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 ),
             ),
             array(
-                'name'       => __( 'Término das Inscrições', 'ifrs-ingresso-theme' ),
+                'name'       => __( 'Término das Inscrições', 'ifrs-estude-theme' ),
                 'id'         => $prefix . 'inscricao_termino',
                 'type'       => 'date',
                 'timestamp'  => true,
@@ -187,13 +187,13 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
      * Requisitos
      */
     $metaboxes[] = array(
-        'title'      => __( 'Requisitos Mínimos', 'ifrs-ingresso-theme' ),
+        'title'      => __( 'Requisitos Mínimos', 'ifrs-estude-theme' ),
         'post_types' => 'oportunidade',
         'context'    => 'normal',
         'priority'   => 'high',
         'fields'     => array(
             array(
-                'desc'    => __( 'Recomenda-se que os requisitos sejam elaborados em forma de lista de itens.', 'ifrs-ingresso-theme' ),
+                'desc'    => __( 'Recomenda-se que os requisitos sejam elaborados em forma de lista de itens.', 'ifrs-estude-theme' ),
                 'id'      => $prefix . 'requisitos',
                 'type'    => 'wysiwyg',
                 'raw'     => false,
@@ -237,7 +237,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     }
 
     $metaboxes[] = array(
-        'title'      => __( 'Cursos Ofertados', 'ifrs-ingresso-theme' ),
+        'title'      => __( 'Cursos Ofertados', 'ifrs-estude-theme' ),
         'post_types' => 'oportunidade',
         'context'    => 'normal',
         'priority'   => 'low',
@@ -248,14 +248,14 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
      * URL
      */
     $metaboxes[] = array(
-        'title'      => __( 'Link', 'ifrs-ingresso-theme' ),
+        'title'      => __( 'Link', 'ifrs-estude-theme' ),
         'post_types' => 'oportunidade',
         'context'    => 'side',
         'priority'   => 'low',
         'fields'     => array(
             array(
-                'name' => __( 'Endereço (URL)', 'ifrs-ingresso-theme' ),
-                'desc' => __( 'Insira o endereço para acesso a mais informações.', 'ifrs-ingresso-theme' ),
+                'name' => __( 'Endereço (URL)', 'ifrs-estude-theme' ),
+                'desc' => __( 'Insira o endereço para acesso a mais informações.', 'ifrs-estude-theme' ),
                 'id'   => $prefix . 'url',
                 'type' => 'text',
             ),

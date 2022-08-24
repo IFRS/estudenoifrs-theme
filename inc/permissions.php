@@ -35,7 +35,7 @@ add_action('admin_init', function() {
 
 add_action('after_switch_theme', function() {
     if (!get_role( 'cadastrador_cursos' )) {
-        add_role('cadastrador_cursos', __('Cadastrador de Cursos', 'ifrs-ingresso-theme'), array(
+        add_role('cadastrador_cursos', __('Cadastrador de Cursos', 'ifrs-estude-theme'), array(
             'read'              => true,
             'upload_files'      => true,
             'manage_files'      => true,
@@ -53,7 +53,7 @@ add_action('after_switch_theme', function() {
     }
 
     if (!get_role( 'cadastrador_oportunidades' )) {
-        add_role('cadastrador_oportunidades', __('Cadastrador de Oportunidades', 'ifrs-ingresso-theme'), array(
+        add_role('cadastrador_oportunidades', __('Cadastrador de Oportunidades', 'ifrs-estude-theme'), array(
             'read'                 => true,
             'upload_files'         => true,
             'manage_files'         => true,
