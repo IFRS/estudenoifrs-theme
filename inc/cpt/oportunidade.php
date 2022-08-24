@@ -102,12 +102,12 @@ add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, 
     }
 
     if (!empty($modalidades)) {
-        $label .= ' / ';
+        $label .= ' - ';
         foreach ($modalidades as $modalidade) {
             $label .= $modalidade->name;
 
             if ($modalidade !== end($modalidades)) {
-                $label .= ', ';
+                $label .= ' / ';
             }
         }
     }
@@ -237,7 +237,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     }
 
     $metaboxes[] = array(
-        'title'      => __( 'Cursos Relacionados', 'ifrs-ingresso-theme' ),
+        'title'      => __( 'Cursos Ofertados', 'ifrs-ingresso-theme' ),
         'post_types' => 'oportunidade',
         'context'    => 'normal',
         'priority'   => 'low',
