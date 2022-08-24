@@ -75,17 +75,12 @@ gulp.task('webpack', function(done) {
             }
         },
     }, function(err, stats) {
-        if (err) throw new PluginError('webpack', {
-            message: err.toString({
-                colors: true
-            })
-        });
-        if (stats.hasErrors()) throw new PluginError('webpack', {
-            message: stats.toString({
-                colors: true
-            })
-        });
+        if (err) throw new PluginError('webpack', err.toString({ colors: true }));
+
+        if (stats.hasErrors()) throw new PluginError('webpack', stats.toString({ colors: true }));
+
         browserSync.reload();
+
         done();
     });
 });
