@@ -24,9 +24,8 @@ $body-color:                   $gray-700;
 $headings-color:               $gray-700;
 
 // Navbar
-$navbar-light-color:           $white;
-$navbar-light-hover-color:     $gray-200;
-$navbar-light-active-color:    $gray-200;
+$navbar-dark-color:            rgba($white, 0.9);
+$navbar-dark-hover-color:      $white;
 
 // Dropdown
 $dropdown-bg:                  $gray-100;
@@ -37,7 +36,7 @@ $dropdown-item-padding-y:      math.div($spacer, 2);
 $dropdown-link-color:          $gray-700;
 $dropdown-link-hover-color:    $cor-destaque;
 $dropdown-link-active-color:   $white;
-$dropdown-link-active-bg:      $gray-600;
+$dropdown-link-active-bg:      tint-color($primary, 20%);
 $dropdown-padding-y:           0;
 
 // Carousel

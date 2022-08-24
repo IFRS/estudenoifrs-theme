@@ -4,15 +4,15 @@
     $offcanvas_id = uniqid('offcanvas-');
     $offcanvas_label_id = uniqid('offcanvas-label-');
 ?>
-<nav class="navbar navbar-expand-md navbar-light">
+<nav class="navbar navbar-expand-lg navbar-dark">
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#<?php echo $offcanvas_id; ?>" aria-controls="<?php echo $offcanvas_id; ?>">
         <span class="navbar-toggler-icon"></span>
-        Menu
+        <span class="visually-hidden">Menu</span>
     </button>
-    <div class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="<?php echo $offcanvas_label_id; ?>" id="<?php echo $offcanvas_id; ?>">
+    <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" aria-labelledby="<?php echo $offcanvas_label_id; ?>" id="<?php echo $offcanvas_id; ?>">
         <div class="offcanvas-header">
             <h2 class="offcanvas-title" id="<?php echo $offcanvas_label_id; ?>">Menu</h2>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar Menu"></button>
+            <button type="button" class="btn btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar Menu"></button>
         </div>
         <div class="offcanvas-body">
             <?php
@@ -22,7 +22,7 @@
                     'container'       => null,
                     'container_class' => '',
                     'container_id'    => '',
-                    'menu_class'      => 'navbar-nav ms-auto me-md-3',
+                    'menu_class'      => 'navbar-nav ms-auto me-lg-3 mb-3 mb-lg-0',
                 ) );
             ?>
             <?php get_search_form(); ?>

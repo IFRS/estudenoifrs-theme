@@ -1,3 +1,15 @@
 .navbar {
     height: 100%;
+
+    .nav-link {
+        &.active {
+            font-weight: bold;
+        }
+    }
+}
+
+.offcanvas {
+    &-title {
+        color: $white;
+    }
 }

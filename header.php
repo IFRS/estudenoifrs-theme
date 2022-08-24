@@ -43,17 +43,15 @@
         }
     ?>
     <header <?php echo $header; ?>>
-        <?php if (!is_front_page()) : ?>
-            <h1 class="visually-hidden"><?php bloginfo('name'); ?></h1>
-        <?php endif; ?>
+        <h1 class="visually-hidden"><?php bloginfo('name'); ?></h1>
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-6 col-lg-4">
+                <div class="col col-lg-4">
                     <a href="<?php echo esc_url(home_url('/')); ?>">
                         <img src="<?php echo !empty(get_custom_logo()) ? get_custom_logo() : get_stylesheet_directory_uri() . '/img/marca.png'; ?>" alt="<?php bloginfo('name'); ?> - P&aacute;gina Inicial" class="img-fluid"/>
                     </a>
                 </div>
-                <div class="col-12 col-md-6 col-lg-8">
+                <div class="col-auto col-lg-8 order-first order-lg-last">
                     <?php echo get_template_part('partials/menu'); ?>
                 </div>
             </div>
