@@ -41,7 +41,7 @@ add_action( 'init', function() {
 
         // primitive caps used outside of map_meta_cap()
         'edit_posts'             => 'edit_oportunidades',
-        'edit_others_posts'      => 'manage_oportunidades',
+        'edit_others_posts'      => 'edit_oportunidades',
         'publish_posts'          => 'create_oportunidades',
         'read_private_posts'     => 'read',
 
@@ -51,7 +51,7 @@ add_action( 'init', function() {
         'delete_private_posts'   => 'manage_oportunidades',
         'delete_published_posts' => 'delete_oportunidades',
         'delete_others_posts'    => 'manage_oportunidades',
-        'edit_private_posts'     => 'edit_oportunidades',
+        'edit_private_posts'     => 'manage_oportunidades',
         'edit_published_posts'   => 'edit_oportunidades',
     );
 
@@ -73,7 +73,7 @@ add_action( 'init', function() {
         'has_archive'           => true,
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
-        //'capabilities'          => $capabilities,
+        'capabilities'          => $capabilities,
         'show_in_rest'          => true,
         'rest_base'             => 'oportunidades',
         'rewrite'               => array( 'slug' => 'inscricoes-abertas' ),
