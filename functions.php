@@ -10,6 +10,7 @@ require_once('inc/fonts.php');
 
 // Configurações para o tema
 require_once('inc/theme-config.php');
+require_once('inc/remove-h1.php');
 
 // Menus
 require_once('inc/menus.php');
