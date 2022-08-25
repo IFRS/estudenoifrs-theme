@@ -19,6 +19,7 @@
         'taxonomy' => 'nivel',
         'hide_empty' => false,
         'orderby' => 'term_order',
+        'parent' => 0,
     ));
 ?>
 
@@ -66,15 +67,17 @@
                 <legend>N&iacute;vel</legend>
                 <div class="filter__options">
                     <?php foreach ($niveis as $nivel): ?>
-                        <?php $field_id = uniqid(); ?>
-                        <?php $nivel_check = (isset($_POST['nivel']) && in_array($nivel->slug, $_POST['nivel'])) || is_tax('nivel', $nivel->slug); ?>
-                        <div class="form-check<?php echo ($nivel->parent !== 0) ? ' ms-3' : '' ?>">
-                            <input class="form-check-input" type="checkbox" name="nivel[]" value="<?php echo $nivel->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $nivel_check ? 'checked' : ''; ?>>
-                            <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $nivel->name; ?></label>
-                            <?php if (!empty($nivel->description)) : ?>
-                                <button type="button" class="btn btn-link btn-sm filter__help" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo $nivel->description; ?>"><span class="visually-hidden">Ajuda</span></button>
-                            <?php endif; ?>
-                        </div>
+                        <?php echo get_template_part( 'partials/curso-filter-nivel', null, array('nivel' => $nivel) ); ?>
+                        <?php
+                            $filhos = get_terms(array(
+                                'taxonomy' => 'nivel',
+                                'hide_empty' => false,
+                                'parent' => $nivel->term_id,
+                            ));
+                            foreach ($filhos as $filho) {
+                                echo get_template_part( 'partials/curso-filter-nivel', null, array('nivel' => $filho) );
+                            }
+                        ?>
                     <?php endforeach; ?>
                 </div>
             </fieldset>
