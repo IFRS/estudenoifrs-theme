@@ -1,155 +1,172 @@
-const argv         = require('minimist')(process.argv.slice(2));
-const babel        = require('gulp-babel');
-const browserSync  = require('browser-sync').create();
-const csso         = require('gulp-csso');
-const del          = require('del');
-const gulp         = require('gulp');
-const path         = require('path');
-const PluginError  = require('plugin-error');
-const postcss      = require('gulp-postcss');
-const sass         = require('gulp-sass')(require('sass'));
-const sourcemaps   = require('gulp-sourcemaps');
-const uglify       = require('gulp-uglify');
-const webpack      = require('webpack');
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+const { src, pipe, dest, series, parallel, watch } = require('gulp');
+const { name }             = require('./package.json');
+const argv                 = require('minimist')(process.argv.slice(2));
+const babel                = require('gulp-babel');
+const browserSync          = require('browser-sync').create();
+const csso                 = require('gulp-csso');
+const del                  = require('del');
+const gulp_sass            = require('gulp-sass')(require('sass'));
+const path                 = require('path');
+const PluginError          = require('plugin-error');
+const postcss              = require('gulp-postcss');
+const sourcemaps           = require('gulp-sourcemaps');
+const uglify               = require('gulp-uglify');
+const webpack              = require('webpack');
+const NodePolyfillPlugin   = require("node-polyfill-webpack-plugin");
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-gulp.task('clean', function() {
-    return del(['css/', 'js/', 'lightgallery/', 'dist/']);
-});
+const IS_PRODUCTION = argv.production || argv.prod;
 
-gulp.task('sass', function() {
-    let postCSS_plugins = [
-        require('autoprefixer'),
-    ];
-
-    let sass_options = {
-        includePaths: ['sass', 'node_modules'],
-        outputStyle: 'expanded',
-    };
-
-    return gulp.src('sass/*.scss')
-    .pipe(sourcemaps.init())
-    .pipe(sass.sync(sass_options).on('error', sass.logError))
-    .pipe(postcss(postCSS_plugins))
-    .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('css/'))
-    .pipe(browserSync.stream());
-});
-
-gulp.task('styles', gulp.series('sass', function css() {
-    return gulp.src('css/*.css')
-    .pipe(csso())
-    .pipe(gulp.dest('css/'))
-    .pipe(browserSync.stream());
-}));
+const BROWSERSYNC_URL = argv.URL || argv.url || 'localhost';
 
 let webpack_plugins = [];
 webpack_plugins.push(new NodePolyfillPlugin());
-argv.bundleanalyzer ? webpack_plugins.push(new BundleAnalyzerPlugin()) : null;
+if (argv.bundleanalyzer) webpack_plugins.push(new BundleAnalyzerPlugin());
 
-gulp.task('webpack', function(done) {
-    webpack({
-        mode: argv.production ? 'production' : 'development',
-        devtool: 'source-map',
-        entry: {
-            ingresso: './src/ingresso.js',
-            oportunidades: './src/oportunidades.js',
+function clean() {
+  return del(['css/', 'js/', 'lightgallery/', 'dist/']);
+};
+
+function sass() {
+  const postCSS_plugins = [
+    require('autoprefixer'),
+  ];
+
+  const sass_options = {
+    includePaths: ['sass', 'node_modules'],
+    outputStyle: 'expanded',
+  };
+
+  return src('sass/*.scss')
+  .pipe(sourcemaps.init())
+  .pipe(gulp_sass.sync(sass_options).on('error', gulp_sass.logError))
+  .pipe(postcss(postCSS_plugins))
+  .pipe(sourcemaps.write('./'))
+  .pipe(dest('css/'))
+  .pipe(browserSync.stream());
+};
+
+function css() {
+  return src('css/*.css')
+  .pipe(csso())
+  .pipe(dest('css/'))
+  .pipe(browserSync.stream());
+};
+
+function bundle(done) {
+  webpack({
+    mode: IS_PRODUCTION ? 'production' : 'development',
+    devtool: IS_PRODUCTION ? 'source-map' : 'eval-source-map',
+    entry: {
+      'ingresso': './src/ingresso.js',
+      'oportunidades': './src/oportunidades.js',
+    },
+    output: {
+      path: path.resolve(__dirname, 'js'),
+      filename: '[name].js',
+    },
+    plugins: [...webpack_plugins],
+    optimization: {
+      minimize: false,
+      splitChunks: {
+        cacheGroups: {
+          vendors: false,
+          commons: {
+            name: "commons",
+            chunks: "all",
+            minChunks: 2,
+          },
         },
-        output: {
-            path: path.resolve(__dirname, 'js'),
-            filename: '[name].js'
-        },
-        plugins: [...webpack_plugins],
-        optimization: {
-            minimize: false,
-            splitChunks: {
-                cacheGroups: {
-                    vendors: false,
-                    commons: {
-                        name: "commons",
-                        chunks: "all",
-                        minChunks: 2,
-                    }
-                }
-            }
-        },
-    }, function(err, stats) {
-        if (err) throw new PluginError('webpack', err.toString({ colors: true }));
+      },
+    },
+  }, function(err, stats) {
+    if (err) throw new PluginError('webpack', err.toString({ colors: true }));
 
-        if (stats.hasErrors()) throw new PluginError('webpack', stats.toString({ colors: true }));
+    if (stats.hasErrors()) throw new PluginError('webpack', stats.toString({ colors: true }));
 
-        browserSync.reload();
+    browserSync.reload();
 
-        done();
-    });
-});
-
-gulp.task('scripts', gulp.series('webpack', function js() {
-    return gulp.src('js/*.js')
-    .pipe(babel({
-        presets: [
-            [
-                "@babel/env",
-                { "modules": false }
-            ]
-        ]
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest('js/'))
-    .pipe(browserSync.stream());
-}));
-
-gulp.task('lightgallery', function(done) {
-    [
-        {
-            src: 'node_modules/lightgallery/fonts/*',
-            dest: 'lightgallery/fonts/',
-        },
-        {
-            src: 'node_modules/lightgallery/images/*',
-            dest: 'lightgallery/images/',
-        },
-    ].map(function(file) {
-        return gulp.src(file.src)
-        .pipe(gulp.dest(file.dest));
-    });
     done();
-});
+  });
+};
 
-gulp.task('dist', function() {
-    return gulp.src([
-        '**',
-        '!dist{,/**}',
-        '!node_modules{,/**}',
-        '!sass{,/**}',
-        '!src{,/**}',
-        '!.**',
-        '!gulpfile.js',
-        '!package-lock.json',
-        '!package.json',
-    ])
-    .pipe(gulp.dest('dist/'));
-});
+function js() {
+  return src('js/*.js')
+  .pipe(babel({
+    presets: [
+      [
+        "@babel/env",
+        { "modules": false }
+      ]
+    ]
+  }))
+  .pipe(uglify())
+  .pipe(dest('js/'))
+  .pipe(browserSync.stream());
+};
 
-if (argv.production) {
-    gulp.task('build', gulp.series('clean', gulp.parallel('styles', 'scripts', 'lightgallery'), 'dist'));
-} else {
-    gulp.task('build', gulp.series('clean', gulp.parallel('sass', 'webpack', 'lightgallery')));
-}
+function lightgallery(done) {
+  [
+    {
+      src: 'node_modules/lightgallery/fonts/*',
+      dest: 'lightgallery/fonts/',
+    },
+    {
+      src: 'node_modules/lightgallery/images/*',
+      dest: 'lightgallery/images/',
+    },
+  ].map(function(file) {
+    return src(file.src)
+    .pipe(dest(file.dest));
+  });
 
-gulp.task('default', gulp.series('build', function watch() {
-    browserSync.init({
-        ghostMode: false,
-        notify: false,
-        online: false,
-        open: false,
-        proxy: argv.URL || argv.url || 'localhost',
-    });
+  done();
+};
 
-    gulp.watch('sass/**/*.scss', gulp.series('sass'));
+function dist() {
+  return src([
+    '**',
+    '!dist{,/**}',
+    '!node_modules{,/**}',
+    '!sass{,/**}',
+    '!src{,/**}',
+    '!.**',
+    '!gulpfile.js',
+    '!package-lock.json',
+    '!package.json',
+  ])
+  .pipe(dest('dist/' + name));
+};
 
-    gulp.watch('src/**/*.js', gulp.series('webpack'));
+function serve() {
+  browserSync.init({
+    ui: argv.ui,
+    ghostMode: false,
+    online: false,
+    open: false,
+    notify: false,
+    host: BROWSERSYNC_URL,
+    proxy: BROWSERSYNC_URL,
+  });
 
-    gulp.watch('**/*.php').on('change', browserSync.reload);
-}));
+  watch('sass/**/*.scss', sass);
+
+  watch('src/**/*.js', bundle);
+
+  watch('**/*.php').on('change', browserSync.reload);
+};
+
+exports.clean = clean;
+exports.sass = sass;
+exports.bundle = bundle;
+
+const styles = series(sass, css);
+exports.styles = styles;
+
+const scripts = series(bundle, js);
+exports.scripts = scripts;
+
+const build = IS_PRODUCTION ? series(clean, parallel(styles, scripts, lightgallery), dist) : series(clean, parallel(sass, bundle, lightgallery));
+exports.build = build;
+
+exports.default = series(build, serve);
