@@ -46,6 +46,3 @@ require_once('inc/tax/modalidade.php');
 require_once('inc/tax/nivel.php');
 require_once('inc/tax/turno.php');
 require_once('inc/tax/unidade.php');
-
-// Custom Queries
-require_once('inc/custom-queries.php');
