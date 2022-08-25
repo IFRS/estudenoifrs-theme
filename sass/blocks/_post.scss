@@ -2,4 +2,14 @@
     &__title {
         @include title();
     }
+
+    &__content {
+        p {
+            @for $i from 2 through 6 {
+                + h#{$i} {
+                    margin-top: 1.5rem;
+                }
+            }
+        }
+    }
 }
