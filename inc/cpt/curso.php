@@ -122,6 +122,12 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'type'       => 'switch',
             ),
             array(
+                'id'         => $prefix . 'estagio',
+                'name'       => __( 'Possui estágio obrigatório?', 'ifrs-estude-theme' ),
+                'desc'       => __( 'Marque caso o Curso possua estágio obrigatório.', 'ifrs-estude-theme' ),
+                'type'       => 'switch',
+            ),
+            array(
                 'id'   => $prefix . 'nota',
                 'name' => __( 'Avaliação do Curso', 'ifrs-estude-theme' ),
                 'desc' => __( 'Nota recebida pela última avaliação do Curso, se houver.', 'ifrs-estude-theme' ),
