@@ -1,5 +1,5 @@
 import lightGallery from 'lightgallery';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgThumbnail from 'lightgallery/plugins/thumbnail/lg-thumbnail.es5.js';
 
 document.addEventListener('DOMContentLoaded', function() {
   let galleries = document.querySelectorAll('.wp-block-gallery');
