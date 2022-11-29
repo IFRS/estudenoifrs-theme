@@ -1,19 +1,28 @@
-const { src, pipe, dest, series, parallel, watch } = require('gulp');
-const { name }             = require('./package.json');
-const argv                 = require('minimist')(process.argv.slice(2));
-const babel                = require('gulp-babel');
-const browserSync          = require('browser-sync').create();
-const csso                 = require('gulp-csso');
-const del                  = require('del');
-const gulp_sass            = require('gulp-sass')(require('sass'));
-const path                 = require('path');
-const PluginError          = require('plugin-error');
-const postcss              = require('gulp-postcss');
-const sourcemaps           = require('gulp-sourcemaps');
-const uglify               = require('gulp-uglify');
-const webpack              = require('webpack');
-const NodePolyfillPlugin   = require("node-polyfill-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+import { readFileSync }   from 'fs';
+import { deleteAsync }    from 'del';
+import gulp               from 'gulp';
+import parseArgs          from 'minimist';
+import babel              from 'gulp-babel';
+import browserSync        from 'browser-sync';
+import csso               from 'gulp-csso';
+import dartSass           from 'sass';
+import gulpSass           from 'gulp-sass';
+import autoprefixer       from 'autoprefixer';
+import path               from 'path';
+import pluginError        from 'plugin-error';
+import postCSS            from 'gulp-postcss';
+import sourcemaps         from 'gulp-sourcemaps';
+import uglify             from 'gulp-uglify';
+import webpack            from 'webpack';
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin';
+import BundleAnalyzer     from 'webpack-bundle-analyzer';
+
+browserSync.create();
+
+const { name } = JSON.parse(readFileSync('./package.json'));
+const { src, dest, series, parallel, watch } = gulp;
+const sassCompiler = gulpSass(dartSass);
+const argv = parseArgs(process.argv.slice(2));
 
 const IS_PRODUCTION = argv.production || argv.prod;
 
@@ -21,15 +30,15 @@ const BROWSERSYNC_URL = argv.URL || argv.url || 'localhost';
 
 let webpack_plugins = [];
 webpack_plugins.push(new NodePolyfillPlugin());
-if (argv.bundleanalyzer) webpack_plugins.push(new BundleAnalyzerPlugin());
+if (argv.bundleanalyzer) webpack_plugins.push(new BundleAnalyzer.BundleAnalyzerPlugin());
 
-function clean() {
-  return del(['css/', 'js/', 'lightgallery/', 'dist/']);
+async function clean() {
+  return await deleteAsync(['css/', 'js/', 'lightgallery/', 'dist/']);
 };
 
 function sass() {
   const postCSS_plugins = [
-    require('autoprefixer'),
+    autoprefixer,
   ];
 
   const sass_options = {
@@ -39,8 +48,8 @@ function sass() {
 
   return src('sass/*.scss')
   .pipe(sourcemaps.init())
-  .pipe(gulp_sass.sync(sass_options).on('error', gulp_sass.logError))
-  .pipe(postcss(postCSS_plugins))
+  .pipe(sassCompiler.sync(sass_options).on('error', sassCompiler.logError))
+  .pipe(postCSS(postCSS_plugins))
   .pipe(sourcemaps.write('./'))
   .pipe(dest('css/'))
   .pipe(browserSync.stream());
@@ -62,7 +71,7 @@ function bundle(done) {
       'oportunidades': './src/oportunidades.js',
     },
     output: {
-      path: path.resolve(__dirname, 'js'),
+      path: path.resolve(path.dirname(''), 'js'),
       filename: '[name].js',
     },
     plugins: [...webpack_plugins],
@@ -80,9 +89,9 @@ function bundle(done) {
       },
     },
   }, function(err, stats) {
-    if (err) throw new PluginError('webpack', err.toString({ colors: true }));
+    if (err) throw new pluginError('webpack', err.toString({ colors: true }));
 
-    if (stats.hasErrors()) throw new PluginError('webpack', stats.toString({ colors: true }));
+    if (stats.hasErrors()) throw new pluginError('webpack', stats.toString({ colors: true }));
 
     browserSync.reload();
 
@@ -126,14 +135,15 @@ function lightgallery(done) {
 function dist() {
   return src([
     '**',
+    '!.**',
+    '!css/*.map',
     '!dist{,/**}',
+    '!js/*.map',
     '!node_modules{,/**}',
     '!sass{,/**}',
     '!src{,/**}',
-    '!.**',
     '!gulpfile.js',
-    '!package-lock.json',
-    '!package.json',
+    '!package*.json',
   ])
   .pipe(dest('dist/' + name));
 };
@@ -156,17 +166,12 @@ function serve() {
   watch('**/*.php').on('change', browserSync.reload);
 };
 
-exports.clean = clean;
-exports.sass = sass;
-exports.bundle = bundle;
-
 const styles = series(sass, css);
-exports.styles = styles;
 
 const scripts = series(bundle, js);
-exports.scripts = scripts;
 
 const build = IS_PRODUCTION ? series(clean, parallel(styles, scripts, lightgallery), dist) : series(clean, parallel(sass, bundle, lightgallery));
-exports.build = build;
 
-exports.default = series(build, serve);
+export { clean, sass, bundle, styles, scripts, build };
+
+export default series(build, serve);

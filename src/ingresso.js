@@ -1,6 +1,6 @@
-require('lazysizes');
+import 'lazysizes';
 import 'bootstrap';
 
-require('./_lightgallery');
-require('./_tooltips');
-require('./_pagination');
+import './_lightgallery.js';
+import './_tooltips.js';
+import './_pagination.js';
