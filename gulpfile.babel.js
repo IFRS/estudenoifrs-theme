@@ -142,7 +142,7 @@ function dist() {
     '!node_modules{,/**}',
     '!sass{,/**}',
     '!src{,/**}',
-    '!gulpfile.js',
+    '!gulpfile*.js',
     '!package*.json',
   ])
   .pipe(dest('dist/' + name));
