@@ -19,7 +19,15 @@
     <h4 class="curso-item__title"><a href="<?php the_permalink(); ?>" style="color: <?php echo end($cores); ?>"><?php the_title(); ?></a></h4>
     <p class="curso-item__meta">
         <span class="curso-item__meta--cargahoraria">
-            <?php echo esc_html(get_post_meta( get_the_ID(), '_curso_duracao', true )); ?> (<?php echo esc_html(get_post_meta( get_the_ID(), '_curso_carga_horaria', true )); ?>h)
+            <?php
+                $duracao = get_post_meta( get_the_ID(), '_curso_duracao', true );
+                $cargahoraria = get_post_meta( get_the_ID(), '_curso_carga_horaria', true );
+            ?>
+            <?php if ($duracao) : ?>
+                <?php echo esc_html($duracao); ?> (<?php echo esc_html($cargahoraria); ?>h)
+            <?php else : ?>
+                <?php echo esc_html($cargahoraria); ?>h
+            <?php endif; ?>
         </span>
         <br>
         <span class="curso-item__meta--turnos">

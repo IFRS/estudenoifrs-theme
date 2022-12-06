@@ -87,9 +87,6 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'desc'       => __( '2 meses, 4 semestres, 3 anos, etc.', 'ifrs-estude-theme' ),
                 'type'       => 'text',
                 'size'       => 50,
-                'attributes' => array(
-                    'required' => 'required',
-                ),
             ),
             array(
                 'id'         => $prefix . 'ead',

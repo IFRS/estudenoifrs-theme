@@ -32,7 +32,17 @@
             </div>
             <div class="curso-info curso-info--cargahoraria">
                 <h4 class="curso-info__title"><?php _e('Dura&ccedil;&atilde;o', 'ifrs-portal-theme'); echo ($ead) ? '*' : ''; ?></h4>
-                <p class="curso-info__text"><?php echo esc_html(get_post_meta( get_the_ID(), '_curso_duracao', true )); ?> <span class="curso-info__text--lower">(<?php echo esc_html(get_post_meta( get_the_ID(), '_curso_carga_horaria', true )); ?>h)</span></p>
+                <p class="curso-info__text">
+                    <?php
+                        $duracao = get_post_meta( get_the_ID(), '_curso_duracao', true );
+                        $cargahoraria = get_post_meta( get_the_ID(), '_curso_carga_horaria', true );
+                    ?>
+                    <?php if ($duracao) : ?>
+                        <?php echo esc_html($duracao); ?> <span class="curso-info__text--lower">(<?php echo esc_html($cargahoraria); ?>h)</span>
+                    <?php else : ?>
+                        <span class="curso-info__text--lower">(<?php echo esc_html($cargahoraria); ?>h)</span>
+                    <?php endif; ?>
+                </p>
             </div>
             <?php $nota_mec = get_post_meta( get_the_ID(), '_curso_nota', true ); ?>
             <?php if (!empty($nota_mec)) : ?>
