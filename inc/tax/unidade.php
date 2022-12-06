@@ -12,7 +12,7 @@ add_action( 'init', function() {
         'edit_item'                  => __( 'Editar Unidade', 'ifrs-estude-theme' ),
         'update_item'                => __( 'Atualizar Unidade', 'ifrs-estude-theme' ),
         'view_item'                  => __( 'Visualizar Unidade', 'ifrs-estude-theme' ),
-        'separate_items_with_commas' => __( 'Unidades separadas por vígulas', 'ifrs-estude-theme' ),
+        'separate_items_with_commas' => __( 'Unidades separadas por vírgulas', 'ifrs-estude-theme' ),
         'add_or_remove_items'        => __( 'Adicionar ou Remover Unidades', 'ifrs-estude-theme' ),
         'choose_from_most_used'      => __( 'Escolher pela Unidade mais usada', 'ifrs-estude-theme' ),
         'popular_items'              => __( 'Unidades populares', 'ifrs-estude-theme' ),
@@ -27,20 +27,17 @@ add_action( 'init', function() {
         'manage_terms'               => 'manage_unidades',
         'edit_terms'                 => 'manage_unidades',
         'delete_terms'               => 'manage_unidades',
-        'assign_terms'               => 'assign_unidades',
+        'assign_terms'               => 'edit_cursos',
     );
 
     $args = array(
         'labels'                     => $labels,
-        'hierarchical'               => false,
+        'description'                => __( 'Unidades administrativas da instituição', 'ifrs-estude-theme' ),
         'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-        'capabilities'               => $capabilities,
         'show_in_rest'               => true,
-        // 'rewrite'                    => array('slug' => 'cursos/unidades', 'with_front' => false),
+        'show_tagcloud'              => false,
+        'show_admin_column'          => true,
+        'capabilities'               => $capabilities,
     );
 
     register_taxonomy( 'unidade', array( 'curso' ), $args );

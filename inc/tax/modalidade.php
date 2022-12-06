@@ -12,7 +12,7 @@ add_action( 'init', function() {
         'edit_item'                  => __( 'Editar Modalidade', 'ifrs-estude-theme' ),
         'update_item'                => __( 'Atualizar Modalidade', 'ifrs-estude-theme' ),
         'view_item'                  => __( 'Visualizar Modalidade', 'ifrs-estude-theme' ),
-        'separate_items_with_commas' => __( 'Modalidades separadas com vírgulas', 'ifrs-estude-theme' ),
+        'separate_items_with_commas' => __( 'Modalidades separadas por vírgulas', 'ifrs-estude-theme' ),
         'add_or_remove_items'        => __( 'Adicionar ou Remover Modalidades', 'ifrs-estude-theme' ),
         'choose_from_most_used'      => __( 'Escolher pela Modalidade Mais Usada', 'ifrs-estude-theme' ),
         'popular_items'              => __( 'Modalidades Populares', 'ifrs-estude-theme' ),
@@ -27,20 +27,17 @@ add_action( 'init', function() {
         'manage_terms'               => 'manage_modalidades',
         'edit_terms'                 => 'manage_modalidades',
         'delete_terms'               => 'manage_modalidades',
-        'assign_terms'               => 'assign_modalidades',
+        'assign_terms'               => 'edit_cursos',
     );
 
     $args = array(
         'labels'                     => $labels,
-        'hierarchical'               => false,
+        'description'                => __( 'Modalidades de ensino.', 'ifrs-estude-theme' ),
         'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-        'capabilities'               => $capabilities,
         'show_in_rest'               => true,
-        // 'rewrite'                    => array('slug' => 'cursos/modalidades', 'with_front' => false),
+        'show_tagcloud'              => false,
+        'show_admin_column'          => true,
+        'capabilities'               => $capabilities,
     );
 
     register_taxonomy( 'modalidade', array( 'curso' ), $args );

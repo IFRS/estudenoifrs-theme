@@ -12,7 +12,7 @@ add_action( 'init', function() {
         'edit_item'                  => __( 'Editar Turno', 'ifrs-estude-theme' ),
         'update_item'                => __( 'Atualizar Turno', 'ifrs-estude-theme' ),
         'view_item'                  => __( 'Visualizar Turno', 'ifrs-estude-theme' ),
-        'separate_items_with_commas' => __( 'Turnos separados com vírgulas', 'ifrs-estude-theme' ),
+        'separate_items_with_commas' => __( 'Turnos separados por vírgulas', 'ifrs-estude-theme' ),
         'add_or_remove_items'        => __( 'Adicionar ou Remover Turnos', 'ifrs-estude-theme' ),
         'choose_from_most_used'      => __( 'Escolher pelo Turno Mais Usado', 'ifrs-estude-theme' ),
         'popular_items'              => __( 'Turnos Populares', 'ifrs-estude-theme' ),
@@ -27,20 +27,17 @@ add_action( 'init', function() {
         'manage_terms'               => 'manage_turnos',
         'edit_terms'                 => 'manage_turnos',
         'delete_terms'               => 'manage_turnos',
-        'assign_terms'               => 'assign_turnos',
+        'assign_terms'               => 'edit_cursos',
     );
 
     $args = array(
         'labels'                     => $labels,
-        'hierarchical'               => false,
+        'description'                => __( 'Turnos nos quais acontecem aulas.', 'ifrs-estude-theme' ),
         'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-        'capabilities'               => $capabilities,
         'show_in_rest'               => true,
-        // 'rewrite'                    => array('slug' => 'cursos/turnos', 'with_front' => false),
+        'show_tagcloud'              => false,
+        'show_admin_column'          => true,
+        'capabilities'               => $capabilities,
     );
 
     register_taxonomy( 'turno', array( 'curso' ), $args );

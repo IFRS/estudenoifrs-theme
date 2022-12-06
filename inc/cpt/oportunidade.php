@@ -30,31 +30,6 @@ add_action( 'init', function() {
         'filter_items_list'     => __( 'Filtrar lista de Oportunidades', 'ifrs-estude-theme' ),
     );
 
-    $capabilities = array(
-        // meta caps (don't assign these to roles)
-        'edit_post'              => 'edit_oportunidade',
-        'read_post'              => 'read',
-        'delete_post'            => 'delete_oportunidade',
-
-        // primitive/meta caps
-        'create_posts'           => 'create_oportunidades',
-
-        // primitive caps used outside of map_meta_cap()
-        'edit_posts'             => 'edit_oportunidades',
-        'edit_others_posts'      => 'edit_oportunidades',
-        'publish_posts'          => 'create_oportunidades',
-        'read_private_posts'     => 'read',
-
-        // primitive caps used inside of map_meta_cap()
-        'read'                   => 'read',
-        'delete_posts'           => 'delete_oportunidades',
-        'delete_private_posts'   => 'manage_oportunidades',
-        'delete_published_posts' => 'delete_oportunidades',
-        'delete_others_posts'    => 'manage_oportunidades',
-        'edit_private_posts'     => 'manage_oportunidades',
-        'edit_published_posts'   => 'edit_oportunidades',
-    );
-
     $args = array(
         'label'                 => __( 'Oportunidade', 'ifrs-estude-theme' ),
         'description'           => __( 'Oportunidades de ingresso discente', 'ifrs-estude-theme' ),
@@ -73,7 +48,8 @@ add_action( 'init', function() {
         'has_archive'           => true,
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
-        'capabilities'          => $capabilities,
+        'map_meta_cap'          => true,
+        'capability_type'       => ['oportunidade', 'oportunidades'],
         'show_in_rest'          => true,
         'rest_base'             => 'oportunidades',
         'rewrite'               => array( 'slug' => 'inscricoes-abertas' ),

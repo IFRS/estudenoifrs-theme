@@ -30,31 +30,6 @@ add_action( 'init', function() {
         'filter_items_list'     => __( 'Filtrar lista de Cursos', 'ifrs-estude-theme' ),
     );
 
-    $capabilities = array(
-        // meta caps (don't assign these to roles)
-        'edit_post'              => 'edit_curso',
-        'read_post'              => 'read',
-        'delete_post'            => 'delete_curso',
-
-        // primitive/meta caps
-        'create_posts'           => 'create_cursos',
-
-        // primitive caps used outside of map_meta_cap()
-        'edit_posts'             => 'edit_cursos',
-        'edit_others_posts'      => 'edit_cursos',
-        'publish_posts'          => 'create_cursos',
-        'read_private_posts'     => 'read',
-
-        // primitive caps used inside of map_meta_cap()
-        'read'                   => 'read',
-        'delete_posts'           => 'delete_cursos',
-        'delete_private_posts'   => 'manage_cursos',
-        'delete_published_posts' => 'delete_cursos',
-        'delete_others_posts'    => 'manage_cursos',
-        'edit_private_posts'     => 'manage_cursos',
-        'edit_published_posts'   => 'edit_cursos',
-    );
-
     $args = array(
         'label'               => __( 'Curso', 'ifrs-estude-theme' ),
         'description'         => __( 'Cursos', 'ifrs-estude-theme' ),
@@ -73,7 +48,8 @@ add_action( 'init', function() {
         'has_archive'         => true,
         'exclude_from_search' => false,
         'publicly_queryable'  => true,
-        'capabilities'        => $capabilities,
+        'map_meta_cap'        => true,
+        'capability_type'     => ['curso', 'cursos'],
         'show_in_rest'        => true,
         'rest_base'           => 'cursos',
         'rewrite'             => array( 'slug' => 'cursos' ),

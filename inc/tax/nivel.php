@@ -12,7 +12,7 @@ add_action( 'init', function() {
         'edit_item'                  => __( 'Editar Nível', 'ifrs-estude-theme' ),
         'update_item'                => __( 'Atualizar Nível', 'ifrs-estude-theme' ),
         'view_item'                  => __( 'Visualizar Nível', 'ifrs-estude-theme' ),
-        'separate_items_with_commas' => __( 'Níveis separados por vírgula', 'ifrs-estude-theme' ),
+        'separate_items_with_commas' => __( 'Níveis separados por vírgulas', 'ifrs-estude-theme' ),
         'add_or_remove_items'        => __( 'Adicionar ou Remover Níveis', 'ifrs-estude-theme' ),
         'choose_from_most_used'      => __( 'Escolher pelo Nível Mais Usado', 'ifrs-estude-theme' ),
         'popular_items'              => __( 'Níveis Populares', 'ifrs-estude-theme' ),
@@ -27,20 +27,18 @@ add_action( 'init', function() {
         'manage_terms'               => 'manage_niveis',
         'edit_terms'                 => 'manage_niveis',
         'delete_terms'               => 'manage_niveis',
-        'assign_terms'               => 'assign_niveis',
+        'assign_terms'               => 'edit_cursos',
     );
 
     $args = array(
         'labels'                     => $labels,
-        'hierarchical'               => true,
+        'description'                => __( 'Níveis de formação.', 'ifrs-estude-theme' ),
         'public'                     => true,
-        'show_ui'                    => true,
-        'show_admin_column'          => true,
-        'show_in_nav_menus'          => true,
-        'show_tagcloud'              => false,
-        'capabilities'               => $capabilities,
+        'hierarchical'               => true,
         'show_in_rest'               => true,
-        // 'rewrite'                    => array('slug' => 'cursos/niveis', 'with_front' => false),
+        'show_tagcloud'              => false,
+        'show_admin_column'          => true,
+        'capabilities'               => $capabilities,
     );
 
     register_taxonomy( 'nivel', array( 'curso' ), $args );
