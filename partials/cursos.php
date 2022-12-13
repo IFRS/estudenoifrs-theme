@@ -26,6 +26,19 @@
 
     $unidades = get_terms($unidades_query);
 
+    $niveis_query = array(
+        'taxonomy'   => 'nivel',
+        'hide_empty' => false,
+        'orderby'    => 'term_order',
+    );
+
+    if (!empty($_POST['nivel'])) {
+        $niveis_query['slug'] = (array) $_POST['nivel'];
+    }
+
+    $niveis = get_terms($niveis_query);
+    $niveis = array_reverse($niveis); // Inverte a ordem dos níveis para a remoção das duplicadas ser mais eficiente.
+
     $tax_query = array();
 
     if (!empty($_POST['modalidade'])) {
@@ -33,14 +46,6 @@
             'taxonomy' => 'modalidade',
             'field' => 'slug',
             'terms' => (array) $_POST['modalidade'],
-        );
-    }
-
-    if (!empty($_POST['nivel'])) {
-        $tax_query[] = array(
-            'taxonomy' => 'nivel',
-            'field' => 'slug',
-            'terms' => (array) $_POST['nivel'],
         );
     }
 
@@ -52,7 +57,7 @@
         );
     }
 
-    if (is_tax( 'modalidade' ) || is_tax( 'nivel' ) || is_tax( 'turno' )) {
+    if (!$is_filter && (is_tax( 'modalidade' ) || is_tax( 'nivel' ) || is_tax( 'turno' ))) {
         $tax_query[] = array(
             'taxonomy' => get_queried_object()->taxonomy,
             'terms' => get_queried_object()->term_id,
@@ -71,15 +76,43 @@
         $main_query['s'] = sanitize_text_field($_POST['s']);
     }
 
-    foreach ($unidades as $key => $unidade) {
-        $tax_query_local = $tax_query;
-        $tax_query_local[] = array(
-            'taxonomy' => 'unidade',
-            'terms' => $unidade->term_id,
-        );
-        $main_query['tax_query'] = $tax_query_local;
+    function my_query_orderby($orderby_statement) {
+        $orderby_statement = " wp_term.term_order DESC, ".$orderby_statement;
+        return $orderby_statement;
+    }
 
-        $unidade->cursos = new WP_Query($main_query);
+    foreach ($unidades as $unidade) {
+        $unidade->cursos = new WP_Query();
+
+        foreach ($niveis as $nivel) {
+            $tax_query_local = array();
+            $tax_query_local[] = array(
+                'taxonomy' => 'unidade',
+                'terms' => $unidade->term_id,
+            );
+            $tax_query_local[] = array(
+                'taxonomy' => 'nivel',
+                'terms' => $nivel->term_id,
+                'include_children' => false,
+            );
+
+            $main_query['tax_query'] = array_merge($tax_query, $tax_query_local);
+
+            /* Remove as duplicatas de trás para frente já que os níveis estão invertidos. */
+            $previous_posts = array();
+            foreach ((array) $unidade->cursos->posts as $previous_query_post) {
+                $previous_posts[] = $previous_query_post->ID;
+            }
+
+            /* Se o curso já aparece no nível filho, não precisa ser incluído no nível pai. */
+            if (!empty($previous_posts)) $main_query['post__not_in'] = $previous_posts;
+
+            $query = new WP_Query($main_query);
+
+            $unidade->cursos->posts = array_merge($query->posts, (array) $unidade->cursos->posts);
+            $unidade->cursos->post_count = $unidade->cursos->post_count + $query->post_count;
+            $unidade->cursos->found_posts = $unidade->cursos->found_posts + $query->found_posts;
+        }
     }
 
     if ($is_filter) {
