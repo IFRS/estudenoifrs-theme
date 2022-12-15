@@ -28,11 +28,11 @@
             <div class="curso-info curso-info--turno">
                 <?php $turnos =  wp_get_post_terms(get_the_ID(), 'turno', array('orderby' => 'term_order')); ?>
                 <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', count($turnos), 'ifrs-portal-theme'); ?></h4>
-                <p class="curso-info__text">
+                <ul class="curso-info__list">
                     <?php foreach ($turnos as $turno) : ?>
-                        <a href="<?php echo get_term_link($turno); ?>"><?php echo $turno->name; ?></a><?php echo ($turno !== end($turnos)) ? ',&nbsp;' : ''; ?>
+                        <li><a href="<?php echo get_term_link($turno); ?>"><?php echo $turno->name; ?></a></li>
                     <?php endforeach; ?>
-                </p>
+                </ul>
             </div>
             <div class="curso-info curso-info--cargahoraria">
                 <h4 class="curso-info__title"><?php _e('Dura&ccedil;&atilde;o', 'ifrs-portal-theme'); echo ($ead) ? '*' : ''; ?></h4>
