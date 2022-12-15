@@ -13,9 +13,9 @@
             <div class="curso-info curso-info--nivel">
                 <h4 class="curso-info__title"><?php _e('Nível', 'ifrs-portal-theme'); ?></h4>
                 <p class="curso-info__text">
-                    <?php $niveis = wp_get_post_terms(get_the_ID(), 'nivel', array('orderby' => 'term_id')); ?>
+                    <?php $niveis = wp_get_post_terms(get_the_ID(), 'nivel', array('orderby' => 'term_order')); ?>
                     <?php foreach ($niveis as $nivel) : ?>
-                        <a href="<?php echo get_term_link($nivel->term_id); ?>"><?php echo $nivel->name; ?></a>
+                        <a href="<?php echo get_term_link($nivel); ?>"><?php echo $nivel->name; ?></a>
                         <?php echo ($nivel !== end($niveis)) ? '<strong> / </strong>' : ''; ?>
                     <?php endforeach; ?>
                 </p>
@@ -26,9 +26,13 @@
                 <p class="curso-info__text"><?php the_terms( get_the_ID(), 'unidade', '', ', ' ); ?></p>
             </div>
             <div class="curso-info curso-info--turno">
-                <?php $turnos_count =  count(wp_get_post_terms(get_the_ID(), 'turno', array('fields' => 'ids'))); ?>
-                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', $turnos_count, 'ifrs-portal-theme'); ?></h4>
-                <p class="curso-info__text"><?php the_terms( get_the_ID(), 'turno', '', ', ' ); ?></p>
+                <?php $turnos =  wp_get_post_terms(get_the_ID(), 'turno', array('orderby' => 'term_order')); ?>
+                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', count($turnos), 'ifrs-portal-theme'); ?></h4>
+                <p class="curso-info__text">
+                    <?php foreach ($turnos as $turno) : ?>
+                        <a href="<?php echo get_term_link($turno); ?>"><?php echo $turno->name; ?></a><?php echo ($turno !== end($turnos)) ? ',&nbsp;' : ''; ?>
+                    <?php endforeach; ?>
+                </p>
             </div>
             <div class="curso-info curso-info--cargahoraria">
                 <h4 class="curso-info__title"><?php _e('Dura&ccedil;&atilde;o', 'ifrs-portal-theme'); echo ($ead) ? '*' : ''; ?></h4>
