@@ -67,12 +67,6 @@
             max-width: 30%;
         }
     }
-
-    &__arquivos {
-        @extend %destaque;
-
-        clear: both;
-    }
 }
 
 .curso-info {
@@ -112,93 +106,5 @@
 
     &__text {
         margin-bottom: 0;
-    }
-}
-
-.curso-coordenador {
-    @include icon('mail', 'left', 3rem, $gray-600);
-
-    align-self: stretch;
-    background-color: $gray-200;
-    background-position: 1rem center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    grid-column: 1 / 1;
-    padding: 0.5rem 1rem 0.5rem 4.5rem;
-
-    @include media-breakpoint-up(sm) {
-        grid-column: span 1 / -1;
-        grid-row: 1 / span 2;
-    }
-
-    @include media-breakpoint-up(md) {
-        grid-column: span 1 / -1;
-        grid-row: 1 / span 2;
-    }
-
-    @include media-breakpoint-up(lg) {
-        grid-column: span 1 / -1;
-        grid-row: 1 / span 2;
-    }
-
-    &__title {
-        color: $primary;
-        font-size: 1rem;
-        font-weight: bold;
-        margin-bottom: 0;
-    }
-
-    &__nome {
-        margin-bottom: 0;
-    }
-
-    &__email {
-        margin-bottom: 0;
-    }
-
-    &__nome,
-    &__email {
-        a {
-            color: $body-color;
-            text-decoration: underline;
-
-            &:hover {
-                text-decoration: none;
-            }
-        }
-    }
-}
-
-.curso-arquivos {
-    &__title {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            display: block;
-            width: 100%; height: auto;
-            border-top: 2px dotted $gray-600;
-        }
-    }
-
-    &__list {
-        list-style: none;
-        padding: 0;
-
-        li {
-            @include icon('file', 'left', 1rem, $gray-600);
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-
-            a {
-                font-weight: 600;
-            }
-        }
     }
 }

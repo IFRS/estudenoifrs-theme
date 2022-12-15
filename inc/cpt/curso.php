@@ -114,28 +114,6 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     );
 
     /**
-     * Arquivos do Curso
-     */
-    $metaboxes[] = array(
-        'title'      => __( 'Arquivos do Curso', 'ifrs-estude-theme' ),
-        'post_types' => 'curso',
-        'fields'     => array(
-            array(
-                'id'   => $prefix . 'arquivos_principais',
-                'name' => __( 'Grade e Corpo Docente', 'ifrs-estude-theme' ),
-                'desc' => __( 'PPC (Projeto Pedagógico do Curso), Matriz Curricular Vigente, Representação Gráfica, Corpo Docente e Corpo Docente X Componentes Curriculares.', 'ifrs-estude-theme' ),
-                'type' => 'file_advanced',
-            ),
-            array(
-                'id'   => $prefix . 'arquivos',
-                'name' => __( 'Outros Arquivos', 'ifrs-estude-theme' ),
-                'desc' => __( 'Demais informações como "Ato autorizativo e/ou de reconhecimento do MEC", "Resolução de aprovação e/ou alteração do Curso", etc.', 'ifrs-estude-theme' ),
-                'type' => 'file_advanced',
-            ),
-        ),
-    );
-
-    /**
      * Taxonomy Unidade
      */
     $metaboxes[] = array(
@@ -217,34 +195,6 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'remove_default'    => true,
                 'field_type'        => 'checkbox_list',
             ),
-        ),
-    );
-
-    /**
-     * Coordenador do Curso
-     */
-    $metaboxes[] = array(
-        'title'      => __( 'Coordenador do Curso', 'ifrs-estude-theme' ),
-        'post_types' => 'curso',
-        'context'    => 'side',
-        'priority'   => 'low',
-        'fields'     => array(
-            array(
-                'id'         => $prefix . 'coordenador_nome',
-                'name'       => __( 'Nome', 'ifrs-estude-theme' ),
-                'type'       => 'text',
-            ),
-            array(
-                'id'         => $prefix . 'coordenador_email',
-                'name'       => __( 'E-mail', 'ifrs-estude-theme' ),
-                'type'       => 'email',
-            ),
-            array(
-                'id'   => $prefix . 'coordenador_lattes',
-                'name' => __( 'Currículo Lattes', 'ifrs-estude-theme' ),
-                'desc' => __( 'URL da página do Currículo Lattes.', 'ifrs-estude-theme' ),
-                'type' => 'url',
-            )
         ),
     );
 

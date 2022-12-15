@@ -55,26 +55,6 @@
                     <p class="curso-info__text"><?php echo esc_html($nota_mec); ?></p>
                 </div>
             <?php endif; ?>
-            <?php
-                $nome = get_post_meta( get_the_ID(), '_curso_coordenador_nome', true );
-                $lattes = get_post_meta( get_the_ID(), '_curso_coordenador_lattes', true );
-                $email = get_post_meta( get_the_ID(), '_curso_coordenador_email', true );
-            ?>
-            <?php if (!empty($nome)) : ?>
-                <div class="curso-coordenador">
-                    <h3 class="curso-coordenador__title"><?php _e('Coordena&ccedil;&atilde;o', 'ifrs-portal-theme'); ?></h3>
-                    <p class="curso-coordenador__nome">
-                        <?php if (!empty($lattes)) : ?>
-                            <a href="<?php echo esc_url($lattes); ?>"><?php echo esc_html($nome); ?></a>
-                        <?php else : ?>
-                            <?php echo esc_html($nome); ?>
-                        <?php endif; ?>
-                    </p>
-                    <?php if (!empty($email)) : ?>
-                        <span class="curso-coordenador__email"><a href="mailto:<?php echo esc_html($email); ?>" target="_blank" rel="noopener noreferrer"><?php echo str_replace(array('@', '.'), array('@<wbr>', '.<wbr>'), esc_html($email)); ?></a></span>
-                    <?php endif; ?>
-                </div>
-            <?php endif; ?>
         </aside>
         <hr class="curso__separator">
         <div class="curso__content">
@@ -83,42 +63,6 @@
             <?php if ($ead) : ?>
                 <small class="text-secondary"><strong>*</strong>&nbsp;Esse curso possui parte de sua carga hor&aacute;ria a dist&acirc;ncia.</small>
             <?php endif; ?>
-        </div>
-    </section>
-    <section class="curso__arquivos">
-        <div class="container">
-            <div class="row">
-                <?php $arquivos_principais = rwmb_meta( '_curso_arquivos_principais' ); ?>
-                <?php if (!empty($arquivos_principais)) : ?>
-                    <div class="col-12 col-md-6">
-                        <div class="curso-arquivos">
-                            <h3 class="curso-arquivos__title"><?php _e('Grade e Corpo Docente', 'ifrs-portal-theme'); ?></h3>
-                            <ul class="curso-arquivos__list">
-                                <?php foreach ($arquivos_principais as $arquivo) : ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($arquivo['url']); ?>"><?php echo $arquivo['title']; ?></a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </div>
-                <?php endif; ?>
-                <?php $arquivos = rwmb_meta( '_curso_arquivos' ); ?>
-                <?php if (!empty($arquivos)) : ?>
-                    <div class="col-12 col-md-6">
-                        <div class="curso-arquivos">
-                            <h3 class="curso-arquivos__title"><?php _e('Arquivos', 'ifrs-portal-theme'); ?></h3>
-                            <ul class="curso-arquivos__list">
-                                <?php foreach ($arquivos as $arquivo) : ?>
-                                    <li>
-                                        <a href="<?php echo esc_url($arquivo['url']); ?>"><?php echo $arquivo['title']; ?></a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                    </div>
-                <?php endif; ?>
-            </div>
         </div>
     </section>
 </article>
