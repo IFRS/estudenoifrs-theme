@@ -64,12 +64,13 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     $prefix = '_curso_';
 
     /**
-     * Informações do Curso
+     * Informações Gerais
      */
     $metaboxes[] = array(
-        'title'      => __( 'Informações do Curso', 'ifrs-estude-theme' ),
+        'title'      => __( 'Informações Gerais', 'ifrs-estude-theme' ),
         'post_types' => 'curso',
         'fields'     => array(
+            // Carga Horária
             array(
                 'id'         => $prefix . 'carga_horaria',
                 'name'       => __( 'Carga Horária', 'ifrs-estude-theme' ),
@@ -81,25 +82,29 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                     'pattern'  => '\d*',
                 ),
             ),
+            // Duração
             array(
-                'id'         => $prefix . 'duracao',
-                'name'       => __( 'Duração', 'ifrs-estude-theme' ),
-                'desc'       => __( '2 meses, 4 semestres, 3 anos, etc.', 'ifrs-estude-theme' ),
-                'type'       => 'text',
-                'size'       => 50,
+                'id'   => $prefix . 'duracao',
+                'name' => __( 'Duração', 'ifrs-estude-theme' ),
+                'desc' => __( '2 meses, 4 semestres, 3 anos, etc.', 'ifrs-estude-theme' ),
+                'type' => 'text',
+                'size' => 50,
             ),
+            // EaD
             array(
-                'id'         => $prefix . 'ead',
-                'name'       => __( 'Possui carga horária EaD?', 'ifrs-estude-theme' ),
-                'desc'       => __( 'Marque caso o Curso possua parte da carga horária a distância.', 'ifrs-estude-theme' ),
-                'type'       => 'switch',
+                'id'   => $prefix . 'ead',
+                'name' => __( 'Possui carga horária EaD?', 'ifrs-estude-theme' ),
+                'desc' => __( 'Marque caso o Curso possua parte da carga horária a distância.', 'ifrs-estude-theme' ),
+                'type' => 'switch',
             ),
+            // Estágio
             array(
-                'id'         => $prefix . 'estagio',
-                'name'       => __( 'Possui estágio obrigatório?', 'ifrs-estude-theme' ),
-                'desc'       => __( 'Marque caso o Curso possua estágio obrigatório.', 'ifrs-estude-theme' ),
-                'type'       => 'switch',
+                'id'   => $prefix . 'estagio',
+                'name' => __( 'Possui estágio obrigatório?', 'ifrs-estude-theme' ),
+                'desc' => __( 'Marque caso o Curso possua estágio obrigatório.', 'ifrs-estude-theme' ),
+                'type' => 'switch',
             ),
+            // Avaliação
             array(
                 'id'   => $prefix . 'nota',
                 'name' => __( 'Avaliação do Curso', 'ifrs-estude-theme' ),
@@ -109,6 +114,100 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'step' => '1',
                 'min'  => '1',
                 'max'  => '5',
+            ),
+            // Local das Aulas
+            array(
+                'id'   => $prefix . 'local',
+                'name' => __( 'Local das Aulas', 'ifrs-estude-theme' ),
+                'desc' => __( 'Indique o local de realização das aulas, caso não for nas dependências do Campus.', 'ifrs-estude-theme' ),
+                'type' => 'textarea',
+                'cols' => 50,
+                'rows' => 5,
+            ),
+        ),
+    );
+
+    /**
+     * Horários
+    */
+    $metaboxes[] = array(
+        'title'      => __( 'Horários das Aulas', 'ifrs-estude-theme' ),
+        'post_types' => 'curso',
+        'fields'     => array(
+            array(
+                'id'   => $prefix . 'desc',
+                'desc' => __( 'Preencher os dias em que o turno não é o mesmo que o principal do curso.', 'ifrs-estude-theme' ),
+                'type' => 'heading',
+            ),
+            // Segunda-feira
+            array(
+                'id'         => $prefix . 'segunda_feira',
+                'name'       => __( 'Segunda-feira', 'ifrs-estude-theme' ),
+                'type'       => 'taxonomy_advanced',
+                'taxonomy'   => 'turno',
+                'add_new'    => false,
+                'field_type' => 'checkbox_list',
+                'inline'     => true,
+            ),
+            // Terça-feira
+            array(
+                'id'         => $prefix . 'terca_feira',
+                'name'       => __( 'Terça-feira', 'ifrs-estude-theme' ),
+                'type'       => 'taxonomy_advanced',
+                'taxonomy'   => 'turno',
+                'add_new'    => false,
+                'field_type' => 'checkbox_list',
+                'inline'     => true,
+            ),
+            // Quarta-feira
+            array(
+                'id'         => $prefix . 'quarta_feira',
+                'name'       => __( 'Quarta-feira', 'ifrs-estude-theme' ),
+                'type'       => 'taxonomy_advanced',
+                'taxonomy'   => 'turno',
+                'add_new'    => false,
+                'field_type' => 'checkbox_list',
+                'inline'     => true,
+            ),
+            // Quinta-feira
+            array(
+                'id'         => $prefix . 'quinta_feira',
+                'name'       => __( 'Quinta-feira', 'ifrs-estude-theme' ),
+                'type'       => 'taxonomy_advanced',
+                'taxonomy'   => 'turno',
+                'add_new'    => false,
+                'field_type' => 'checkbox_list',
+                'inline'     => true,
+            ),
+            // Sexta-feira
+            array(
+                'id'         => $prefix . 'sexta_feira',
+                'name'       => __( 'Sexta-feira', 'ifrs-estude-theme' ),
+                'type'       => 'taxonomy_advanced',
+                'taxonomy'   => 'turno',
+                'add_new'    => false,
+                'field_type' => 'checkbox_list',
+                'inline'     => true,
+            ),
+            // Sábado
+            array(
+                'id'         => $prefix . 'sabado',
+                'name'       => __( 'Sábado', 'ifrs-estude-theme' ),
+                'type'       => 'taxonomy_advanced',
+                'taxonomy'   => 'turno',
+                'add_new'    => false,
+                'field_type' => 'checkbox_list',
+                'inline'     => true,
+            ),
+            // Domingo
+            array(
+                'id'         => $prefix . 'domingo',
+                'name'       => __( 'Domingo', 'ifrs-estude-theme' ),
+                'type'       => 'taxonomy_advanced',
+                'taxonomy'   => 'turno',
+                'add_new'    => false,
+                'field_type' => 'checkbox_list',
+                'inline'     => true,
             ),
         ),
     );
@@ -256,7 +355,7 @@ add_action( 'pre_get_posts', function( $query ) {
     }
 } );
 
-/* Disable Curso main query */
+/* Disable Main Query */
 add_filter( 'posts_request', function( $request, $query ) {
     if ($query->is_main_query() && !$query->is_admin && $query->is_post_type_archive('curso')) {
         return false;
