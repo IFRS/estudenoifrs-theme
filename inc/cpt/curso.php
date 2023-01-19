@@ -189,6 +189,9 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'field_type' => 'checkbox_list',
                 'inline'     => true,
             ),
+            array(
+                'type' => 'divider',
+            ),
             // Sábado
             array(
                 'id'         => $prefix . 'sabado',
