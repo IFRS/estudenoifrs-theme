@@ -119,7 +119,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
             array(
                 'id'   => $prefix . 'local',
                 'name' => __( 'Local das Aulas', 'ifrs-estude-theme' ),
-                'desc' => __( 'Indique o local de realização das aulas, caso não for nas dependências do Campus.', 'ifrs-estude-theme' ),
+                'desc' => __( 'Indique o local de realização das aulas, caso não for nas dependências da Unidade indicada.', 'ifrs-estude-theme' ),
                 'type' => 'textarea',
                 'cols' => 50,
                 'rows' => 5,
@@ -128,7 +128,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
     );
 
     /**
-     * Horários
+     * Turnos
     */
     $metaboxes[] = array(
         'title'      => __( 'Horários das Aulas', 'ifrs-estude-theme' ),
@@ -136,81 +136,88 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
         'fields'     => array(
             array(
                 'id'   => $prefix . 'desc',
-                'desc' => __( 'Preencher os dias em que o turno não é o mesmo que o principal do curso.', 'ifrs-estude-theme' ),
+                'desc' => __( 'Preencher os turnos de aula nos dias da semana.', 'ifrs-estude-theme' ),
                 'type' => 'heading',
             ),
             // Segunda-feira
             array(
-                'id'         => $prefix . 'segunda_feira',
-                'name'       => __( 'Segunda-feira', 'ifrs-estude-theme' ),
-                'type'       => 'taxonomy_advanced',
-                'taxonomy'   => 'turno',
-                'add_new'    => false,
-                'field_type' => 'checkbox_list',
-                'inline'     => true,
+                'id'             => $prefix . 'segunda_feira',
+                'name'           => __( 'Segunda-feira', 'ifrs-estude-theme' ),
+                'type'           => 'taxonomy_advanced',
+                'taxonomy'       => 'turno',
+                'add_new'        => false,
+                'field_type'     => 'checkbox_list',
+                'inline'         => true,
+                'remove_default' => true,
             ),
             // Terça-feira
             array(
-                'id'         => $prefix . 'terca_feira',
-                'name'       => __( 'Terça-feira', 'ifrs-estude-theme' ),
-                'type'       => 'taxonomy_advanced',
-                'taxonomy'   => 'turno',
-                'add_new'    => false,
-                'field_type' => 'checkbox_list',
-                'inline'     => true,
+                'id'             => $prefix . 'terca_feira',
+                'name'           => __( 'Terça-feira', 'ifrs-estude-theme' ),
+                'type'           => 'taxonomy_advanced',
+                'taxonomy'       => 'turno',
+                'add_new'        => false,
+                'field_type'     => 'checkbox_list',
+                'inline'         => true,
+                'remove_default' => true,
             ),
             // Quarta-feira
             array(
-                'id'         => $prefix . 'quarta_feira',
-                'name'       => __( 'Quarta-feira', 'ifrs-estude-theme' ),
-                'type'       => 'taxonomy_advanced',
-                'taxonomy'   => 'turno',
-                'add_new'    => false,
-                'field_type' => 'checkbox_list',
-                'inline'     => true,
+                'id'             => $prefix . 'quarta_feira',
+                'name'           => __( 'Quarta-feira', 'ifrs-estude-theme' ),
+                'type'           => 'taxonomy_advanced',
+                'taxonomy'       => 'turno',
+                'add_new'        => false,
+                'field_type'     => 'checkbox_list',
+                'inline'         => true,
+                'remove_default' => true,
             ),
             // Quinta-feira
             array(
-                'id'         => $prefix . 'quinta_feira',
-                'name'       => __( 'Quinta-feira', 'ifrs-estude-theme' ),
-                'type'       => 'taxonomy_advanced',
-                'taxonomy'   => 'turno',
-                'add_new'    => false,
-                'field_type' => 'checkbox_list',
-                'inline'     => true,
+                'id'             => $prefix . 'quinta_feira',
+                'name'           => __( 'Quinta-feira', 'ifrs-estude-theme' ),
+                'type'           => 'taxonomy_advanced',
+                'taxonomy'       => 'turno',
+                'add_new'        => false,
+                'field_type'     => 'checkbox_list',
+                'inline'         => true,
+                'remove_default' => true,
             ),
             // Sexta-feira
             array(
-                'id'         => $prefix . 'sexta_feira',
-                'name'       => __( 'Sexta-feira', 'ifrs-estude-theme' ),
-                'type'       => 'taxonomy_advanced',
-                'taxonomy'   => 'turno',
-                'add_new'    => false,
-                'field_type' => 'checkbox_list',
-                'inline'     => true,
+                'id'             => $prefix . 'sexta_feira',
+                'name'           => __( 'Sexta-feira', 'ifrs-estude-theme' ),
+                'type'           => 'taxonomy_advanced',
+                'taxonomy'       => 'turno',
+                'add_new'        => false,
+                'field_type'     => 'checkbox_list',
+                'inline'         => true,
+                'remove_default' => true,
             ),
             array(
                 'type' => 'divider',
             ),
             // Sábado
             array(
-                'id'         => $prefix . 'sabado',
-                'name'       => __( 'Sábado', 'ifrs-estude-theme' ),
-                'type'       => 'taxonomy_advanced',
-                'taxonomy'   => 'turno',
-                'add_new'    => false,
-                'field_type' => 'checkbox_list',
-                'inline'     => true,
+                'id'             => $prefix . 'sabado',
+                'name'           => __( 'Sábado', 'ifrs-estude-theme' ),
+                'type'           => 'taxonomy_advanced',
+                'taxonomy'       => 'turno',
+                'add_new'        => false,
+                'field_type'     => 'checkbox_list',
+                'inline'         => true,
+                'remove_default' => true,
             ),
             // Domingo
             array(
-                'id'         => $prefix . 'domingo',
-                'name'       => __( 'Domingo', 'ifrs-estude-theme' ),
-                'type'       => 'taxonomy_advanced',
-                'taxonomy'   => 'turno',
-                'add_new'    => false,
-                'field_type' => 'checkbox_list',
-                'inline'     => true,
+                'id'             => $prefix . 'domingo',
+                'name'           => __( 'Domingo', 'ifrs-estude-theme' ),
+                'type'           => 'taxonomy_advanced',
+                'taxonomy'       => 'turno',
+                'add_new'        => false,
+                'field_type'     => 'checkbox_list',
+                'inline'         => true,
+                'remove_default' => true,
             ),
         ),
     );
@@ -279,27 +286,6 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
         ),
     );
 
-    /**
-     * Taxonomy Turno
-     */
-    $metaboxes[] = array(
-        'title'      => __( 'Turnos', 'ifrs-estude-theme' ),
-        'post_types' => 'curso',
-        'context'    => 'side',
-        'priority'   => 'low',
-        'fields'     => array(
-            array(
-                'id'                => $prefix . 'turno_taxonomy',
-                'desc'              => __( 'Escolha os Turnos do Curso.', 'ifrs-estude-theme' ),
-                'type'              => 'taxonomy',
-                'taxonomy'          => 'turno',
-                'add_new'           => false,
-                'remove_default'    => true,
-                'field_type'        => 'checkbox_list',
-            ),
-        ),
-    );
-
     return $metaboxes;
 } );
 
@@ -309,15 +295,10 @@ add_action( 'cmb2_admin_init', function() {
 		'id'           => 'ingresso_cursos_option_metabox',
 		'title'        => esc_html__( 'Opções para Cursos', 'ifrs-estude-theme' ),
 		'object_types' => array( 'options-page' ),
-		'option_key'      => 'cursos_options',
-		// 'icon_url'        => 'dashicons-palmtree',
-		'menu_title'      => esc_html__( 'Opções', 'ifrs-estude-theme' ),
-		'parent_slug'     => 'edit.php?post_type=curso',
-		'capability'      => 'manage_cursos',
-		// 'position'        => 1,
-		// 'admin_menu_hook' => 'network_admin_menu',
-		// 'display_cb'      => false,
-		// 'save_button'     => esc_html__( 'Salvar Opções', 'ifrs-estude-theme' ),
+		'option_key'   => 'cursos_options',
+		'menu_title'   => esc_html__( 'Opções', 'ifrs-estude-theme' ),
+		'parent_slug'  => 'edit.php?post_type=curso',
+		'capability'   => 'manage_cursos',
 	) );
 
 	$options->add_field( array(
