@@ -86,8 +86,9 @@
         @include icon('graduation', $icon-position, $icon-size, $icon-color);
     }
 
-    &--turno {
+    &--turnos {
         @include icon('sun', $icon-position, $icon-size, $icon-color);
+        grid-column: 1 / -1;
     }
 
     &--cargahoraria {
