@@ -25,15 +25,6 @@
                 <h4 class="curso-info__title"><?php echo _n('Unidade', 'Unidades', $unidades_count, 'ifrs-portal-theme'); ?></h4>
                 <p class="curso-info__text"><?php the_terms( get_the_ID(), 'unidade', '', ', ' ); ?></p>
             </div>
-            <div class="curso-info curso-info--turno">
-                <?php $turnos =  wp_get_post_terms(get_the_ID(), 'turno', array('orderby' => 'term_order')); ?>
-                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', count($turnos), 'ifrs-portal-theme'); ?></h4>
-                <ul class="curso-info__list">
-                    <?php foreach ($turnos as $turno) : ?>
-                        <li><a href="<?php echo get_term_link($turno); ?>"><?php echo $turno->name; ?></a></li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
             <div class="curso-info curso-info--cargahoraria">
                 <h4 class="curso-info__title"><?php _e('Dura&ccedil;&atilde;o', 'ifrs-portal-theme'); echo ($ead) ? '*' : ''; ?></h4>
                 <p class="curso-info__text">
@@ -44,7 +35,7 @@
                     <?php if ($duracao) : ?>
                         <?php echo esc_html($duracao); ?> <span class="curso-info__text--lower">(<?php echo esc_html($cargahoraria); ?>h)</span>
                     <?php else : ?>
-                        <span class="curso-info__text--lower">(<?php echo esc_html($cargahoraria); ?>h)</span>
+                        <span class="curso-info__text--lower"><?php echo esc_html($cargahoraria); ?>h</span>
                     <?php endif; ?>
                 </p>
             </div>
@@ -54,6 +45,33 @@
                     <h4 class="curso-info__title"><?php _e('Avalia&ccedil;&atilde;o do Curso', 'ifrs-portal-theme'); ?></h4>
                     <p class="curso-info__text"><?php echo esc_html($nota_mec); ?></p>
                 </div>
+            <?php endif; ?>
+            <?php
+                $turnos = array(
+                    'Segunda-feira' => get_post_meta( get_the_ID(), '_curso_segunda_feira', true ),
+                    'Terça-feira' => get_post_meta( get_the_ID(), '_curso_terca_feira', true ),
+                    'Quarta-feira' => get_post_meta( get_the_ID(), '_curso_quarta_feira', true ),
+                    'Quinta-feira' => get_post_meta( get_the_ID(), '_curso_quinta_feira', true ),
+                    'Sexta-feira' => get_post_meta( get_the_ID(), '_curso_sexta_feira', true ),
+                    'Sábado' => get_post_meta( get_the_ID(), '_curso_sabado', true ),
+                    'Domingo' => get_post_meta( get_the_ID(), '_curso_domingo', true ),
+                );
+                $has_turno = array_reduce($turnos, function($carry, $item) {
+                    if (!$carry && !empty($item)) $carry = true;
+                    return $carry;
+                }, false);
+            ?>
+            <?php if ($has_turno) : ?>
+            <div class="curso-info curso-info--turnos">
+                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', count($turnos), 'ifrs-portal-theme'); ?></h4>
+                <ul class="curso-info__list">
+                    <?php foreach ($turnos as $dia => $turno) : ?>
+                        <?php if ($turno) : ?>
+                            <li><?php echo $dia, ': ', get_term($turno)->name; ?></a></li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
             <?php endif; ?>
         </aside>
         <hr class="curso__separator">
