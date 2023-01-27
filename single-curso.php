@@ -90,7 +90,14 @@
 
         <div class="curso__content">
             <?php if (has_post_thumbnail()) the_post_thumbnail('full', array('class' => 'img-fluid curso__thumb')); ?>
+
             <?php the_content(); ?>
+
+            <?php $local = get_post_meta( get_the_ID(), '_curso_local', true ) ?>
+            <?php if ($local) : ?>
+                <h3>Local das Aulas</h3>
+                <?php echo wpautop( $local, true ); ?>
+            <?php endif; ?>
         </div>
     </section>
 </article>
