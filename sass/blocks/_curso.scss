@@ -86,17 +86,25 @@
         @include icon('graduation', $icon-position, $icon-size, $icon-color);
     }
 
-    &--turnos {
-        @include icon('sun', $icon-position, $icon-size, $icon-color);
-        grid-column: 1 / -1;
-    }
-
     &--cargahoraria {
         @include icon('clock', $icon-position, 1.75rem, $icon-color);
     }
 
     &--nota {
         @include icon('star', $icon-position, $icon-size, $icon-color);
+    }
+
+    &--ead {
+        @include icon('desktop', $icon-position, $icon-size, $icon-color);
+    }
+
+    &--estagio {
+        @include icon('briefcase', $icon-position, $icon-size, $icon-color);
+    }
+
+    &--turnos {
+        @include icon('sun', $icon-position, $icon-size, $icon-color);
+        grid-column: 1 / -1;
     }
 
     &__title {

@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<?php $ead = !empty(get_post_meta( get_the_ID(), '_curso_ead', true )); ?>
-
 <article class="curso">
     <section class="container">
         <h2 class="curso__title"><?php the_title(); ?></h2>
@@ -26,7 +24,7 @@
                 <p class="curso-info__text"><?php the_terms( get_the_ID(), 'unidade', '', ', ' ); ?></p>
             </div>
             <div class="curso-info curso-info--cargahoraria">
-                <h4 class="curso-info__title"><?php _e('Dura&ccedil;&atilde;o', 'ifrs-portal-theme'); echo ($ead) ? '*' : ''; ?></h4>
+                <h4 class="curso-info__title"><?php _e('Dura&ccedil;&atilde;o', 'ifrs-portal-theme'); ?></h4>
                 <p class="curso-info__text">
                     <?php
                         $duracao = get_post_meta( get_the_ID(), '_curso_duracao', true );
@@ -44,6 +42,19 @@
                 <div class="curso-info curso-info--nota">
                     <h4 class="curso-info__title"><?php _e('Avalia&ccedil;&atilde;o do Curso', 'ifrs-portal-theme'); ?></h4>
                     <p class="curso-info__text"><?php echo esc_html($nota_mec); ?></p>
+                </div>
+            <?php endif; ?>
+            <?php $ead = !empty(get_post_meta( get_the_ID(), '_curso_ead', true )); ?>
+            <?php if ($ead) : ?>
+                <div class="curso-info curso-info--ead">
+                    <!-- <h4 class="curso-info__title"><?php _e('EaD', 'ifrs-portal-theme'); ?></h4> -->
+                    <p class="curso-info__text"><?php _e('Esse curso possui parte de sua carga hor&aacute;ria a dist&acirc;ncia.', 'ifrs-portal-theme'); ?></p>
+                </div>
+            <?php endif; ?>
+            <?php $estagio = !empty(get_post_meta( get_the_ID(), '_curso_estagio', true )); ?>
+            <?php if ($ead) : ?>
+                <div class="curso-info curso-info--estagio">
+                    <p class="curso-info__text"><?php _e('Esse curso possui est&aacute;gio obrigat&oacute;rio.', 'ifrs-portal-theme'); ?></p>
                 </div>
             <?php endif; ?>
             <?php
@@ -67,20 +78,19 @@
                 <ul class="curso-info__list">
                     <?php foreach ($turnos as $dia => $turno) : ?>
                         <?php if ($turno) : ?>
-                            <li><?php echo $dia, ': ', get_term($turno)->name; ?></a></li>
+                            <li><?php echo $dia; ?>:&nbsp;<strong><?php echo get_term($turno)->name; ?></strong></li>
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
             </div>
             <?php endif; ?>
         </aside>
+
         <hr class="curso__separator">
+
         <div class="curso__content">
             <?php if (has_post_thumbnail()) the_post_thumbnail('full', array('class' => 'img-fluid curso__thumb')); ?>
             <?php the_content(); ?>
-            <?php if ($ead) : ?>
-                <small class="text-secondary"><strong>*</strong>&nbsp;Esse curso possui parte de sua carga hor&aacute;ria a dist&acirc;ncia.</small>
-            <?php endif; ?>
         </div>
     </section>
 </article>
