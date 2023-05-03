@@ -1,6 +1,10 @@
 <?php
+    $hoje = time();
+
     $isencao_inicio = rwmb_meta( '_oportunidade_isencao_inicio' );
     $isencao_termino = rwmb_meta( '_oportunidade_isencao_termino' );
+
+    $isencao_ja_acabou = $isencao_termino < $hoje;
 
     $isencao_inicio = ($isencao_inicio ? gmdate('d/m/y', $isencao_inicio) : false);
     $isencao_termino = ($isencao_termino ? gmdate('d/m/y', $isencao_termino) : false);
@@ -8,7 +12,7 @@
     $inscricao_inicio = gmdate('d/m/y', rwmb_meta( '_oportunidade_inscricao_inicio' ));
     $inscricao_termino = gmdate('d/m/y', rwmb_meta( '_oportunidade_inscricao_termino' ));
 
-    $hoje = gmdate('d/m/y', time());
+    $hoje = gmdate('d/m/y', $hoje);
 
     $cursos_ids = rwmb_meta( '_oportunidade_cursos' );
     $cursos = array();
@@ -50,7 +54,7 @@
     </div>
     <h3 class="oportunidade__title"><?php the_title(); ?></h3>
     <?php if ($isencao_inicio && $isencao_termino) : ?>
-        <p class="oportunidade__meta oportunidade__meta--isencao<?php echo ($isencao_termino < $hoje) ? ' text-muted text-decoration-line-through' : ''; ?>">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($isencao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $isencao_termino; ?></strong></p>
+        <p class="oportunidade__meta oportunidade__meta--isencao<?php echo ($isencao_ja_acabou) ? ' text-muted text-decoration-line-through' : ''; ?>">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($isencao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $isencao_termino; ?></strong></p>
     <?php else : ?>
         <p class="oportunidade__meta oportunidade__meta--gratis">Inscri&ccedil;&atilde;o <strong>gratuita</strong></p>
     <?php endif; ?>
