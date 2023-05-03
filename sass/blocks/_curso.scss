@@ -126,7 +126,7 @@
             display: inline;
 
             &:not(:last-child)::after {
-                content: ', ';
+                content: '; ';
             }
         }
     }
