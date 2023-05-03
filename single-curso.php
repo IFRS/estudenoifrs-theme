@@ -58,28 +58,44 @@
                 </div>
             <?php endif; ?>
             <?php
-                $turnos = array(
-                    'Segunda-feira' => get_post_meta( get_the_ID(), '_curso_segunda_feira', true ),
-                    'Terça-feira' => get_post_meta( get_the_ID(), '_curso_terca_feira', true ),
-                    'Quarta-feira' => get_post_meta( get_the_ID(), '_curso_quarta_feira', true ),
-                    'Quinta-feira' => get_post_meta( get_the_ID(), '_curso_quinta_feira', true ),
-                    'Sexta-feira' => get_post_meta( get_the_ID(), '_curso_sexta_feira', true ),
-                    'Sábado' => get_post_meta( get_the_ID(), '_curso_sabado', true ),
-                    'Domingo' => get_post_meta( get_the_ID(), '_curso_domingo', true ),
+                $dias = array(
+                    'Segunda-feira' => get_post_meta( get_the_ID(), '_curso_segunda_feira' ),
+                    'Terça-feira' => get_post_meta( get_the_ID(), '_curso_terca_feira' ),
+                    'Quarta-feira' => get_post_meta( get_the_ID(), '_curso_quarta_feira' ),
+                    'Quinta-feira' => get_post_meta( get_the_ID(), '_curso_quinta_feira' ),
+                    'Sexta-feira' => get_post_meta( get_the_ID(), '_curso_sexta_feira' ),
+                    'Sábado' => get_post_meta( get_the_ID(), '_curso_sabado' ),
+                    'Domingo' => get_post_meta( get_the_ID(), '_curso_domingo' ),
                 );
-                $has_turno = array_reduce($turnos, function($carry, $item) {
+
+                $dias = array_map(function($turnos_array) {
+                    if ($turnos_array && is_array($turnos_array)) {
+                        $turnos_ids = explode(',', $turnos_array[0]);
+                        $turnos = '';
+
+                        foreach ($turnos_ids as $turno_id) {
+                            $turnos .= get_term($turno_id)->name;
+                            $turnos .= ($turno_id !== end($turnos_ids)) ? ', ' : '';
+                        }
+
+                        return $turnos;
+                    }
+                    return null;
+                }, $dias);
+
+                $dias = array_filter($dias);
+
+                $has_turno = array_reduce($dias, function($carry, $item) {
                     if (!$carry && !empty($item)) $carry = true;
                     return $carry;
                 }, false);
             ?>
             <?php if ($has_turno) : ?>
             <div class="curso-info curso-info--turnos">
-                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', count($turnos), 'ifrs-portal-theme'); ?></h4>
+                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', count($dias), 'ifrs-portal-theme'); ?></h4>
                 <ul class="curso-info__list">
-                    <?php foreach ($turnos as $dia => $turno) : ?>
-                        <?php if ($turno) : ?>
-                            <li><?php echo $dia; ?>:&nbsp;<strong><?php echo get_term($turno)->name; ?></strong></li>
-                        <?php endif; ?>
+                    <?php foreach ($dias as $dia => $turnos) : ?>
+                        <li><?php echo $dia; ?>:&nbsp;<strong><?php echo $turnos; ?></strong></li>
                     <?php endforeach; ?>
                 </ul>
             </div>

@@ -31,9 +31,40 @@
         </span>
         <br>
         <span class="curso-item__meta--turnos">
-            <?php $turnos = wp_get_post_terms(get_the_ID(), 'turno', array('orderby' => 'term_order')); ?>
-            <?php foreach ($turnos as $turno) : ?>
-                <?php echo $turno->name; echo ($turno !== end($turnos)) ? ', ' : ''; ?>
+            <?php
+                $turnos_ordenados = get_terms(array(
+                    'taxonomy'   => 'turno',
+                    'hide_empty' => false,
+                    'order_by'   => 'term_order',
+                    'fields'     => 'ids',
+                ));
+
+                $dias = array();
+                $dias[] = get_post_meta( get_the_ID(), '_curso_segunda_feira' );
+                $dias[] = get_post_meta( get_the_ID(), '_curso_terca_feira' );
+                $dias[] = get_post_meta( get_the_ID(), '_curso_quarta_feira' );
+                $dias[] = get_post_meta( get_the_ID(), '_curso_quinta_feira' );
+                $dias[] = get_post_meta( get_the_ID(), '_curso_sexta_feira' );
+                $dias[] = get_post_meta( get_the_ID(), '_curso_sabado' );
+                $dias[] = get_post_meta( get_the_ID(), '_curso_domingo' );
+
+                $turnos = array_filter($dias);
+
+                $turnos = array_map(function($turnos_ids) {
+                    if ($turnos_ids && is_array($turnos_ids)) {
+                        return explode(',', $turnos_ids[0]);
+                    }
+                    return null;
+                }, $turnos);
+
+                $turnos = array_merge(...$turnos);
+
+                $turnos = array_unique($turnos);
+
+                $turnos = ifrs_sortArrayByArrayValues($turnos, $turnos_ordenados);
+            ?>
+            <?php foreach ($turnos as $turno_id) : ?>
+                <?php echo get_term($turno_id)->name; echo ($turno_id !== end($turnos)) ? ', ' : ''; ?>
             <?php endforeach; ?>
         </span>
         <br>
