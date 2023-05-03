@@ -29,51 +29,62 @@
                 <?php echo esc_html($cargahoraria); ?>h
             <?php endif; ?>
         </span>
+
         <br>
-        <span class="curso-item__meta--turnos">
-            <?php
-                $turnos_ordenados = get_terms(array(
-                    'taxonomy'   => 'turno',
-                    'hide_empty' => false,
-                    'order_by'   => 'term_order',
-                    'fields'     => 'ids',
-                ));
 
-                $dias = array();
-                $dias[] = get_post_meta( get_the_ID(), '_curso_segunda_feira' );
-                $dias[] = get_post_meta( get_the_ID(), '_curso_terca_feira' );
-                $dias[] = get_post_meta( get_the_ID(), '_curso_quarta_feira' );
-                $dias[] = get_post_meta( get_the_ID(), '_curso_quinta_feira' );
-                $dias[] = get_post_meta( get_the_ID(), '_curso_sexta_feira' );
-                $dias[] = get_post_meta( get_the_ID(), '_curso_sabado' );
-                $dias[] = get_post_meta( get_the_ID(), '_curso_domingo' );
+        <?php
+            $turnos_ordenados = get_terms(array(
+                'taxonomy'   => 'turno',
+                'hide_empty' => false,
+                'order_by'   => 'term_order',
+                'fields'     => 'ids',
+            ));
 
-                $turnos = array_filter($dias);
+            $dias = array();
+            $dias[] = get_post_meta( get_the_ID(), '_curso_segunda_feira' );
+            $dias[] = get_post_meta( get_the_ID(), '_curso_terca_feira' );
+            $dias[] = get_post_meta( get_the_ID(), '_curso_quarta_feira' );
+            $dias[] = get_post_meta( get_the_ID(), '_curso_quinta_feira' );
+            $dias[] = get_post_meta( get_the_ID(), '_curso_sexta_feira' );
+            $dias[] = get_post_meta( get_the_ID(), '_curso_sabado' );
+            $dias[] = get_post_meta( get_the_ID(), '_curso_domingo' );
 
-                $turnos = array_map(function($turnos_ids) {
-                    if ($turnos_ids && is_array($turnos_ids)) {
-                        return explode(',', $turnos_ids[0]);
-                    }
-                    return null;
-                }, $turnos);
+            $turnos = array_filter($dias);
 
-                $turnos = array_merge(...$turnos);
+            $turnos = array_map(function($turnos_ids) {
+                if ($turnos_ids && is_array($turnos_ids)) {
+                    return explode(',', $turnos_ids[0]);
+                }
+                return null;
+            }, $turnos);
 
-                $turnos = array_unique($turnos);
+            $turnos = array_merge(...$turnos);
 
-                $turnos = ifrs_sortArrayByArrayValues($turnos, $turnos_ordenados);
-            ?>
-            <?php foreach ($turnos as $turno_id) : ?>
-                <?php echo get_term($turno_id)->name; echo ($turno_id !== end($turnos)) ? ', ' : ''; ?>
-            <?php endforeach; ?>
-        </span>
+            $turnos = array_unique($turnos);
+
+            $turnos = ifrs_sortArrayByArrayValues($turnos, $turnos_ordenados);
+        ?>
+
+        <?php if ($turnos) : ?>
+            <span class="curso-item__meta--turnos">
+                <?php foreach ($turnos as $turno_id) : ?>
+                    <?php echo get_term($turno_id)->name; echo ($turno_id !== end($turnos)) ? ', ' : ''; ?>
+                <?php endforeach; ?>
+            </span>
+        <?php endif; ?>
+
         <br>
-        <span class="curso-item__meta--modalidades">
-            <?php foreach (get_the_terms(get_the_ID(), 'modalidade') as $modalidade) : ?>
-                <?php echo $modalidade->name; ?>
-            <?php endforeach; ?>
-        </span>
+
+        <?php $modalidades = get_the_terms(get_the_ID(), 'modalidade'); ?>
+        <?php if ($modalidades) : ?>
+            <span class="curso-item__meta--modalidades">
+                <?php foreach ($modalidades as $modalidade) : ?>
+                    <?php echo $modalidade->name; ?>
+                <?php endforeach; ?>
+            </span>
+        <?php endif; ?>
     </p>
+
     <a href="<?php the_permalink(); ?>" class="curso-item__link-info">
         Saiba mais<span class="visually-hidden">&nbsp;sobre o curso <?php the_title(); ?></span>
     </a>
