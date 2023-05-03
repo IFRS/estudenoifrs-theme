@@ -1,7 +1,7 @@
 # IFRS Ingresso Theme
 
-Tema [Wordpress](https://wordpress.org/) para o [Portal de Ingresso](http://ingresso.ifrs.edu.br/) do [Instituto Federal do Rio Grande do Sul](http://ifrs.edu.br/).
+Tema [Wordpress](https://wordpress.org/) para o [Estude no IFRS](https://estude.ifrs.edu.br/) do [Instituto Federal do Rio Grande do Sul](https://ifrs.edu.br/).
 
 ## Licença
 
-Esse código é distribuído sob a licença [GNU GPL 3.0](http://www.gnu.org/licenses/gpl-3.0.txt).
+Esse código é distribuído sob a licença [GNU General Public License 3](http://www.gnu.org/licenses/gpl-3.0.txt).
