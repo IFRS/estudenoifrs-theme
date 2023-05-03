@@ -47,12 +47,11 @@
             <?php $ead = !empty(get_post_meta( get_the_ID(), '_curso_ead', true )); ?>
             <?php if ($ead) : ?>
                 <div class="curso-info curso-info--ead">
-                    <!-- <h4 class="curso-info__title"><?php _e('EaD', 'ifrs-portal-theme'); ?></h4> -->
                     <p class="curso-info__text"><?php _e('Esse curso possui parte de sua carga hor&aacute;ria a dist&acirc;ncia.', 'ifrs-portal-theme'); ?></p>
                 </div>
             <?php endif; ?>
             <?php $estagio = !empty(get_post_meta( get_the_ID(), '_curso_estagio', true )); ?>
-            <?php if ($ead) : ?>
+            <?php if ($estagio) : ?>
                 <div class="curso-info curso-info--estagio">
                     <p class="curso-info__text"><?php _e('Esse curso possui est&aacute;gio obrigat&oacute;rio.', 'ifrs-portal-theme'); ?></p>
                 </div>
