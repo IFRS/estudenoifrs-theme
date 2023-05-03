@@ -11,10 +11,8 @@ function ingresso_breadcrumb() {
 
         global $post;
         $homelink = home_url();
-		$siteprincipal = get_home_url('1','/');
-        $nomesite = get_bloginfo('name');
 
-        echo $before . '<a href="' . $homelink . '">' . $nomesite . '</a>' . $after;
+        echo $before . '<a href="' . $homelink . '">' . get_bloginfo('name') . '</a>' . $after;
 
         if (is_home()) {
             echo $before_active . get_the_title(get_option( 'page_for_posts' )) . $after;
@@ -28,24 +26,11 @@ function ingresso_breadcrumb() {
                 echo get_category_parents($parentCat, true);
             }
             echo $before_active . single_cat_title('', false) . $after;
+        } elseif (is_post_type_archive()) {
+            echo $before_active . post_type_archive_title('', false) . $after;
         } elseif (is_tax('unidade') || is_tax('modalidade') || is_tax('nivel') || is_tax('turno')) {
             echo $before . '<a href="' . get_post_type_archive_link( 'cursos' ) . '">Cursos</a>' . $after;
             echo $before_active . single_term_title('', false) . $after;
-        } elseif (is_day()) {
-            echo $before . '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time(
-                'Y'
-            ) . '</a>' . $after;
-            echo $before . '<a href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time(
-                'F'
-            ) . '</a>' . $after;
-            echo $before_active . get_the_time('d') . $after;
-        } elseif (is_month()) {
-            echo $before . '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time(
-                'Y'
-            ) . '</a>' . $after;
-            echo $before_active . get_the_time('F') . $after;
-        } elseif (is_year()) {
-            echo $before_active . get_the_time('Y') . $after;
         } elseif (is_single() && !is_attachment()) {
             if (get_post_type() != 'post') {
                 $post_type = get_post_type_object(get_post_type());
@@ -58,8 +43,6 @@ function ingresso_breadcrumb() {
                 echo $before . get_category_parents($cat, true) . $after;
                 echo $before_active . get_the_title() . $after;
             }
-        } elseif (!is_single() && !is_page() && get_post_type() != 'post' && !is_404()) {
-            echo $before_active . post_type_archive_title('', false) . $after;
         } elseif (is_attachment()) {
             $parent = get_post($post->post_parent);
             $cat    = get_the_category($parent->ID);
@@ -88,13 +71,28 @@ function ingresso_breadcrumb() {
             }
             echo $before_active . get_the_title() . $after;
         } elseif (is_search()) {
-            echo $before_active . 'Resultado da pesquisa: "' . get_search_query() . '"' . $after;
+            echo $before_active . 'Resultados para "' . get_search_query() . '"' . $after;
         } elseif (is_tag()) {
-            echo $before_active . 'Posts tagged "' . single_tag_title('', false) . '"' . $after;
+            echo $before_active . 'Tag: "' . single_tag_title('', false) . '"' . $after;
         } elseif (is_author()) {
             global $author;
             $userdata = get_userdata($author);
             echo $before_active . ' ' . $userdata->display_name . $after;
+        } elseif (is_day()) {
+            echo $before . '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time(
+                'Y'
+            ) . '</a>' . $after;
+            echo $before . '<a href="' . get_month_link(get_the_time('Y'), get_the_time('m')) . '">' . get_the_time(
+                'F'
+            ) . '</a>' . $after;
+            echo $before_active . get_the_time('d') . $after;
+        } elseif (is_month()) {
+            echo $before . '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time(
+                'Y'
+            ) . '</a>' . $after;
+            echo $before_active . get_the_time('F') . $after;
+        } elseif (is_year()) {
+            echo $before_active . get_the_time('Y') . $after;
         } elseif (is_404()) {
             echo $before_active . 'Erro 404' . $after;
         }
