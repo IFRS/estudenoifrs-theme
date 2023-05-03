@@ -110,7 +110,7 @@
                     Busca simples
                 </button>
                 <div class="float-end">
-                    <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="btn btn-lg btn-outline-secondary rounded-0 me-3"><?php _e('Limpar', 'ifrs-portal-theme'); ?></a>
+                    <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="btn btn-lg btn-outline-secondary rounded-0 me-3"><?php _e('Limpar', 'ifrs-estude-theme'); ?></a>
                     <input type="submit" value="Filtrar" class="btn btn-lg btn-primary rounded-0">
                 </div>
             </div>
@@ -119,8 +119,8 @@
     <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter filter--simple collapse<?php echo !$is_filter ? ' show' : ''; ?>">
         <?php $seachfield_id = uniqid(); ?>
         <div class="input-group">
-            <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca'); ?></label>
-            <input class="form-control form-control-lg rounded-1 border-0" type="text" name="s" value="<?php echo (!empty($_POST['s']) ? sanitize_text_field($_POST['s']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
+            <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca', 'ifrs-estude-theme'); ?></label>
+            <input class="form-control form-control-lg rounded-1 border-0" type="text" name="s" value="<?php echo (!empty($_POST['s']) ? sanitize_text_field($_POST['s']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...', 'ifrs-estude-theme'); ?>"/>
             <button type="submit" value="Filtrar" class="btn btn-lg btn-link bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M39.049 39.049L56 56" stroke-linejoin="round" stroke-linecap="round"></path>

@@ -66,7 +66,7 @@
             <button type="submit" class="btn" title="Filtrar Oportunidades" data-bs-toggle="tooltip" data-bs-placement="top">
                 Filtrar<span class="visually-hidden">&nbsp;Oportunidades</span>
             </button>
-            <a href="<?php echo home_url(); ?>" class="btn oportunidades-filter__reset" title="Limpar Filtros" data-bs-toggle="tooltip" data-bs-placement="top">
+            <a href="<?php echo esc_url(home_url()); ?>" class="btn oportunidades-filter__reset" title="Limpar Filtros" data-bs-toggle="tooltip" data-bs-placement="top">
                 Limpar<span class="visually-hidden">&nbsp;Filtros</span>
             </a>
         </div>

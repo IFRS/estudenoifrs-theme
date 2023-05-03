@@ -37,7 +37,7 @@
     <div class="oportunidade__header">
         <?php if (!empty($cursos)) : ?>
             <button type="button" class="btn btn-link oportunidade__numero-cursos" data-bs-toggle="modal" data-bs-target="#cursos-<?php echo the_ID(); ?>">
-                <?php printf('%d %s', count($cursos), _n('Curso', 'Cursos', count($cursos))); ?>
+                <?php printf('%d %s', count($cursos), _n('Curso', 'Cursos', count($cursos), 'ifrs-estude-theme')); ?>
             </button>
         <?php endif; ?>
         <?php if (!is_singular('oportunidade')) : ?>
@@ -68,7 +68,7 @@
 
     <?php if ($unidades) : ?>
         <div class="oportunidade__unidades">
-            <h4 class="oportunidade__subtitle"><?php echo _n( 'Unidade', 'Unidades', count($unidades) ); ?> de Oferta</h4>
+            <h4 class="oportunidade__subtitle"><?php echo _n( 'Unidade', 'Unidades', count($unidades), 'ifrs-estude-theme' ); ?> de Oferta</h4>
             <ul class="oportunidade__campi-list">
                 <?php foreach ($unidades as $unidade) : ?>
                     <li class="oportunidade__campus">
