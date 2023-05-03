@@ -102,6 +102,10 @@
         @include icon('briefcase', $icon-position, $icon-size, $icon-color);
     }
 
+    &--url {
+        @include icon('link', $icon-position, $icon-size, $icon-color);
+    }
+
     &--turnos {
         @include icon('sun', $icon-position, $icon-size, $icon-color);
         grid-column: 1 / -1;

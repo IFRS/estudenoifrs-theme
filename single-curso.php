@@ -5,11 +5,11 @@
         <h2 class="curso__title"><?php the_title(); ?></h2>
         <aside class="curso__meta">
             <div class="curso-info curso-info--modalidade">
-                <h4 class="curso-info__title"><?php _e('Modalidade', 'ifrs-portal-theme'); ?></h4>
+                <h4 class="curso-info__title"><?php _e('Modalidade', 'ifrs-estude-theme'); ?></h4>
                 <p class="curso-info__text"><?php the_terms( get_the_ID(), 'modalidade', '', ', ' ); ?></p>
             </div>
             <div class="curso-info curso-info--nivel">
-                <h4 class="curso-info__title"><?php _e('Nível', 'ifrs-portal-theme'); ?></h4>
+                <h4 class="curso-info__title"><?php _e('Nível', 'ifrs-estude-theme'); ?></h4>
                 <p class="curso-info__text">
                     <?php $niveis = wp_get_post_terms(get_the_ID(), 'nivel', array('orderby' => 'term_order')); ?>
                     <?php foreach ($niveis as $nivel) : ?>
@@ -20,11 +20,11 @@
             </div>
             <div class="curso-info curso-info--unidade">
                 <?php $unidades_count = count(wp_get_post_terms(get_the_ID(), 'unidade', array('fields' => 'ids'))); ?>
-                <h4 class="curso-info__title"><?php echo _n('Unidade', 'Unidades', $unidades_count, 'ifrs-portal-theme'); ?></h4>
+                <h4 class="curso-info__title"><?php echo _n('Unidade', 'Unidades', $unidades_count, 'ifrs-estude-theme'); ?></h4>
                 <p class="curso-info__text"><?php the_terms( get_the_ID(), 'unidade', '', ', ' ); ?></p>
             </div>
             <div class="curso-info curso-info--cargahoraria">
-                <h4 class="curso-info__title"><?php _e('Dura&ccedil;&atilde;o', 'ifrs-portal-theme'); ?></h4>
+                <h4 class="curso-info__title"><?php _e('Dura&ccedil;&atilde;o', 'ifrs-estude-theme'); ?></h4>
                 <p class="curso-info__text">
                     <?php
                         $duracao = get_post_meta( get_the_ID(), '_curso_duracao', true );
@@ -40,20 +40,27 @@
             <?php $nota_mec = get_post_meta( get_the_ID(), '_curso_nota', true ); ?>
             <?php if (!empty($nota_mec)) : ?>
                 <div class="curso-info curso-info--nota">
-                    <h4 class="curso-info__title"><?php _e('Avalia&ccedil;&atilde;o do Curso', 'ifrs-portal-theme'); ?></h4>
+                    <h4 class="curso-info__title"><?php _e('Avalia&ccedil;&atilde;o do Curso', 'ifrs-estude-theme'); ?></h4>
                     <p class="curso-info__text"><?php echo esc_html($nota_mec); ?></p>
                 </div>
             <?php endif; ?>
             <?php $ead = !empty(get_post_meta( get_the_ID(), '_curso_ead', true )); ?>
             <?php if ($ead) : ?>
                 <div class="curso-info curso-info--ead">
-                    <p class="curso-info__text"><?php _e('Esse curso possui parte de sua carga hor&aacute;ria a dist&acirc;ncia.', 'ifrs-portal-theme'); ?></p>
+                    <p class="curso-info__text"><?php _e('Esse curso possui parte de sua carga hor&aacute;ria a dist&acirc;ncia.', 'ifrs-estude-theme'); ?></p>
                 </div>
             <?php endif; ?>
             <?php $estagio = !empty(get_post_meta( get_the_ID(), '_curso_estagio', true )); ?>
             <?php if ($estagio) : ?>
                 <div class="curso-info curso-info--estagio">
-                    <p class="curso-info__text"><?php _e('Esse curso possui est&aacute;gio obrigat&oacute;rio.', 'ifrs-portal-theme'); ?></p>
+                    <p class="curso-info__text"><?php _e('Esse curso possui est&aacute;gio obrigat&oacute;rio.', 'ifrs-estude-theme'); ?></p>
+                </div>
+            <?php endif; ?>
+            <?php $url = get_post_meta( get_the_ID(), '_curso_url', true ); ?>
+            <?php if ($url) : ?>
+                <div class="curso-info curso-info--url">
+                    <h4 class="curso-info__title"><?php _e('Saiba mais em', 'ifrs-estude-theme'); ?></h4>
+                    <p class="curso-info__text"><a href="<php echo esc_attr($url); ?>"><?php echo esc_html($url); ?></a></p>
                 </div>
             <?php endif; ?>
             <?php
@@ -91,7 +98,7 @@
             ?>
             <?php if ($has_turno) : ?>
             <div class="curso-info curso-info--turnos">
-                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', count($dias), 'ifrs-portal-theme'); ?></h4>
+                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', count($dias), 'ifrs-estude-theme'); ?></h4>
                 <ul class="curso-info__list">
                     <?php foreach ($dias as $dia => $turnos) : ?>
                         <li><?php echo $dia; ?>:&nbsp;<strong><?php echo $turnos; ?></strong></li>
@@ -108,9 +115,9 @@
 
             <?php the_content(); ?>
 
-            <?php $local = get_post_meta( get_the_ID(), '_curso_local', true ) ?>
+            <?php $local = get_post_meta( get_the_ID(), '_curso_local', true ); ?>
             <?php if ($local) : ?>
-                <h3>Local das Aulas</h3>
+                <h3><?php _e('Local das Aulas', 'ifrs-estude-theme'); ?></h3>
                 <?php echo wpautop( $local, true ); ?>
             <?php endif; ?>
         </div>

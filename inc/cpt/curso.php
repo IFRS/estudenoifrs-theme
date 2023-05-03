@@ -136,7 +136,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
         'fields'     => array(
             array(
                 'id'   => $prefix . 'desc',
-                'desc' => __( 'Preencher os turnos de aula nos dias da semana.', 'ifrs-estude-theme' ),
+                'desc' => __( 'Preencher os turnos de aula nos dias da semana. Caso seja um regime muito fora do comum ou não tenha detalhamento suficiente, não preencha.', 'ifrs-estude-theme' ),
                 'type' => 'heading',
             ),
             // Segunda-feira
@@ -282,6 +282,24 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'add_new'           => false,
                 'remove_default'    => true,
                 'field_type'        => 'select_tree',
+            ),
+        ),
+    );
+
+    /**
+     * URL
+     */
+    $metaboxes[] = array(
+        'title'      => __( 'Endereço para mais informações', 'ifrs-estude-theme' ),
+        'post_types' => 'curso',
+        'context'    => 'side',
+        'priority'   => 'low',
+        'fields'     => array(
+            array(
+                'id'   => $prefix . 'url',
+                'name' => __( 'URL', 'ifrs-estude-theme' ),
+                'desc' => __( 'Preencha o endereço da página com mais informações do Curso.', 'ifrs-estude-theme' ),
+                'type' => 'url',
             ),
         ),
     );
