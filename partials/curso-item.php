@@ -1,5 +1,5 @@
 <?php
-    $niveis = wp_get_post_terms(get_the_ID(), 'nivel', array('orderby' => 'parent')); // De repente usar wp_list_categories() para pegar a lista hierarquica.
+    $niveis = wp_get_post_terms(get_the_ID(), 'nivel', array('orderby' => 'parent'));
     $cores = array();
     foreach ($niveis as $nivel) {
         $cor = get_term_meta($nivel->term_id, '_nivel_color', true);
@@ -16,7 +16,7 @@
         <?php endforeach; ?>
     </p>
     <hr class="curso-item__separador">
-    <h4 class="curso-item__title"><a href="<?php the_permalink(); ?>" style="color: <?php echo end($cores); ?>"><?php the_title(); ?></a></h4>
+    <h4 class="curso-item__title"><a href="<?php the_permalink(); ?>" style="color: <?php echo end($cores); ?>" class="stretched-link"><?php the_title(); ?></a></h4>
     <p class="curso-item__meta">
         <span class="curso-item__meta--cargahoraria">
             <?php
@@ -84,8 +84,4 @@
             </span>
         <?php endif; ?>
     </p>
-
-    <a href="<?php the_permalink(); ?>" class="curso-item__link-info">
-        Saiba mais<span class="visually-hidden">&nbsp;sobre o curso <?php the_title(); ?></span>
-    </a>
 </article>
