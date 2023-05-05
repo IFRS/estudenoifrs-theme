@@ -6,7 +6,7 @@ function ifrs_add_lazyload($content) {
     $dom = new DOMDocument();
     @$dom->loadHTML($content);
 
-    $images = [];
+    $images = array();
 
     foreach ($dom->getElementsByTagName('img') as $node) {
         $images[] = $node;
