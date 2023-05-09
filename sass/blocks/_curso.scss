@@ -74,6 +74,8 @@
     $icon-size: 2rem;
     $icon-color: $gray-600;
 
+    min-height: 2rem;
+
     &--modalidade {
         @include icon('people', $icon-position, $icon-size, $icon-color);
     }
