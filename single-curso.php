@@ -60,7 +60,7 @@
             <?php if ($url) : ?>
                 <div class="curso-info curso-info--url">
                     <h4 class="curso-info__title"><?php _e('Saiba mais em', 'ifrs-estude-theme'); ?></h4>
-                    <p class="curso-info__text"><a href="<php echo esc_attr($url); ?>"><?php echo esc_html($url); ?></a></p>
+                    <p class="curso-info__text"><a href="<?php echo esc_url($url); ?>"><?php echo esc_html($url); ?></a></p>
                 </div>
             <?php endif; ?>
             <?php
