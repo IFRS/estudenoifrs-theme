@@ -136,7 +136,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
         'fields'     => array(
             array(
                 'id'   => $prefix . 'desc',
-                'desc' => __( 'Preencher os turnos de aula nos dias da semana. Caso seja um regime muito fora do comum ou não tenha detalhamento suficiente, não preencha.', 'ifrs-estude-theme' ),
+                'desc' => __( 'Preencher os turnos de aula nos dias da semana. Caso não haja detalhamento suficiente, não preencha.', 'ifrs-estude-theme' ),
                 'type' => 'heading',
             ),
             // Segunda-feira
@@ -219,6 +219,18 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'inline'         => true,
                 'remove_default' => true,
             ),
+
+            // Aviso de Turnos variados
+            array(
+                'type' => 'divider',
+            ),
+            array(
+                'id'   => $prefix . 'turnos_variados',
+                'name' => __( 'Turnos Variados', 'ifrs-estude-theme' ),
+                'desc' => __( 'Marque caso o Curso possua turnos que variam ou que sejam não convencionais. Por exemplo, turnos diferentes por semestre de oferta do Curso.', 'ifrs-estude-theme' ),
+                'type' => 'switch',
+            ),
+
         ),
     );
 
