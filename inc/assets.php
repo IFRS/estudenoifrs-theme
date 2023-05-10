@@ -19,6 +19,10 @@ add_action( 'wp_enqueue_scripts', function() {
         wp_enqueue_script( 'oportunidades', get_template_directory_uri().'/js/oportunidades.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/oportunidades.js'), true );
     }
 
+    if (is_singular( 'curso' )) {
+        wp_enqueue_script( 'curso', get_template_directory_uri().'/js/curso.js', array(), WP_DEBUG ? null : filemtime(get_stylesheet_directory() . '/js/curso.js'), true );
+    }
+
     if (!WP_DEBUG) {
         wp_enqueue_script( 'vlibras', 'https://vlibras.gov.br/app/vlibras-plugin.js', array(), null, true );
         wp_add_inline_script( 'vlibras', "new window.VLibras.Widget('https://vlibras.gov.br/app');" );

@@ -69,6 +69,7 @@ function bundle(done) {
     entry: {
       'ingresso': './src/ingresso.js',
       'oportunidades': './src/oportunidades.js',
+      'curso': './src/curso.js',
     },
     output: {
       path: path.resolve(path.dirname(''), 'js'),
