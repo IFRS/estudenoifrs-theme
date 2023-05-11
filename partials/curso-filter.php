@@ -98,8 +98,8 @@
                 <legend>Curso</legend>
                 <?php $seachfield_id = uniqid(); ?>
                 <div class="input-group">
-                    <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca'); ?></label>
-                    <input class="form-control form-control-sm" type="text" name="s" value="<?php echo (!empty($_POST['s']) ? sanitize_text_field($_POST['s']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...'); ?>"/>
+                    <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca', 'ifrs-estude-theme'); ?></label>
+                    <input class="form-control form-control-sm" type="text" name="s" value="<?php echo (!empty($_POST['s']) ? sanitize_text_field($_POST['s']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...', 'ifrs-estude-theme'); ?>"/>
                 </div>
             </fieldset>
         </div>
