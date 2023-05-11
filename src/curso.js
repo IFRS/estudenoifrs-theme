@@ -10,4 +10,4 @@ function curso_info_resize() {
 }
 
 document.addEventListener('DOMContentLoaded', curso_info_resize);
-window.addEventListener('resize', curso_info_resize);
+// window.addEventListener('resize', curso_info_resize);
