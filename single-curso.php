@@ -59,11 +59,12 @@
             <?php $url = get_post_meta( get_the_ID(), '_curso_url', true ); ?>
             <?php if ($url) : ?>
                 <div class="curso-info curso-info--url">
-                    <h4 class="curso-info__title"><?php _e('Saiba mais em', 'ifrs-estude-theme'); ?></h4>
-                    <p class="curso-info__text"><a href="<?php echo esc_url($url); ?>"><?php echo esc_html($url); ?></a></p>
+                    <p class="curso-info__text"><a href="<?php echo esc_url($url); ?>"><?php _e('Saiba mais na página<br>detalhada do curso', 'ifrs-estude-theme'); ?></a></p>
                 </div>
             <?php endif; ?>
             <?php
+                $turnos_variados = !empty(get_post_meta( get_the_ID(), '_curso_turnos_variados', true ));
+
                 $dias = array(
                     'Segunda-feira' => get_post_meta( get_the_ID(), '_curso_segunda_feira' ),
                     'Terça-feira' => get_post_meta( get_the_ID(), '_curso_terca_feira' ),
@@ -96,14 +97,19 @@
                     return $carry;
                 }, false);
             ?>
-            <?php if ($has_turno) : ?>
+            <?php if ($turnos_variados || $has_turno) : ?>
             <div class="curso-info curso-info--turnos">
-                <h4 class="curso-info__title"><?php echo _n('Turno', 'Turnos', count($dias), 'ifrs-estude-theme'); ?></h4>
+                <h4 class="curso-info__title"><?php _e('Turnos', 'ifrs-estude-theme'); ?></h4>
+                <?php if ($has_turno) : ?>
                 <ul class="curso-info__list">
                     <?php foreach ($dias as $dia => $turnos) : ?>
                         <li><?php echo $dia; ?>:&nbsp;<strong><?php echo $turnos; ?></strong></li>
                     <?php endforeach; ?>
                 </ul>
+                <?php endif; ?>
+                <?php if ($turnos_variados) : ?>
+                    <p class="curso-info__text mt-1"><small><strong>Atenção!</strong>&nbsp;<?php _e('Os turnos desse curso podem sofrer variações. Consulte mais informações na página detalhada do curso.', 'ifrs-estude-theme'); ?></small></p>
+                <?php endif; ?>
             </div>
             <?php endif; ?>
         </aside>
