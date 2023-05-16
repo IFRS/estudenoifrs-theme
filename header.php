@@ -8,8 +8,6 @@
     <meta name="author" content="Departamento de Comunicação do IFRS">
     <meta name="keywords" content="ifrs, ingresso, estudar, vestibular">
     <meta name="description" content="Site com informações para ingressar como estudante no IFRS">
-    <!-- Favicons -->
-    <?php echo get_template_part('partials/favicons'); ?>
     <!-- OpenGraph -->
     <meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
     <meta property="og:url" content="<?php echo esc_attr( wp_get_canonical_url() ); ?>">
