@@ -22,7 +22,7 @@
                     'container'       => null,
                     'container_class' => '',
                     'container_id'    => '',
-                    'menu_class'      => 'navbar-nav ms-auto me-lg-3 mb-3 mb-lg-0',
+                    'menu_class'      => 'navbar-nav ms-auto me-lg-4 mb-3 mb-lg-0',
                 ) );
             ?>
             <?php get_search_form(); ?>
