@@ -29,9 +29,9 @@
     }
 
     &__faq-link {
-        @include icon('faq', 'left', 2rem, $cor-detalhe);
+        @include icon('faq', 'left', 2rem, $detalhe);
 
-        color: $cor-detalhe;
+        color: $detalhe;
         display: inline-block;
         font-size: 1.5rem;
         line-height: 1.2;

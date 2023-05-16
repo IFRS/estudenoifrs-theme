@@ -1,5 +1,5 @@
 .social {
-    background-color: $cor-detalhe;
+    background-color: $detalhe;
     color: #ffffff;
     padding: 20px 0;
     position: relative;
@@ -14,7 +14,7 @@
         position: absolute;
         pointer-events: none;
         border-color: rgba(136, 183, 213, 0);
-        border-bottom-color: $cor-detalhe;
+        border-bottom-color: $detalhe;
         border-width: 15px;
         margin-left: -15px;
     }

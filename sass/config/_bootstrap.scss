@@ -1,9 +1,15 @@
 @use "sass:math";
 
+// Custom Colors
+$detalhe: #468954;
+$custom-colors: (
+  "detalhe": $detalhe,
+);
+
 /* Bootstrap Override */
 @import 'node_modules/bootstrap/scss/functions';
 
-$primary:                      #2a8733;
+$primary:                      #19672e;
 $link-color:                   $primary;
 $link-hover-color:             shade-color($primary, 10%);
 $link-decoration:              none;
@@ -15,6 +21,8 @@ $component-active-bg:          $primary;
 @import 'node_modules/bootstrap/scss/maps';
 @import 'node_modules/bootstrap/scss/mixins';
 @import 'node_modules/bootstrap/scss/utilities';
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
 
 $font-family-base:             "Open Sans", $font-family-sans-serif;
 
