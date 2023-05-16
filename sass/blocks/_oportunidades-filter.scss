@@ -13,7 +13,7 @@
             background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c8c35' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' class='feather feather-chevron-down'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right center;
             background-size: 20px;
             border: none;
-            color: $cor-destaque;
+            color: $primary;
 
             /* CAUTION: Internet Explorer hackery ahead */
             &::-ms-expand {
@@ -30,7 +30,7 @@
         button[type=submit] {
             @include button-variant(transparent, transparent, $primary, $gray-200, $gray-200, $gray-700);
 
-            @include icon('submit', 'left', 1.5rem, $cor-destaque);
+            @include icon('submit', 'left', 1.5rem, $primary);
 
             margin-right: 0.25rem;
 
@@ -43,7 +43,7 @@
     &__reset {
         @include button-variant(transparent, transparent, $primary, $gray-200, $gray-200, $gray-700);
 
-        @include icon('reset', 'left', 1.5rem, $cor-destaque);
+        @include icon('reset', 'left', 1.5rem, $primary);
 
         &:hover {
             @include icon('reset', 'left', 1.5rem, $gray-700);

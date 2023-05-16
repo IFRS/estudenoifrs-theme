@@ -3,13 +3,13 @@
 /* Bootstrap Override */
 @import 'node_modules/bootstrap/scss/functions';
 
-$primary:                      $cor-destaque;
-$link-color:                   $cor-destaque;
-$link-hover-color:             shade-color($cor-destaque, 10%);
+$primary:                      #2a8733;
+$link-color:                   $primary;
+$link-hover-color:             shade-color($primary, 10%);
 $link-decoration:              none;
 $link-hover-decoration:        underline;
 $component-active-color:       #ffffff;
-$component-active-bg:          $cor-destaque;
+$component-active-bg:          $primary;
 
 @import 'node_modules/bootstrap/scss/variables';
 @import 'node_modules/bootstrap/scss/maps';
@@ -24,8 +24,8 @@ $body-color:                   $gray-700;
 $headings-color:               $gray-700;
 
 // Navbar
-$navbar-dark-color:            rgba($white, 0.9);
-$navbar-dark-hover-color:      $white;
+$navbar-dark-color:            $white;
+$navbar-dark-hover-color:      rgba($white, 0.8);
 
 // Dropdown
 $dropdown-bg:                  $gray-100;
@@ -34,7 +34,7 @@ $dropdown-font-size:           0.9rem;
 $dropdown-inner-border-radius: 0;
 $dropdown-item-padding-y:      math.div($spacer, 2);
 $dropdown-link-color:          $gray-700;
-$dropdown-link-hover-color:    $cor-destaque;
+$dropdown-link-hover-color:    $primary;
 $dropdown-link-active-color:   $white;
 $dropdown-link-active-bg:      tint-color($primary, 20%);
 $dropdown-padding-y:           0;

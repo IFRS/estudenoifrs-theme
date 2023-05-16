@@ -23,7 +23,7 @@
         margin-bottom: 2rem;
 
         span {
-            color: $cor-destaque;
+            color: $primary;
             font-weight: bolder;
         }
     }
@@ -66,7 +66,7 @@
         }
 
         .wpcf7-submit {
-            @include button-outline-variant($cor-destaque);
+            @include button-outline-variant($primary);
 
             float: right;
             margin-bottom: 0.5rem;

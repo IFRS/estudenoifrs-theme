@@ -9,7 +9,7 @@
     position: relative;
 
     &::after {
-        background: $cor-destaque;
+        background: $primary;
         content: '';
         position: absolute;
         height: 2px;
