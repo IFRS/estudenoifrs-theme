@@ -18,13 +18,15 @@ $component-active-color:       #ffffff;
 $component-active-bg:          $primary;
 
 @import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/variables-dark';
+
+$theme-colors:                 map-merge($theme-colors, $custom-colors);
+
 @import 'node_modules/bootstrap/scss/maps';
 @import 'node_modules/bootstrap/scss/mixins';
 @import 'node_modules/bootstrap/scss/utilities';
 
-$theme-colors: map-merge($theme-colors, $custom-colors);
-
-$font-family-base:             "Open Sans", $font-family-sans-serif;
+$font-family-sans-serif:       "Open Sans", #{$font-family-sans-serif};
 
 $body-color:                   $gray-700;
 

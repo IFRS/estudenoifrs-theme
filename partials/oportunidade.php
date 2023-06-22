@@ -54,7 +54,7 @@
     </div>
     <h3 class="oportunidade__title"><?php the_title(); ?></h3>
     <?php if ($isencao_inicio && $isencao_termino) : ?>
-        <p class="oportunidade__meta oportunidade__meta--isencao<?php echo ($isencao_ja_acabou) ? ' text-muted text-decoration-line-through' : ''; ?>">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($isencao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $isencao_termino; ?></strong></p>
+        <p class="oportunidade__meta oportunidade__meta--isencao<?php echo ($isencao_ja_acabou) ? ' text-body-secondary text-decoration-line-through' : ''; ?>">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($isencao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $isencao_termino; ?></strong></p>
     <?php else : ?>
         <p class="oportunidade__meta oportunidade__meta--gratis">Inscri&ccedil;&atilde;o <strong>gratuita</strong></p>
     <?php endif; ?>
