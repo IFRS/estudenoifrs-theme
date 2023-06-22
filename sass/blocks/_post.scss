@@ -1,14 +1,18 @@
+@use "sass:selector";
+
 .post {
     &__title {
         @include title();
     }
 
     &__content {
-        p {
-            @for $i from 2 through 6 {
-                + h#{$i} {
-                    margin-top: 1.5rem;
-                }
+        @for $i from 2 through 6 {
+            h#{$i} {
+                margin-bottom: $paragraph-margin-bottom;
+            }
+
+            p + h#{$i} {
+                margin-top: 1.5em;
             }
         }
     }
