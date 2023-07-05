@@ -31,7 +31,7 @@
     <?php wp_body_open(); ?>
 
     <!-- Cabeçalho -->
-    <div class="container">
+    <div class="bg-light d-none d-md-block">
         <?php echo get_template_part('partials/barra-acessibilidade'); ?>
     </div>
     <?php

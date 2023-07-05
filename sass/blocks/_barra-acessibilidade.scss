@@ -1,9 +1,9 @@
 .barra-acessibilidade {
-    border-bottom: 1px solid $gray-100;
     display: flex;
     justify-content: flex-end;
     font-size: 0.7rem;
-    padding: 0.6rem 0;
+    padding-top: calc(var(--bs-gutter-x) * 0.5);
+    padding-bottom: calc(var(--bs-gutter-x) * 0.5);
 
     &__menu {
         list-style: none;
@@ -18,7 +18,10 @@
 
     &__item {
         display: inline-block;
-        margin-right: 0.5rem;
+
+        &:not(:last-child) {
+            margin-right: 0.5rem;
+        }
 
         a {
             color: $gray-600;
