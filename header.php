@@ -31,9 +31,6 @@
     <?php wp_body_open(); ?>
 
     <!-- Cabeçalho -->
-    <div class="bg-light d-none d-md-block">
-        <?php echo get_template_part('partials/barra-acessibilidade'); ?>
-    </div>
     <?php
         $header = '';
         if ( get_header_image() ) {
@@ -42,6 +39,9 @@
     ?>
     <header <?php echo $header; ?>>
         <h1 class="visually-hidden"><?php bloginfo('name'); ?></h1>
+
+        <?php echo get_template_part('partials/barra-acessibilidade'); ?>
+
         <div class="container">
             <div class="row">
                 <div class="col col-lg-4">

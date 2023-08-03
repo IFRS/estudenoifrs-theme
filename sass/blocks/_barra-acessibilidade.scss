@@ -1,9 +1,11 @@
 .barra-acessibilidade {
-    display: flex;
+    display: inline-flex;
     justify-content: flex-end;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     padding-top: calc(var(--bs-gutter-x) * 0.5);
     padding-bottom: calc(var(--bs-gutter-x) * 0.5);
+    position: absolute;
+    right: 0;
 
     &__menu {
         list-style: none;
@@ -24,7 +26,7 @@
         }
 
         a {
-            color: $gray-600;
+            color: $white;
         }
     }
 }
