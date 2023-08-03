@@ -94,7 +94,7 @@
         <?php else : ?>
             <div class="alert <?php echo (!$is_search) ? 'alert-info' : 'alert-warning'; ?>" role="alert">
                 <?php if (!$is_search) : ?>
-                    N&atilde;o existem inscri&ccedil;&otilde;es abertas no momento, fique atento para novas publica&ccedil;&otilde;es.
+                    N&atilde;o existem inscri&ccedil;&otilde;es abertas no momento, fique atento para novas publica&ccedil;&otilde;es. Enquanto isso, confira nosso <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="alert-link">Guia de Cursos</a>.
                 <?php else : ?>
                     No momento sua busca n&atilde;o encontrou inscri&ccedil;&otilde;es abertas, mas n&atilde;o perca a viagem e acesse o nosso <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="alert-link">Guia de Cursos</a>.
                 <?php endif; ?>

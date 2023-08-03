@@ -184,7 +184,7 @@
                         <?php endwhile; ?>
                     <?php else : ?>
                         <div class="alert alert-info w-100" role="alert">
-                            N&atilde;o existem Cursos cadastrados em <?php echo $unidade->name; ?> no momento.
+                            N&atilde;o existem Cursos cadastrados em <em><?php echo $unidade->name; ?></em> at&eacute; o momento.
                         </div>
                     <?php endif; ?>
                 </div>
@@ -192,7 +192,7 @@
             <?php wp_reset_postdata(); ?>
         <?php endforeach; ?>
         <?php if ($unidades_shown === 0) : ?>
-            <div class="alert alert-danger">N&atilde;o foram encontrados Cursos com os crit&eacute;rios utilizados na busca.</div>
+            <div class="alert alert-warning">N&atilde;o foram encontrados Cursos com os crit&eacute;rios utilizados na busca.</div>
         <?php endif; ?>
     </div>
 </section>
