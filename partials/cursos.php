@@ -4,8 +4,6 @@
     $nivel_queried = $_POST['nivel'] ?? (is_tax('nivel') ? get_queried_object()->slug : null);
     $turno_queried = $_POST['turno'] ?? (is_tax('turno') ? get_queried_object()->slug : null);
 
-    print_r($modalidade_queried);
-
     $is_filter = !empty($unidade_queried)
         || is_tax('unidade')
         || !empty($modalidade_queried)
