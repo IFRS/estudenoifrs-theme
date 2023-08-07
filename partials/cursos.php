@@ -1,11 +1,18 @@
 <?php
-    $is_filter = !empty($_POST['unidade'])
+    $unidade_queried = $_POST['unidade'] ?? (is_tax('unidade') ? get_queried_object()->slug : null);
+    $modalidade_queried = $_POST['modalidade'] ?? (is_tax('modalidade') ? get_queried_object()->slug : null);
+    $nivel_queried = $_POST['nivel'] ?? (is_tax('nivel') ? get_queried_object()->slug : null);
+    $turno_queried = $_POST['turno'] ?? (is_tax('turno') ? get_queried_object()->slug : null);
+
+    print_r($modalidade_queried);
+
+    $is_filter = !empty($unidade_queried)
         || is_tax('unidade')
-        || !empty($_POST['modalidade'])
+        || !empty($modalidade_queried)
         || is_tax('modalidade')
-        || !empty($_POST['nivel'])
+        || !empty($nivel_queried)
         || is_tax('nivel')
-        || !empty($_POST['turno'])
+        || !empty($turno_queried)
         || is_tax('turno')
         || !empty($_POST['s'])
         || is_search();
@@ -18,8 +25,8 @@
         'order'      => 'ASC',
     );
 
-    if (!empty($_POST['unidade'])) {
-        $unidades_query['slug'] = (array) $_POST['unidade'];
+    if (!empty($unidade_queried)) {
+        $unidades_query['slug'] = (array) $unidade_queried;
     } elseif (is_tax( 'unidade' )) {
         $unidades_query['include'] = array(get_queried_object()->term_id);
     }
@@ -32,8 +39,8 @@
         'orderby'    => 'term_order',
     );
 
-    if (!empty($_POST['nivel'])) {
-        $niveis_query['slug'] = (array) $_POST['nivel'];
+    if (!empty($nivel_queried)) {
+        $niveis_query['slug'] = (array) $nivel_queried;
     }
 
     $niveis = get_terms($niveis_query);
@@ -41,19 +48,19 @@
 
     $tax_query = array();
 
-    if (!empty($_POST['modalidade'])) {
+    if (!empty($modalidade_queried)) {
         $tax_query[] = array(
             'taxonomy' => 'modalidade',
             'field' => 'slug',
-            'terms' => (array) $_POST['modalidade'],
+            'terms' => (array) $modalidade_queried,
         );
     }
 
-    if (!empty($_POST['turno'])) {
+    if (!empty($turno_queried)) {
         $tax_query[] = array(
             'taxonomy' => 'turno',
             'field' => 'slug',
-            'terms' => (array) $_POST['turno'],
+            'terms' => (array) $turno_queried,
         );
     }
 
@@ -128,19 +135,19 @@
         Conhe&ccedil;a nossos <span><?php _e('Cursos', 'ifrs-estude-theme'); ?></span>
         <?php
             if (is_tax('modalidade') && !isset($_POST['modalidade'])) {
-                printf(__('<br><small>%s</small>', 'ifrs-estude-theme'), single_term_title('na modalidade ', false));
+                printf(__('<br><small>na modalidade &#34;%s&#34;</small>', 'ifrs-estude-theme'), get_the_archive_title());
             }
 
             if (is_tax('unidade') && !isset($_POST['unidade'])) {
-                printf(__('<br><small>%s</small>', 'ifrs-estude-theme'), single_term_title('ofertados no ', false));
+                printf(__('<br><small>ofertados em &#34;%s&#34;</small>', 'ifrs-estude-theme'), single_term_title('', false));
             }
 
             if (is_tax('nivel') && !isset($_POST['nivel'])) {
-                printf(__('<br><small>%s</small>', 'ifrs-estude-theme'), single_term_title('do nível ', false));
+                printf(__('<br><small>do nível &#34;%s&#34;</small>', 'ifrs-estude-theme'), single_term_title('', false));
             }
 
             if (is_tax('turno') && !isset($_POST['turno'])) {
-                printf(__('<br><small>%s</small>', 'ifrs-estude-theme'), single_term_title('ofertados no turno da ', false));
+                printf(__('<br><small>ofertados no turno &#34;%s&#34;</small>', 'ifrs-estude-theme'), single_term_title('', false));
             }
 
             if (is_search() && get_search_query()) {
