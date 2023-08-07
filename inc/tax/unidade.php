@@ -38,6 +38,7 @@ add_action( 'init', function() {
         'show_tagcloud'              => false,
         'show_admin_column'          => true,
         'capabilities'               => $capabilities,
+        'rewrite'                    => array( 'slug' => 'cursos/unidade' ),
     );
 
     register_taxonomy( 'unidade', array( 'curso' ), $args );
