@@ -28,7 +28,7 @@
                 ));
             ?>
             <select name="curso_nivel[]" id="<?php echo $select_nivel_id; ?>" class="form-select flex-grow-0 w-auto">
-                <option selected value>Todos os N&iacute;veis</option>
+                <option selected value>Todos os N&iacute;veis de Ensino</option>
                 <?php foreach ($niveis as $nivel) : ?>
                     <?php $nivel_check = (!empty($_POST['curso_nivel']) && array_search($nivel->slug, $_POST['curso_nivel']) !== false); ?>
                     <option value="<?php echo $nivel->slug; ?>"<?php echo $nivel_check ? ' selected' : ''; ?> data-ifrs-alert="<?php echo $nivel->description; ?>"><?php echo $nivel->name; ?></option>
