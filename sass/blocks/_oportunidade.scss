@@ -40,13 +40,19 @@
     }
 
     &__btn-toggle {
+        background-color: $gray-100;
+        font-size: 0;
         flex: 0 0 auto;
-        line-height: 1;
         margin-left: auto;
+        margin-right: 0.5rem;
         padding: 7px 8px;
 
         svg {
             width: 1rem;
+        }
+
+        &:hover {
+            background-color: $gray-200;
         }
     }
 
@@ -133,9 +139,19 @@
         }
 
         #{$root}__btn-toggle {
+            background-color: transparent;
+
             svg {
                 transform: rotate(45deg);
                 width: 2rem;
+            }
+
+            &:hover {
+                background-color: transparent;
+
+                svg {
+                    stroke: #000000;
+                }
             }
         }
 
