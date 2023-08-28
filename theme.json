@@ -3,23 +3,41 @@
   "version": 2,
   "settings": {
     "color": {
+      "background": false,
       "custom": false,
       "customDuotone": false,
       "customGradient": false,
-      "text": false,
-      "background": false,
+      "defaultDuotone": false,
       "defaultGradients": false,
-      "defaultPalette": false
+      "defaultPalette": false,
+      "link": false,
+      "palette": [
+        {
+          "color": "#19672e",
+          "name": "Principal",
+          "slug": "primary"
+        },
+        {
+          "color": "#468954",
+          "name": "Destaque",
+          "slug": "accent"
+        }
+      ],
+      "text": false
     },
     "layout": {
       "contentSize": "1296px"
     },
+    "spacing": {
+      "customSpacingSize": false
+    },
     "typography": {
+      "customFontSize": false,
+      "letterSpacing": false,
+      "lineHeight": false,
       "dropCap": false,
       "fontSizes": [],
-      "customFontSize": false,
-      "lineHeight": false,
-      "letterSpacing": false
+      "fontFamilies": []
     }
   }
 }
