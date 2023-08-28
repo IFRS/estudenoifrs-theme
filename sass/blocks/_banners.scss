@@ -1,0 +1,10 @@
+.banners {
+  @include seta();
+
+  padding: 2rem 0;
+
+  hr {
+    margin-top: 3rem;
+    margin-bottom: 0;
+  }
+}

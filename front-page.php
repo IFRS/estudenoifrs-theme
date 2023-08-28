@@ -1,11 +1,5 @@
 <?php get_header(); ?>
 
-<section class="banner">
-    <div class="container">
-        <?php echo get_template_part('partials/carousel'); ?>
-    </div>
-</section>
-
 <section class="container d-none d-lg-block">
     <article class="front-page">
         <div class="row align-items-center">
@@ -27,12 +21,15 @@
     </article>
 </section>
 
-<section class="banner d-none d-lg-block">
-    <div class="container">
-
-    </div>
-</section>
-
 <?php echo get_template_part('partials/oportunidades'); ?>
+
+<?php if (is_active_sidebar('area-banners')) : ?>
+    <section class="banners">
+        <div class="container">
+            <?php dynamic_sidebar('area-banners'); ?>
+            <hr>
+        </div>
+    </section>
+<?php endif; ?>
 
 <?php get_footer(); ?>
