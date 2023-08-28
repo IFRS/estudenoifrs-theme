@@ -1,6 +1,6 @@
 # IFRS Estude Theme
 
-Tema [Wordpress](https://wordpress.org/) para o [Estude no IFRS](https://estude.ifrs.edu.br/) do [Instituto Federal do Rio Grande do Sul](https://ifrs.edu.br/).
+Tema [Wordpress](https://wordpress.org/) para o site [Estude no IFRS](https://estude.ifrs.edu.br/) do [Instituto Federal do Rio Grande do Sul](https://ifrs.edu.br/).
 
 ## Licença
 
