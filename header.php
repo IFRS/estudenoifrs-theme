@@ -1,26 +1,12 @@
 <!doctype html>
-<html <?php language_attributes(); ?> prefix="og: http://ogp.me/ns#">
+<html <?php language_attributes(); ?>>
 <head>
-    <meta charset="utf-8">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="index,follow">
     <meta name="author" content="Departamento de Comunicação do IFRS">
-    <meta name="keywords" content="ifrs, ingresso, estudar, vestibular">
+    <meta name="keywords" content="ifrs, ingresso, estudar, estude, vestibular, técnico, graduação, especialização, mestrado">
     <meta name="description" content="Site com informações para ingressar como estudante no IFRS">
-    <!-- OpenGraph -->
-    <meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
-    <meta property="og:url" content="<?php echo esc_attr( wp_get_canonical_url() ); ?>">
-    <meta property="og:locale" content="pt_BR">
-    <meta property="og:type" content="<?php echo (!is_front_page() && !is_home()) ? 'article' : 'website' ?>">
-    <meta property="og:title" content="<?php echo esc_attr( get_template_part('partials/title') ); ?>">
-    <meta property="og:image" content="<?php has_post_thumbnail() ? esc_attr( the_post_thumbnail_url('full') ) : esc_attr( header_image() ); ?>">
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@IF_RS">
-    <meta name="twitter:creator" content="@IF_RS">
-    <!-- Canonical URL -->
-    <link rel="canonical" href="<?php echo esc_url( wp_get_canonical_url() ); ?>">
     <!-- WP -->
     <?php wp_head(); ?>
 </head>
