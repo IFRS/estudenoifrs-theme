@@ -8,11 +8,14 @@
     &__content {
         @for $i from 2 through 6 {
             h#{$i} {
+                margin-top: 1.5em;
                 margin-bottom: $paragraph-margin-bottom;
             }
 
-            p + h#{$i} {
-                margin-top: 1.5em;
+            @for $j from $i through 6 {
+                h#{$i} + h#{$j} {
+                    margin-top: 0;
+                }
             }
         }
     }
