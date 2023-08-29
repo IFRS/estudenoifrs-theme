@@ -121,11 +121,37 @@
 
             <?php the_content(); ?>
 
-            <?php $local = get_post_meta( get_the_ID(), '_curso_local', true ); ?>
-            <?php if ($local) : ?>
-                <h3><?php _e('Local das Aulas', 'ifrs-estude-theme'); ?></h3>
-                <?php echo wpautop( $local, true ); ?>
-            <?php endif; ?>
+            <?php
+                $local = get_post_meta( get_the_ID(), '_curso_local', true );
+
+                $oportunidades = new WP_Query(array(
+                    'post_type' => 'oportunidade',
+                    'post_status' => 'publish',
+                    'nopaging' => true,
+                    'meta_key' => '_oportunidade_cursos',
+                    'meta_value' => get_the_ID(),
+                    'meta_compare' => 'IN',
+                ));
+            ?>
+            <div class="row mt-4">
+                <?php if ($local) : ?>
+                    <div class="col">
+                        <h3><?php _e('Local das Aulas', 'ifrs-estude-theme'); ?></h3>
+                        <?php echo wpautop( $local, true ); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if ($oportunidades->have_posts()) : ?>
+                    <div class="col">
+                        <h3><?php _e('Inscrições Abertas', 'ifrs-estude-theme'); ?></h3>
+                        <ul class="list-unstyled">
+                        <?php while($oportunidades->have_posts()) : $oportunidades->the_post(); ?>
+                            <li class="mb-1"><a href="<?php echo get_the_permalink(); ?>"><?php the_title(); ?></a></li>
+                        <?php endwhile; ?>
+                        </ul>
+                        <?php wp_reset_postdata(); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
     </section>
 </article>

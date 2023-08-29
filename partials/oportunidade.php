@@ -37,7 +37,7 @@
     $requisitos = rwmb_meta( '_oportunidade_requisitos' );
 ?>
 
-<div class="oportunidade<?php echo (is_singular('oportunidade')) ? ' oportunidade--open' : ''; ?>" data-flip-key="oportunidade-<?php the_ID(); ?>">
+<div class="oportunidade<?php echo (is_singular('oportunidade')) ? ' oportunidade--open oportunidade--single' : ''; ?>" data-flip-key="oportunidade-<?php the_ID(); ?>">
     <div class="oportunidade__header">
         <?php if (!empty($cursos)) : ?>
             <button type="button" class="btn btn-link oportunidade__numero-cursos" data-bs-toggle="modal" data-bs-target="#cursos-<?php echo the_ID(); ?>">
