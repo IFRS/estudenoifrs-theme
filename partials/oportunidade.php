@@ -1,6 +1,8 @@
 <?php
     $hoje = time();
 
+    $taxa = rwmb_meta( '_oportunidade_taxa' );
+
     $isencao_inicio = rwmb_meta( '_oportunidade_isencao_inicio' );
     $isencao_termino = rwmb_meta( '_oportunidade_isencao_termino' );
 
@@ -53,10 +55,13 @@
         <?php endif; ?>
     </div>
     <h3 class="oportunidade__title"><?php the_title(); ?></h3>
+    <?php if ($taxa) : ?>
+        <p class="oportunidade__meta oportunidade__meta--taxa">Possui <strong>Taxa</strong> de Inscri&ccedil;&atilde;o</p>
+    <?php else : ?>
+        <p class="oportunidade__meta oportunidade__meta--taxa">Inscri&ccedil;&atilde;o <strong>gratuita</strong></p>
+    <?php endif; ?>
     <?php if ($isencao_inicio && $isencao_termino) : ?>
         <p class="oportunidade__meta oportunidade__meta--isencao<?php echo ($isencao_ja_acabou) ? ' text-body-secondary text-decoration-line-through' : ''; ?>">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($isencao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $isencao_termino; ?></strong></p>
-    <?php else : ?>
-        <p class="oportunidade__meta oportunidade__meta--gratis">Inscri&ccedil;&atilde;o <strong>gratuita</strong></p>
     <?php endif; ?>
     <p class="oportunidade__meta oportunidade__meta--inscricao">Inscri&ccedil;&otilde;es de <strong><?php echo $inscricao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($inscricao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $inscricao_termino; ?></strong></p>
 

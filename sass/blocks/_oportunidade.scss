@@ -184,12 +184,12 @@
                 margin-bottom: 0;
             }
 
-            &--isencao {
-                @include icon('clock', 'left', 1.2em, $gray-600);
+            &--taxa {
+                @include icon('dollar', 'left', 1.2em, $gray-600);
             }
 
-            &--gratis {
-                @include icon('dollar', 'left', 1.2em, $gray-600);
+            &--isencao {
+                @include icon('clock', 'left', 1.2em, $gray-600);
             }
 
             &--inscricao {

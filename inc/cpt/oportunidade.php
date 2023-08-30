@@ -58,7 +58,7 @@ add_action( 'init', function() {
     register_post_type( 'oportunidade', $args );
 }, 2 );
 
-/* Metaboxes */
+/* Metabox Custom Label */
 add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, $post ) {
     $niveis = get_the_terms($post, 'nivel');
     $modalidades = get_the_terms($post, 'modalidade');
@@ -94,22 +94,31 @@ add_filter( 'rwmb__oportunidade_cursos_choice_label', function( $label, $field, 
 }, 10, 3);
 
 /* Metaboxes */
-add_action( 'rwmb_meta_boxes', function($metaboxes) {
+add_filter( 'rwmb_meta_boxes', function($metaboxes) {
     $prefix = '_oportunidade_';
 
     /**
-     * Datas
+     * Informações
      */
     $metaboxes[] = array(
-        'title'      => __( 'Datas', 'ifrs-estude-theme' ),
+        'title'      => __( 'Informações Gerais', 'ifrs-estude-theme' ),
         'post_types' => 'oportunidade',
         'context'    => 'normal',
         'priority'   => 'high',
         'fields'     => array(
+            // Taxa
+            array(
+                'name'  => __( 'Possui Taxa de Inscrição?', 'ifrs-estude-theme' ),
+                'id'    => $prefix . 'taxa',
+                'type'  => 'switch',
+                'on_label'  => 'Sim',
+                'off_label' => 'Não',
+            ),
+            // Datas
             array(
                 'type'    => 'heading',
                 'name'    => __( 'Isenção da Taxa de Inscrição', 'ifrs-estude-theme' ),
-                'desc'    => __( 'Preencha com o período para requerimento da isenção. Em caso de inscrição gratuita, deixe em branco.', 'ifrs-estude-theme' ),
+                'desc'    => __( 'Preencha com o período para requerimento da isenção, caso possua.', 'ifrs-estude-theme' ),
             ),
             array(
                 'name'       => __( 'Início da Isenção', 'ifrs-estude-theme' ),
@@ -140,6 +149,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'name'       => __( 'Início das Inscrições', 'ifrs-estude-theme' ),
                 'id'         => $prefix . 'inscricao_inicio',
                 'type'       => 'date',
+                'required'   => true,
                 'timestamp'  => true,
                 'size'       => 10,
                 'js_options' => array(
@@ -150,6 +160,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
                 'name'       => __( 'Término das Inscrições', 'ifrs-estude-theme' ),
                 'id'         => $prefix . 'inscricao_termino',
                 'type'       => 'date',
+                'required'   => true,
                 'timestamp'  => true,
                 'size'       => 10,
                 'js_options' => array(
