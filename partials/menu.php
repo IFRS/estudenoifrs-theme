@@ -5,9 +5,9 @@
     $offcanvas_label_id = uniqid('offcanvas-label-');
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#<?php echo $offcanvas_id; ?>" aria-controls="<?php echo $offcanvas_id; ?>">
+    <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#<?php echo $offcanvas_id; ?>" aria-controls="<?php echo $offcanvas_id; ?>">
         <span class="navbar-toggler-icon"></span>
-        <span class="visually-hidden">Menu</span>
+        <span class="align-middle fs-6">Menu</span>
     </button>
     <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" aria-labelledby="<?php echo $offcanvas_label_id; ?>" id="<?php echo $offcanvas_id; ?>">
         <div class="offcanvas-header">

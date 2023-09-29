@@ -17,6 +17,8 @@ $link-hover-decoration:        underline;
 $component-active-color:       #ffffff;
 $component-active-bg:          $primary;
 
+$navbar-dark-icon-color:       #ffffff;
+
 @import 'node_modules/bootstrap/scss/variables';
 @import 'node_modules/bootstrap/scss/variables-dark';
 
@@ -37,8 +39,9 @@ $headings-color:               $gray-700;
 $nav-link-font-weight:         600;
 
 // Navbar
-$navbar-dark-color:            $white;
-$navbar-dark-hover-color:      rgba($white, 0.8);
+$navbar-dark-toggler-border-color: $gray-200;
+$navbar-dark-color:                $white;
+$navbar-dark-hover-color:          rgba($white, 0.8);
 
 // Dropdown
 $dropdown-bg:                  $gray-100;
