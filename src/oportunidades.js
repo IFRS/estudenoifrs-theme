@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', function() {
       this.classList.remove(...classes);
     });
 
-    const colCount = window.getComputedStyle(oportunidades).getPropertyValue('grid-template-columns').split(' ').length;
-    const index = [...oportunidades.children].indexOf(oportunidade);
-    const rowPosition = Math.floor(index / colCount);
-    const colPosition = index % colCount;
-
     btn.addEventListener('click', function(e) {
       e.preventDefault();
+
+      const colCount = window.getComputedStyle(oportunidades).getPropertyValue('grid-template-columns').split(' ').length;
+      const index = [...oportunidades.children].indexOf(oportunidade);
+      const rowPosition = Math.floor(index / colCount);
+      const colPosition = index % colCount;
 
       flip.read();
 
