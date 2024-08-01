@@ -117,7 +117,7 @@
         <hr class="curso__separator">
 
         <div class="curso__content">
-            <?php if (has_post_thumbnail()) the_post_thumbnail('full', array('class' => 'img-fluid curso__thumb')); ?>
+            <?php if (has_post_thumbnail()) the_post_thumbnail('full', array('class' => 'img-fluid curso__thumb', 'loading' => 'lazy', 'decoding' => 'async')); ?>
 
             <?php the_content(); ?>
 
