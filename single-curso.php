@@ -133,7 +133,7 @@
                     'meta_compare' => 'IN',
                 ));
             ?>
-            <div class="row mt-4">
+            <div class="row g-0 mt-4">
                 <?php if ($local) : ?>
                     <div class="col">
                         <h3><?php _e('Local das Aulas', 'ifrs-estude-theme'); ?></h3>
