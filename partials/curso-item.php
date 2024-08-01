@@ -6,9 +6,8 @@
         if (!empty($cor)) $cores[] = $cor;
     }
     if (count($cores) === 1) $cores[1] = $cores[0];
-    $gradiente = implode(', ', $cores);
 ?>
-<article class="curso-item"<?php echo (!empty($cores)) ? "style=\"border-image-source: linear-gradient(to right, $gradiente); \"" : ''; ?>>
+<article class="curso-item shadow-sm"<?php echo (!empty($cores)) ? "style=\"--gradiente-1: $cores[0]; --gradiente-2: $cores[1]; \"" : ''; ?>>
     <p class="curso-item__nivel">
         <?php foreach ($niveis as $nivel) : ?>
             <?php echo $nivel->name; ?>
