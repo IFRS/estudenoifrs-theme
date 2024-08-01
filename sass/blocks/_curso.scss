@@ -142,6 +142,7 @@
 
         > li {
             display: inline;
+            margin-right: 0.2rem;
 
             &:not(:last-child)::after {
                 content: '; ';
