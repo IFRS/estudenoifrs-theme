@@ -81,7 +81,7 @@
             <ul class="oportunidade__campi-list">
                 <?php foreach ($unidades as $unidade) : ?>
                     <li class="oportunidade__campus">
-                        <a href="<?php echo get_term_link( $unidade->term_id, 'unidade' ); ?>"><?php echo $unidade->name; ?></a>
+                        <a href="<?php echo get_term_link( $unidade->term_id, 'unidade' ); ?>" data-bs-toggle="modal" data-bs-target="#modal-unidade-<?php echo $unidade->term_id ?>"><?php echo $unidade->name; ?></a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -119,3 +119,5 @@
         Mais informa&ccedil;&otilde;es
     </a>
 </div>
+
+<?php echo get_template_part( 'partials/modal-unidades' ); ?>
