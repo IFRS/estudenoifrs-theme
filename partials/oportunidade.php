@@ -4,10 +4,6 @@
 
     $isencao_ja_acabou = $now->diff($isencao_fim)->days < 0;
 
-    do_action( 'qm/debug', $now );
-    do_action( 'qm/debug', $isencao_fim );
-    do_action( 'qm/debug', $now->diff($isencao_fim)->days );
-
     $isencao_inicio = rwmb_meta( '_oportunidade_isencao_inicio' );
     $isencao_termino = rwmb_meta( '_oportunidade_isencao_termino' );
 
