@@ -21,7 +21,7 @@
             <?php echo apply_filters( 'the_content', $unidade->description ); ?>
           </div>
           <div class="modal-footer">
-            <a href="<?php echo get_term_link( $unidade->term_id, 'unidade' ); ?>">Cursos na Unidade</a>
+            <a href="<?php echo get_term_link( $unidade->term_id, 'unidade' ); ?>">Todos os Cursos dessa Unidade</a>
           </div>
         </div>
       </div>
