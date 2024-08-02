@@ -1,12 +1,15 @@
 <?php
-    $hoje = time();
+    $now = new DateTimeImmutable('now', wp_timezone());
+    $isencao_fim = DateTimeImmutable::createFromFormat('U', rwmb_meta( '_oportunidade_isencao_termino' ));
 
-    $taxa = rwmb_meta( '_oportunidade_taxa' );
+    $isencao_ja_acabou = $now->diff($isencao_fim)->days < 0;
+
+    do_action( 'qm/debug', $now );
+    do_action( 'qm/debug', $isencao_fim );
+    do_action( 'qm/debug', $now->diff($isencao_fim)->days );
 
     $isencao_inicio = rwmb_meta( '_oportunidade_isencao_inicio' );
     $isencao_termino = rwmb_meta( '_oportunidade_isencao_termino' );
-
-    $isencao_ja_acabou = $isencao_termino < $hoje;
 
     $isencao_inicio = ($isencao_inicio ? gmdate('d/m/y', $isencao_inicio) : false);
     $isencao_termino = ($isencao_termino ? gmdate('d/m/y', $isencao_termino) : false);
@@ -14,7 +17,9 @@
     $inscricao_inicio = gmdate('d/m/y', rwmb_meta( '_oportunidade_inscricao_inicio' ));
     $inscricao_termino = gmdate('d/m/y', rwmb_meta( '_oportunidade_inscricao_termino' ));
 
-    $hoje = gmdate('d/m/y', $hoje);
+    $taxa = rwmb_meta( '_oportunidade_taxa' );
+
+    $hoje = gmdate('d/m/y', time());
 
     $cursos_ids = rwmb_meta( '_oportunidade_cursos' );
     $cursos = array();
