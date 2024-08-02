@@ -5,6 +5,7 @@
 
     background-color: #ffffff;
     border-radius: $border-radius;
+    box-shadow: $box-shadow-sm;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -12,7 +13,7 @@
     position: relative;
 
     &:hover {
-        @extend .shadow;
+        box-shadow: $box-shadow;
     }
 
     &::before {
