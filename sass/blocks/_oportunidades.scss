@@ -1,5 +1,6 @@
 .oportunidades {
     @extend %destaque;
+    padding-bottom: 3rem;
 
     &__list {
         display: flex;
