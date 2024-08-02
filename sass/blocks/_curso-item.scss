@@ -1,13 +1,14 @@
 .curso-item {
     $spacing-y: 0.5rem;
     $spacing-x: 1rem;
+    $border-width: 4px;
 
     background-color: #ffffff;
     border-radius: $border-radius;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    padding: $spacing-y $spacing-x;
+    padding: calc($spacing-y + $border-width) $spacing-x $spacing-y $spacing-x;
     position: relative;
 
     &:hover {
@@ -19,11 +20,11 @@
         position: absolute;
         inset: 0;
         border-radius: $border-radius;
-        padding-top: 4px;
+        padding-top: $border-width;
         background: linear-gradient(90deg, var(--gradiente-1, $gray-600), var(--gradiente-2, $gray-400));
         mask: linear-gradient(#ffffff 0 0) content-box, linear-gradient(#ffffff 0 0);
         mask-composite: exclude;
-      }
+    }
 
     &__nivel {
         font-size: 0.9rem;
@@ -33,8 +34,8 @@
 
     &__separador {
         background-color: $gray-500;
-        height: 2px !important;
-        margin: $spacing-y -#{$spacing-x};
+        height: 1px !important;
+        margin: $spacing-y calc(#{$spacing-x} * -1);
     }
 
     &__title {
