@@ -1,5 +1,5 @@
 <?php
-    $today = new Datetime('today midnight');
+    $today = new DateTimeImmutable('today midnight');
 
     $curso_unidade = isset($_POST['curso_unidade']) ? $_POST['curso_unidade'] : null;
     $curso_unidade = is_array($curso_unidade) ? array_filter($curso_unidade) : $curso_unidade;

@@ -274,7 +274,7 @@ add_filter('use_block_editor_for_post_type', function($current_status, $post_typ
 
 /* Garbage Collector */
 add_action( 'ifrs_oportunidades_trash_hook', function() {
-    $limit = new Datetime("now - 7 days");
+    $limit = new DateTimeImmutable("now - 7 days");
 
     $oportunidades = get_posts( array(
         'post_type'      => 'oportunidade',
