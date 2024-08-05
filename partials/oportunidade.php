@@ -1,8 +1,8 @@
 <?php
-    $now = new DateTimeImmutable('now', wp_timezone());
+    $hoje_meia_noite = new DateTimeImmutable('today midnight');
     $isencao_fim = DateTimeImmutable::createFromFormat('U', rwmb_meta( '_oportunidade_isencao_termino' ));
 
-    $isencao_ja_acabou = $now->diff($isencao_fim)->days < 0;
+    $isencao_ja_acabou = $hoje_meia_noite > $isencao_fim;
 
     $isencao_inicio = rwmb_meta( '_oportunidade_isencao_inicio' );
     $isencao_termino = rwmb_meta( '_oportunidade_isencao_termino' );
@@ -13,9 +13,9 @@
     $inscricao_inicio = gmdate('d/m/y', rwmb_meta( '_oportunidade_inscricao_inicio' ));
     $inscricao_termino = gmdate('d/m/y', rwmb_meta( '_oportunidade_inscricao_termino' ));
 
-    $taxa = rwmb_meta( '_oportunidade_taxa' );
-
     $hoje = gmdate('d/m/y', time());
+
+    $taxa = rwmb_meta( '_oportunidade_taxa' );
 
     $cursos_ids = rwmb_meta( '_oportunidade_cursos' );
     $cursos = array();
