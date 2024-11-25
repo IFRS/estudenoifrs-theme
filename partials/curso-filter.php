@@ -35,88 +35,7 @@
 
 <aside class="cursos__filter">
     <?php $form_id = uniqid('form-'); ?>
-    <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter filter--advanced collapse<?php echo $is_filter ? ' show' : ''; ?>" id="<?php echo $form_id; ?>">
-        <div class="row">
-            <fieldset class="col-lg">
-                <legend>Modalidade</legend>
-                <div class="filter__options">
-                    <?php foreach ($modalidades as $modalidade): ?>
-                        <?php $field_id = uniqid(); ?>
-                        <?php $modalidade_check = (isset($_POST['modalidade']) && in_array($modalidade->slug, $_POST['modalidade'])) || is_tax('modalidade', $modalidade->slug); ?>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="modalidade[]" value="<?php echo $modalidade->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $modalidade_check ? 'checked' : ''; ?>>
-                            <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $modalidade->name; ?></label>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </fieldset>
-            <fieldset class="col-lg">
-                <legend>Unidade</legend>
-                <div class="filter__options">
-                    <?php foreach ($unidades as $unidade): ?>
-                        <?php $field_id = uniqid(); ?>
-                        <?php $unidade_check = (isset($_POST['unidade']) && in_array($unidade->slug, $_POST['unidade'])) || is_tax('unidade', $unidade->slug); ?>
-                        <div class="form-check form-check">
-                            <input class="form-check-input" type="checkbox" name="unidade[]" value="<?php echo $unidade->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $unidade_check ? 'checked' : ''; ?>>
-                            <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $unidade->name; ?></label>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </fieldset>
-            <fieldset class="col-lg">
-                <legend>N&iacute;vel</legend>
-                <div class="filter__options">
-                    <?php foreach ($niveis as $nivel): ?>
-                        <?php echo get_template_part( 'partials/curso-filter-nivel', null, array('nivel' => $nivel) ); ?>
-                        <?php
-                            $filhos = get_terms(array(
-                                'taxonomy' => 'nivel',
-                                'hide_empty' => false,
-                                'parent' => $nivel->term_id,
-                            ));
-                            foreach ($filhos as $filho) {
-                                echo get_template_part( 'partials/curso-filter-nivel', null, array('nivel' => $filho) );
-                            }
-                        ?>
-                    <?php endforeach; ?>
-                </div>
-            </fieldset>
-            <fieldset class="col-lg">
-                <legend>Turno</legend>
-                <div class="filter__options">
-                    <?php foreach ($turnos as $turno): ?>
-                        <?php $field_id = uniqid(); ?>
-                        <?php $turno_check = (isset($_POST['turno']) && in_array($turno->slug, $_POST['turno'])) || is_tax('turno', $turno->slug); ?>
-                        <div class="form-check form-check">
-                            <input class="form-check-input" type="checkbox" name="turno[]" value="<?php echo $turno->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $turno_check ? 'checked' : ''; ?>>
-                            <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $turno->name; ?></label>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </fieldset>
-            <fieldset class="col-lg">
-                <legend>Curso</legend>
-                <?php $seachfield_id = uniqid(); ?>
-                <div class="input-group">
-                    <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca', 'ifrs-estude-theme'); ?></label>
-                    <input class="form-control form-control-sm" type="text" name="s" value="<?php echo (!empty($_POST['s']) ? sanitize_text_field($_POST['s']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...', 'ifrs-estude-theme'); ?>"/>
-                </div>
-            </fieldset>
-        </div>
-        <hr class="filter__separator">
-        <div class="row">
-            <div class="col">
-                <button class="btn btn-link float-start" type="button" data-bs-toggle="collapse" data-bs-target=".filter" aria-expanded="false" aria-controls="<?php echo $form_id; ?>">
-                    Busca simples
-                </button>
-                <div class="float-end">
-                    <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="btn btn-lg btn-outline-secondary rounded-0 me-3"><?php _e('Limpar', 'ifrs-estude-theme'); ?></a>
-                    <input type="submit" value="Filtrar" class="btn btn-lg btn-primary rounded-0">
-                </div>
-            </div>
-        </div>
-    </form>
-    <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter filter--simple collapse<?php echo !$is_filter ? ' show' : ''; ?>">
+    <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter" id="<?php echo $form_id; ?>">
         <?php $seachfield_id = uniqid(); ?>
         <div class="input-group">
             <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca', 'ifrs-estude-theme'); ?></label>
@@ -128,8 +47,81 @@
                 </svg>
             </button>
         </div>
-        <button class="btn btn-link float-end" type="button" data-bs-toggle="collapse" data-bs-target=".filter" aria-expanded="false" aria-controls="<?php echo $form_id; ?>">
-            Busca avançada
-        </button>
+
+        <?php $collapse_id = uniqid('collapse-'); ?>
+        <div class="container filter__advanced">
+            <div class="row collapse<?php echo $is_filter ? ' show' : ''; ?>" id="<?php echo $collapse_id; ?>">
+                <fieldset class="col-lg">
+                    <legend>Modalidade</legend>
+                    <div class="filter__options">
+                        <?php foreach ($modalidades as $modalidade): ?>
+                            <?php $field_id = uniqid(); ?>
+                            <?php $modalidade_check = (isset($_POST['modalidade']) && in_array($modalidade->slug, $_POST['modalidade'])) || is_tax('modalidade', $modalidade->slug); ?>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="modalidade[]" value="<?php echo $modalidade->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $modalidade_check ? 'checked' : ''; ?>>
+                                <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $modalidade->name; ?></label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </fieldset>
+                <fieldset class="col-lg">
+                    <legend>Unidade</legend>
+                    <div class="filter__options">
+                        <?php foreach ($unidades as $unidade): ?>
+                            <?php $field_id = uniqid(); ?>
+                            <?php $unidade_check = (isset($_POST['unidade']) && in_array($unidade->slug, $_POST['unidade'])) || is_tax('unidade', $unidade->slug); ?>
+                            <div class="form-check form-check">
+                                <input class="form-check-input" type="checkbox" name="unidade[]" value="<?php echo $unidade->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $unidade_check ? 'checked' : ''; ?>>
+                                <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $unidade->name; ?></label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </fieldset>
+                <fieldset class="col-lg">
+                    <legend>N&iacute;vel</legend>
+                    <div class="filter__options">
+                        <?php foreach ($niveis as $nivel): ?>
+                            <?php echo get_template_part( 'partials/curso-filter-nivel', null, array('nivel' => $nivel) ); ?>
+                            <?php
+                                $filhos = get_terms(array(
+                                    'taxonomy' => 'nivel',
+                                    'hide_empty' => false,
+                                    'parent' => $nivel->term_id,
+                                ));
+                                foreach ($filhos as $filho) {
+                                    echo get_template_part( 'partials/curso-filter-nivel', null, array('nivel' => $filho) );
+                                }
+                            ?>
+                        <?php endforeach; ?>
+                    </div>
+                </fieldset>
+                <fieldset class="col-lg">
+                    <legend>Turno</legend>
+                    <div class="filter__options">
+                        <?php foreach ($turnos as $turno): ?>
+                            <?php $field_id = uniqid(); ?>
+                            <?php $turno_check = (isset($_POST['turno']) && in_array($turno->slug, $_POST['turno'])) || is_tax('turno', $turno->slug); ?>
+                            <div class="form-check form-check">
+                                <input class="form-check-input" type="checkbox" name="turno[]" value="<?php echo $turno->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $turno_check ? 'checked' : ''; ?>>
+                                <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $turno->name; ?></label>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row mt-3">
+                <div class="col text-start">
+                    <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $collapse_id; ?>" aria-expanded="false" aria-controls="<?php echo $form_id; ?>">
+                        Busca
+                    </button>
+                </div>
+                <div class="col text-end">
+                <div class="filter__actions">
+                    <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="btn btn-lg btn-outline-secondary rounded-0"><?php _e('Limpar', 'ifrs-estude-theme'); ?></a>
+                    <button type="submit" value="Filtrar" class="btn btn-lg btn-primary rounded-0">Filtrar</button>
+                </div>
+                </div>
+            </div>
+        </div>
     </form>
 </aside>
