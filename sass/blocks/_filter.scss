@@ -5,8 +5,8 @@
         &:has(.collapse.show) {
             button[data-bs-toggle="collapse"] {
                 @include icon('chevron-up', 'right', 22px, $primary);
-                &::after {
-                    content: 'Simples';
+                &::before {
+                    content: 'Ocultar ';
                 }
             }
         }
@@ -14,8 +14,8 @@
         &:has(.collapse, .collapsing) {
             button[data-bs-toggle="collapse"] {
                 @include icon('chevron-down', 'right', 22px, $primary);
-                &::after {
-                    content: 'Avançada';
+                &::before {
+                    content: '';
                 }
             }
         }

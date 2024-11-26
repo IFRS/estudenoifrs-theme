@@ -120,7 +120,7 @@
             <div class="row mt-3">
                 <div class="col text-start">
                     <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $collapse_id; ?>" aria-expanded="false" aria-controls="<?php echo $form_id; ?>">
-                        Busca
+                        Busca Avançada
                     </button>
                 </div>
                 <div class="col text-end">
