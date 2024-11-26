@@ -109,7 +109,7 @@
                     </div>
                 </fieldset>
             </div>
-            <div class="row mt-3">
+            <div class="row">
                 <div class="col order-1 text-end">
                     <div class="filter__actions">
                         <button type="submit" value="Filtrar" class="btn btn-lg btn-primary">Filtrar</button>
