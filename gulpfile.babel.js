@@ -45,6 +45,7 @@ function sass() {
     includePaths: ['sass', 'node_modules'],
     outputStyle: 'expanded',
     quietDeps: true,
+    silenceDeprecations: ['legacy-js-api', 'import']
   };
 
   return src('sass/*.scss')
