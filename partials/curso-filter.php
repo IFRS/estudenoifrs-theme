@@ -44,16 +44,8 @@
     <?php $form_id = uniqid('form-'); ?>
     <form action="<?php echo get_post_type_archive_link( 'curso' ); ?>" method="POST" class="filter" id="<?php echo $form_id; ?>">
         <?php $seachfield_id = uniqid(); ?>
-        <div class="input-group">
-            <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca', 'ifrs-estude-theme'); ?></label>
-            <input class="form-control form-control-lg rounded-1 border-0" type="text" name="s" value="<?php echo (!empty($s) ? sanitize_text_field($s) : null); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...', 'ifrs-estude-theme'); ?>"/>
-            <button type="submit" value="Filtrar" class="btn btn-lg btn-link bg-white">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M39.049 39.049L56 56" stroke-linejoin="round" stroke-linecap="round"></path>
-                    <circle data-name="layer1" cx="27" cy="27" r="17" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></circle>
-                </svg>
-            </button>
-        </div>
+        <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca', 'ifrs-estude-theme'); ?></label>
+        <input class="form-control form-control-lg border-0 filter__search-input" type="text" name="s" value="<?php echo (!empty($s) ? sanitize_text_field($s) : null); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...', 'ifrs-estude-theme'); ?>"/>
 
         <?php $collapse_id = uniqid('collapse-'); ?>
         <div class="container filter__advanced">
@@ -120,13 +112,13 @@
             <div class="row mt-3">
                 <div class="col text-start">
                     <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $collapse_id; ?>" aria-expanded="false" aria-controls="<?php echo $form_id; ?>">
-                        Busca Avançada
+                        Busca Avan&ccedil;ada
                     </button>
                 </div>
                 <div class="col text-end">
                 <div class="filter__actions">
-                    <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="btn btn-lg btn-outline-secondary rounded-0"><?php _e('Limpar', 'ifrs-estude-theme'); ?></a>
-                    <button type="submit" value="Filtrar" class="btn btn-lg btn-primary rounded-0">Filtrar</button>
+                    <button type="submit" value="Filtrar" class="btn btn-lg btn-primary">Filtrar</button>
+                    <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="btn btn-lg btn-outline-secondary"><?php _e('Limpar', 'ifrs-estude-theme'); ?></a>
                 </div>
                 </div>
             </div>

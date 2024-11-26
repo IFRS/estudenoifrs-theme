@@ -28,8 +28,15 @@
         .collapse,
         .collapsing {
             background-color: #ffffff;
+            border-radius: $input-border-radius;
             padding: calc($grid-gutter-width / 2) 0;
         }
+    }
+
+    &__search-input {
+        @include icon('search', 'left', 1em, $primary);
+        background-position: $input-padding-x center;
+        padding-inline-start: calc($input-padding-x + 1.5rem);
     }
 
     &__options {
