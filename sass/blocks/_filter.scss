@@ -28,7 +28,7 @@
         .collapse,
         .collapsing {
             background-color: #ffffff;
-            border-radius: $input-border-radius;
+            border-radius: $input-border-radius-lg;
             padding: calc($grid-gutter-width / 2) 0;
         }
     }
