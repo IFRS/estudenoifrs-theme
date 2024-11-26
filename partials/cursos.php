@@ -1,19 +1,25 @@
 <?php
-    $unidade_queried = $_POST['unidade'] ?? (is_tax('unidade') ? get_queried_object()->slug : null);
-    $modalidade_queried = $_POST['modalidade'] ?? (is_tax('modalidade') ? get_queried_object()->slug : null);
-    $nivel_queried = $_POST['nivel'] ?? (is_tax('nivel') ? get_queried_object()->slug : null);
-    $turno_queried = $_POST['turno'] ?? (is_tax('turno') ? get_queried_object()->slug : null);
+    if (isset($_GET['busca'])) {
+        $decoded_query = base64_decode($_GET['busca']);
+        parse_str($decoded_query, $query_array);
+    }
+
+    $s = get_search_query() ?? null;
+    $unidade_queried = $query_array['unidade'] ?? $_POST['unidade'] ?? (is_tax('unidade') ? get_queried_object()->slug : null);
+    $modalidade_queried = $query_array['modalidade'] ?? $_POST['modalidade'] ?? (is_tax('modalidade') ? get_queried_object()->slug : null);
+    $nivel_queried = $query_array['nivel'] ?? $_POST['nivel'] ?? (is_tax('nivel') ? get_queried_object()->slug : null);
+    $turno_queried = $query_array['turno'] ?? $_POST['turno'] ?? (is_tax('turno') ? get_queried_object()->term_id : null);
 
     $is_filter = !empty($unidade_queried)
-        || is_tax('unidade')
-        || !empty($modalidade_queried)
-        || is_tax('modalidade')
-        || !empty($nivel_queried)
-        || is_tax('nivel')
-        || !empty($turno_queried)
-        || is_tax('turno')
-        || !empty($_POST['s'])
-        || is_search();
+    || is_tax('unidade')
+    || !empty($modalidade_queried)
+    || is_tax('modalidade')
+    || !empty($nivel_queried)
+    || is_tax('nivel')
+    || !empty($turno_queried)
+    || is_tax('turno')
+    || !empty($s)
+    || is_search();
 
 
     $unidades_query = array(
@@ -45,20 +51,13 @@
     $niveis = array_reverse($niveis); // Inverte a ordem dos níveis para a remoção das duplicadas ser mais eficiente.
 
     $tax_query = array();
+    $meta_query = array();
 
     if (!empty($modalidade_queried)) {
         $tax_query[] = array(
             'taxonomy' => 'modalidade',
             'field' => 'slug',
             'terms' => (array) $modalidade_queried,
-        );
-    }
-
-    if (!empty($turno_queried)) {
-        $tax_query[] = array(
-            'taxonomy' => 'turno',
-            'field' => 'slug',
-            'terms' => (array) $turno_queried,
         );
     }
 
@@ -69,16 +68,57 @@
         );
     }
 
+    if (!empty($turno_queried)) {
+        $meta_query['relation'] = 'OR';
+
+        $meta_query[] = array(
+            'key' => '_curso_segunda_feira',
+            'value' => (array) $turno_queried,
+            'compare' => 'IN',
+        );
+        $meta_query[] = array(
+            'key' => '_curso_terca_feira',
+            'value' => (array) $turno_queried,
+            'compare' => 'IN',
+        );
+        $meta_query[] = array(
+            'key' => '_curso_quarta_feira',
+            'value' => (array) $turno_queried,
+            'compare' => 'IN',
+        );
+        $meta_query[] = array(
+            'key' => '_curso_quinta_feira',
+            'value' => (array) $turno_queried,
+            'compare' => 'IN',
+        );
+        $meta_query[] = array(
+            'key' => '_curso_sexta_feira',
+            'value' => (array) $turno_queried,
+            'compare' => 'IN',
+        );
+        $meta_query[] = array(
+            'key' => '_curso_sabado',
+            'value' => (array) $turno_queried,
+            'compare' => 'IN',
+        );
+        $meta_query[] = array(
+            'key' => '_curso_domingo',
+            'value' => (array) $turno_queried,
+            'compare' => 'IN',
+        );
+    }
+
     $main_query = array(
         'post_type' => 'curso',
         'nopaging' => true,
         'posts_per_page' => -1,
         'orderby' => 'title',
         'order' => 'ASC',
+        'meta_query' => $meta_query,
     );
 
-    if (!empty($_POST['s'])) {
-        $main_query['s'] = sanitize_text_field($_POST['s']);
+    if (!empty($s)) {
+        $main_query['s'] = sanitize_text_field($s);
     }
 
     function my_query_orderby($orderby_statement) {
@@ -132,23 +172,23 @@
     <h2 class="hero__title">
         Conhe&ccedil;a nossos <span><?php _e('Cursos', 'ifrs-estude-theme'); ?></span>
         <?php
-            if (is_tax('modalidade') && !isset($_POST['modalidade'])) {
+            if (is_tax('modalidade') && !isset($modalidade_queried)) {
                 printf(__('<br><small>na modalidade &#34;%s&#34;</small>', 'ifrs-estude-theme'), get_the_archive_title());
             }
 
-            if (is_tax('unidade') && !isset($_POST['unidade'])) {
+            if (is_tax('unidade') && !isset($unidade_queried)) {
                 printf(__('<br><small>ofertados em &#34;%s&#34;</small>', 'ifrs-estude-theme'), single_term_title('', false));
             }
 
-            if (is_tax('nivel') && !isset($_POST['nivel'])) {
+            if (is_tax('nivel') && !isset($nivel_queried)) {
                 printf(__('<br><small>do nível &#34;%s&#34;</small>', 'ifrs-estude-theme'), single_term_title('', false));
             }
 
-            if (is_tax('turno') && !isset($_POST['turno'])) {
+            if (is_tax('turno') && !isset($turno_queried)) {
                 printf(__('<br><small>ofertados no turno &#34;%s&#34;</small>', 'ifrs-estude-theme'), single_term_title('', false));
             }
 
-            if (is_search() && get_search_query()) {
+            if (is_search() && $s) {
                 printf(__('<br><small>(resultados com o termo &ldquo;%s&rdquo;)</small>', 'ifrs-estude-theme'), get_search_query());
             }
         ?>

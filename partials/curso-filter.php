@@ -39,7 +39,7 @@
         <?php $seachfield_id = uniqid(); ?>
         <div class="input-group">
             <label class="visually-hidden" for="<?php echo $seachfield_id; ?>"><?php _e('Termo para busca', 'ifrs-estude-theme'); ?></label>
-            <input class="form-control form-control-lg rounded-1 border-0" type="text" name="s" value="<?php echo (!empty($_POST['s']) ? sanitize_text_field($_POST['s']) : ''); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...', 'ifrs-estude-theme'); ?>"/>
+            <input class="form-control form-control-lg rounded-1 border-0" type="text" name="s" value="<?php echo (!empty($_POST['s']) ? sanitize_text_field($_POST['s']) : null); ?>" id="<?php echo $seachfield_id; ?>" placeholder="<?php _e('Buscar cursos...', 'ifrs-estude-theme'); ?>"/>
             <button type="submit" value="Filtrar" class="btn btn-lg btn-link bg-white">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <path fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="2" d="M39.049 39.049L56 56" stroke-linejoin="round" stroke-linecap="round"></path>
@@ -100,9 +100,9 @@
                     <div class="filter__options">
                         <?php foreach ($turnos as $turno): ?>
                             <?php $field_id = uniqid(); ?>
-                            <?php $turno_check = (isset($_POST['turno']) && in_array($turno->slug, $_POST['turno'])) || is_tax('turno', $turno->slug); ?>
+                            <?php $turno_check = (isset($_POST['turno']) && in_array($turno->term_id, $_POST['turno'])) || is_tax('turno', $turno->term_id); ?>
                             <div class="form-check form-check">
-                                <input class="form-check-input" type="checkbox" name="turno[]" value="<?php echo $turno->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $turno_check ? 'checked' : ''; ?>>
+                                <input class="form-check-input" type="checkbox" name="turno[]" value="<?php echo $turno->term_id; ?>" id="<?php echo $field_id; ?>" <?php echo $turno_check ? 'checked' : ''; ?>>
                                 <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $turno->name; ?></label>
                             </div>
                         <?php endforeach; ?>
@@ -125,3 +125,49 @@
         </div>
     </form>
 </aside>
+
+<?php
+add_action( 'wp_print_footer_scripts', function () use ($form_id) {
+?>
+<script>
+    document.getElementById('<?php echo $form_id; ?>').addEventListener('submit', function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        // Coleta os dados do formulário
+        let formData = new FormData(this);
+        if (formData.get('s') === '') formData.delete('s');
+        let params = new URLSearchParams(formData).toString();
+
+        // Codifica os dados em base64
+        let encodedParams = btoa(params);
+
+        // Cria um novo formulário em memória
+        let newForm = document.createElement('form');
+        newForm.action = this.action;
+        newForm.method = 'GET';
+
+        // Adiciona o campo oculto com os dados codificados
+        let encodedInput = document.createElement('input');
+        encodedInput.type = 'hidden';
+        encodedInput.name = 'busca';
+        encodedInput.value = encodedParams;
+        newForm.appendChild(encodedInput);
+
+        // Adiciona o campo de busca textual
+        let searchText = this.elements.namedItem('s').value;
+
+        if (searchText !== '') {
+            let searchInput = document.createElement('input');
+            searchInput.type = 'text';
+            searchInput.name = 's';
+            searchInput.value = searchText;
+            newForm.appendChild(searchInput);
+        }
+
+        // Adiciona o novo formulário ao corpo do documento e o envia
+        document.body.appendChild(newForm);
+        newForm.submit();
+    });
+</script>
+<?php
+} );
