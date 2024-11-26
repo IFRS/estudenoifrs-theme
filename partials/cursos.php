@@ -203,7 +203,20 @@
 
 <section class="cursos">
     <div class="container">
-        <?php echo get_template_part('partials/curso-filter', null, array('is_filter' => $is_filter)); ?>
+        <?php
+            echo get_template_part(
+                'partials/curso-filter',
+                null,
+                array(
+                    's' => $s,
+                    'unidades_queried' => $unidade_queried,
+                    'modalidades_queried' => $modalidade_queried,
+                    'niveis_queried' => $nivel_queried,
+                    'turnos_queried'=> $turno_queried,
+                    'is_filter' => $is_filter
+                )
+            );
+        ?>
 
         <?php $unidades_shown = 0; ?>
         <?php foreach ($unidades as $key => $unidade) : ?>
