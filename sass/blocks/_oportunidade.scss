@@ -165,15 +165,16 @@
 
             &::after {
                 background-color: $gray-400;
-                @supports(--css: variables) {
-                    background-color: var(--oportunidade-color);
-                }
                 content: '';
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 height: 5px;
                 width: 40%;
+
+                @supports(--css: variables) {
+                    background-color: var(--oportunidade-color);
+                }
             }
         }
 
