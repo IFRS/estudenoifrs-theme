@@ -55,7 +55,6 @@
                     <div class="filter__options">
                         <?php foreach ($modalidades as $modalidade): ?>
                             <?php $field_id = uniqid(); ?>
-                            <?php do_action( 'qm/debug', $modalidades_queried ) ?>
                             <?php $modalidade_check = (isset($modalidades_queried) && in_array($modalidade->slug, $modalidades_queried)) || is_tax('modalidade', $modalidade->slug); ?>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" name="modalidade[]" value="<?php echo $modalidade->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $modalidade_check ? 'checked' : ''; ?>>
