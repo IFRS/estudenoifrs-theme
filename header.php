@@ -46,4 +46,10 @@
     <a href="#inicio-conteudo" id="inicio-conteudo" class="visually-hidden">In&iacute;cio do conte&uacute;do</a>
 
     <main role="main">
-    <?php ingresso_breadcrumb(); ?>
+    <?php
+        if ( function_exists('yoast_breadcrumb') && !is_front_page() ) {
+            yoast_breadcrumb( '<section class="migalhas"><nav class="container breadcrumb" aria-label="Você está em:">', '</nav></section>' );
+        } else {
+            ingresso_breadcrumb();
+        }
+    ?>
