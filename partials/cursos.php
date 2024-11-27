@@ -4,23 +4,21 @@
         parse_str($decoded_query, $query_array);
     }
 
-    $s = get_search_query() ?? null;
     $unidade_queried = $query_array['unidade'] ?? $_POST['unidade'] ?? (is_tax('unidade') ? get_queried_object()->slug : null);
     $modalidade_queried = $query_array['modalidade'] ?? $_POST['modalidade'] ?? (is_tax('modalidade') ? get_queried_object()->slug : null);
     $nivel_queried = $query_array['nivel'] ?? $_POST['nivel'] ?? (is_tax('nivel') ? get_queried_object()->slug : null);
     $turno_queried = $query_array['turno'] ?? $_POST['turno'] ?? (is_tax('turno') ? get_queried_object()->term_id : null);
 
-    $is_filter = !empty($unidade_queried)
+    $is_filter = is_search()
+    || !empty(get_search_query())
     || is_tax('unidade')
-    || !empty($modalidade_queried)
+    || !empty($unidade_queried)
     || is_tax('modalidade')
-    || !empty($nivel_queried)
+    || !empty($modalidade_queried)
     || is_tax('nivel')
-    || !empty($turno_queried)
+    || !empty($nivel_queried)
     || is_tax('turno')
-    || !empty($s)
-    || is_search();
-
+    || !empty($turno_queried);
 
     $unidades_query = array(
         'taxonomy'   => 'unidade',
@@ -117,8 +115,8 @@
         'meta_query' => $meta_query,
     );
 
-    if (!empty($s)) {
-        $main_query['s'] = sanitize_text_field($s);
+    if (!empty(get_search_query())) {
+        $main_query['s'] = get_search_query();
     }
 
     function my_query_orderby($orderby_statement) {
@@ -188,8 +186,11 @@
                 printf(__('<br><small>ofertados no turno &#34;%s&#34;</small>', 'ifrs-estude-theme'), single_term_title('', false));
             }
 
-            if (is_search() && $s) {
+            if (is_search()) {
                 printf(__('<br><small>(resultados com o termo &ldquo;%s&rdquo;)</small>', 'ifrs-estude-theme'), get_search_query());
+            } elseif ($is_filter) {
+                echo '<br><small>(resultados da busca)</small>';
+
             }
         ?>
     </h2>
@@ -208,7 +209,7 @@
                 'partials/curso-filter',
                 null,
                 array(
-                    's' => $s,
+                    's' => get_search_query(),
                     'unidades_queried' => $unidade_queried,
                     'modalidades_queried' => $modalidade_queried,
                     'niveis_queried' => $nivel_queried,

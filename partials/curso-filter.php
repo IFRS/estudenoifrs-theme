@@ -134,23 +134,27 @@ add_action( 'wp_print_footer_scripts', function () use ($form_id) {
 
         // Coleta os dados do formulário
         let formData = new FormData(this);
-        if (formData.get('s') === '') formData.delete('s');
+        formData.delete('s');
+
+        // Transforma os dados em uma string de parâmetros
         let params = new URLSearchParams(formData).toString();
 
         // Codifica os dados em base64
         let encodedParams = btoa(params);
 
         // Cria um novo formulário em memória
-        let newForm = document.createElement('form');
-        newForm.action = this.action;
-        newForm.method = 'GET';
+        let searchForm = document.createElement('form');
+        searchForm.action = this.action;
+        searchForm.method = 'GET';
 
         // Adiciona o campo oculto com os dados codificados
-        let encodedInput = document.createElement('input');
-        encodedInput.type = 'hidden';
-        encodedInput.name = 'busca';
-        encodedInput.value = encodedParams;
-        newForm.appendChild(encodedInput);
+        if (encodedParams !== '') {
+            let encodedInput = document.createElement('input');
+            encodedInput.type = 'hidden';
+            encodedInput.name = 'busca';
+            encodedInput.value = encodedParams;
+            searchForm.appendChild(encodedInput);
+        }
 
         // Adiciona o campo de busca textual
         let searchText = this.elements.namedItem('s').value;
@@ -160,12 +164,12 @@ add_action( 'wp_print_footer_scripts', function () use ($form_id) {
             searchInput.type = 'text';
             searchInput.name = 's';
             searchInput.value = searchText;
-            newForm.appendChild(searchInput);
+            searchForm.appendChild(searchInput);
         }
 
         // Adiciona o novo formulário ao corpo do documento e o envia
-        document.body.appendChild(newForm);
-        newForm.submit();
+        document.body.appendChild(searchForm);
+        searchForm.submit();
     });
 </script>
 <?php
