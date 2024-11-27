@@ -30,6 +30,16 @@
           "color": "#468954",
           "name": "Destaque",
           "slug": "accent"
+        },
+        {
+          "color": "#fdfdfd",
+          "name": "Claro",
+          "slug": "light"
+        },
+        {
+          "color": "#0b0b0b",
+          "name": "Escuro",
+          "slug": "dark"
         }
       ],
       "text": false
