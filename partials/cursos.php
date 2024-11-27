@@ -227,12 +227,15 @@
 
                 $unidades_shown++;
 
+                $numero_cursos = $unidade->cursos->found_posts;
+
                 $collapse_id = uniqid('collapse-');
             ?>
             <div class="cursos__unidade">
                 <h3 class="cursos__unidade-title">
                     <a href="#<?php echo $collapse_id; ?>" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="<?php echo $collapse_id; ?>">
                         <span class="visually-hidden">Cursos em&nbsp;</span><?php echo $unidade->name; ?>
+                        <span class="visually-hidden">(<?php echo $numero_cursos; ?>&nbsp;<?php echo _n('encontrado', 'encontrados', $numero_cursos); ?>)</span>
                     </a>
                 </h3>
                 <div class="cursos__list collapse show" id="<?php echo $collapse_id; ?>">
