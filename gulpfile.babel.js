@@ -42,15 +42,15 @@ function sass() {
   ];
 
   const sass_options = {
-    includePaths: ['sass', 'node_modules'],
-    outputStyle: 'expanded',
+    loadPaths: ['sass', 'node_modules'],
+    style: 'expanded',
     quietDeps: true,
     silenceDeprecations: ['legacy-js-api', 'import']
   };
 
   return src('sass/*.scss')
   .pipe(sourcemaps.init())
-  .pipe(sassCompiler.sync(sass_options).on('error', sassCompiler.logError))
+  .pipe(sassCompiler(sass_options).on('error', sassCompiler.logError))
   .pipe(postCSS(postCSS_plugins))
   .pipe(sourcemaps.write('./'))
   .pipe(dest('css/'))
