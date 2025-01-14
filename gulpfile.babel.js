@@ -147,8 +147,8 @@ function dist() {
     '!src{,/**}',
     '!gulpfile*.js',
     '!package*.json',
-  ])
-  .pipe(dest('dist/' + name));
+  ], { encoding: false })
+  .pipe(dest('dist/' + name), { encoding: false });
 };
 
 function serve() {
