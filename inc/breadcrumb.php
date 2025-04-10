@@ -1,4 +1,44 @@
 <?php
+/* Yoast SEO */
+add_filter( 'wpseo_breadcrumb_output_wrapper', function( string $output ) {
+    $output = 'ol';
+
+    return $output;
+} );
+
+add_filter( 'wpseo_breadcrumb_output', function ( $original_breadcrumbs ) {
+    $new_home = \str_replace( '>Home<', 'aria-label="' . get_bloginfo('name') . '"><i class="fa-solid fa-house"></i><', $original_breadcrumbs );
+
+    return $new_home;
+} );
+
+add_filter( 'wpseo_breadcrumb_output_class', function( $class ) {
+    return 'breadcrumb';
+} );
+
+add_filter( 'wpseo_breadcrumb_single_link_wrapper', function( string $output ) {
+    $output = 'li';
+
+    return $output;
+} );
+
+add_filter( 'wpseo_breadcrumb_separator', function( string $output ) {
+    $output = '';
+
+    return $output;
+} );
+
+add_filter( 'wpseo_breadcrumb_single_link', function( $link ) {
+    if ( strpos( $link, 'breadcrumb_last' ) !== false ) {
+        $link = str_replace( 'breadcrumb_last', 'breadcrumb-item active', $link );
+    } else {
+        $link = str_replace( '<li>', '<li class="breadcrumb-item">', $link );
+    }
+
+    return $link;
+} );
+
+/* Custom Breadcrumb */
 function ingresso_breadcrumb() {
     $before        = '<li class="breadcrumb-item">';
     $before_active = '<li class="breadcrumb-item active" aria-current="page">';
@@ -12,7 +52,7 @@ function ingresso_breadcrumb() {
         global $post;
         $homelink = home_url();
 
-        echo $before . '<a href="' . $homelink . '">' . get_bloginfo('name') . '</a>' . $after;
+        echo $before . '<a href="' . $homelink . '" aria-label="' . get_bloginfo('name') . '"><i class="fa-solid fa-house"></a>' . $after;
 
         if (is_home()) {
             echo $before_active . get_the_title(get_option( 'page_for_posts' )) . $after;
