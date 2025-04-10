@@ -210,10 +210,10 @@
                 null,
                 array(
                     's' => get_search_query(),
-                    'unidades_queried' => $unidade_queried,
-                    'modalidades_queried' => $modalidade_queried,
-                    'niveis_queried' => $nivel_queried,
-                    'turnos_queried'=> $turno_queried,
+                    'unidades_queried' => (array) $unidade_queried,
+                    'modalidades_queried' => (array) $modalidade_queried,
+                    'niveis_queried' => (array) $nivel_queried,
+                    'turnos_queried'=> (array) $turno_queried,
                     'is_filter' => $is_filter
                 )
             );
