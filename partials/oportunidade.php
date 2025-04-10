@@ -57,14 +57,14 @@
     </div>
     <h3 class="oportunidade__title"><?php the_title(); ?></h3>
     <?php if ($taxa) : ?>
-        <p class="oportunidade__meta oportunidade__meta--taxa">Possui <strong>Taxa</strong> de Inscri&ccedil;&atilde;o</p>
+        <p class="oportunidade__meta oportunidade__meta--taxa"><i class="fa-solid fa-dollar-sign"></i><span>Possui <strong>Taxa</strong> de Inscri&ccedil;&atilde;o</span></p>
     <?php else : ?>
-        <p class="oportunidade__meta oportunidade__meta--taxa">Inscri&ccedil;&atilde;o <strong>gratuita</strong></p>
+        <p class="oportunidade__meta oportunidade__meta--taxa"><i class="fa-solid fa-dollar-sign"></i><span>Inscri&ccedil;&atilde;o <strong>gratuita</strong></span></p>
     <?php endif; ?>
     <?php if ($isencao_inicio && $isencao_termino) : ?>
-        <p class="oportunidade__meta oportunidade__meta--isencao<?php echo ($isencao_ja_acabou) ? ' text-body-secondary text-decoration-line-through' : ''; ?>">Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($isencao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $isencao_termino; ?></strong></p>
+        <p class="oportunidade__meta oportunidade__meta--isencao<?php echo ($isencao_ja_acabou) ? ' text-body-secondary text-decoration-line-through' : ''; ?>"><i class="fa-regular fa-clock"></i><span>Isen&ccedil;&atilde;o da Taxa de Inscri&ccedil;&atilde;o de <strong><?php echo $isencao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($isencao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $isencao_termino; ?></strong></span></p>
     <?php endif; ?>
-    <p class="oportunidade__meta oportunidade__meta--inscricao">Inscri&ccedil;&otilde;es de <strong><?php echo $inscricao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($inscricao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $inscricao_termino; ?></strong></p>
+    <p class="oportunidade__meta oportunidade__meta--inscricao"><i class="fa-regular fa-calendar"></i><span>Inscri&ccedil;&otilde;es de <strong><?php echo $inscricao_inicio; ?></strong> at&eacute; <strong class="<?php echo ($inscricao_termino == $hoje) ? 'text-danger' : ''; ?>"><?php echo $inscricao_termino; ?></strong></span></p>
 
     <hr class="oportunidade__separador">
 
@@ -78,7 +78,7 @@
 
     <?php if ($unidades) : ?>
         <div class="oportunidade__unidades">
-            <h4 class="oportunidade__subtitle"><?php echo _n( 'Unidade', 'Unidades', count($unidades), 'ifrs-estude-theme' ); ?> de Oferta</h4>
+            <h4 class="oportunidade__subtitle"><i class="fa-solid fa-building-columns me-2"></i><?php echo _n( 'Unidade', 'Unidades', count($unidades), 'ifrs-estude-theme' ); ?> de Oferta</h4>
             <ul class="oportunidade__campi-list">
                 <?php foreach ($unidades as $unidade) : ?>
                     <li class="oportunidade__campus">
@@ -117,7 +117,7 @@
     <?php endif; ?>
 
     <a href="<?php echo esc_url(get_post_meta( get_the_ID(), '_oportunidade_url', true )); ?>" class="oportunidade__info-link">
-        Mais informa&ccedil;&otilde;es
+        <i class="fa-solid fa-angle-right me-1"></i>Mais informa&ccedil;&otilde;es<span style="font-size: 0.75em;"><i class="fa-solid fa-arrow-up-right-from-square ms-1"></i></span>
     </a>
 </div>
 

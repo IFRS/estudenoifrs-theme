@@ -30,23 +30,11 @@
         button[type=submit] {
             @include button-variant(transparent, transparent, $primary, $gray-200, $gray-200, $gray-700);
 
-            @include icon('submit', 'left', 1.5rem, $primary);
-
             margin-right: 0.25rem;
-
-            &:hover {
-                @include icon('submit', 'left', 1.5rem, $gray-700);
-            }
         }
     }
 
     &__reset {
         @include button-variant(transparent, transparent, $primary, $gray-200, $gray-200, $gray-700);
-
-        @include icon('reset', 'left', 1.5rem, $primary);
-
-        &:hover {
-            @include icon('reset', 'left', 1.5rem, $gray-700);
-        }
     }
 }

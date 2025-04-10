@@ -14,8 +14,6 @@
     }
 
     &__faq-link {
-        @include icon('faq', 'left', 2rem, $detalhe);
-
         color: $detalhe;
         display: inline-block;
         font-size: 1.5rem;

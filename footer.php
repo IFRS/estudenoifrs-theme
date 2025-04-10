@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12 col-lg-6">
                 <h2 class="contato__title">Tem d&uacute;vidas sobre como estudar no <span>IFRS</span>?</h2>
-                <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link">Consulte nossas <strong>Perguntas Frequentes</strong>!</a>
+                <a href="<?php echo get_post_type_archive_link('pergunta'); ?>" class="contato__faq-link"><i class="fa-regular fa-circle-question me-2"></i>Consulte nossas <strong>Perguntas Frequentes</strong>!</a>
             </div>
             <div class="col-12 col-lg-6">
                 <?php if ( ! dynamic_sidebar('area-contato') ); ?>

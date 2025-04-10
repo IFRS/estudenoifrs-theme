@@ -13,6 +13,6 @@
     <input class="form-check-input" type="checkbox" name="nivel[]" value="<?php echo $nivel->slug; ?>" id="<?php echo $field_id; ?>" <?php echo $nivel_check ? 'checked' : ''; ?>>
     <label class="form-check-label" for="<?php echo $field_id; ?>"><?php echo $nivel->name; ?></label>
     <?php if (!empty($nivel->description)) : ?>
-        <button type="button" class="btn btn-link btn-sm filter__help" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo $nivel->description; ?>"><span class="visually-hidden">Ajuda</span></button>
+        <button type="button" class="btn btn-link btn-sm filter__help" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo $nivel->description; ?>" aria-label="Ajuda"><i class="fa-regular fa-circle-question"></i></button>
     <?php endif; ?>
 </div>

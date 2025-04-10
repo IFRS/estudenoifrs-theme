@@ -23,6 +23,7 @@
         ?>
         <?php if ($duracao || $cargahoraria) : ?>
             <span class="curso-item__meta--cargahoraria">
+                <i class="fa-regular fa-clock"></i>
                 <?php if ($duracao) : ?>
                     <?php echo esc_html($duracao); ?> (<?php echo esc_html($cargahoraria); ?>h)
                 <?php else : ?>
@@ -66,6 +67,7 @@
         ?>
         <?php if ($turnos) : ?>
             <span class="curso-item__meta--turnos">
+                <i class="fa-solid fa-sun"></i>
                 <?php foreach ($turnos as $turno_id) : ?>
                     <?php echo get_term($turno_id)->name; echo ($turno_id !== end($turnos)) ? ', ' : ''; ?>
                 <?php endforeach; ?>
@@ -76,6 +78,7 @@
         <?php $modalidades = get_the_terms(get_the_ID(), 'modalidade'); ?>
         <?php if ($modalidades) : ?>
             <span class="curso-item__meta--modalidades">
+                <i class="fa-solid fa-users"></i>
                 <?php foreach ($modalidades as $modalidade) : ?>
                     <?php echo $modalidade->name; ?>
                 <?php endforeach; ?>

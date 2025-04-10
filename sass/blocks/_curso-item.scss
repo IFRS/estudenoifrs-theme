@@ -48,31 +48,8 @@
         color: $gray-700;
         font-size: 0.9rem;
 
-        &--cargahoraria {
-            @include icon('clock', $cor: $gray-600);
-        }
-
-        &--turnos {
-            @include icon('sun', $cor: $gray-600);
-        }
-
-        &--modalidades {
-            @include icon('people', $cor: $gray-600);
-        }
-    }
-
-    &__link-info {
-        @include icon('chevron-right', 'left', 1.2rem, $gray-700);
-
-        align-self: flex-start;
-        color: $gray-700;
-        font-size: 0.9rem;
-        margin-top: auto;
-        padding-left: 1.05rem;
-
-        &:hover,
-        &:active {
-            color: $primary;
+        [data-fa-i2svg] {
+            color: $gray-600
         }
     }
 }

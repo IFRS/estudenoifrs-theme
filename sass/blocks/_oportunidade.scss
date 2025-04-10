@@ -67,6 +67,14 @@
         &:last-of-type {
             margin-bottom: 10px;
         }
+
+        &--taxa,
+        &--isencao,
+        &--inscricao {
+            [data-fa-i2svg] {
+                display: none;
+            }
+        }
     }
 
     &__separador {
@@ -103,20 +111,10 @@
     }
 
     &__info-link {
-        @include icon('chevron-right', 'left', 1.2rem, $link-color);
-
         align-self: flex-start;
         display: block;
         font-size: 0.9rem;
         margin-top: auto;
-        padding-left: 1rem;
-
-        &::after {
-            @include icon('external', 'right', 0.7rem, $link-color);
-
-            content: '';
-            vertical-align: middle;
-        }
     }
 
     &--open {
@@ -180,21 +178,24 @@
 
         #{$root}__meta {
             margin-bottom: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
 
             &:last-of-type {
                 margin-bottom: 0;
             }
 
-            &--taxa {
-                @include icon('dollar', 'left', 1.2em, $gray-600);
+            [data-fa-i2svg] {
+                flex-basis: 16px;
             }
 
-            &--isencao {
-                @include icon('clock', 'left', 1.2em, $gray-600);
-            }
-
+            &--taxa,
+            &--isencao,
             &--inscricao {
-                @include icon('calendar', 'left', 1.2em, $gray-600);
+                [data-fa-i2svg] {
+                    display: inline-block;
+                }
             }
         }
 
@@ -205,6 +206,10 @@
         #{$root}__subtitle {
             font-size: 1.2rem;
             font-weight: bold;
+
+            [data-fa-i2svg] {
+                font-size: 1.1rem;
+            }
         }
 
         #{$root}__requisitos {
@@ -232,8 +237,8 @@
                 text-decoration: none;
             }
 
-            &::after {
-                content: initial;
+            [data-fa-i2svg] {
+                display: none;
             }
         }
     }

@@ -1,7 +1,3 @@
 .migalhas {
     background-color: $gray-100;
-
-    .breadcrumb {
-        @include icon('chevron-right', 'left', 1rem, $primary);
-    }
 }

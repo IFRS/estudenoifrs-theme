@@ -82,46 +82,19 @@
 }
 
 .curso-info {
-    $icon-position: 'left';
-    $icon-size: 2rem;
-    $icon-color: $gray-600;
-
     min-height: 2rem;
 
-    &--modalidade {
-        @include icon('people', $icon-position, $icon-size, $icon-color);
-    }
+    display: inline-flex;
+    align-items: center;
+    justify-content: start;
+    gap: 0.5rem;
 
-    &--unidade {
-        @include icon('pin', $icon-position, $icon-size, $icon-color);
-    }
-
-    &--nivel {
-        @include icon('graduation', $icon-position, $icon-size, $icon-color);
-    }
-
-    &--cargahoraria {
-        @include icon('clock', $icon-position, 1.75rem, $icon-color);
-    }
-
-    &--nota {
-        @include icon('star', $icon-position, $icon-size, $icon-color);
-    }
-
-    &--ead {
-        @include icon('desktop', $icon-position, $icon-size, $icon-color);
-    }
-
-    &--estagio {
-        @include icon('briefcase', $icon-position, $icon-size, $icon-color);
-    }
-
-    &--url {
-        @include icon('link', $icon-position, $icon-size, $icon-color);
+    [data-fa-i2svg] {
+        color: $gray-600;
+        font-size: 1.5rem;
     }
 
     &--turnos {
-        @include icon('sun', $icon-position, $icon-size, $icon-color);
         grid-column: 1 / -1;
     }
 

@@ -1,3 +1,5 @@
+import '@fortawesome/fontawesome-free/js/all.js'
+
 import 'lazysizes';
 import 'bootstrap';
 
