@@ -22,9 +22,6 @@ require_once 'inc/site-map-walker.class.php';
 // Tamanho do resumo e resumo em páginas
 require_once 'inc/excerpt.php';
 
-// Adiciona classe no primeiro item da área carousel
-require_once 'inc/carousel-first-item-add-class.php';
-
 // Breadcrumb
 require_once 'inc/breadcrumb.php';
 

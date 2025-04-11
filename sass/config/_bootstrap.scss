@@ -8,8 +8,6 @@ $custom-colors: (
 );
 
 /* Bootstrap Override */
-@import 'bootstrap/scss/mixins/banner';
-@include bsBanner("");
 @import 'bootstrap/scss/functions';
 
 $primary:                      #19672e;

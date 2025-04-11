@@ -91,11 +91,11 @@
         </div>
         <div class="creditos">
             <!-- Wordpress -->
-            <a href="http://br.wordpress.org/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="Desenvolvido com Wordpress"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-wordpress.png" class="lazyload" alt="Desenvolvido com Wordpress (abre uma nova p&aacute;gina)"></a>
+            <a href="http://br.wordpress.org/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="Desenvolvido com Wordpress"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-wordpress.png" alt="Desenvolvido com Wordpress (abre uma nova p&aacute;gina)" loading="lazy"></a>
             <!-- Código-fonte -->
-            <a href="https://github.com/IFRS/ingresso-theme/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-git.png" class="lazyload" alt="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3 (abre uma nova p&aacute;gina)"></a>
+            <a href="https://github.com/IFRS/ingresso-theme/" target="_blank" rel="noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-git.png" alt="C&oacute;digo-fonte deste tema sob a licen&ccedil;a GPLv3 (abre uma nova p&aacute;gina)" loading="lazy"></a>
             <!-- Creative Commons -->
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="M&iacute;dia sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-CompartilhaIgual 4.0 Internacional"><img data-src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-cc-by-nc-sa.png" class="lazyload" alt="M&iacute;dia sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-CompartilhaIgual 4.0 Internacional (abre uma nova p&aacute;gina)" /></a>
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="license noopener noreferrer" data-bs-toggle="tooltip" data-bs-placement="top" title="M&iacute;dia sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-CompartilhaIgual 4.0 Internacional"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/creditos-cc-by-nc-sa.png" alt="M&iacute;dia sob a Licen&ccedil;a Creative Commons Atribui&ccedil;&atilde;o-N&atilde;oComercial-CompartilhaIgual 4.0 Internacional (abre uma nova p&aacute;gina)" loading="lazy"></a>
         </div>
     </div>
 </footer>
