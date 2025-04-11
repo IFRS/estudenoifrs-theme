@@ -15,7 +15,7 @@
             </div>
             <div class="col text-center">
                 <a href="<?php echo get_post_type_archive_link('curso'); ?>" class="front-page__banner">
-                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/guia-de-cursos.png" class="img-fluid" alt="Guia de Cursos" loading="lazy">
+                    <img src="<?php echo get_parent_theme_file_uri( '/img/guia-de-cursos.png' ); ?>" class="img-fluid" alt="Guia de Cursos" loading="lazy">
                 </a>
             </div>
     </article>
