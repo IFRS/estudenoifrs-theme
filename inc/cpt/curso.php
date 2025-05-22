@@ -119,7 +119,7 @@ add_action( 'rwmb_meta_boxes', function($metaboxes) {
             array(
                 'id'   => $prefix . 'local',
                 'name' => __( 'Local das Aulas', 'ifrs-estude-theme' ),
-                'desc' => __( 'Indique o local de realização das aulas, caso não for nas dependências da Unidade indicada.', 'ifrs-estude-theme' ),
+                'desc' => __( 'Indique o local de realização das aulas, caso não seja nas dependências da Unidade indicada.', 'ifrs-estude-theme' ),
                 'type' => 'textarea',
                 'cols' => 50,
                 'rows' => 5,
