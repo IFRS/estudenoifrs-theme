@@ -383,3 +383,9 @@ add_filter('use_block_editor_for_post_type', function($current_status, $post_typ
     if ($post_type === 'curso') return false;
     return $current_status;
 }, 10, 2);
+
+/* API random order */
+add_filter( 'rest_curso_collection_params', function( $params ) {
+  $params['orderby']['enum'][] = 'rand';
+  return $params;
+} );
