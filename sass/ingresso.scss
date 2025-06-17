@@ -4,16 +4,15 @@
 @import 'config/placeholders';
 
 @import 'base/focus-fix';
-@import 'base/lazyload';
 @import 'base/wp';
 
 @import 'layout/header';
 @import 'layout/footer';
+@import 'layout/front-page';
 
 @import 'blocks/barra-acessibilidade';
 @import 'blocks/menu';
 @import 'blocks/search';
-@import 'blocks/front-page';
 @import 'blocks/hero';
 @import 'blocks/tipo-description';
 @import 'blocks/tipo-list';
