@@ -2,9 +2,6 @@
 // Utils
 require_once 'inc/sortArrayByArray.php';
 
-// Remove a versão do WP
-require_once 'inc/remove-version.php';
-
 // Permissions & Roles
 require_once 'inc/permissions.php';
 
