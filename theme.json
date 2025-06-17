@@ -2,17 +2,13 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 3,
   "settings": {
-    "background":  {
-      "backgroundImage": true
-    },
     "border": {
-			"color": false,
-			"radius": false,
-			"style": false,
-			"width": false
-		},
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    },
     "color": {
-      "background": false,
       "custom": false,
       "customDuotone": false,
       "customGradient": false,
@@ -32,6 +28,51 @@
           "slug": "accent"
         },
         {
+          "color": "#f8f9fa",
+          "name": "Cinza 100",
+          "slug": "gray-100"
+        },
+        {
+          "color": "#e9ecef",
+          "name": "Cinza 200",
+          "slug": "gray-200"
+        },
+        {
+          "color": "#dee2e6",
+          "name": "Cinza 300",
+          "slug": "gray-300"
+        },
+        {
+          "color": "#ced4da",
+          "name": "Cinza 400",
+          "slug": "gray-400"
+        },
+        {
+          "color": "#adb5bd",
+          "name": "Cinza 500",
+          "slug": "gray-500"
+        },
+        {
+          "color": "#6c757d",
+          "name": "Cinza 600",
+          "slug": "gray-600"
+        },
+        {
+          "color": "#495057",
+          "name": "Cinza 700",
+          "slug": "gray-700"
+        },
+        {
+          "color": "#343a40",
+          "name": "Cinza 800",
+          "slug": "gray-800"
+        },
+        {
+          "color": "#212529",
+          "name": "Cinza 900",
+          "slug": "gray-900"
+        },
+        {
           "color": "#fdfdfd",
           "name": "Claro",
           "slug": "light"
@@ -48,13 +89,13 @@
 			"minHeight": false
 		},
     "layout": {
-      "allowEditing": false,
+      "allowEditing": true,
       "contentSize": "1296px",
       "wideSize": "100dvw"
     },
     "lightbox": {
       "enabled": true,
-      "allowEditing": false
+      "allowEditing": true
     },
     "position": {
 			"sticky": false
@@ -76,7 +117,8 @@
       "writingMode": false,
       "fontFamilies": [],
       "fluid": false,
-      "fontSizes": []
+      "fontSizes": [],
+      "textAlign": true
     },
     "useRootPaddingAwareAlignments": true
   }
