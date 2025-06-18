@@ -7,10 +7,10 @@
  */
 ?>
 
-<!-- wp:group {"style":{"border":{"radius":"1rem"},"dimensions":{"minHeight":"100%"}},"shadow":"var:preset|shadow|light"},"backgroundColor":"gray-100","layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group has-gray-100-background-color has-background" style="border-radius:1rem;min-height:100%">
-  <!-- wp:image {"aspectRatio":"1","scale":"cover","style":{"layout":{"selfStretch":"fit","flexSize":null}}} -->
-  <figure class="wp-block-image"><img alt="" style="aspect-ratio:1;object-fit:cover"/></figure>
+<!-- wp:group {"className":"has-gray-100-background-color has-background","style":{"border":{"radius":"1rem"},"dimensions":{"minHeight":"100%"},"shadow":"var:preset|shadow|light"},"backgroundColor":"gray-100","layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group has-gray-100-background-color has-background" style="border-radius:1rem;min-height:100%;box-shadow:var(--wp--preset--shadow--light)">
+  <!-- wp:image {"width":"auto","height":"150px","aspectRatio":"1","scale":"cover","sizeSlug":"full","linkDestination":"none","className":"is-style-default","style":{"layout":{"selfStretch":"fit","flexSize":null}}} -->
+  <figure class="wp-block-image size-full is-resized is-style-default"><img src="https://www.gov.br/planalto/pt-br/conheca-a-presidencia/biblioteca-da-pr/simbolos-nacionais/bandeira/bandeira-nacional-brasil.jpg" alt="" style="aspect-ratio:1;object-fit:cover;width:auto;height:150px"/></figure>
   <!-- /wp:image -->
 
   <!-- wp:heading -->
