@@ -86,7 +86,8 @@
       "text": false
     },
     "dimensions": {
-			"minHeight": false
+      "aspectRatio": true,
+			"minHeight": true
 		},
     "layout": {
       "allowEditing": true,
@@ -100,9 +101,30 @@
     "position": {
 			"sticky": false
 		},
+    "shadow": {
+      "defaultPresets": false,
+      "presets": [
+        {
+          "name": "Sombra leve",
+          "slug": "light",
+          "shadow": "var(--bs-box-shadow-sm)"
+        },
+        {
+          "name": "Sombra normal",
+          "slug": "normal",
+          "shadow": "var(--bs-box-shadow)"
+        },
+        {
+          "name": "Sombra forte",
+          "slug": "strong",
+          "shadow": "var(--bs-box-shadow-lg)"
+        }
+      ]
+    },
     "spacing": {
       "blockGap": true,
-      "customSpacingSize": false
+      "customSpacingSize": true,
+      "margin": true
     },
     "typography": {
       "customFontSize": false,
