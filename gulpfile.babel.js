@@ -69,7 +69,7 @@ function bundle(done) {
     mode: IS_PRODUCTION ? 'production' : 'development',
     devtool: IS_PRODUCTION ? 'source-map' : 'eval-source-map',
     entry: {
-      'ingresso': './src/ingresso.js',
+      'estude': './src/estude.js',
       'oportunidades': './src/oportunidades.js',
       'curso': './src/curso.js',
     },
