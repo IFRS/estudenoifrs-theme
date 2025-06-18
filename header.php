@@ -48,7 +48,6 @@
     <main role="main">
     <?php
         if ( function_exists('yoast_breadcrumb') && !is_front_page() ) {
-            // yoast_breadcrumb( '<section class="migalhas"><nav class="container breadcrumb" aria-label="Você está em:"><i class="fa-solid fa-house me-1"></i>', '</nav></section>' );
             yoast_breadcrumb( '<section class="migalhas"><nav class="container breadcrumb-yoast" aria-label="Caminhos de Navegação">','</nav></section>' );
         } else {
             ingresso_breadcrumb();

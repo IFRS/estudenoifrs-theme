@@ -1,7 +1,5 @@
 <?php get_header(); ?>
 
-<?php the_post(); ?>
-
 <section class="container">
     <article id="post-<?php the_ID(); ?>" <?php post_class('post'); ?>>
         <h1 class="post__title"><?php the_title(); ?></h1>
