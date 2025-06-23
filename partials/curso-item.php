@@ -69,7 +69,8 @@
             <span class="curso-item__meta--turnos">
                 <i class="fa-solid fa-sun"></i>
                 <?php foreach ($turnos as $turno_id) : ?>
-                    <?php echo get_term($turno_id)->name; echo ($turno_id !== end($turnos)) ? ', ' : ''; ?>
+                    <?php $turno_name = get_term($turno_id)->name ?? ''; ?>
+                    <?php echo $turno_name; echo ($turno_id !== end($turnos)) ? ', ' : ''; ?>
                 <?php endforeach; ?>
             </span>
             <br>
