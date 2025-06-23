@@ -125,7 +125,7 @@
     }
 
     foreach ($unidades as $unidade) {
-        $unidade->cursos = new WP_Query();
+        $unidade->cursos = array();
 
         foreach ($niveis as $nivel) {
             $tax_query_local = array();
@@ -143,7 +143,7 @@
 
             /* Remove as duplicatas de trás para frente já que os níveis estão invertidos. */
             $previous_posts = array();
-            foreach ((array) $unidade->cursos->posts as $previous_query_post) {
+            foreach ((array) $unidade->cursos as $previous_query_post) {
                 $previous_posts[] = $previous_query_post->ID;
             }
 
@@ -152,16 +152,14 @@
 
             $query = new WP_Query($main_query);
 
-            $unidade->cursos->posts = array_merge($query->posts, (array) $unidade->cursos->posts);
-            $unidade->cursos->post_count = $unidade->cursos->post_count + $query->post_count;
-            $unidade->cursos->found_posts = $unidade->cursos->found_posts + $query->found_posts;
+            $unidade->cursos = array_merge($query->posts, (array) $unidade->cursos);
         }
     }
 
     if ($is_filter) {
         usort($unidades, function($a, $b) {
-            if ($a->cursos->found_posts === $b->cursos->found_posts) return 0;
-            return ($a->cursos->found_posts > $b->cursos->found_posts) ? -1 : 1;
+            if (count($a->cursos) === count($b->cursos)) return 0;
+            return (count($a->cursos) > count($b->cursos)) ? -1 : 1;
         });
     }
 
@@ -194,7 +192,9 @@
             }
         ?>
     </h2>
+
     <?php $desc = cursos_get_option('desc'); ?>
+
     <?php if (!empty($desc)) : ?>
         <div class="hero__text">
             <?php echo apply_filters( 'the_content', cursos_get_option('desc') ); ?>
@@ -222,13 +222,13 @@
         <?php $unidades_shown = 0; ?>
         <?php foreach ($unidades as $key => $unidade) : ?>
             <?php
-                if ($is_filter && $unidade->cursos->found_posts === 0) {
+                if ($is_filter && count($unidade->cursos) === 0) {
                     continue;
                 }
 
                 $unidades_shown++;
 
-                $numero_cursos = $unidade->cursos->found_posts;
+                $numero_cursos = count($unidade->cursos);
 
                 $collapse_id = uniqid('collapse-');
             ?>
@@ -240,10 +240,10 @@
                     </a>
                 </h3>
                 <div class="cursos__list collapse show" id="<?php echo $collapse_id; ?>">
-                    <?php if ($unidade->cursos->have_posts()) : ?>
-                        <?php while ($unidade->cursos->have_posts()) : $unidade->cursos->the_post(); ?>
+                    <?php if (count($unidade->cursos) > 0) : ?>
+                        <?php foreach ($unidade->cursos as $key => $post) : global $post; setup_postdata( $post ); ?>
                             <?php echo get_template_part('partials/curso-item'); ?>
-                        <?php endwhile; ?>
+                        <?php endforeach; ?>
                     <?php else : ?>
                         <div class="alert alert-info w-100" role="alert">
                             N&atilde;o existem Cursos cadastrados em <em><?php echo $unidade->name; ?></em> at&eacute; o momento.
