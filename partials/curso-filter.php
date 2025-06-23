@@ -10,7 +10,7 @@
     $unidades = get_terms(array(
         'taxonomy' => 'unidade',
         'hide_empty' => false,
-        'orderby' => 'term_order',
+        'orderby' => 'name',
     ));
 ?>
 
