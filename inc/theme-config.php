@@ -36,7 +36,7 @@ add_theme_support( 'custom-logo', array(
 
 // Custom Header Image
 add_theme_support( 'custom-header', array(
-    'default-image'      => get_template_directory_uri() . '/img/header-bg.png',
+    'default-image'      => '',
     'random-default'     => false,
     'uploads'            => true,
     'default-text-color' => 'ffffff',
