@@ -52,7 +52,7 @@ function ingresso_breadcrumb() {
         global $post;
         $homelink = home_url();
 
-        echo $before . '<a href="' . $homelink . '" aria-label="' . get_bloginfo('name') . '"><i class="fa-solid fa-house"></a>' . $after;
+        echo $before . '<a href="' . $homelink . '" aria-label="' . get_bloginfo('name') . '"><i class="fa-solid fa-house"></i></a>' . $after;
 
         if (is_home()) {
             echo $before_active . get_the_title(get_option( 'page_for_posts' )) . $after;
