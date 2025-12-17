@@ -1,6 +1,5 @@
-@import 'animate.css/animate';
-
+@use 'lightgallery/scss/lightgallery-bundle' as *;
 $lg-path-fonts: '../lightgallery/fonts';
 $lg-path-images: '../lightgallery/images';
-@import 'lightgallery/scss/lightgallery-bundle';
-@import 'lightgallery/scss/lg-thumbnail';
+
+@import 'animate.css/animate';
