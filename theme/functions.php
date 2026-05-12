@@ -6,7 +6,7 @@ require_once 'inc/sortArrayByArray.php';
 require_once 'inc/permissions.php';
 
 // Carregamento das fontes
-require_once 'inc/fonts.php';
+// require_once 'inc/fonts.php';
 
 // Configurações para o tema
 require_once 'inc/theme-config.php';
