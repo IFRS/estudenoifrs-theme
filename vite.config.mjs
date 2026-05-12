@@ -2,11 +2,20 @@ import { defineConfig, normalizePath } from 'vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import { resolve } from 'path'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  css: {
+    devSourcemap: true,
+    preprocessorOptions: {
+      scss: {
+        quietDeps: true,
+        silenceDeprecations: ['legacy-js-api', 'import'],
+      },
+    },
+  },
   build: {
+    sourcemaps: mode === 'development',
     assetsDir: 'assets',
     manifest: true,
-    emptyOutDir: true,
     outDir: normalizePath(resolve(__dirname, 'build')),
     rollupOptions: {
       input: {
@@ -32,4 +41,4 @@ export default defineConfig({
       ],
     }),
   ],
-})
+}))
