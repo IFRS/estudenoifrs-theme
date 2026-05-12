@@ -11,7 +11,7 @@ if (file_exists($manifestFile)) {
         wp_enqueue_style( $manifest['sass/estude-editor.scss']['name'], get_parent_theme_file_uri($manifest['sass/estude-editor.scss']['file']), array(), null, 'all');
     });
 
-    /* Frontend Preload */
+    /* Fonts Preload */
     add_action('wp_head', function() use ($manifest) {
         echo '<link rel="preload" href="' . esc_url( get_parent_theme_file_uri( $manifest['node_modules/@fontsource/open-sans/files/open-sans-latin-400-normal.woff2']['file'] ) ) . '" as="font" type="font/woff2" crossorigin="anonymous"/>';
     }, 1);
