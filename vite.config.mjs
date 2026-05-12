@@ -1,19 +1,35 @@
 import { defineConfig, normalizePath } from 'vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import { resolve } from 'path'
+import { glob } from 'tinyglobby'
+
+/** Registers theme/** files with Rollup's watcher so `vite build --watch` re-copies them on change. */
+function watchThemePlugin() {
+  return {
+    name: 'watch-theme',
+    async buildStart() {
+      const files = await glob('theme/**/*', { cwd: resolve(__dirname), absolute: true, onlyFiles: true })
+      for (const file of files) {
+        this.addWatchFile(file)
+      }
+    },
+  }
+}
 
 export default defineConfig(({ mode }) => ({
+  base: './', // Generate relative asset URLs so WordPress theme URI prefix from enqueue is preserved.
   css: {
     devSourcemap: true,
     preprocessorOptions: {
       scss: {
+        sourceMap: true,
         quietDeps: true,
         silenceDeprecations: ['legacy-js-api', 'import'],
       },
     },
   },
   build: {
-    sourcemaps: mode === 'development',
+    sourcemap: mode === 'development' ? 'inline' : false,
     assetsDir: 'assets',
     manifest: true,
     outDir: normalizePath(resolve(__dirname, 'build')),
@@ -30,6 +46,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
+    watchThemePlugin(),
     viteStaticCopy({
       structured: true,
       targets: [
@@ -38,7 +55,20 @@ export default defineConfig(({ mode }) => ({
           dest: '.',
           rename: { stripBase: 1 },
         },
+        {
+          src: 'node_modules/lightgallery/fonts/**/*',
+          dest: 'assets',
+          rename: { stripBase: 1 },
+        },
+        {
+          src: 'node_modules/lightgallery/images/**/*',
+          dest: 'assets',
+          rename: { stripBase: 1 },
+        }
       ],
+      watch: {
+        reloadPageOnChange: true,
+      },
     }),
   ],
 }))
