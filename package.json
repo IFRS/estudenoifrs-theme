@@ -2,10 +2,16 @@
   "name": "ifrs-estude-theme",
   "private": true,
   "type": "module",
+  "scripts": {
+    "start": "vite build --watch",
+    "dev": "vite",
+    "build": "vite build"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/register": "^7.18.9",
+    "@fontsource/open-sans": "^5.2.7",
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@popperjs/core": "^2.11.0",
     "animate.css": "^4.1.1",
@@ -27,6 +33,8 @@
     "plugin-error": "^2.0.0",
     "postcss": "^8.4.4",
     "sass-embedded": "^1.86.3",
+    "vite": "^8.0.12",
+    "vite-plugin-static-copy": "^3.4.0",
     "webpack": "^5.65.0",
     "webpack-bundle-analyzer": "^5.1.0"
   }
