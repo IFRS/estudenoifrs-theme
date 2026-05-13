@@ -1,5 +1,7 @@
+@use 'lightgallery/scss/lg-variables' as * with (
+  $lg-path-fonts: './lightgallery/fonts',
+  $lg-path-images: './lightgallery/images'
+);
 @use 'lightgallery/scss/lightgallery-bundle' as *;
-$lg-path-fonts: '../lightgallery/fonts';
-$lg-path-images: '../lightgallery/images';
 
 @import 'animate.css/animate';

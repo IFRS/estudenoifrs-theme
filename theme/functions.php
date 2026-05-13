@@ -5,12 +5,12 @@ require_once 'inc/sortArrayByArray.php';
 // Permissions & Roles
 require_once 'inc/permissions.php';
 
-// Carregamento das fontes
-require_once 'inc/fonts.php';
-
 // Configurações para o tema
 require_once 'inc/theme-config.php';
 require_once 'inc/custom-headings.php';
+
+// Scripts & Styles
+require_once 'inc/assets.php';
 
 // Menus
 require_once 'inc/menus.php';
@@ -27,9 +27,6 @@ require_once 'inc/pagination.php';
 
 // Controla a busca com termo vazio
 require_once 'inc/empty-search.php';
-
-// Scripts & Styles
-require_once 'inc/assets.php';
 
 // Custom Post Type
 require_once 'inc/cpt/pergunta.php';

@@ -14,17 +14,6 @@
             background-size: 20px;
             border: none;
             color: $primary;
-
-            /* CAUTION: Internet Explorer hackery ahead */
-            &::-ms-expand {
-                display: none; /* Remove default arrow in Internet Explorer 10 and 11 */
-            }
-
-            /* Target Internet Explorer 9 to undo the custom arrow */
-            @media screen and (min-width:0\0) {
-                background: none\9;
-                padding: 5px\9;
-            }
         }
 
         button[type=submit] {
