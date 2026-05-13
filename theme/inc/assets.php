@@ -38,6 +38,10 @@ if (file_exists($manifestFile)) {
             wp_enqueue_script_module( $manifest['src/oportunidades.js']['name'], get_parent_theme_file_uri( $manifest['src/oportunidades.js']['file'] ), array(), false, array( 'in_footer' => true ) );
         }
 
+        if (is_post_type_archive( 'curso' ) || is_tax( array( 'modalidade', 'nivel', 'turno', 'unidade' ) )) {
+            wp_enqueue_script_module( $manifest['src/cursos.js']['name'], get_parent_theme_file_uri( $manifest['src/cursos.js']['file'] ), array(), false, array( 'in_footer' => true ) );
+        }
+
         if (is_singular( 'curso' )) {
             wp_enqueue_script_module( $manifest['src/curso.js']['name'], get_parent_theme_file_uri( $manifest['src/curso.js']['file'] ), array(), false, array( 'in_footer' => true ) );
         }

@@ -40,6 +40,7 @@ export default defineConfig(({ mode }) => ({
       input: {
         estudeScript: normalizePath(resolve(_root, 'src/estude.js')),
         cursoScript: normalizePath(resolve(_root, 'src/curso.js')),
+        cursosScript: normalizePath(resolve(_root, 'src/cursos.js')),
         oportunidadesScript: normalizePath(resolve(_root, 'src/oportunidades.js')),
         estudeStyle: normalizePath(resolve(_root, 'sass/estude.scss')),
         editorStyle: normalizePath(resolve(_root, 'sass/estude-editor.scss')),
