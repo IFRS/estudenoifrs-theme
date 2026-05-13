@@ -1,14 +1,17 @@
 import { defineConfig, normalizePath } from 'vite'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
-import { resolve } from 'path'
+import { dirname, resolve } from 'path'
+import { fileURLToPath } from 'url'
 import { glob } from 'tinyglobby'
+
+const _root = dirname(fileURLToPath(import.meta.url))
 
 /** Registers theme/** files with Rollup's watcher so `vite build --watch` re-copies them on change. */
 function watchThemePlugin() {
   return {
     name: 'watch-theme',
     async buildStart() {
-      const files = await glob('theme/**/*', { cwd: resolve(__dirname), absolute: true, onlyFiles: true })
+      const files = await glob('theme/**/*', { cwd: resolve(_root), absolute: true, onlyFiles: true })
       for (const file of files) {
         this.addWatchFile(file)
       }
@@ -32,16 +35,16 @@ export default defineConfig(({ mode }) => ({
     sourcemap: mode === 'development' ? 'inline' : false,
     assetsDir: 'assets',
     manifest: true,
-    outDir: normalizePath(resolve(__dirname, 'build')),
+    outDir: normalizePath(resolve(_root, 'build')),
     rollupOptions: {
       input: {
-        estudeScript: normalizePath(resolve(__dirname, 'src/estude.js')),
-        cursoScript: normalizePath(resolve(__dirname, 'src/curso.js')),
-        oportunidadesScript: normalizePath(resolve(__dirname, 'src/oportunidades.js')),
-        estudeStyle: normalizePath(resolve(__dirname, 'sass/estude.scss')),
-        editorStyle: normalizePath(resolve(__dirname, 'sass/estude-editor.scss')),
-        fontsStyle: normalizePath(resolve(__dirname, 'sass/fonts.scss')),
-        vendorStyle: normalizePath(resolve(__dirname, 'sass/vendor.scss')),
+        estudeScript: normalizePath(resolve(_root, 'src/estude.js')),
+        cursoScript: normalizePath(resolve(_root, 'src/curso.js')),
+        oportunidadesScript: normalizePath(resolve(_root, 'src/oportunidades.js')),
+        estudeStyle: normalizePath(resolve(_root, 'sass/estude.scss')),
+        editorStyle: normalizePath(resolve(_root, 'sass/estude-editor.scss')),
+        fontsStyle: normalizePath(resolve(_root, 'sass/fonts.scss')),
+        vendorStyle: normalizePath(resolve(_root, 'sass/vendor.scss')),
       },
     },
   },
