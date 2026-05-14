@@ -25,7 +25,6 @@
                     'menu_class'      => 'navbar-nav ms-auto me-lg-4 mb-3 mb-lg-0',
                 ) );
             ?>
-            <?php get_search_form(); ?>
         </div>
     </div>
 </nav>

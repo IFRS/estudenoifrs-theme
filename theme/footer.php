@@ -22,10 +22,11 @@
 <section class="social">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-12 col-md-9 col-xl-7">
-                <p class="social__text">Acompanhe nossas novidades pelas <strong>Redes Sociais</strong></p>
+            <div class="col-12 col-md-6 order-md-2">
+                <?php get_search_form(); ?>
             </div>
-            <div class="col">
+            <div class="col-12 col-md-6 order-md-1">
+                <p class="social__text">Acompanhe nossas novidades pelas <strong>Redes Sociais</strong></p>
                 <ul class="menu-social">
                     <li class="menu-social__item">
                         <a href="https://www.facebook.com/IFRSOficial" class="menu-social__link menu-social__link--facebook" aria-label="Página do IFRS no Facebook">
