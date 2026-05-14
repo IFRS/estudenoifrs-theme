@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
           open.style.gridRow = '';
           open.classList.add(...classes);
           open.querySelector('.oportunidade__btn-toggle').dataset.bsOriginalTitle = 'Expandir';
+          open.querySelector('[data-fa-i2svg]').style.transform = 'rotate(0deg)';
         });
 
         if (colPosition < colCount - 1) {
