@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
         oportunidade.style.gridRow = '';
         oportunidade.classList.add(...classes);
         btn.dataset.bsOriginalTitle = 'Expandir';
+        btn.querySelector('[data-fa-i2svg]').style.transform = 'rotate(0deg)';
       } else { // Open
         oportunidades.querySelectorAll('.oportunidade--open').forEach(function(open) { // Close others
           open.classList.remove('oportunidade--open');
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         oportunidade.classList.add('oportunidade--open');
         oportunidade.classList.add(...classes);
         btn.dataset.bsOriginalTitle = 'Fechar';
+        btn.querySelector('[data-fa-i2svg]').style.transform = 'rotate(45deg)';
       }
 
       flip.flip();

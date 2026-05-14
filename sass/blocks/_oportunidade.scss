@@ -40,16 +40,10 @@
 
     &__btn-toggle {
         background-color: $gray-100;
-        font-size: 0;
         flex: 0 0 auto;
         margin-left: auto;
         margin-right: 0.5rem;
         padding: 7px 8px;
-
-        svg {
-            width: 1rem;
-            transition: transform 800ms; // Mesmo tempo da animação "fast" do animate.css
-        }
 
         &:hover {
             background-color: $gray-200;
@@ -140,17 +134,8 @@
         #{$root}__btn-toggle {
             background-color: transparent;
 
-            svg {
-                transform: rotate(405deg);
-                width: 2rem;
-            }
-
             &:hover {
                 background-color: transparent;
-
-                svg {
-                    stroke: #000000;
-                }
             }
         }
 
