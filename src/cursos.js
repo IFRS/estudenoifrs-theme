@@ -1,9 +1,10 @@
+const desktopMedia = window.matchMedia('(min-width: 992px)');
+
 function syncCursosCollapseByViewport() {
 	const collapseItems = document.querySelectorAll('.cursos__list.collapse[id]');
 
 	if (!collapseItems.length) return;
 
-	const desktopMedia = window.matchMedia('(min-width: 992px)');
 	const isDesktop = desktopMedia.matches;
 
 	collapseItems.forEach((item) => {
@@ -20,11 +21,5 @@ function syncCursosCollapseByViewport() {
 }
 
 document.addEventListener('DOMContentLoaded', syncCursosCollapseByViewport);
-// Debounced Resize
-let timer;
-window.addEventListener("resize", () => {
-	clearTimeout(timer);
-	timer = setTimeout(() => {
-		syncCursosCollapseByViewport();
-	}, 500);
-});
+
+desktopMedia.addEventListener('change', syncCursosCollapseByViewport);
