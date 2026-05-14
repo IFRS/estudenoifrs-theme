@@ -1,16 +1,14 @@
 .barra-acessibilidade {
     display: inline-flex;
     justify-content: flex-end;
-    font-size: 0.8rem;
-    padding-top: calc(var(--bs-gutter-x) * 0.5);
-    padding-bottom: calc(var(--bs-gutter-x) * 0.5);
+    font-size: 0.875rem;
     position: absolute;
     right: 0;
 
     &__menu {
         list-style: none;
         margin-bottom: 0;
-        margin-right: 3rem;
+        margin-right: 2rem;
         padding: 0;
 
         &:last-child {
