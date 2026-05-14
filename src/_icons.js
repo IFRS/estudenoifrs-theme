@@ -18,6 +18,7 @@ import {
   faArrowUp,
   faMagnifyingGlass,
   faPlus,
+  faArrowUpRightFromSquare,
 } from '@fortawesome/free-solid-svg-icons'
 import {
   faCalendar,
@@ -55,6 +56,7 @@ library.add(
   faClock,
   faMagnifyingGlass,
   faPlus,
+  faArrowUpRightFromSquare,
 )
 
 dom.watch()
