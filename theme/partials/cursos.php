@@ -218,7 +218,7 @@
         ?>
 
         <?php $unidades_shown = 0; ?>
-        <?php foreach ($unidades as $key => $unidade) : ?>
+        <?php foreach ($unidades as $unidade) : ?>
             <?php
                 if (($is_filter || is_search()) && count($unidade->cursos) === 0) {
                     continue;
@@ -240,9 +240,9 @@
                         </span>
                     </a>
                 </h3>
-                <div class="cursos__list collapse" id="<?php echo $collapse_id; ?>">
+                <div class="cursos__list collapse show" id="<?php echo $collapse_id; ?>">
                     <?php if (count($unidade->cursos) > 0) : ?>
-                        <?php foreach ($unidade->cursos as $key => $post) : global $post; setup_postdata( $post ); ?>
+                        <?php foreach ($unidade->cursos as $post) : global $post; setup_postdata( $post ); ?>
                             <?php echo get_template_part('partials/curso-item'); ?>
                         <?php endforeach; ?>
                     <?php else : ?>
