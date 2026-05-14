@@ -117,7 +117,7 @@
                         <a href="<?php echo get_post_type_archive_link( 'curso' ); ?>" class="btn btn-lg btn-outline-secondary"><?php _e('Limpar', 'ifrs-estude-theme'); ?></a>
                     </div>
                 </div>
-                <div class="col order-0 text-start">
+                <div class="col-12 col-sm order-0 text-start">
                     <button class="btn btn-link" type="button" data-bs-toggle="collapse" data-bs-target="#<?php echo $collapse_id; ?>" aria-expanded="false" aria-controls="<?php echo $form_id; ?>">
                         Busca Avan&ccedil;ada<i class="fa-solid fa-chevron-down ms-1"></i>
                     </button>

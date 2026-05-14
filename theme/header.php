@@ -35,7 +35,7 @@
                         <img src="<?php echo !empty(get_custom_logo()) ? get_custom_logo() : get_parent_theme_file_uri( '/img/marca.png' ); ?>" alt="<?php bloginfo('name'); ?> - P&aacute;gina Inicial" class="img-fluid">
                     </a>
                 </div>
-                <div class="col-auto col-lg-8 order-first order-lg-last">
+                <div class="col-auto col-lg-8">
                     <?php echo get_template_part('partials/menu'); ?>
                 </div>
             </div>

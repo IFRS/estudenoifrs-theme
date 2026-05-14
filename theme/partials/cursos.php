@@ -9,9 +9,7 @@
     $nivel_queried = $query_array['nivel'] ?? $_POST['nivel'] ?? (is_tax('nivel') ? get_queried_object()->slug : null);
     $turno_queried = $query_array['turno'] ?? $_POST['turno'] ?? (is_tax('turno') ? get_queried_object()->term_id : null);
 
-    $is_filter = is_search()
-    || !empty(get_search_query())
-    || is_tax('unidade')
+    $is_filter = is_tax('unidade')
     || !empty($unidade_queried)
     || is_tax('modalidade')
     || !empty($modalidade_queried)
@@ -156,7 +154,7 @@
         }
     }
 
-    if ($is_filter) {
+    if ($is_filter || is_search()) {
         usort($unidades, function($a, $b) {
             if (count($a->cursos) === count($b->cursos)) return 0;
             return (count($a->cursos) > count($b->cursos)) ? -1 : 1;
@@ -185,7 +183,7 @@
             }
 
             if (is_search()) {
-                printf(__('<br><small>(resultados com o termo &ldquo;%s&rdquo;)</small>', 'ifrs-estude-theme'), get_search_query());
+                printf(__('<br><small>(resultados com o termo &ldquo;%s&rdquo;%s)</small>', 'ifrs-estude-theme'), get_search_query(), $is_filter ? ' e outros critérios de busca' : '');
             } elseif ($is_filter) {
                 echo '<br><small>(resultados da busca)</small>';
 
@@ -220,9 +218,9 @@
         ?>
 
         <?php $unidades_shown = 0; ?>
-        <?php foreach ($unidades as $key => $unidade) : ?>
+        <?php foreach ($unidades as $unidade) : ?>
             <?php
-                if ($is_filter && count($unidade->cursos) === 0) {
+                if (($is_filter || is_search()) && count($unidade->cursos) === 0) {
                     continue;
                 }
 
@@ -235,13 +233,16 @@
             <div class="cursos__unidade">
                 <h3 class="cursos__unidade-title">
                     <a href="#<?php echo $collapse_id; ?>" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="<?php echo $collapse_id; ?>">
-                        <span class="visually-hidden">Cursos em&nbsp;</span><?php echo $unidade->name; ?>
-                        <span class="visually-hidden">(<?php echo $numero_cursos; ?>&nbsp;<?php echo _n('encontrado', 'encontrados', $numero_cursos); ?>)</span>
+                        <span class="visually-hidden">Cursos em&nbsp;</span>
+                        <span>
+                            <?php echo $unidade->name; ?>
+                            <span class="fs-5">(<?php echo $numero_cursos; ?><span class="visually-hidden">&nbsp;<?php echo _n('encontrado', 'encontrados', $numero_cursos); ?></span>)</span>
+                        </span>
                     </a>
                 </h3>
                 <div class="cursos__list collapse show" id="<?php echo $collapse_id; ?>">
                     <?php if (count($unidade->cursos) > 0) : ?>
-                        <?php foreach ($unidade->cursos as $key => $post) : global $post; setup_postdata( $post ); ?>
+                        <?php foreach ($unidade->cursos as $post) : global $post; setup_postdata( $post ); ?>
                             <?php echo get_template_part('partials/curso-item'); ?>
                         <?php endforeach; ?>
                     <?php else : ?>

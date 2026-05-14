@@ -49,9 +49,7 @@
         <?php endif; ?>
         <?php if (!is_singular('oportunidade')) : ?>
             <button class="btn oportunidade__btn-toggle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover" title="Expandir">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="square" stroke-linejoin="arcs" stroke-width="3" viewBox="0 0 24 24">
-                    <path d="M12 5v14M5 12h14"/>
-                </svg>
+                <i class="fa-solid fa-plus"></i>
             </button>
         <?php endif; ?>
     </div>

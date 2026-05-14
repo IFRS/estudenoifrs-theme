@@ -1,7 +1,7 @@
 <div class="oportunidades-filter">
     <form action="<?php echo esc_url(home_url('/')); ?>" method="POST" class="oportunidades-filter__form row g-3 align-items-center">
         <?php $select_unidade_id = uniqid(); ?>
-        <div class="col-auto m-0">
+        <div class="col-auto m-md-0">
             <label class="visually-hidden" for="<?php echo $select_unidade_id; ?>">Unidade</label>
             <select name="curso_unidade[]" id="<?php echo $select_unidade_id; ?>" class="form-select flex-grow-0 w-auto">
                 <?php
@@ -18,7 +18,7 @@
             </select>
         </div>
         <?php $select_nivel_id = uniqid(); ?>
-        <div class="col-auto m-0">
+        <div class="col-auto m-md-0">
             <label class="visually-hidden" for="<?php echo $select_nivel_id; ?>">N&iacute;vel</label>
             <?php
                 $niveis = get_terms(array(
@@ -46,7 +46,7 @@
                 <?php endforeach; ?>
             </select>
         </div>
-        <div class="col-auto m-0">
+        <div class="col-auto m-md-0">
             <?php
                 $modalidades = get_terms(array(
                     'taxonomy' => 'modalidade',
@@ -62,7 +62,7 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="col m-0 text-end">
+        <div class="col-12 col-sm m-md-0 text-md-end">
             <button type="submit" class="btn" title="Filtrar Oportunidades" data-bs-toggle="tooltip" data-bs-placement="top">
                 <span style="font-size: 1.1em"><i class="fa-regular fa-circle-right"></i></span>
                 Filtrar<span class="visually-hidden">&nbsp;Oportunidades</span>

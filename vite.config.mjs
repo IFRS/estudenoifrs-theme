@@ -1,4 +1,5 @@
 import { defineConfig, normalizePath } from 'vite'
+// import { analyzer } from 'vite-bundle-analyzer'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
@@ -40,6 +41,7 @@ export default defineConfig(({ mode }) => ({
       input: {
         estudeScript: normalizePath(resolve(_root, 'src/estude.js')),
         cursoScript: normalizePath(resolve(_root, 'src/curso.js')),
+        cursosScript: normalizePath(resolve(_root, 'src/cursos.js')),
         oportunidadesScript: normalizePath(resolve(_root, 'src/oportunidades.js')),
         estudeStyle: normalizePath(resolve(_root, 'sass/estude.scss')),
         editorStyle: normalizePath(resolve(_root, 'sass/estude-editor.scss')),
@@ -49,6 +51,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
+    // analyzer(),
     watchThemePlugin(),
     viteStaticCopy({
       structured: true,
