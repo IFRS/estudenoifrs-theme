@@ -1,4 +1,5 @@
 import { defineConfig, normalizePath } from 'vite'
+// import { analyzer } from 'vite-bundle-analyzer'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
@@ -50,6 +51,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
+    // analyzer(),
     watchThemePlugin(),
     viteStaticCopy({
       structured: true,
