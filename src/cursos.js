@@ -25,7 +25,6 @@ let timer;
 window.addEventListener("resize", () => {
 	clearTimeout(timer);
 	timer = setTimeout(() => {
-		console.log("Resize handler triggered", window.innerWidth);
 		syncCursosCollapseByViewport();
 	}, 500);
 });
