@@ -1,25 +1,27 @@
-const desktopMedia = window.matchMedia('(min-width: 992px)');
+import Collapse from 'bootstrap/js/dist/collapse.js'
+
+const desktopMedia = window.matchMedia('(min-width: 992px)')
 
 function syncCursosCollapseByViewport() {
-	const collapseItems = document.querySelectorAll('.cursos__list.collapse[id]');
+	const collapseItems = document.querySelectorAll('.cursos__list.collapse[id]')
 
-	if (!collapseItems.length) return;
+	if (!collapseItems.length) return
 
-	const isDesktop = desktopMedia.matches;
+	const isDesktop = desktopMedia.matches
 
 	collapseItems.forEach((item) => {
-		const trigger = document.querySelector(`a[data-bs-toggle="collapse"][href="#${item.id}"]`);
+		const trigger = document.querySelector(`a[data-bs-toggle="collapse"][href="#${item.id}"]`)
 
-		item.classList.toggle('show', isDesktop);
-		item.style.height = '';
+		item.classList.toggle('show', isDesktop)
+		item.style.height = ''
 
 		if (trigger) {
-			trigger.classList.toggle('collapsed', !isDesktop);
-			trigger.setAttribute('aria-expanded', isDesktop ? 'true' : 'false');
+			trigger.classList.toggle('collapsed', !isDesktop)
+			trigger.setAttribute('aria-expanded', isDesktop ? 'true' : 'false')
 		}
-	});
+	})
 }
 
-document.addEventListener('DOMContentLoaded', syncCursosCollapseByViewport);
+document.addEventListener('DOMContentLoaded', syncCursosCollapseByViewport)
 
-desktopMedia.addEventListener('change', syncCursosCollapseByViewport);
+desktopMedia.addEventListener('change', syncCursosCollapseByViewport)
