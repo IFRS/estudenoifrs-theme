@@ -2,7 +2,7 @@
     @extend %destaque;
 
     &__title {
-        @include title();
+        @include title;
     }
 
     &__item-title {

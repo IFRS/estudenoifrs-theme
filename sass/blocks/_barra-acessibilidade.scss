@@ -1,15 +1,15 @@
 .barra-acessibilidade {
+    position: absolute;
+    right: 0;
     display: inline-flex;
     justify-content: flex-end;
     font-size: 0.875rem;
-    position: absolute;
-    right: 0;
 
     &__menu {
-        list-style: none;
-        margin-bottom: 0;
-        margin-right: 2rem;
         padding: 0;
+        margin-right: 2rem;
+        margin-bottom: 0;
+        list-style: none;
 
         &:last-child {
             margin-right: 0;

@@ -2,13 +2,10 @@
 @import 'config/bootstrap';
 @import 'config/mixins';
 @import 'config/placeholders';
-
 @import 'base/wp';
-
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/front-page';
-
 @import 'blocks/barra-acessibilidade';
 @import 'blocks/menu';
 @import 'blocks/search';
@@ -32,7 +29,6 @@
 @import 'blocks/footer-logo';
 @import 'blocks/site-map';
 @import 'blocks/creditos';
-
 @import 'gutenberg/button';
 @import 'gutenberg/code';
 @import 'gutenberg/embed';

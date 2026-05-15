@@ -3,17 +3,17 @@
 @mixin title($position: 'left') {
     $comprimento: 9%;
 
-    margin-bottom: 2rem;
-    padding-bottom: 0.75rem;
     position: relative;
+    padding-bottom: 0.75rem;
+    margin-bottom: 2rem;
 
     &::after {
-        background: $primary;
-        content: '';
         position: absolute;
-        height: 2px;
-        width: $comprimento;
         bottom: 0;
+        width: $comprimento;
+        height: 2px;
+        content: '';
+        background: $primary;
     }
 
     @if $position == 'left' {
@@ -40,18 +40,18 @@
 @mixin seta($cor: #ffffff) {
     position: relative;
 
-    &:after {
+    &::after {
+        position: absolute;
         bottom: 100%;
         left: 50%;
-        border: solid transparent;
-        content: '';
-        height: 0;
         width: 0;
-        position: absolute;
-        pointer-events: none;
-        border-color: rgba(136, 183, 213, 0);
-        border-bottom-color: $cor;
-        border-width: 15px;
+        height: 0;
         margin-left: -15px;
+        pointer-events: none;
+        content: '';
+        border: solid transparent;
+        border-color: rgb(136 183 213 / 0%);
+        border-width: 15px;
+        border-bottom-color: $cor;
     }
 }
