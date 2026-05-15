@@ -49,13 +49,6 @@ add_theme_support( 'custom-header', array(
 // Sidebars
 add_action('widgets_init', function() {
     register_sidebar(array(
-        'name'          => 'Banners',
-        'id'            => 'area-banners',
-        'description'   => __('Área para imagens de divulgação. Aparece somente na página inicial, abaixo das "Inscrições Abertas".', 'ifrs-estude-theme'),
-        'before_widget' => '<div id="%1$s" class="%2$s">',
-        'after_widget'  => '</div>',
-    ));
-    register_sidebar(array(
         'name'          => 'Contato',
         'id'            => 'area-contato',
         'description'   => __('Área para formulário de contato. Aparece em todas as páginas.', 'ifrs-estude-theme'),
@@ -72,6 +65,3 @@ add_action('widgets_init', function() {
         'after_widget'   => '</div>',
     ));
 });
-
-// Prevents ContactForm7 plugin to add <p> tag
-add_filter('wpcf7_autop_or_not', '__return_false');

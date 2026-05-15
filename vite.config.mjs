@@ -1,5 +1,4 @@
 import { defineConfig, normalizePath } from 'vite'
-// import { analyzer } from 'vite-bundle-analyzer'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
@@ -22,13 +21,22 @@ function watchThemePlugin() {
 
 export default defineConfig(({ mode }) => ({
   base: './', // Generate relative asset URLs so WordPress theme URI prefix from enqueue is preserved.
+  resolve: {
+    alias: {
+      '~': resolve(_root, 'node_modules'),
+    },
+  },
   css: {
     devSourcemap: true,
     preprocessorOptions: {
       scss: {
         sourceMap: true,
         quietDeps: true,
-        silenceDeprecations: ['legacy-js-api', 'import'],
+        silenceDeprecations: [ // Ignore deprecation warnings from dependencies, which we can't fix and which would otherwise spam the console during development.
+          'import',
+          'color-functions',
+          'global-builtin',
+        ],
       },
     },
   },
@@ -39,10 +47,12 @@ export default defineConfig(({ mode }) => ({
     outDir: normalizePath(resolve(_root, 'build')),
     rollupOptions: {
       input: {
+        /* Scripts */
         estudeScript: normalizePath(resolve(_root, 'src/estude.js')),
         cursoScript: normalizePath(resolve(_root, 'src/curso.js')),
         cursosScript: normalizePath(resolve(_root, 'src/cursos.js')),
         oportunidadesScript: normalizePath(resolve(_root, 'src/oportunidades.js')),
+        /* Styles */
         estudeStyle: normalizePath(resolve(_root, 'sass/estude.scss')),
         editorStyle: normalizePath(resolve(_root, 'sass/estude-editor.scss')),
         fontsStyle: normalizePath(resolve(_root, 'sass/fonts.scss')),
@@ -51,7 +61,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
-    // analyzer(),
     watchThemePlugin(),
     viteStaticCopy({
       structured: true,
@@ -61,16 +70,6 @@ export default defineConfig(({ mode }) => ({
           dest: '.',
           rename: { stripBase: 1 },
         },
-        {
-          src: 'node_modules/lightgallery/fonts/**/*',
-          dest: 'assets',
-          rename: { stripBase: 1 },
-        },
-        {
-          src: 'node_modules/lightgallery/images/**/*',
-          dest: 'assets',
-          rename: { stripBase: 1 },
-        }
       ],
       watch: {
         reloadPageOnChange: true,
