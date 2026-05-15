@@ -10,8 +10,7 @@ export default [
     files: ["src/**/*.js"],
     languageOptions: {
       globals: {
-        ...globals.browser,
-        ...globals.node
+        ...globals.browser
       }
     },
     rules: {
