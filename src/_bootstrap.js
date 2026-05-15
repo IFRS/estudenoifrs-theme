@@ -9,3 +9,13 @@ let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggl
 let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
   return new Tooltip(tooltipTriggerEl)
 })
+
+export default {
+  Collapse,
+  Dropdown,
+  Modal,
+  Offcanvas,
+  Popover,
+  Tooltip,
+  tooltipList
+}

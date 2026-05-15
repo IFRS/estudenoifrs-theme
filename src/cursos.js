@@ -1,5 +1,3 @@
-import Collapse from 'bootstrap/js/dist/collapse.js'
-
 const desktopMedia = window.matchMedia('(min-width: 992px)')
 
 function syncCursosCollapseByViewport() {
