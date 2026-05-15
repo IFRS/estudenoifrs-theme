@@ -1,9 +1,9 @@
 .social {
     @include seta($detalhe);
 
-    background-color: $detalhe;
-    color: #ffffff;
     padding: 1rem 0;
+    color: #ffffff;
+    background-color: $detalhe;
 
     &__text {
         font-size: 1.5rem;

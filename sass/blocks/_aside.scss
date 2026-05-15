@@ -1,15 +1,15 @@
 .aside {
-    background-color: $gray-100;
-    margin-top: 2rem;
     padding-top: 2rem;
     padding-bottom: 1rem;
+    margin-top: 2rem;
     text-align: center;
+    background-color: $gray-100;
 
     &__title {
         @include title('center');
 
-        color: $gray-600;
         font-size: 2rem;
+        color: $gray-600;
         text-transform: uppercase;
     }
 

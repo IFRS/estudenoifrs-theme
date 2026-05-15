@@ -1,77 +1,23 @@
 .contato {
-    @include seta();
+    @include seta;
 
     padding: 3rem 0;
 
     &__title {
-        font-size: 2.5rem;
         margin-bottom: 2rem;
+        font-size: 2.5rem;
 
         span {
-            color: $primary;
             font-weight: bolder;
+            color: $primary;
         }
     }
 
     &__faq-link {
-        color: $detalhe;
         display: inline-block;
+        margin-bottom: 1rem;
         font-size: 1.5rem;
         line-height: 1.2;
-        margin-bottom: 1rem;
-    }
-
-    &__widget {
-        .screen-reader-response {
-            @include visually-hidden;
-        }
-
-        .wpcf7-form {
-            margin-bottom: 0.5rem;
-        }
-
-        .wpcf7-form-control {
-            @extend .form-control;
-
-            margin-bottom: 0.3rem;
-        }
-
-        .wpcf7-not-valid {
-            @extend .is-invalid;
-        }
-
-        .wpcf7-not-valid-tip {
-            @extend small;
-            @extend .form-text;
-            @extend .text-danger;
-
-            margin-bottom: 0.5rem;
-        }
-
-        .wpcf7-submit {
-            @include button-outline-variant($primary);
-
-            float: right;
-            margin-bottom: 0.5rem;
-            margin-top: 0.3rem;
-            text-transform: uppercase;
-            width: auto;
-
-        }
-
-        .wpcf7-response-output {
-            @extend .alert;
-
-            clear: both;
-            margin: 0;
-        }
-
-        .wpcf7-validation-errors {
-            @extend .alert-warning;
-        }
-
-        .wpcf7-mail-sent-ok {
-            @extend .alert-success;
-        }
+        color: $detalhe;
     }
 }

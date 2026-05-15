@@ -1,5 +1,5 @@
 .screen-reader-text {
-    @include visually-hidden();
+    @include visually-hidden;
 }
 
 #wpadminbar {

@@ -1,7 +1,7 @@
 .footer {
-    border-bottom: 1px solid $detalhe;
     justify-content: space-between;
     padding-bottom: 2rem;
+    border-bottom: 1px solid $detalhe;
 
     &__widget {
         font-size: 0.9rem;
@@ -12,9 +12,9 @@
     }
 
     &__widget-title {
-        color: #ffffff;
+        margin-bottom: 20px;
         font-size: 1.5rem;
         font-weight: bold;
-        margin-bottom: 20px;
+        color: #ffffff;
     }
 }
