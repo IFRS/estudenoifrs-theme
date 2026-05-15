@@ -2,7 +2,7 @@
     $root: &;
 
     display: flex;
-    flex-basis: calc(1/4 * 100% - (1 - 1/4) * 30px);
+    flex-basis: calc((1 / 4) * 100% - (1 - (1 / 4)) * 30px);
     flex-flow: column nowrap;
     padding: 5px 10px 15px;
     margin: 0 10px 30px;
@@ -110,10 +110,9 @@
     }
 
     &--open {
-        flex-basis: calc(1/2 * 100% - (1 - 1/2) * 30px);
+        flex-basis: calc((1 / 2) * 100% - (1 - (1 / 2)) * 30px);
         padding: 20px;
         font-size: 1rem;
-        // background: #f3f3f3;
         border: none;
         box-shadow: $box-shadow;
 
