@@ -74,7 +74,7 @@
             background-repeat: no-repeat;
             background-attachment: local, local, scroll, scroll;
             background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
-            overflow-scrolling: touch;
+            -webkit-overflow-scrolling: touch;
         }
     }
 
