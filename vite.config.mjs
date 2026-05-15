@@ -21,6 +21,11 @@ function watchThemePlugin() {
 
 export default defineConfig(({ mode }) => ({
   base: './', // Generate relative asset URLs so WordPress theme URI prefix from enqueue is preserved.
+  resolve: {
+    alias: {
+      '~': resolve(_root, 'node_modules'),
+    },
+  },
   css: {
     devSourcemap: true,
     preprocessorOptions: {
@@ -65,16 +70,6 @@ export default defineConfig(({ mode }) => ({
           dest: '.',
           rename: { stripBase: 1 },
         },
-        {
-          src: 'node_modules/lightgallery/fonts/**/*',
-          dest: 'assets',
-          rename: { stripBase: 1 },
-        },
-        {
-          src: 'node_modules/lightgallery/images/**/*',
-          dest: 'assets',
-          rename: { stripBase: 1 },
-        }
       ],
       watch: {
         reloadPageOnChange: true,
